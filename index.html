@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Zen-notebook by eristoddle</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Zen-notebook</h1>
+        <p>A Distraction Free Journal/Notebook/Diary for Writing Practice</p>
+
+        <p class="view"><a href="https://github.com/eristoddle/zen-notebook">View the Project on GitHub <small>eristoddle/zen-notebook</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/eristoddle/zen-notebook/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/eristoddle/zen-notebook/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/eristoddle/zen-notebook">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="zen-notebook" class="anchor" href="#zen-notebook"><span class="octicon octicon-link"></span></a>Zen Notebook</h1>
+
+<h2>
+<a name="a-distraction-free-journalnotebookdiary-for-writing-practice" class="anchor" href="#a-distraction-free-journalnotebookdiary-for-writing-practice"><span class="octicon octicon-link"></span></a>A Distraction Free Journal/Notebook/Diary for Writing Practice</h2>
+
+<p>When I was 14, I bought Writing Down the Bones by Natalie Goldberg. I have kept up with writing practice off and on 
+for over two decades now. Many times in the last few years, I have searched for something in an electronic version 
+that I could use easily from a laptop, when I wanted to. Something I could just click on and start writing with. If I
+ got caught up in the setup and configuration of the damn tool, the moment could be gone fast, 
+ because at the same time I like to write, I am also a nerd at heart and can tweak out on this type of stuff. So the 
+ only solution is to get to the writing quickly and not have to worry about anything going wrong.</p>
+
+<p>I found Red Notebook and ZenPen in the same week and an idea just came together. </p>
+
+<p>And of course, being the nerd again, thought of all the other writing tools I would want distraction free and 
+simplified. So now, the final version is kind of up in the air.</p>
+
+<p>But for now, it is just a journal. The menu is on the top right side of the application and is more visible when 
+hovered. Clicking a button in the menu will slide in a panel from the left or the foot of the application for various 
+functionality. A notebook is arranged by years, months and days and content is saved to a date when the date is 
+changed. The notebook file is saved in plain json. There is various automatic features. The content is always 
+automatically saved when the date is changed. If you save the journal file once, 
+the location is stored and the current content and journal file will be automatically saved on close.</p>
+
+<p>I am working currently on the alpha executables for Windows, Mac and Linux. Eventually those will be downloadable 
+from <a href="http://zen-notebook.com">http://zen-notebook.com</a></p>
+
+<h2>
+<a name="current-version" class="anchor" href="#current-version"><span class="octicon octicon-link"></span></a>Current Version</h2>
+
+<p>The application is still in alpha.</p>
+
+<h2>
+<a name="current-roadmap" class="anchor" href="#current-roadmap"><span class="octicon octicon-link"></span></a>Current Roadmap</h2>
+
+<ol>
+<li>Add Tags</li>
+<li>Add Search</li>
+<li>Reorganize and refactor current application so that new features can be more modular and plugins can be written 
+and bolted on. Work on GUI refinements, since I want the base application to just be gui and menu interaction, 
+all functionality will be plugins. Turn the notebook functionality into a plugin. Swat any bugs and bad code in this phase.
+Once the application seems semi-bulletproof, A beta version will be released.</li>
+<li>Sync content to cloud services instead of just the file system</li>
+<li>Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions</li>
+<li>Flesh out website. Write writing prompts integration and consider users, writing groups, 
+online version and journal post permissions.</li>
+<li>Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will 
+require a more advanced theming system to change up element display (masonry block, outline, editing).</li>
+<li>Integrate PanDoc and consider a web service</li>
+</ol><h2>
+<a name="source-code-in-ubuntu-1404" class="anchor" href="#source-code-in-ubuntu-1404"><span class="octicon octicon-link"></span></a>Source Code in Ubuntu 14.04</h2>
+
+<p>In order to get nodewebkit to work on Ubuntu 14.04 and later, you will have to make sure to do something like this. I
+ would explain it more, but I forget how I figured this out because it was months ago, and now that it finally works,
+  I only care that it does. So it may or may not work for you. Anyway you know the process.</p>
+
+<ul>
+<li>Try to run the project</li>
+<li>If there is an error, copy it and search on Google</li>
+<li>Spend the next hour or two figuring out what the issue is</li>
+</ul><p>Anyway, this page here explains a few complicated ways to fix this issue: 
+    <a href="https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0">https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0</a></p>
+
+<p>But I found out that just creating a symbolic link was easier.</p>
+
+<p><code>sudo ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0</code></p>
+
+<h2>
+<a name="software-features-i-may-emulate" class="anchor" href="#software-features-i-may-emulate"><span class="octicon octicon-link"></span></a>Software Features I May Emulate</h2>
+
+<pre><code>- http://www.noisli.com/ - Sound and changing colors
+- WriteMonkey
+- Ulysses - Features
+- Scrivener - Features
+- Q10 - Typing sound
+- Red Notebook - Journaling
+- https://github.com/sofish/pen
+- https://github.com/mduvall/grande.js
+- https://github.com/tholman/zenpen
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/eristoddle">eristoddle</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
