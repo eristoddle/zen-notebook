@@ -151,4 +151,3 @@ with `npm start`
 - Scrivener - Features
 - Q10
 - https://github.com/sofish/pen
-- https://github.com/mduvall/grande.js
