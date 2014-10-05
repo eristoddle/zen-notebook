@@ -2,8 +2,6 @@
 
 ##A Distraction Free Journal/Notebook/Diary for Writing Practice
 
-![](http://stephanmiller.com/sites/default/files/styles/large/public/screenshot.png)
-
 When I was 14, I bought Writing Down the Bones by Natalie Goldberg. I have kept up with writing practice off and on 
 for over two decades now. Many times in the last few years, I have searched for something in an electronic version 
 that I could use easily from a laptop, when I wanted to. Something I could just click on and start writing with. If I
@@ -15,6 +13,14 @@ I found Red Notebook and ZenPen in the same week and an idea just came together.
 
 And of course, being the nerd again, thought of all the other writing tools I would want distraction free and 
 simplified. So now, the final version is kind of up in the air.
+
+##Screenshot
+
+![](http://stephanmiller.com/sites/default/files/styles/large/public/screenshot.png)
+
+##Screencast
+
+[YouTube Screencast of Zen Notebook](https://www.youtube.com/watch?v=XuOEtBkhGsc)
 
 ##Features Currently in Executable Version
 
