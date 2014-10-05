@@ -87,6 +87,7 @@ first plugin
 * Typewriter combine carriage return sounds into one? or play them right after the other
 * Fix sound effects on typewriter for cylinder clicking sound
 * Add more sounds to relax theme
+* Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
 * Fix margin bottom on content when taller than window. No text sitting on the bottom
 * Add more typewriter styling
 * Fix month forward arrow on calendar
