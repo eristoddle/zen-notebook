@@ -7,12 +7,13 @@ for over two decades now. Many times in the last few years, I have searched for 
 that I could use easily from a laptop, when I wanted to. Something I could just click on and start writing with. If I
  got caught up in the setup and configuration of the damn tool, the moment could be gone fast, 
  because at the same time I like to write, I am also a nerd at heart and can tweak out on this type of stuff. So the 
- only solution is to get to the writing quickly and not have to worry about anything going wrong.
+ only solution is to get to the writing quickly and not have to worry about anything getting in the way of that.
  
-I found Red Notebook and ZenPen in the same week and an idea just came together. 
+I found [Red Notebook](http://rednotebook.sourceforge.net) and [ZenPen](http://github.com/tholman/zenpen) in the same week and an idea just came 
+together. 
 
 And of course, being the nerd again, thought of all the other writing tools I would want distraction free and 
-simplified. So now, the final version is kind of up in the air.
+simplified. So the feature wish list keeps growing.
 
 ##Screenshot
 
