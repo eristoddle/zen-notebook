@@ -28,51 +28,86 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="zen-notebook" class="anchor" href="#zen-notebook"><span class="octicon octicon-link"></span></a>Zen Notebook</h1>
-
-<h2>
-<a name="a-distraction-free-journalnotebookdiary-for-writing-practice" class="anchor" href="#a-distraction-free-journalnotebookdiary-for-writing-practice"><span class="octicon octicon-link"></span></a>A Distraction Free Journal/Notebook/Diary for Writing Practice</h2>
-
+       <h1 id="zen-notebook">Zen Notebook</h1>
+<h2 id="a-distraction-free-journal-notebook-diary-for-writing-practice">A Distraction Free Journal/Notebook/Diary for Writing Practice</h2>
 <p><img src="http://stephanmiller.com/sites/default/files/styles/large/public/screenshot.png" alt=""></p>
-
 <p>When I was 14, I bought Writing Down the Bones by Natalie Goldberg. I have kept up with writing practice off and on 
 for over two decades now. Many times in the last few years, I have searched for something in an electronic version 
 that I could use easily from a laptop, when I wanted to. Something I could just click on and start writing with. If I
  got caught up in the setup and configuration of the damn tool, the moment could be gone fast, 
  because at the same time I like to write, I am also a nerd at heart and can tweak out on this type of stuff. So the 
  only solution is to get to the writing quickly and not have to worry about anything going wrong.</p>
-
 <p>I found Red Notebook and ZenPen in the same week and an idea just came together. </p>
-
 <p>And of course, being the nerd again, thought of all the other writing tools I would want distraction free and 
 simplified. So now, the final version is kind of up in the air.</p>
-
-<p>But for now, it is just a journal. The menu is on the top right side of the application and is more visible when 
-hovered. Clicking a button in the menu will slide in a panel from the left or the foot of the application for various 
-functionality. A notebook is arranged by years, months and days and content is saved to a date when the date is 
-changed. The notebook file is saved in plain json. There is various automatic features. The content is always 
-automatically saved when the date is changed. If you save the journal file once, 
-the location is stored and the current content and journal file will be automatically saved on close.</p>
-
-<p>I am working currently on the alpha executables for Windows, Mac and Linux. Eventually those will be downloadable 
-from <a href="http://zen-notebook.com">http://zen-notebook.com</a></p>
-
-<h2>
-<a name="current-version" class="anchor" href="#current-version"><span class="octicon octicon-link"></span></a>Current Version</h2>
-
-<p>The application is still in alpha.</p>
-
-<h2>
-<a name="current-roadmap" class="anchor" href="#current-roadmap"><span class="octicon octicon-link"></span></a>Current Roadmap</h2>
-
-<ol>
+<h2 id="features-currently-in-executable-version">Features Currently in Executable Version</h2>
+<p>The application is still in alpha. The most recently version will be in the source code and in the Mac build because 
+I am currently working on a Mac. I will keep the executables updated on a regular basis when I have added 
+important features or fix major bugs. But I can tell I didn&#39;t start creating executables until I had a version I 
+trusted to use on a daily basis as a replacement for Red Notebook. And most of the beta version punchlist items come 
+from bugs I found and ideas I had while using it every day.</p>
+<ul>
+<li>Distraction free writing environment: All menus and configuration options are hidden until needed. A small barely 
+visible nav bar at the top left of the GUI becomes 100% visible when hovered with the mouse. The buttons activate 
+various menus. The application can be made full screen.</li>
+<li>Emulates a daily journal/diary/notebook in an electronic application: Written content is saved to dates and the 
+date can be changed used an interactive calendar</li>
+<li>Cross platform: Executables for Windows, Mac and Linux</li>
+<li>7 themes: Clicking the yin-yang nav button will change the theme</li>
+<li>Custom typewriter theme: uses the MyUnderwood Font and has typewriter sound effects</li>
+<li>Custom relax theme: beta, still a little rough, has a background that changes color and a rainfall background sound</li>
+<li>Journal saved to simple JSON format</li>
+</ul>
+<h2 id="download-zen-notebook-executables">Download Zen Notebook Executables</h2>
+<p>These are in zip format. They are not installers. I do plan on working on installation package eventually, 
+but for now, you can unzip the correct file for your operating system and run the executable for in the resulting 
+folder. For the Mac version, just unzip the file and in it you will find a Zen Notebook app you can drag to your 
+Application Folder</p>
+<h3 id="mac">Mac</h3>
+<p><a href="http://stephanmiller.com/sites/default/files/software/mac.zip">Download</a></p>
+<h3 id="windows">Windows</h3>
+<p><a href="http://stephanmiller.com/sites/default/files/software/windows.zip">Download</a></p>
+<h3 id="linux-32-bit">Linux 32 bit</h3>
+<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x64.zip">Download</a></p>
+<h3 id="linux-64-bit">Linux 64 bit</h3>
+<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x32.zip">Download</a></p>
+<h2 id="beta-version-punchlist">Beta Version Punchlist</h2>
+<ul>
 <li>Add Tags</li>
 <li>Add Search</li>
-<li>Reorganize and refactor current application so that new features can be more modular and plugins can be written 
-and bolted on. Work on GUI refinements, since I want the base application to just be gui and menu interaction, 
-all functionality will be plugins. Turn the notebook functionality into a plugin. Swat any bugs and bad code in this phase.
-Once the application seems semi-bulletproof, A beta version will be released.</li>
+<li>Add Stats</li>
+<li>Fix typewriting mode sound memory leak, crashing</li>
+<li>Fix info links to open in system browser, alternately in iframe</li>
+<li>Highlight days with content differently</li>
+<li>Move most notebook functionality to left bar and gui configuration/information to footer</li>
+<li>Add accordian/collapsible divs to left bar</li>
+<li>Reorganize and refactor application for modularity. Separate gui and notebook functionality. Make notebook the 
+first plugin</li>
+<li>Optimize code</li>
+<li>Have a more automated build process with install packages, bower, minification, etc.</li>
+<li>Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf</li>
+<li>Smooth and mellow relax colors</li>
+<li>Manage sound levels</li>
+<li>Allow for custom theme: font, background, text color</li>
+<li>Possibly make typewriter theme scroll paper from bottom</li>
+<li>Typewriter combine carriage return sounds into one? or play them right after the other</li>
+<li>Fix sound effects on typewriter for cylinder clicking sound</li>
+<li>Add more sounds to relax theme</li>
+<li>Fix margin bottom on content when taller than window. No text sitting on the bottom</li>
+<li>Add more typewriter styling</li>
+<li>Fix month forward arrow on calendar</li>
+<li>Double check that all functionality works from scratch without existing journal</li>
+<li>Add markdown support</li>
+<li>Add configuration loading</li>
+<li>Create configuration menu</li>
+<li>Fix today button</li>
+<li>Warn to save content on close is no file exists</li>
+<li>Make persistent storage agnostic</li>
+<li>Create services of sound and storage</li>
+</ul>
+<h2 id="futute-roadmap">Futute Roadmap</h2>
+<p>This is my wish and idea list</p>
+<ul>
 <li>Sync content to cloud services instead of just the file system</li>
 <li>Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions</li>
 <li>Flesh out website. Write writing prompts integration and consider users, writing groups, 
@@ -80,37 +115,29 @@ online version and journal post permissions.</li>
 <li>Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will 
 require a more advanced theming system to change up element display (masonry block, outline, editing).</li>
 <li>Integrate PanDoc and consider a web service</li>
-</ol><h2>
-<a name="source-code-in-ubuntu-1404" class="anchor" href="#source-code-in-ubuntu-1404"><span class="octicon octicon-link"></span></a>Source Code in Ubuntu 14.04</h2>
-
+</ul>
+<h2 id="source-code-in-ubuntu-14-04">Source Code in Ubuntu 14.04</h2>
 <p>In order to get nodewebkit to work on Ubuntu 14.04 and later, you will have to make sure to do something like this. I
  would explain it more, but I forget how I figured this out because it was months ago, and now that it finally works,
   I only care that it does. So it may or may not work for you. Anyway you know the process.</p>
-
 <ul>
 <li>Try to run the project</li>
 <li>If there is an error, copy it and search on Google</li>
 <li>Spend the next hour or two figuring out what the issue is</li>
-</ul><p>Anyway, this page here explains a few complicated ways to fix this issue: 
+</ul>
+<p>Anyway, this page here explains a few complicated ways to fix this issue: 
     <a href="https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0">https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0</a></p>
-
 <p>But I found out that just creating a symbolic link was easier.</p>
-
 <p><code>sudo ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0</code></p>
-
-<h2>
-<a name="software-features-i-may-emulate" class="anchor" href="#software-features-i-may-emulate"><span class="octicon octicon-link"></span></a>Software Features I May Emulate</h2>
-
-<pre><code>- http://www.noisli.com/ - Sound and changing colors
-- WriteMonkey
-- Ulysses - Features
-- Scrivener - Features
-- Q10 - Typing sound
-- Red Notebook - Journaling
-- https://github.com/sofish/pen
-- https://github.com/mduvall/grande.js
-- https://github.com/tholman/zenpen
-</code></pre>
+<h2 id="software-features-i-may-emulate">Software Features I May Emulate</h2>
+<ul>
+<li>WriteMonkey</li>
+<li>Ulysses - Features</li>
+<li>Scrivener - Features</li>
+<li>Q10</li>
+<li><a href="https://github.com/sofish/pen">https://github.com/sofish/pen</a></li>
+<li><a href="https://github.com/mduvall/grande.js">https://github.com/mduvall/grande.js</a></li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/eristoddle">eristoddle</a></p>
