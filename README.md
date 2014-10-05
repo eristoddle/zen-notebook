@@ -17,7 +17,7 @@ simplified. So the feature wish list keeps growing.
 
 ##Screenshot
 
-![](http://stephanmiller.com/sites/default/files/styles/large/public/screenshot.png)
+![](https://www.dropbox.com/s/m2z8qscpo23jatt/Screenshot%202014-10-05%2016.48.31.png?dl=0)
 
 ##Screencast
 
