@@ -17,7 +17,7 @@ simplified. So the feature wish list keeps growing.
 
 ##Screenshot
 
-![](https://www.dropbox.com/s/m2z8qscpo23jatt/Screenshot%202014-10-05%2016.48.31.png)
+![](http://stephanmiller.com/sites/default/files/styles/large/public/screenshot_0.png)
 
 ##Screencast
 
@@ -70,7 +70,6 @@ Application Folder
 * Add Tags
 * Add Search
 * Add Stats
-* Fix typewriting mode sound memory leak, crashing
 * Fix info links to open in system browser, alternately in iframe
 * Highlight days with content differently
 * Move most notebook functionality to left bar and gui configuration/information to footer
