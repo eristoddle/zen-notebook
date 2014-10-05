@@ -1,0 +1,47 @@
+//TODO: Add optional layouts
+* {
+    @include box-sizing('border-box');
+}
+
+#container{
+    @include grid-span(12, 1);
+    height: 100%;
+}
+
+header {
+    min-height: $icon-size;
+    cursor: move;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: 100%;
+    .nav-menu {
+        float: right;
+        padding: 0.3em;
+    }
+}
+
+.left-sidebar {
+    @include grid-span(2, 1);
+}
+
+.content {
+    padding-top: $icon-size;
+    padding-bottom: $icon-size;
+    @include grid-span(8, 3);
+    min-height: $editor-height;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.right-sidebar {
+    @include grid-span(2, 11);
+}
+
+footer{
+    min-height: $icon-size;
+    @include grid-span(8, 3);
+    position:fixed;
+    bottom:0px;
+}

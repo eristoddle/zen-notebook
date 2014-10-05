@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="zenNotebook">
+    <head>
+        <title>Zen Notebook</title>
+        <script src="js/lib/head.min.js" data-headjs-load="js/init.js"></script>
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+    <body id="container" ng-class="theme" ng-controller="BodyController">
+        <header ng-controller="NavController" style="-webkit-app-region: drag">
+            <nav class="nav-menu" menu-data="menu">
+                <button ng-repeat="node in menu"
+                        title="{{node.title}}"
+                        class="{{node.class}}"
+                        ng-click="expr(node)">
+                </button>
+            </nav>
+        </header>
+
+        <div class="left-sidebar slide-menu" ng-controller="LeftController">
+            <div class="left-inner modal" ng-class="{'slide-out':leftChangeClass}" ng-mouseleave="expr({sub: 'left'})">
+                <div data-calendar></div>
+                <h2>Search</h2>
+                <div data-search></div>
+                <h2>Tags</h2>
+                <div data-tags></div>
+                <h2>Stats</h2>
+                <div id="stats"></div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="content" contenteditable data-date="" data-ng-element-ready=""></div>
+        </div>
+
+        <div class="right-sidebar"></div>
+
+        <footer class="slide-menu" ng-controller="FootController" ng-mouseleave="expr({sub: 'foot'})">
+            <div class="foot-inner modal" ng-class="{'slide-out':footChangeClass}">
+                <div class='footer-content'>
+                    <h1>{{ heading }}</h1>
+                    <div ng-bind-html="body"></div>
+                    <span ng-repeat="node in buttons"
+                            class="button {{node.class}}"
+                            ng-click="expr(node)">
+                        {{ node.title }}
+                    </span>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

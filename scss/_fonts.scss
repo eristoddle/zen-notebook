@@ -1,0 +1,78 @@
+//Type
+@font-face {
+  font-family: "Lora";
+  src: url('fonts/Lora-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MyUnderwood";
+  src: url('fonts/MyUnderwood.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//Icons
+@font-face {
+  font-family: "icomoon";
+  src: url('fonts/icomoon.eot?uidhkg');
+  src: url('fonts/icomoon.eot?#iefixuidhkg') format('embedded-opentype'),
+  url('fonts/icomoon.woff?uidhkg') format('woff'),
+  url('fonts/icomoon.ttf?uidhkg') format('truetype'),
+  url('fonts/icomoon.svg?uidhkg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: "icomoon";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-calendar:before {
+  content: "\e600";
+}
+
+.icon-resize:before {
+  content: "\e601";
+}
+
+.icon-resize2:before {
+  content: "\e602";
+}
+
+.icon-yingyang:before {
+  content: "\e603";
+}
+
+.icon-switch:before {
+  content: "\e604";
+}
+
+.icon-gear:before {
+  content: "\f02f";
+}
+
+.icon-info:before {
+  content: "\f059";
+}
+
+.icon-repo:before {
+  content: "\f001";
+}
+
+.icon-triangle-left:before {
+  content: "\f044";
+}
+.icon-triangle-right:before {
+  content: "\f05a";
+}

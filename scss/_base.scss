@@ -1,0 +1,18 @@
+h1{
+  font-weight: bold;
+  font-size: 1.5em;
+  border-bottom: 2px solid;
+}
+h2{
+  font-weight: bold;
+}
+.button {
+  -webkit-transition: color 250ms, background 250ms;
+  transition: color 250ms, background 250ms;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid;
+  border-radius: 3px;;
+}

@@ -1,0 +1,55 @@
+.modal {
+  border-radius: 3px;
+  z-index: 10;
+  padding: 10px;
+  h2{
+    margin: 5%;
+    border-bottom: 1px solid;
+  }
+  &.left-inner {
+    -moz-transition: left 1s;
+    -webkit-transition: left 1s;
+    -o-transition: left 1s;
+    transition: left 1s;
+    width: 300px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: -300px;
+    &.slide-out {
+      -moz-transition: left 1s;
+      -webkit-transition: left 1s;
+      -o-transition: left 1s;
+      transition: left 1s;
+      left: 0px;
+      position: fixed;
+      height: 100%;
+    }
+  }
+  &.foot-inner {
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    bottom: -300px;
+    overflow: hidden;
+    div {
+      margin-top: 20px;
+    }
+    &.slide-out {
+      -moz-transition: all 1s;
+      -webkit-transition: all 1s;
+      -o-transition: all 1s;
+      transition: all 1s;
+      bottom: 0px;
+      height: 300px;
+      .footer-content {
+        visibility: visible;
+        display: block;
+      }
+    }
+  }
+}

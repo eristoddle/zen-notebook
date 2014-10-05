@@ -1,0 +1,43 @@
+{
+    "name": "Zen_Notebook",
+    "nodejs": true,
+    "description": "A distraction free writing journal",
+    "single-instance": true,
+    "keywords": [],
+    "main": "./app/index.html",
+    "node-main": "",
+    "window": {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "Zen Notebook",
+        "always-on-top": false,
+        "frame": true,
+        "height": 600,
+        "min_height": 480,
+        "visible": true,
+        "as_desktop": false,
+        "min_width": 640,
+        "position": "center",
+        "show_in_taskbar": true,
+        "width": 900,
+        "toolbar": true,
+        "kiosk": false,
+        "icon": "icon.png"
+    },
+    "version": "0.1.0",
+    "webkit": {
+        "page-cache": false,
+        "java": false,
+        "plugin": false
+    },
+    "scripts": {
+        "start": "nodewebkit",
+        "dependencies": {
+            "nodewebkit": ">=0.9.0"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@bitbucket.org:eristoddle/zen-notebook.git"
+    }
+}
