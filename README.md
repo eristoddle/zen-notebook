@@ -129,6 +129,21 @@ But I found out that just creating a symbolic link was easier.
 
 `sudo ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0`
 
+##My Current Workflow
+
+* I am currently working on a Mac
+* I build the Windows and two Linux versions using [Web2Executable](https://github.com/jyapayne/Web2Executable)
+* Ironically that did not build the Mac version correctly because some of the necessary nodewbkit files were missing 
+and since I am not a Mac developer I built the initial Mac version with [nuwk!](http://codeb.it/nuwk/) which managed 
+to get everything I needed for nodewebkit assembled correctly but screwed up the app folder. So I ripped that apart 
+and figured out the source files are stored at Resources/App.nw which a zip file of the app folder. So I manually 
+fixed that App and then wrote the mac_build.sh script to do that automatically for me. It just wraps up the app 
+folder and puts it in the right place in the App and leaves all the nodewebkit files where they are. It gives me a 
+quick way to test the current dev version in the wild. I do use the software now that it is functional.
+* There are two package.json files. The one in the root folder is the dev version and the one in the app folder is 
+the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
+with `npm start`
+
 ##Software Features I May Emulate
 
 - WriteMonkey
