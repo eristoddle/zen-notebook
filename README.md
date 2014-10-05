@@ -146,8 +146,19 @@ with `npm start`
 
 ##Software Features I May Emulate
 
-- WriteMonkey
-- Ulysses - Features
-- Scrivener - Features
-- Q10
-- https://github.com/sofish/pen
+- WriteMonkey - http://writemonkey.com/
+- Ulysses - http://www.ulyssesapp.com/
+- Scrivener - http://www.literatureandlatte.com/scrivener.php
+- Q10 - http://www.baara.com/q10/
+- Pen - https://github.com/sofish/pen
+
+##Technologies Used
+
+- NodeWebkit : https://github.com/rogerwang/node-webkit
+- AngularJS  : https://angularjs.org/
+- Sass : http://sass-lang.com/
+- Buzz : http://buzz.jaysalvat.com/
+- Head : http://headjs.com/
+- Marked : https://github.com/chjj/marked
+- ngStorage : https://github.com/gsklee/ngStorage
+- nw-fileDialog : https://github.com/DWand/nw-fileDialog
