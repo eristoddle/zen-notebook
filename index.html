@@ -129,6 +129,7 @@ first plugin</li>
 <li>Typewriter combine carriage return sounds into one? or play them right after the other</li>
 <li>Fix sound effects on typewriter for cylinder clicking sound</li>
 <li>Add more sounds to relax theme</li>
+<li>Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?</li>
 <li>Fix margin bottom on content when taller than window. No text sitting on the bottom</li>
 <li>Add more typewriter styling</li>
 <li>Fix month forward arrow on calendar</li>
@@ -172,15 +173,59 @@ require a more advanced theming system to change up element display (masonry blo
 <p><code>sudo ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0</code></p>
 
 <h2>
+<a name="my-current-workflow" class="anchor" href="#my-current-workflow"><span class="octicon octicon-link"></span></a>My Current Workflow</h2>
+
+<ul>
+<li>I am currently working on a Mac</li>
+<li>I build the Windows and two Linux versions using <a href="https://github.com/jyapayne/Web2Executable">Web2Executable</a>
+</li>
+<li>Ironically that did not build the Mac version correctly because some of the necessary nodewbkit files were missing 
+and since I am not a Mac developer I built the initial Mac version with <a href="http://codeb.it/nuwk/">nuwk!</a> which managed 
+to get everything I needed for nodewebkit assembled correctly but screwed up the app folder. So I ripped that apart 
+and figured out the source files are stored at Resources/App.nw which a zip file of the app folder. So I manually 
+fixed that App and then wrote the mac_build.sh script to do that automatically for me. It just wraps up the app 
+folder and puts it in the right place in the App and leaves all the nodewebkit files where they are. It gives me a 
+quick way to test the current dev version in the wild. I do use the software now that it is functional.</li>
+<li>There are two package.json files. The one in the root folder is the dev version and the one in the app folder is 
+the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
+with <code>npm start</code>
+</li>
+</ul><h2>
 <a name="software-features-i-may-emulate" class="anchor" href="#software-features-i-may-emulate"><span class="octicon octicon-link"></span></a>Software Features I May Emulate</h2>
 
 <ul>
-<li>WriteMonkey</li>
-<li>Ulysses - Features</li>
-<li>Scrivener - Features</li>
-<li>Q10</li>
-<li><a href="https://github.com/sofish/pen">https://github.com/sofish/pen</a></li>
-<li><a href="https://github.com/mduvall/grande.js">https://github.com/mduvall/grande.js</a></li>
+<li>WriteMonkey - <a href="http://writemonkey.com/">http://writemonkey.com/</a>
+</li>
+<li>Ulysses - <a href="http://www.ulyssesapp.com/">http://www.ulyssesapp.com/</a>
+</li>
+<li>Scrivener - <a href="http://www.literatureandlatte.com/scrivener.php">http://www.literatureandlatte.com/scrivener.php</a>
+</li>
+<li>Q10 - <a href="http://www.baara.com/q10/">http://www.baara.com/q10/</a>
+</li>
+<li>Pen - <a href="https://github.com/sofish/pen">https://github.com/sofish/pen</a>
+</li>
+<li>Scapple - <a href="https://www.literatureandlatte.com/scapple.php">https://www.literatureandlatte.com/scapple.php</a>
+</li>
+</ul><h2>
+<a name="technologies-used" class="anchor" href="#technologies-used"><span class="octicon octicon-link"></span></a>Technologies Used</h2>
+
+<ul>
+<li>NodeWebkit : <a href="https://github.com/rogerwang/node-webkit">https://github.com/rogerwang/node-webkit</a>
+</li>
+<li>AngularJS  : <a href="https://angularjs.org/">https://angularjs.org/</a>
+</li>
+<li>Sass : <a href="http://sass-lang.com/">http://sass-lang.com/</a>
+</li>
+<li>Buzz : <a href="http://buzz.jaysalvat.com/">http://buzz.jaysalvat.com/</a>
+</li>
+<li>Head : <a href="http://headjs.com/">http://headjs.com/</a>
+</li>
+<li>Marked : <a href="https://github.com/chjj/marked">https://github.com/chjj/marked</a>
+</li>
+<li>ngStorage : <a href="https://github.com/gsklee/ngStorage">https://github.com/gsklee/ngStorage</a>
+</li>
+<li>nw-fileDialog : <a href="https://github.com/DWand/nw-fileDialog">https://github.com/DWand/nw-fileDialog</a>
+</li>
 </ul>
       </section>
       <footer>
