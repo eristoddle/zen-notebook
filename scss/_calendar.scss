@@ -30,6 +30,10 @@ div.cal {
       cursor: pointer;
       border: 1px solid transparent;
     }
+    &.cal-content{
+      background-color: $gray;
+      color: #AAA;
+    }
     &.cal-highlight {
       background-color: #AAA;
       color: #FFF;

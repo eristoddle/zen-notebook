@@ -35,7 +35,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                     .replace(/\n/g, "<br>");
             } catch (err) {
                 window.localStorage && window.localStorage.setItem('error', err);
-                return false;
+                return '';
             }
         },
         setDaysContent: function (dateText) {
@@ -258,7 +258,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
     };
 }]);
 
-zenNotebook.factory('calendarFactory', ['$rootScope', function ($rootScope) {
+zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
     return {
         monthNames: ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'],
         days: ['s', 'm', 't', 'w', 't', 'f', 's'],
@@ -299,10 +299,20 @@ zenNotebook.factory('calendarFactory', ['$rootScope', function ($rootScope) {
                     row.push('<td>');
                     if (day <= monthLength && (i > 0 || j >= startDay)) {
                         var date = year + '-' + month + '-' + day;
-                        if (dates.indexOf(day) != -1) row.push('<div class="cal-day cal-highlight" data-date="' + date +
-                            '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
-                        if (dates.indexOf(day) == -1) row.push('<div class="cal-day" data-date="' + date +
-                            '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                        if (dates.indexOf(day) == -1) {
+                            //TODO: Have a today custom class
+                            //TODO: This check doesn't work on first load - need a notebook init function
+                            if(notebookFactory.getDaysContent(date).length != null){
+                                row.push('<div class="cal-day cal-content" data-date="' + date +
+                                    '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                            }else {
+                                row.push('<div class="cal-day" data-date="' + date +
+                                    '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                            }
+                        }else{
+                            row.push('<div class="cal-day cal-highlight" data-date="' + date +
+                                '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                        }
                         row.push(day + '</div>');
                         day++;
                     }

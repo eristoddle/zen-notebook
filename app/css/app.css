@@ -536,35 +536,40 @@ div.cal div.cal-day {
   border: 1px solid transparent;
 }
 /* line 33, ../../scss/_calendar.scss */
+div.cal div.cal-content {
+  background-color: gray;
+  color: #AAA;
+}
+/* line 37, ../../scss/_calendar.scss */
 div.cal div.cal-highlight {
   background-color: #AAA;
   color: #FFF;
 }
-/* line 37, ../../scss/_calendar.scss */
+/* line 41, ../../scss/_calendar.scss */
 div.cal div.cal-highlight-active {
   background-color: #222;
   color: #fff;
 }
-/* line 41, ../../scss/_calendar.scss */
+/* line 45, ../../scss/_calendar.scss */
 div.cal div.cal-day:hover {
   border: 1px solid #111;
 }
-/* line 45, ../../scss/_calendar.scss */
+/* line 49, ../../scss/_calendar.scss */
 div.cal .navigation {
   color: #888;
   margin-top: 10px;
 }
-/* line 48, ../../scss/_calendar.scss */
+/* line 52, ../../scss/_calendar.scss */
 div.cal .navigation .icon-triangle-left {
   float: left;
   cursor: pointer;
 }
-/* line 52, ../../scss/_calendar.scss */
+/* line 56, ../../scss/_calendar.scss */
 div.cal .navigation .today {
   margin: 0 77px;
   cursor: pointer;
 }
-/* line 56, ../../scss/_calendar.scss */
+/* line 60, ../../scss/_calendar.scss */
 div.cal .navigation .icon-triangle-right {
   float: right;
   cursor: pointer;

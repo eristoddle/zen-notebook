@@ -70,6 +70,7 @@ Application Folder
 * Add Tags
 * Add Search
 * Add Stats
+* Fix bug when content footer pops up from bottom when mouse is hovered
 * Fix info links to open in system browser, alternately in iframe
 * Highlight days with content differently
 * Move most notebook functionality to left bar and gui configuration/information to footer
