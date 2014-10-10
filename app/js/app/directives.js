@@ -1,7 +1,3 @@
-/*
- Directives
- */
-
 //Load content from local storage
 zenNotebook.directive('ngElementReady', ['notebookFactory', function (notebookFactory) {
     return {

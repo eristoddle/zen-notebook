@@ -1,8 +1,3 @@
-/*
- Services
- */
-
-//The specializes module functions
 //notebook
 zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
     var notebook = {
@@ -232,6 +227,9 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                 if (message.action == 'close') {
                     notebookFactory.autoSaveNotebook();
                     win.close();
+                }
+                if (message.action == 'count') {
+                    return notebookFactory.countWords(notebookFactory.getActiveContent())
                 }
             }
             if (message.sub == 'global') {

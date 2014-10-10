@@ -1,16 +1,3 @@
-/*
- Controllers
- */
-
-zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    //TODO: Load this from a config file
-    var message = menuFactory.subscribeClick();
-    $scope.menu = menuFactory.menus.nav;
-    $scope.expr = function (locals) {
-        menuFactory.publishClick(locals);
-    }
-}]);
-
 zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     $scope.themes = {
         zen_dark: 'zen dark',
@@ -52,13 +39,26 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
     });
 }]);
 
+zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    //TODO: Load this from a config file
+    var message = menuFactory.subscribeClick();
+    $scope.menu = menuFactory.menus.nav;
+    $scope.expr = function (locals) {
+        menuFactory.publishClick(locals);
+    }
+}]);
+
 zenNotebook.controller('LeftController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    //TODO: This is a quick hack, modularize
+    $scope.stats = {};
     $scope.$on('toggleLeft', function () {
         var message = menuFactory.subscribeClick();
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
-        }
+        };
+
+        //$scope.stats.word_count = this.countWords(this.getActiveContent());
     });
 }]);
 
