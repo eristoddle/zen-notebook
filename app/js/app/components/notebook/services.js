@@ -11,6 +11,22 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
         activeYear: null,
         activeMonth: null,
         activeDay: null,
+        onLoad: function(){
+            //TODO: Use a storage service
+            var file = window.localStorage && window.localStorage.getItem('file');
+
+            if (file) {
+                this.loadNotebook(file);
+                window.localStorage && window.localStorage.setItem(
+                    'content',
+                    this.getDaysContent(this.activeDateText())
+                );
+            } else {
+                this.setActiveDate(this.currentDate);
+                this.activeMonth = this.activeMonth - 1;
+            }
+            return this.getDaysContent(this.activeDateText())
+        },
         getDaysContent: function (dateText) {
             dates = dateText.split('-');
             try {

@@ -1,3 +1,5 @@
+//TODO: Replace local storage with service
+
 //Load content from local storage
 zenNotebook.directive('ngElementReady', ['notebookFactory', function (notebookFactory) {
     return {
@@ -5,27 +7,12 @@ zenNotebook.directive('ngElementReady', ['notebookFactory', function (notebookFa
         restrict: "A",
         link: function ($scope, $element, $attributes) {
             //var mode = window.localStorage && window.localStorage.getItem('mode');
-            //var recovery = window.localStorage && window.localStorage.getItem('recovery');
-            var file = window.localStorage && window.localStorage.getItem('file');
-
-            if (file) {
-                notebookFactory.loadNotebook(file);
-                window.localStorage && window.localStorage.setItem(
-                    'content',
-                    notebookFactory.getDaysContent(notebookFactory.activeDateText())
-                );
-            } else {
-                notebookFactory.setActiveDate(notebook.currentDate);
-                this.activeMonth = this.activeMonth - 1;
-            }
-
-            $element.html(notebookFactory.getDaysContent(notebookFactory.activeDateText()));
+            $element.html(notebookFactory.onLoad());
         }
     };
 }]);
 
 //store content in local storage
-//TODO: Replace local storage with service
 zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
     return {
         restrict: "A",
@@ -89,24 +76,24 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                     typeSounds[sound].load();
                     typeSounds[sound].play();
                 },
-                relaxStart = function(){
+                relaxStart = function () {
                     relaxSound.load();
                     relaxSound.play();
-                }
-            relaxStop = function(){
-                relaxSound.stop();
-            };
+                },
+                relaxStop = function () {
+                    relaxSound.stop();
+                };
             element.bind("blur keyup change focus", function (event) {
                 var theme = window.localStorage && window.localStorage.getItem('theme');
                 scope.$apply(write);
                 //console.log(event);
-                if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')){
+                if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                     //console.log(event.keyIdentifier);
                     typeSound(event.keyIdentifier);
                 }
-                if (event instanceof FocusEvent && theme == 'relax dark'){
+                if (event instanceof FocusEvent && theme == 'relax dark') {
                     relaxStart();
-                }else if(event instanceof FocusEvent && theme != 'relax dark'){
+                } else if (event instanceof FocusEvent && theme != 'relax dark') {
                     relaxStop();
                 }
             });
