@@ -1,15 +1,13 @@
 //TODO: Replace local storage with service
-//TODO: Sound as a service
+//TODO: Sound/theme as a service
 
-//interact with content
+//interact with contenteditable region
 zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            var write = function () {
-                    var count = notebookFactory.countWords(element.html());
-                    window.localStorage && window.localStorage.setItem('content', element.html());
-                    window.localStorage && window.localStorage.setItem('word_count', count);
+            var write = function (factory) {
+                    factory.onWrite(element.html());
                 },
                 relaxSound = new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
                 typeSounds = {
@@ -71,10 +69,19 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                 },
                 relaxStop = function () {
                     relaxSound.stop();
-                };
+                },
+                factory;
+
+            //Choose component
+            factory = notebookFactory;
+
+            //Run component loading function
+            element.html(factory.onLoad());
+
+            //Bind events
             element.bind("blur keyup change focus", function (event) {
                 var theme = window.localStorage && window.localStorage.getItem('theme');
-                scope.$apply(write);
+                scope.$apply(write(factory));
                 //console.log(event);
                 if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                     //console.log(event.keyIdentifier);
@@ -87,18 +94,11 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                 }
             });
 
-            element.html(notebookFactory.onLoad());
-
             //TODO: This should come from the notebook component and ditch rootScope
             $rootScope.$on('changeDate', function (event, oldDate, newDate) {
-                write();
-                notebookFactory.setDaysContent(oldDate);
-                if (notebookFactory.getDaysContent(newDate)) {
-                    element.html(notebookFactory.getDaysContent(newDate));
-                } else {
-                    element.html('');
-                }
-                write();
+                write(factory);
+                element.html(factory.onChangeDate(oldDate, newDate));
+                write(factory);
             });
         }
     };

@@ -28,6 +28,30 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             }
             return this.getDaysContent(this.activeDateText())
         },
+        onWrite: function(content){
+            //TODO: Use a storage service
+            var count = this.countWords(content);
+            window.localStorage && window.localStorage.setItem('content', content);
+            window.localStorage && window.localStorage.setItem('word_count', count);
+        },
+        onChangeDate: function(oldDate, newDate){
+            this.setDaysContent(oldDate);
+            if (this.getDaysContent(newDate)) {
+                return this.getDaysContent(newDate);
+            } else {
+                element.html('');
+                return '';
+            }
+        },
+        onExit: function () {
+            var file = window.localStorage && window.localStorage.getItem('file');
+            if (file) {
+                this.setDaysContent(this.activeDateText());
+                this.saveNotebook(file);
+            } else {
+                //TODO: Warning of lost data
+            }
+        },
         getDaysContent: function (dateText) {
             dates = dateText.split('-');
             try {
@@ -114,15 +138,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                 console.log(err);
                 window.localStorage && window.localStorage.setItem('error', err);
                 window.localStorage && window.localStorage.setItem('recovery', journal);
-            }
-        },
-        onExit: function () {
-            var file = window.localStorage && window.localStorage.getItem('file');
-            if (file) {
-                this.setDaysContent(this.activeDateText());
-                this.saveNotebook(file);
-            } else {
-                //TODO: Warning of lost data
             }
         },
         loadNotebook: function (file) {
