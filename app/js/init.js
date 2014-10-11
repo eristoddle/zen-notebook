@@ -15,6 +15,7 @@ head.load(
 );
 
 //Components
+//TODO: This has to be able to be done dynamically, possibly through the node part of the application?
 head.load(
     'js/app/components/notebook/directives.js',
     'js/app/components/notebook/services.js'

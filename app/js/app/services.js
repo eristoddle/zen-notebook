@@ -1,4 +1,4 @@
-//TODO: Modularize how markup is built
+//TODO: Component menu items should somehow live in the component
 //Configuration will load new menu items from plugins
 //handle clicks
 zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory', function ($rootScope, fileDialog, notebookFactory) {
@@ -27,14 +27,14 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                 }
             },
             nav: [
-                {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'global'},
+                {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
                 {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'},
                 {title: 'Notebook', action: 'notebook', class: 'icon-repo', sub: 'foot'},
                 {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
                 {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
                 {title: 'Minimize', action: 'minimize', class: 'icon-resize2', sub: 'nw'},
                 {title: 'Maximize', action: 'maximize', class: 'icon-resize', sub: 'nw'},
-                {title: 'Close', action: 'close', class: 'icon-switch', sub: 'nw'}
+                {title: 'exit', action: 'exit', class: 'icon-switch', sub: 'nw'}
             ]
         },
         publishClick: function (message) {
@@ -75,16 +75,13 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                 if (message.action == 'minimize') {
                     win.minimize();
                 }
-                if (message.action == 'close') {
-                    notebookFactory.autoSaveNotebook();
+                if (message.action == 'exit') {
+                    notebookFactory.onExit();
                     win.close();
                 }
-                if (message.action == 'count') {
-                    return notebookFactory.countWords(notebookFactory.getActiveContent())
-                }
             }
-            if (message.sub == 'global') {
-                $rootScope.$broadcast('global');
+            if (message.sub == 'body') {
+                $rootScope.$broadcast('body');
             }
         },
         subscribeClick: function () {

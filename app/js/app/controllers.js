@@ -17,7 +17,7 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
     }
     $scope.count = 0;
 
-    $scope.$on('global', function () {
+    $scope.$on('body', function () {
         var message = menuFactory.subscribeClick(),
             nextCount,
             rowCount = 0;
@@ -88,3 +88,12 @@ zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($sc
         }
     });
 }]);
+
+//TODO: Dynamically inject services in main application
+//https://docs.angularjs.org/api/auto/service/$injector
+//http://stackoverflow.com/questions/14415845/angularjs-dynamically-inject-scope-or-controller
+//function MyCtrl($scope, $injector) {
+//    $scope.doSomething = function(someService) {
+//        var service = $injector.get(someService)  // someService contains the name of a service
+//        service.value += 10
+//    }

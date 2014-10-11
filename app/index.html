@@ -18,6 +18,7 @@
 
         <div class="left-sidebar slide-menu" ng-controller="LeftController">
             <div class="left-inner modal" ng-class="{'slide-out':leftChangeClass}" ng-mouseleave="expr({sub: 'left'})">
+                <!-- TODO:This should be a partial in a component -->
                 <div data-calendar></div>
                 <h2>Search</h2>
                 <div data-search></div>
@@ -29,6 +30,11 @@
                     <div id="month_average">Month's Daily Average: {{ stats.month_average }}</div>
                     <div id="month_count">Words This Month: {{ stats.month_count }}</div>
                 </div>
+                <h2>Notebooks</h2>
+                <div id="notebooks">
+
+                </div>
+                <!-- end partial -->
             </div>
         </div>
 

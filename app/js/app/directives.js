@@ -25,6 +25,7 @@ zenNotebook.directive('ngElementReady', ['notebookFactory', function (notebookFa
 }]);
 
 //store content in local storage
+//TODO: Replace local storage with service
 zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
     return {
         restrict: "A",

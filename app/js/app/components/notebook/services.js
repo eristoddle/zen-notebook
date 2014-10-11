@@ -99,7 +99,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                 window.localStorage && window.localStorage.setItem('recovery', journal);
             }
         },
-        autoSaveNotebook: function () {
+        onExit: function () {
             var file = window.localStorage && window.localStorage.getItem('file');
             if (file) {
                 this.setDaysContent(this.activeDateText());
