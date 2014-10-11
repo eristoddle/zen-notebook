@@ -48,7 +48,7 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
     }
 }]);
 
-zenNotebook.controller('LeftController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+zenNotebook.controller('LeftController', ['$scope', 'menuFactory', 'notebookFactory', function ($scope, menuFactory, notebookFactory) {
     //TODO: This is a quick hack, modularize
     $scope.stats = {};
     $scope.$on('toggleLeft', function () {
@@ -58,7 +58,7 @@ zenNotebook.controller('LeftController', ['$scope', 'menuFactory', function ($sc
             menuFactory.publishClick(locals);
         };
 
-        //$scope.stats.word_count = this.countWords(this.getActiveContent());
+        $scope.stats.word_count = notebookFactory.countWords(notebookFactory.getActiveContent());
     });
 }]);
 

@@ -143,6 +143,14 @@ quick way to test the current dev version in the wild. I do use the software now
 * There are two package.json files. The one in the root folder is the dev version and the one in the app folder is 
 the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
 with `npm start`
+* I tend to write sloppy code to get things done and see if they work and then go back and clean up. I am liking 
+Angular in that is is helping me do this when I choose too. This is my first project in Angular and I am used to PHP 
+frameworks. I am still not sure that it is the best choice. Others I am considering are Ember.js, 
+React.js and Backbone with Marionette. My familiarity with dependency injection has me liking Angular and I do like 
+two way data binding, though I hardly use it, since the main form is not a form at all but a contenteditable region 
+and currently not supported by Angular for two way data binding. But I figured out my way around it. I figure once I 
+get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
+I want the final application is structured, I can make a better choice among the various JavaScript frameworks.
 
 ##Software Features I May Emulate
 

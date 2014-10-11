@@ -33,7 +33,6 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                     var count = notebookFactory.countWords(element.html());
                     window.localStorage && window.localStorage.setItem('content', element.html());
                     window.localStorage && window.localStorage.setItem('word_count', count);
-                    $rootScope.$broadcast('changeWordcount', count);
                 },
                 relaxSound = new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
                 typeSounds = {
@@ -150,18 +149,6 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
                 document.getElementById('cal'))
                 .replaceWith($compile(calendarFactory.getTemplate(parseInt(attrs.month) + 1, parseInt(attrs.year), [parseInt(attrs.day)]))(scope)
             );
-        });
-    };
-}]);
-
-//stats
-zenNotebook.directive('stats', ['$compile', '$rootScope', function ($compile, $rootScope) {
-    return function (scope, element, attrs) {
-        $rootScope.$on('changeWordCount', function (event, word_count) {
-            console.log('count');
-            angular.element(
-                document.getElementById('stats'))
-                .replaceWith(word_count);
         });
     };
 }]);
