@@ -126,6 +126,13 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             return average;
         },
         activeTags: '',
+        //TODO: Use this to consolidate before a service
+        getStorage: function(key){
+            return window.localStorage.getItem(key);
+        },
+        setStorage: function(key, data){
+            window.localStorage.setItem(key, data);
+        },
         saveNotebook: function (filename) {
             var journal;
             this.file = filename;
