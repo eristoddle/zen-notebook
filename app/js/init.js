@@ -15,6 +15,7 @@ head.load(
 );
 
 //Components
-//head.load(
-//  'components/notebook/*'
-//);
+head.load(
+    'js/app/components/notebook/directives.js',
+    'js/app/components/notebook/services.js'
+);
