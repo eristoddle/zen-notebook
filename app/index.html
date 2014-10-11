@@ -17,24 +17,9 @@
         </header>
 
         <div class="left-sidebar slide-menu" ng-controller="LeftController">
-            <div class="left-inner modal" ng-class="{'slide-out':leftChangeClass}" ng-mouseleave="expr({sub: 'left'})">
-                <!-- TODO:This should be a partial in a component -->
-                <div data-calendar></div>
-                <h2>Search</h2>
-                <div data-search></div>
-                <h2>Tags</h2>
-                <div data-tags></div>
-                <h2>Stats</h2>
-                <div id="stats">
-                    <div id="word_count">Current Word Count: {{ stats.word_count }}</div>
-                    <div id="month_average">Month's Daily Average: {{ stats.month_average }}</div>
-                    <div id="month_count">Words This Month: {{ stats.month_count }}</div>
-                </div>
-                <h2>Notebooks</h2>
-                <div id="notebooks">
-
-                </div>
-                <!-- end partial -->
+            <div class="left-inner modal" ng-model='left' ng-class="{'slide-out':leftChangeClass}"
+                 ng-mouseleave="expr({sub: 'left'})">
+                <div ng-include="left.partial"></div>
             </div>
         </div>
 

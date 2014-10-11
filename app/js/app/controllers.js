@@ -50,25 +50,24 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
 }]);
 
 zenNotebook.controller('LeftController', ['$scope', 'menuFactory', 'notebookFactory', function ($scope, menuFactory, notebookFactory) {
+    var component = 'notebook',
+        factory = component + 'Factory';
+    $scope.left = {};
+    $scope.left.partial = 'js/app/components/' + component + '/sidebar.html';
     //TODO: This is a quick hack, modularize
     $scope.stats = {};
 
     $scope.$on('toggleLeft', function () {
-        var message = menuFactory.subscribeClick(),
-            current_count;
+        var message = menuFactory.subscribeClick();
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
         //notebookFactory.openSidebar();
-        current_count = notebookFactory.countWords(notebookFactory.getActiveContent());
+        var current_count = notebookFactory.countWords(notebookFactory.getActiveContent());
         $scope.stats.word_count = current_count;
         $scope.stats.month_average = notebookFactory.getMonthAverage();
         $scope.stats.month_count = notebookFactory.getMonthCount();
-    });
-
-    $scope.$on('changeCount', function () {
-        $scope.stats.word_count = notebookFactory.countWords(notebookFactory.getActiveContent());
     });
 }]);
 

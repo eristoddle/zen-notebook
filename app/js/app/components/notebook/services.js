@@ -116,12 +116,12 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             return s.split(' ').length;
         },
         getMonthCount: function(){
-            var count;
+            var count = 1000;
 
             return count;
         },
         getMonthAverage: function(){
-            var average;
+            var average = 1000;
 
             return average;
         },
