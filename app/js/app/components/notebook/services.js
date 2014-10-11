@@ -125,6 +125,13 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
 
             return average;
         },
+        getSidebar: function(){
+            return {
+                word_count: this.countWords(this.getActiveContent()),
+                month_average: this.getMonthAverage(),
+                month_count: this.getMonthCount()
+            };
+        },
         activeTags: '',
         //TODO: Use this to consolidate before a service
         getStorage: function(key){

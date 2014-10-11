@@ -41,7 +41,6 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
 }]);
 
 zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    //TODO: Load this from a config file
     var message = menuFactory.subscribeClick();
     $scope.menu = menuFactory.menus.nav;
     $scope.expr = function (locals) {
@@ -49,25 +48,16 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
     }
 }]);
 
-zenNotebook.controller('LeftController', ['$scope', 'menuFactory', 'notebookFactory', function ($scope, menuFactory, notebookFactory) {
-    var component = 'notebook',
-        factory = component + 'Factory';
+zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+    var component = 'notebook';
     $scope.left = {};
     $scope.left.partial = 'js/app/components/' + component + '/sidebar.html';
-    //TODO: This is a quick hack, modularize
-    $scope.stats = {};
 
     $scope.$on('toggleLeft', function () {
-        var message = menuFactory.subscribeClick();
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
-        //notebookFactory.openSidebar();
-        var current_count = notebookFactory.countWords(notebookFactory.getActiveContent());
-        $scope.stats.word_count = current_count;
-        $scope.stats.month_average = notebookFactory.getMonthAverage();
-        $scope.stats.month_count = notebookFactory.getMonthCount();
     });
 }]);
 
