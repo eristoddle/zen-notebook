@@ -99,6 +99,8 @@ first plugin
 * Warn to save content on close is no file exists
 * Make persistent storage agnostic
 * Create services of sound and storage
+* Dates with content don't highlight until after a click on the calendar
+* Clicks on calendar don't change word counts
 
 ##Futute Roadmap
 
@@ -150,7 +152,8 @@ React.js and Backbone with Marionette. My familiarity with dependency injection 
 two way data binding, though I hardly use it, since the main form is not a form at all but a contenteditable region 
 and currently not supported by Angular for two way data binding. But I figured out my way around it. I figure once I 
 get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
-I want the final application is structured, I can make a better choice among the various JavaScript frameworks.
+I want the final application is structured, I can make a better choice among the various JavaScript frameworks. 
+Currently leaning toward React.js.
 
 ##Software Features I May Emulate
 

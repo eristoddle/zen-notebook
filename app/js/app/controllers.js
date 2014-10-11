@@ -51,13 +51,21 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
 zenNotebook.controller('LeftController', ['$scope', 'menuFactory', 'notebookFactory', function ($scope, menuFactory, notebookFactory) {
     //TODO: This is a quick hack, modularize
     $scope.stats = {};
+
     $scope.$on('toggleLeft', function () {
-        var message = menuFactory.subscribeClick();
+        var message = menuFactory.subscribeClick(),
+            current_count;
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
+        current_count = notebookFactory.countWords(notebookFactory.getActiveContent());
+        $scope.stats.word_count = current_count;
+        $scope.stats.month_average = notebookFactory.getMonthAverage();
+        $scope.stats.month_count = notebookFactory.getMonthCount();
+    });
 
+    $scope.$on('changeCount', function () {
         $scope.stats.word_count = notebookFactory.countWords(notebookFactory.getActiveContent());
     });
 }]);
