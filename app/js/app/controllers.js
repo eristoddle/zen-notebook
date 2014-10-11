@@ -1,4 +1,5 @@
 zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    //TODO: This can be part of the theme service
     $scope.themes = {
         zen_dark: 'zen dark',
         zen_light: 'zen light',
@@ -59,6 +60,7 @@ zenNotebook.controller('LeftController', ['$scope', 'menuFactory', 'notebookFact
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
+        //notebookFactory.openSidebar();
         current_count = notebookFactory.countWords(notebookFactory.getActiveContent());
         $scope.stats.word_count = current_count;
         $scope.stats.month_average = notebookFactory.getMonthAverage();
