@@ -1,18 +1,7 @@
 //TODO: Replace local storage with service
+//TODO: Sound as a service
 
-//Load content from local storage
-zenNotebook.directive('ngElementReady', ['notebookFactory', function (notebookFactory) {
-    return {
-        priority: -1000,
-        restrict: "A",
-        link: function ($scope, $element, $attributes) {
-            //var mode = window.localStorage && window.localStorage.getItem('mode');
-            $element.html(notebookFactory.onLoad());
-        }
-    };
-}]);
-
-//store content in local storage
+//interact with content
 zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
     return {
         restrict: "A",
@@ -98,6 +87,9 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                 }
             });
 
+            element.html(notebookFactory.onLoad());
+
+            //TODO: This should come from the notebook component and ditch rootScope
             $rootScope.$on('changeDate', function (event, oldDate, newDate) {
                 write();
                 notebookFactory.setDaysContent(oldDate);

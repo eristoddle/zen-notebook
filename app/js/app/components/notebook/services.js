@@ -1,6 +1,7 @@
 //notebook
 zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
     var notebook = {
+        mode: 'notebook',
         years: {},
         file: null,
         currentDate: null,
