@@ -9,6 +9,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             var write = function (factory) {
                     factory.onWrite(element.html());
                 },
+                theme = window.localStorage && window.localStorage.getItem('theme'),
                 relaxSound = new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
                 typeSounds = {
                     spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
@@ -70,6 +71,17 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                 relaxStop = function () {
                     relaxSound.stop();
                 },
+                themeSound = function(){
+                    if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
+                        //console.log(event.keyIdentifier);
+                        typeSound(event.keyIdentifier);
+                    }
+                    if (event instanceof FocusEvent && theme == 'relax dark') {
+                        relaxStart();
+                    } else if (event instanceof FocusEvent && theme != 'relax dark') {
+                        relaxStop();
+                    }
+                },
                 factory;
 
             //Choose component
@@ -80,18 +92,9 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
 
             //Bind events
             element.bind("blur keyup change focus", function (event) {
-                var theme = window.localStorage && window.localStorage.getItem('theme');
                 scope.$apply(write(factory));
                 //console.log(event);
-                if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
-                    //console.log(event.keyIdentifier);
-                    typeSound(event.keyIdentifier);
-                }
-                if (event instanceof FocusEvent && theme == 'relax dark') {
-                    relaxStart();
-                } else if (event instanceof FocusEvent && theme != 'relax dark') {
-                    relaxStop();
-                }
+                themeSound();
             });
 
             //TODO: This should come from the notebook component and ditch rootScope
