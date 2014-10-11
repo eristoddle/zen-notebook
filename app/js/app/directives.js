@@ -71,7 +71,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
                 relaxStop = function () {
                     relaxSound.stop();
                 },
-                themeSound = function(){
+                themeSound = function(event){
                     if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                         //console.log(event.keyIdentifier);
                         typeSound(event.keyIdentifier);
@@ -94,7 +94,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(write(factory));
                 //console.log(event);
-                themeSound();
+                themeSound(event);
             });
 
             //Event sent by component whenever content area content should change
