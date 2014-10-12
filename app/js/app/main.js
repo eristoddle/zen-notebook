@@ -9,4 +9,10 @@ try {
     console.log(ex.message);
 }
 var fs = require('fs');
-var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog']);
+
+//Initialize Application
+var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog'])
+    .run(function($rootScope, storageFactory){
+        //$rootScope.active_component = 'notebook';
+        $rootScope.active_component = storageFactory.getStorage('component');
+    });

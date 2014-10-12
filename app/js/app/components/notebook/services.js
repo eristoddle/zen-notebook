@@ -131,6 +131,12 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                 month_count: this.getMonthCount()
             };
         },
+        getMenu: function(){
+            return [
+                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'},
+                {title: 'Notebook', action: 'notebook', class: 'icon-repo', sub: 'foot'}
+            ];
+        },
         activeTags: '',
         //TODO: Use this to consolidate before a service
         getStorage: function(key){

@@ -1,107 +1,28 @@
 //TODO: Replace local storage with service
-//TODO: Sound/theme as a service
 
 //interact with contenteditable region
-zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', function ($rootScope, notebookFactory) {
+zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', 'themeFactory', function ($rootScope, notebookFactory, themeFactory) {
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
-            var write = function (factory) {
-                    factory.onWrite(element.html());
-                },
-                theme = window.localStorage && window.localStorage.getItem('theme'),
-                relaxSound = new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
-                typeSounds = {
-                    spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
-                    keyup: new buzz.sound("./assets/typewriter/keyup.ogg", {volume: 100}),
-                    bell: new buzz.sound("./assets/typewriter/bell.ogg", {volume: 100}),
-                    carriage_return_main: new buzz.sound("./assets/typewriter/carriage-return-main.ogg", {volume: 100}),
-                    carriage_return_stop: new buzz.sound("./assets/typewriter/carriage-return-stop.ogg", {volume: 100})
-                },
-            //http://buzz.jaysalvat.com/documentation/sound/
-            //http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
-                typeSound = function (key_code) {
-                    var clip;
-                    //Shift
-                    if (key_code == 'U+0051') {
-                        sound = 'spacebar';
-                        //Alt
-                    } else if (key_code == 'Alt') {
-                        sound = 'spacebar';
-                        //Caps Lock
-                    } else if (key_code == 'CapsLock') {
-                        sound = 'spacebar';
-                        //Space
-                    } else if (key_code == 'U+0020') {
-                        sound = 'spacebar';
-                        //Enter
-                    } else if (key_code == 'Enter') {
-                        sound = 'carriage_return_main';
-                        sound = 'carriage_return_stop';
-                        //Tab
-                    } else if (key_code == 'U+0009') {
-                        //sound = 'keyup';
-                        //sound = 'spacebar';
-                        sound = 'bell';
-                        //Backspace - Delete
-                    } else if (key_code == 'U+0008') {
-                        sound = 'spacebar';
-                        //Up Arrow
-                    } else if (key_code == 'Up') {
-                        sound = 'spacebar';
-                        //Down Arrow
-                    } else if (key_code == 'Down') {
-                        sound = 'spacebar';
-                        //Left Arrow
-                    } else if (key_code == 'Left') {
-                        sound = 'spacebar';
-                        //Right Arrow
-                    } else if (key_code == 'Right') {
-                        sound = 'spacebar';
-                    } else {
-                        sound = 'keyup';
-                    }
-                    typeSounds[sound].load();
-                    typeSounds[sound].play();
-                },
-                relaxStart = function () {
-                    relaxSound.load();
-                    relaxSound.play();
-                },
-                relaxStop = function () {
-                    relaxSound.stop();
-                },
-                themeSound = function(event){
-                    if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
-                        //console.log(event.keyIdentifier);
-                        typeSound(event.keyIdentifier);
-                    }
-                    if (event instanceof FocusEvent && theme == 'relax dark') {
-                        relaxStart();
-                    } else if (event instanceof FocusEvent && theme != 'relax dark') {
-                        relaxStop();
-                    }
-                },
-                factory;
-
             //Choose component
-            factory = notebookFactory;
+            var factory = notebookFactory;
+            //var factory = window[$rootScope.active_component + 'Factory'];
 
-            //Load configuration and correct component
-            $rootScope.active_component = 'notebook';
+            //Load component
             element.html(factory.onLoad());
 
             //Bind events to content
             element.bind("blur keyup change focus", function (event) {
-                scope.$apply(write(factory));
-                themeSound(event);
+                scope.$apply(factory.onWrite(element.html()));
+                themeFactory.themeSound(event);
             });
 
             //Event sent by component whenever content should change
             $rootScope.$on('changeContent', function (event, content){
-                write(factory);
+                factory.onWrite(element.html());
                 element.html(content);
-                write(factory);
+                factory.onWrite(element.html());
             });
         }
     };

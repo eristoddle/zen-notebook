@@ -2,6 +2,17 @@
 //Configuration will load new menu items from plugins
 //handle clicks
 zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory', function ($rootScope, fileDialog, notebookFactory) {
+    var component_nav = notebookFactory.getMenu(),
+        app_nav = [
+            {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
+            {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
+            {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
+            {title: 'Minimize', action: 'minimize', class: 'icon-resize2', sub: 'nw'},
+            {title: 'Maximize', action: 'maximize', class: 'icon-resize', sub: 'nw'},
+            {title: 'Exit', action: 'exit', class: 'icon-switch', sub: 'nw'}
+        ],
+        nav = component_nav.concat(app_nav);
+
     return {
         message: null,
         menus: {
@@ -26,16 +37,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                     ]
                 }
             },
-            nav: [
-                {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
-                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'},
-                {title: 'Notebook', action: 'notebook', class: 'icon-repo', sub: 'foot'},
-                {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
-                {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
-                {title: 'Minimize', action: 'minimize', class: 'icon-resize2', sub: 'nw'},
-                {title: 'Maximize', action: 'maximize', class: 'icon-resize', sub: 'nw'},
-                {title: 'exit', action: 'exit', class: 'icon-switch', sub: 'nw'}
-            ]
+            nav: nav
         },
         publishClick: function (message) {
             this.message = message;
@@ -44,6 +46,9 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
             }
             if (message.sub == 'foot') {
                 $rootScope.$broadcast('toggleFoot');
+            }
+            if (message.sub == 'body') {
+                $rootScope.$broadcast('body');
             }
             if (message.sub == 'nw') {
                 if (message.action == 'open') {
@@ -80,9 +85,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                     win.close();
                 }
             }
-            if (message.sub == 'body') {
-                $rootScope.$broadcast('body');
-            }
         },
         subscribeClick: function () {
             var message = this.message;
@@ -91,3 +93,97 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
         }
     };
 }]);
+
+//http://buzz.jaysalvat.com/documentation/sound/
+//http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
+zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
+    return {
+        theme : window.localStorage && window.localStorage.getItem('theme'),
+        relaxSound : new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
+        typeSounds : {
+            spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
+            keyup: new buzz.sound("./assets/typewriter/keyup.ogg", {volume: 100}),
+            bell: new buzz.sound("./assets/typewriter/bell.ogg", {volume: 100}),
+            carriage_return_main: new buzz.sound("./assets/typewriter/carriage-return-main.ogg", {volume: 100}),
+            carriage_return_stop: new buzz.sound("./assets/typewriter/carriage-return-stop.ogg", {volume: 100})
+        },
+        typeSound: function (key_code) {
+            //Shift
+            if (key_code == 'U+0051') {
+                sound = 'spacebar';
+                //Alt
+            } else if (key_code == 'Alt') {
+                sound = 'spacebar';
+                //Caps Lock
+            } else if (key_code == 'CapsLock') {
+                sound = 'spacebar';
+                //Space
+            } else if (key_code == 'U+0020') {
+                sound = 'spacebar';
+                //Enter
+            } else if (key_code == 'Enter') {
+                sound = 'carriage_return_main';
+                sound = 'carriage_return_stop';
+                //Tab
+            } else if (key_code == 'U+0009') {
+                //sound = 'keyup';
+                //sound = 'spacebar';
+                sound = 'bell';
+                //Backspace - Delete
+            } else if (key_code == 'U+0008') {
+                sound = 'spacebar';
+                //Up Arrow
+            } else if (key_code == 'Up') {
+                sound = 'spacebar';
+                //Down Arrow
+            } else if (key_code == 'Down') {
+                sound = 'spacebar';
+                //Left Arrow
+            } else if (key_code == 'Left') {
+                sound = 'spacebar';
+                //Right Arrow
+            } else if (key_code == 'Right') {
+                sound = 'spacebar';
+            } else {
+                sound = 'keyup';
+            }
+            this.typeSounds[sound].load();
+            this.typeSounds[sound].play();
+        },
+        relaxStart: function () {
+            this.relaxSound.load();
+            this.relaxSound.play();
+        },
+        relaxStop: function () {
+            this.relaxSound.stop();
+        },
+        themeSound: function(event){
+            if (event instanceof KeyboardEvent && (this.theme == 'typewriter light' || this.theme == 'carbon dark')) {
+                //console.log(event.keyIdentifier);
+                this.typeSound(event.keyIdentifier);
+            }
+            if (event instanceof FocusEvent && this.theme == 'relax dark') {
+                this.relaxStart();
+            } else if (event instanceof FocusEvent && this.theme != 'relax dark') {
+                this.relaxStop();
+            }
+        }
+    }
+}]);
+
+zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
+    return {
+        getStorage: function(key, component){
+            if(component){
+                key = 'component-' + key;
+            }
+            return window.localStorage.getItem(key);
+        },
+        setStorage: function(key, data, component){
+            if(component){
+                key = 'component-' + key;
+            }
+            window.localStorage.setItem(key, data);
+        }
+    }
+}])
