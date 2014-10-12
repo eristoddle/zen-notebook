@@ -1,0 +1,12 @@
+<div class="nanowrimo">
+    <div ng-controller="NanowrimoController">
+        <div custom-accordion ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"></div>
+        <div id="collapse-add-form">
+            <input ng-model="title" type="text" placeholder="Collapse Panel Title">
+            <div>
+                <textarea ng-model="content" placeholder="Collapse Panel Content"></textarea>
+            </div>
+            <button ng-click="addItem()">Add Item</button>
+        </div>
+    </div>
+</div>
