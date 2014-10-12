@@ -1,5 +1,5 @@
-zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory', function ($rootScope, fileDialog, notebookFactory) {
-    var factory = notebookFactory,
+zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
+    var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
         app_nav = [
             {title: 'Export', action: 'export', class: 'icon-repo', sub: 'foot'},
