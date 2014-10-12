@@ -93,22 +93,13 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             //Bind events
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(write(factory));
-                //console.log(event);
                 themeSound(event);
             });
 
             //Event sent by component whenever content area content should change
-//            $rootScope.$on('changeContent', function (event){
-//                write(factory);
-//                var content = window.localStorage && window.localStorage.getItem('content');
-//                element.html(content);
-//                write(factory);
-//            });
-
-            //TODO: This should come from the notebook component and ditch rootScope
-            $rootScope.$on('changeDate', function (event, oldDate, newDate) {
+            $rootScope.$on('changeContent', function (event, content){
                 write(factory);
-                element.html(factory.onChangeDate(oldDate, newDate));
+                element.html(content);
                 write(factory);
             });
         }

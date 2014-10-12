@@ -16,12 +16,7 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
         //TODO: Clicking today should clear content if none exists
         element.bind("click", function () {
             if (attrs.action == 'set-date') {
-                $rootScope.$broadcast('changeDate', notebookFactory.activeDateText(), attrs.date);
-
-                //TODO: Figure out how to move this here!!!
-                //notebookFactory.onChangeDate(notebookFactory.activeDateText(), attrs.date);
-                //$rootScope.$broadcast('changeContent');
-
+                $rootScope.$broadcast('changeContent', notebookFactory.onChangeDate(notebookFactory.activeDateText(), attrs.date));
                 notebookFactory.setActiveDate(attrs.date);
             }
             angular.element(

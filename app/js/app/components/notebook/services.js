@@ -34,12 +34,14 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             window.localStorage && window.localStorage.setItem('content', content);
             window.localStorage && window.localStorage.setItem('word_count', count);
         },
+        onGetContent: function(){
+            this.getActiveContent();
+        },
         onChangeDate: function(oldDate, newDate){
             this.setDaysContent(oldDate);
             if (this.getDaysContent(newDate)) {
                 return this.getDaysContent(newDate);
             } else {
-                element.html('');
                 return '';
             }
         },
