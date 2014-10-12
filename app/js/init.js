@@ -19,5 +19,6 @@ head.load(
 head.load(
     'js/app/components/notebook/directives.js',
     'js/app/components/notebook/controllers.js',
-    'js/app/components/notebook/services.js'
+    'js/app/components/notebook/services.js',
+    'js/app/components/notebook/sidebar.css'
 );

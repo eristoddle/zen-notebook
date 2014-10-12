@@ -87,16 +87,17 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             //Choose component
             factory = notebookFactory;
 
-            //Run component loading function
+            //Load configuration and correct component
+
             element.html(factory.onLoad());
 
-            //Bind events
+            //Bind events to content
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(write(factory));
                 themeSound(event);
             });
 
-            //Event sent by component whenever content area content should change
+            //Event sent by component whenever content should change
             $rootScope.$on('changeContent', function (event, content){
                 write(factory);
                 element.html(content);

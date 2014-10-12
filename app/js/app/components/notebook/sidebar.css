@@ -63,113 +63,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-@font-face {
-  font-family: "Lora";
-  src: url("fonts/Lora-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "MyUnderwood";
-  src: url("fonts/MyUnderwood.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?uidhkg");
-  src: url("fonts/icomoon.eot?#iefixuidhkg") format("embedded-opentype"), url("fonts/icomoon.woff?uidhkg") format("woff"), url("fonts/icomoon.ttf?uidhkg") format("truetype"), url("fonts/icomoon.svg?uidhkg#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-/* line 28, ../../scss/_fonts.scss */
-[class^="icon-"], [class*=" icon-"] {
-  font-family: "icomoon";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  font-size: 20px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* line 41, ../../scss/_fonts.scss */
-.icon-calendar:before {
-  content: "\e600";
-}
-
-/* line 45, ../../scss/_fonts.scss */
-.icon-resize:before {
-  content: "\e601";
-}
-
-/* line 49, ../../scss/_fonts.scss */
-.icon-resize2:before {
-  content: "\e602";
-}
-
-/* line 53, ../../scss/_fonts.scss */
-.icon-yingyang:before {
-  content: "\e603";
-}
-
-/* line 57, ../../scss/_fonts.scss */
-.icon-switch:before {
-  content: "\e604";
-}
-
-/* line 61, ../../scss/_fonts.scss */
-.icon-gear:before {
-  content: "\f02f";
-}
-
-/* line 65, ../../scss/_fonts.scss */
-.icon-info:before {
-  content: "\f059";
-}
-
-/* line 69, ../../scss/_fonts.scss */
-.icon-repo:before {
-  content: "\f001";
-}
-
-/* line 73, ../../scss/_fonts.scss */
-.icon-triangle-left:before {
-  content: "\f044";
-}
-
-/* line 76, ../../scss/_fonts.scss */
-.icon-triangle-right:before {
-  content: "\f05a";
-}
-
-/* line 1, ../../scss/_base.scss */
-h1 {
-  font-weight: bold;
-  font-size: 1.5em;
-  border-bottom: 2px solid;
-}
-
-/* line 6, ../../scss/_base.scss */
-h2 {
-  font-weight: bold;
-}
-
-/* line 9, ../../scss/_base.scss */
-.button {
-  -webkit-transition: color 250ms, background 250ms;
-  transition: color 250ms, background 250ms;
-  cursor: pointer;
-  font-size: 15px;
-  margin: 5px;
-  padding: 5px;
-  border: 2px solid;
-  border-radius: 3px;
-}
-
 /* line 2, ../../scss/_theme.scss */
 .courier {
   font-family: courier;
@@ -351,148 +244,80 @@ h1 {
   opacity: 1;
 }
 
-/* line 2, ../../scss/_layout.scss */
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+/* line 1, ../../scss/_calendar.scss */
+div.cal {
+  display: inline-block;
+  height: 170px;
+  min-height: 140px;
+  margin: 40px;
+  font-size: 0.6em;
 }
-
-/* line 6, ../../scss/_layout.scss */
-#container {
-  width: 100%;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
-  height: 100%;
+/* line 7, ../../scss/_calendar.scss */
+div.cal table {
+  border-collapse: collapse;
 }
-
-/* line 11, ../../scss/_layout.scss */
-header {
-  min-height: 64px;
-  cursor: move;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 5;
-  width: 100%;
+/* line 10, ../../scss/_calendar.scss */
+div.cal th {
+  text-align: center;
+  padding-bottom: 5px;
+  color: #888;
+  border: 0px;
 }
-/* line 19, ../../scss/_layout.scss */
-header .nav-menu {
-  float: right;
-  padding: 0.3em;
+/* line 16, ../../scss/_calendar.scss */
+div.cal td {
+  text-align: center;
+  font-size: 0.9em;
+  border: 1px solid #ddd;
 }
-
-/* line 25, ../../scss/_layout.scss */
-.left-sidebar {
-  width: 14.89362%;
+/* line 17, ../../scss/_calendar.scss */
+div.cal td.cal-head {
+  text-align: center;
+  padding-bottom: 5px;
+  color: #888;
+  border: 0px;
+}
+/* line 28, ../../scss/_calendar.scss */
+div.cal div.cal-day {
+  padding: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+/* line 33, ../../scss/_calendar.scss */
+div.cal div.cal-content {
+  background-color: gray;
+  color: #AAA;
+}
+/* line 37, ../../scss/_calendar.scss */
+div.cal div.cal-highlight {
+  background-color: #AAA;
+  color: #FFF;
+}
+/* line 41, ../../scss/_calendar.scss */
+div.cal div.cal-highlight-active {
+  background-color: #222;
+  color: #fff;
+}
+/* line 45, ../../scss/_calendar.scss */
+div.cal div.cal-day:hover {
+  border: 1px solid #111;
+}
+/* line 49, ../../scss/_calendar.scss */
+div.cal .navigation {
+  color: #888;
+  margin-top: 10px;
+}
+/* line 52, ../../scss/_calendar.scss */
+div.cal .navigation .icon-triangle-left {
   float: left;
-  margin-right: -100%;
-  margin-left: 0;
-  clear: none;
+  cursor: pointer;
 }
-
-/* line 29, ../../scss/_layout.scss */
-.content {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  width: 65.95745%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 17.02128%;
-  clear: none;
-  min-height: 400px;
-  max-height: 80%;
-  overflow-y: auto;
+/* line 56, ../../scss/_calendar.scss */
+div.cal .navigation .today {
+  margin: 0 77px;
+  cursor: pointer;
 }
-
-/* line 38, ../../scss/_layout.scss */
-.right-sidebar {
-  width: 14.89362%;
+/* line 60, ../../scss/_calendar.scss */
+div.cal .navigation .icon-triangle-right {
   float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
-}
-
-/* line 42, ../../scss/_layout.scss */
-footer {
-  min-height: 64px;
-  width: 65.95745%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 17.02128%;
-  clear: none;
-  position: fixed;
-  bottom: 0px;
-}
-
-/* line 2, ../../scss/_content.scss */
-.content:focus {
-  outline: 0px solid transparent;
-}
-
-/* line 1, ../../scss/_slide.scss */
-.modal {
-  border-radius: 3px;
-  z-index: 10;
-  padding: 10px;
-}
-/* line 5, ../../scss/_slide.scss */
-.modal h2 {
-  margin: 5%;
-  border-bottom: 1px solid;
-}
-/* line 9, ../../scss/_slide.scss */
-.modal.left-inner {
-  -moz-transition: left 1s;
-  -webkit-transition: left 1s;
-  -o-transition: left 1s;
-  transition: left 1s;
-  width: 300px;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: -300px;
-}
-/* line 19, ../../scss/_slide.scss */
-.modal.left-inner.slide-out {
-  -moz-transition: left 1s;
-  -webkit-transition: left 1s;
-  -o-transition: left 1s;
-  transition: left 1s;
-  left: 0px;
-  position: fixed;
-  height: 100%;
-}
-/* line 29, ../../scss/_slide.scss */
-.modal.foot-inner {
-  -moz-transition: all 1s;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-  height: 0px;
-  width: 100%;
-  position: absolute;
-  bottom: -300px;
-  overflow: hidden;
-}
-/* line 39, ../../scss/_slide.scss */
-.modal.foot-inner div {
-  margin-top: 20px;
-}
-/* line 42, ../../scss/_slide.scss */
-.modal.foot-inner.slide-out {
-  -moz-transition: all 1s;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-  bottom: 0px;
-  height: 300px;
-}
-/* line 49, ../../scss/_slide.scss */
-.modal.foot-inner.slide-out .footer-content {
-  visibility: visible;
-  display: block;
+  cursor: pointer;
 }
