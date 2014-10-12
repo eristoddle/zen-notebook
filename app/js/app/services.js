@@ -149,15 +149,15 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
         getStorage: function(key, component){
             if(component){
-                key = 'component-' + key;
+                key = component + '-' + key;
             }
             return window.localStorage.getItem(key);
         },
         setStorage: function(key, data, component){
             if(component){
-                key = 'component-' + key;
+                key = component + '-' + key;
             }
             window.localStorage.setItem(key, data);
         }
     }
-}])
+}]);

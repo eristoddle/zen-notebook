@@ -1,31 +1,59 @@
-zenNotebook.factory('nanowrimoFactory', ['$rootScope', function ($rootScope) {
+zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', function ($rootScope, storageFactory) {
     return {
         documents: {},
         file: null,
+        title: null,
+        startDate: null,
+        goalDate: null,
+        goalWords: null,
         currentDate: null,
-        activeDate: null,
+        currentWords: null,
         onLoad: function(){
 
         },
         onWrite: function(content){
-
+            var count = this.countWords(content);
+            storageFactory.setStorage('content', content, 'nanowrimo');
+            storageFactory.setStorage('word_count', count, 'nanowrimo');
         },
         onExit: function () {
-
+            var file = storageFactory.getStorage('file', 'nanowrimo');
+            if (file) {
+                this.setChapterContent(this.activeDateText());
+                this.saveBook(file);
+            } else {
+                //TODO: Warning of lost data
+            }
         },
-        getContent: function (chapter) {
-            dates = dateText.split('-');
+        addChapter: function(name){
+            //TODO: Increment default chapter and check that chapter doesn't exist to get overwritten
+            if(!name){
+                name = 'Chapter 1';
+            }
+            this.documents[name] = {
+                content: '',
+                sort_order: 0,
+                word_count: 0
+            }
+        },
+        setChapterContent: function (chapter){
+            if (this.getActiveContent().length > 0) {
+//                this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content'] = this.getActiveContent();
+//                this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
+            }
+        },
+        getChapterContent: function (chapter) {
             try {
-                return this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content']
+                return this.documents[chapter]['content']
                     .replace(/\n/g, "<br>");
             } catch (err) {
-                window.localStorage && window.localStorage.setItem('error', err);
+                storageFactory.setStorage('error', err, 'nanowrimo');
                 return '';
             }
         },
         //TODO:Parse before saving
         getActiveContent: function () {
-            return window.localStorage.getItem('content')
+            return storageFactory.getStorage('content', 'nanowrimo')
                 .replace(/<br>/g, "\n")
                 .replace(/<div>/g, "\n")
                 .replace(/<\/div>/g, "")
@@ -36,21 +64,9 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', function ($rootScope) {
             s = s.replace(/\n /, "\n");
             return s.split(' ').length;
         },
-        getMonthCount: function(){
-            var count = 1000;
-
-            return count;
-        },
-        getMonthAverage: function(){
-            var average = 1000;
-
-            return average;
-        },
         getSidebar: function(){
             return {
-                word_count: this.countWords(this.getActiveContent()),
-                month_average: this.getMonthAverage(),
-                month_count: this.getMonthCount()
+                word_count: this.countWords(this.getActiveContent())
             };
         },
         getMenu: function(){
@@ -59,24 +75,24 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', function ($rootScope) {
             ];
         },
         saveBook: function (filename) {
-            var journal;
+            var book;
             this.file = filename;
-            this.setDaysContent(this.activeDateText());
-            journal = JSON.stringify(this);
+            this.setChapterContent(this.activeDateText());
+            book = JSON.stringify(this);
             try {
-                fs.writeFileSync(filename, journal);
-                window.localStorage && window.localStorage.setItem('file', this.file);
+                fs.writeFileSync(filename, book);
+                storageFactory.setStorage('file', this.file, 'nanowrimo');
             } catch (err) {
                 console.log(err);
-                window.localStorage && window.localStorage.setItem('error', err);
-                window.localStorage && window.localStorage.setItem('recovery', journal);
+                storageFactory.setStorage('error', err, 'nanowrimo');
+                storageFactory.setStorage('recovery', book, 'nanowrimo');
             }
         },
         loadBook: function (file) {
             var data = fs.readFileSync(file);
-            tempJournal = JSON.parse(data);
+            tempBook = JSON.parse(data);
             this.file = file;
-            window.localStorage && window.localStorage.setItem('file', this.file);
+            storageFactory.setStorage('file', this.file, 'nanowrimo');
         }
     }
 }]);

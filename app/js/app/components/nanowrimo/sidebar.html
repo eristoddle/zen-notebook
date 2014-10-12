@@ -1,3 +1,4 @@
+<h1>NanoWrimo</h1>
 <div class="nanowrimo">
     <div ng-controller="NanowrimoController">
         <list>
@@ -16,5 +17,17 @@
                 </item>
             </div>
         </list>
+
+        <div id="stats">
+            <div id="word_count">Current Word Count: {{ left.word_count }}</div>
+        </div>
+
+        <div id="books" class="collapsible">
+            <div ng-repeat="node in buttons"
+                 class="button {{node.class}}"
+                 ng-click="expr(node)">
+                {{ node.title }}
+            </div>
+        </div>
     </div>
 </div>
