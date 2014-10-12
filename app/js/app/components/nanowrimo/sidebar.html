@@ -1,12 +1,20 @@
 <div class="nanowrimo">
     <div ng-controller="NanowrimoController">
-        <div custom-accordion ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"></div>
-        <div id="collapse-add-form">
-            <input ng-model="title" type="text" placeholder="Collapse Panel Title">
-            <div>
-                <textarea ng-model="content" placeholder="Collapse Panel Content"></textarea>
+        <list>
+            <div ng-repeat="group in groups">
+                <item class="item-stable"
+                          ng-click="toggleGroup(group)"
+                          ng-class="{active: isGroupShown(group)}">
+                    <i class="icon" ng-class="isGroupShown(group) ? 'minus' : 'plus'"></i>
+                    &nbsp;
+                    Group {{group.name}}
+                </item>
+                <item class="item-accordion"
+                          ng-repeat="item in group.items"
+                          ng-show="isGroupShown(group)">
+                    {{item}}
+                </item>
             </div>
-            <button ng-click="addItem()">Add Item</button>
-        </div>
+        </list>
     </div>
 </div>

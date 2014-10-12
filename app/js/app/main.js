@@ -19,4 +19,5 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDia
             $rootScope.active_component = 'notebook';
         }
         //$rootScope.active_component = 'nanowrimo';
+        $rootScope.active_component = 'notebook';
     });
