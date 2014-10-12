@@ -98,8 +98,11 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             });
 
             //Event sent by component whenever content area content should change
-//            $rootScope.$on('changeContent', function (event, content){
+//            $rootScope.$on('changeContent', function (event){
+//                write(factory);
+//                var content = window.localStorage && window.localStorage.getItem('content');
 //                element.html(content);
+//                write(factory);
 //            });
 
             //TODO: This should come from the notebook component and ditch rootScope

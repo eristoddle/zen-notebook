@@ -17,10 +17,11 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
         element.bind("click", function () {
             if (attrs.action == 'set-date') {
                 $rootScope.$broadcast('changeDate', notebookFactory.activeDateText(), attrs.date);
+
                 //TODO: Figure out how to move this here!!!
-//                notebookFactory.onWrite(notebookFactory.getStorage('content'));
-//                $rootScope.$broadcast('changeContent', notebookFactory.onChangeDate(notebookFactory.activeDateText(), attrs.date));
-//                notebookFactory.onWrite(notebookFactory.getStorage('content'));
+                //notebookFactory.onChangeDate(notebookFactory.activeDateText(), attrs.date);
+                //$rootScope.$broadcast('changeContent');
+
                 notebookFactory.setActiveDate(attrs.date);
             }
             angular.element(
