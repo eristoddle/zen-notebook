@@ -1,4 +1,4 @@
-<div ng-controller="CalendarController">
+<div ng-controller="NotebookController">
     <div data-calendar></div>
     <h2>Search</h2>
 
@@ -16,6 +16,10 @@
     <h2>Notebooks</h2>
 
     <div id="notebooks" class="collapsible">
-
+    <div ng-repeat="node in buttons"
+        class="button {{node.class}}"
+        ng-click="expr(node)">
+        {{ node.title }}
+    </div>
     </div>
 </div>

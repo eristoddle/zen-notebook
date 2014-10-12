@@ -2,8 +2,10 @@
 //Configuration will load new menu items from plugins
 //handle clicks
 zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory', function ($rootScope, fileDialog, notebookFactory) {
-    var component_nav = notebookFactory.getMenu(),
+    var factory = notebookFactory,
+        component_nav = factory.getMenu(),
         app_nav = [
+            {title: 'Export', action: 'export', class: 'icon-repo', sub: 'foot'},
             {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
             {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
             {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
@@ -28,12 +30,10 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                     heading: 'Configuration',
                     body: '//TODO: Configuration Options'
                 },
-                notebook: {
-                    heading: 'Notebooks',
+                export: {
+                    heading: 'Export',
                     buttons: [
-                        {title: 'Open Notebook', class: 'open', sub: 'nw', action: 'open'},
-                        {title: 'Save Notebook', class: 'save', sub: 'nw', action: 'save'},
-                        {title: 'Import Red Notebook', class: 'import', sub: 'nw', action: 'import'}
+                        {title: 'Export', class: 'export', sub: 'nw', action: 'export'}
                     ]
                 }
             },
@@ -51,29 +51,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                 $rootScope.$broadcast('body');
             }
             if (message.sub == 'nw') {
-                if (message.action == 'open') {
-                    fileDialog.openFile(
-                        function (filename) {
-                            notebookFactory.loadNotebook(filename);
-                        },
-                        false,
-                        '.json'
-                    );
-                }
-                if (message.action == 'save') {
-                    fileDialog.saveAs(
-                        function (filename) {
-                            notebookFactory.saveNotebook(filename);
-                        },
-                        'notebook.json',
-                        '.json'
-                    );
-                }
-                if (message.action == 'import') {
-                    fileDialog.openDir(function (dir) {
-                        notebookFactory.importRedNotebook(dir);
-                    });
-                }
                 if (message.action == 'maximize') {
                     win.toggleFullscreen();
                 }
@@ -81,7 +58,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory
                     win.minimize();
                 }
                 if (message.action == 'exit') {
-                    notebookFactory.onExit();
+                    factory.onExit();
                     win.close();
                 }
             }
@@ -158,13 +135,13 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
             this.relaxSound.stop();
         },
         themeSound: function(event){
-            if (event instanceof KeyboardEvent && (this.theme == 'typewriter light' || this.theme == 'carbon dark')) {
-                //console.log(event.keyIdentifier);
+            var theme = window.localStorage && window.localStorage.getItem('theme');
+            if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                 this.typeSound(event.keyIdentifier);
             }
-            if (event instanceof FocusEvent && this.theme == 'relax dark') {
+            if (event instanceof FocusEvent && theme == 'relax dark') {
                 this.relaxStart();
-            } else if (event instanceof FocusEvent && this.theme != 'relax dark') {
+            } else if (event instanceof FocusEvent && theme != 'relax dark') {
                 this.relaxStop();
             }
         }

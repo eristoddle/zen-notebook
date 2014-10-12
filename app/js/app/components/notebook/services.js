@@ -133,8 +133,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
         },
         getMenu: function(){
             return [
-                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'},
-                {title: 'Notebook', action: 'notebook', class: 'icon-repo', sub: 'foot'}
+                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'}
             ];
         },
         activeTags: '',

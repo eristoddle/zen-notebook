@@ -2,13 +2,13 @@
 
 //interact with contenteditable region
 zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', 'themeFactory', function ($rootScope, notebookFactory, themeFactory) {
+    //console.log(arguments);
     return {
         restrict: "A",
         link: function (scope, element, attrs) {
             //Choose component
             var factory = notebookFactory;
-            //var factory = window[$rootScope.active_component + 'Factory'];
-
+            //var factory = stringToObject($rootScope.active_component + 'Factory', 'object');
             //Load component
             element.html(factory.onLoad());
 
