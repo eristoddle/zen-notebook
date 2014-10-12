@@ -49,11 +49,10 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
 }]);
 
 zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
-    var component = 'notebook';
     $scope.left = {};
-    $scope.left.partial = 'js/app/components/' + component + '/sidebar.html';
 
     $scope.$on('toggleLeft', function () {
+        $scope.left.partial = 'js/app/components/' + $rootScope.active_component + '/sidebar.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
@@ -79,12 +78,3 @@ zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($sc
         }
     });
 }]);
-
-//TODO: Dynamically inject services in main application
-//https://docs.angularjs.org/api/auto/service/$injector
-//http://stackoverflow.com/questions/14415845/angularjs-dynamically-inject-scope-or-controller
-//function MyCtrl($scope, $injector) {
-//    $scope.doSomething = function(someService) {
-//        var service = $injector.get(someService)  // someService contains the name of a service
-//        service.value += 10
-//    }

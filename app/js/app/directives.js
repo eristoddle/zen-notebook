@@ -88,7 +88,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
             factory = notebookFactory;
 
             //Load configuration and correct component
-
+            $rootScope.active_component = 'notebook';
             element.html(factory.onLoad());
 
             //Bind events to content
@@ -106,3 +106,12 @@ zenNotebook.directive("contenteditable", ['$rootScope', 'notebookFactory', funct
         }
     };
 }]);
+
+//TODO: Dynamically inject services in main application
+//https://docs.angularjs.org/api/auto/service/$injector
+//http://stackoverflow.com/questions/14415845/angularjs-dynamically-inject-scope-or-controller
+//function MyCtrl($scope, $injector) {
+//    $scope.doSomething = function(someService) {
+//        var service = $injector.get(someService)  // someService contains the name of a service
+//        service.value += 10
+//    }
