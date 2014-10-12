@@ -1,6 +1,3 @@
-//TODO: Component menu items should somehow live in the component
-//Configuration will load new menu items from plugins
-//handle clicks
 zenNotebook.factory('menuFactory', ['$rootScope', 'fileDialog', 'notebookFactory', function ($rootScope, fileDialog, notebookFactory) {
     var factory = notebookFactory,
         component_nav = factory.getMenu(),
