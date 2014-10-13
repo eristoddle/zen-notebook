@@ -9,7 +9,19 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
         currentDate: null,
         currentWords: null,
         onLoad: function(){
+            var file = storageFactory.getStorage('file', 'nanowrimo');
+            var chapter= storageFactory.getStorage('chapter', 'nanowrimo');
 
+            if (file) {
+                this.loadBook(file);
+                storageFactory.setStorage(
+                    'content',
+                    this.getDaysContent(this.activeDateText(), 'nanowrimo')
+                );
+            } else {
+
+            }
+            return this.getChapterContent(chapter);
         },
         onWrite: function(content){
             var count = this.countWords(content);
@@ -93,6 +105,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
             tempBook = JSON.parse(data);
             this.file = file;
             storageFactory.setStorage('file', this.file, 'nanowrimo');
+            this.documents = tempBook.documents;
         }
     }
 }]);
