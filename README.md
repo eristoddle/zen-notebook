@@ -72,8 +72,6 @@ Application Folder
 * Add Stats
 * Fix bug when content footer pops up from bottom when mouse is hovered
 * Fix info links to open in system browser, alternately in iframe
-* Highlight days with content differently
-* Move most notebook functionality to left bar and gui configuration/information to footer
 * Add accordian/collapsible divs to left bar
 * Reorganize and refactor application for modularity. Separate gui and notebook functionality. Make notebook the 
 first plugin
@@ -101,6 +99,8 @@ first plugin
 * Create services of sound and storage
 * Dates with content don't highlight until after a click on the calendar
 * Clicks on calendar don't change word counts
+* Intercept copy and paste to remove any html markup
+* Create a more complex parser so saved content fits format: text, markdown, etc.
 
 ##Futute Roadmap
 
