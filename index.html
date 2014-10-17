@@ -77,7 +77,9 @@ date can be changed used an interactive calendar</li>
 <li>Custom typewriter theme: uses the MyUnderwood Font and has typewriter sound effects</li>
 <li>Custom relax theme: beta, still a little rough, has a background that changes color and a rainfall background sound</li>
 <li>Journal saved to simple JSON format</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="download-zen-notebook-executables" class="anchor" href="#download-zen-notebook-executables"><span class="octicon octicon-link"></span></a>Download Zen Notebook Executables</h2>
 
 <p>These are in zip format. They are not installers. I do plan on working on installation package eventually, 
@@ -90,20 +92,28 @@ Application Folder</p>
 
 <p><a href="http://stephanmiller.com/sites/default/files/software/mac.zip">Download</a></p>
 
+<p><a href="https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip?dl=0">Alternate Download</a></p>
+
 <h3>
 <a name="windows" class="anchor" href="#windows"><span class="octicon octicon-link"></span></a>Windows</h3>
 
 <p><a href="http://stephanmiller.com/sites/default/files/software/windows.zip">Download</a></p>
 
+<p><a href="https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=0">Alternate Download</a></p>
+
 <h3>
 <a name="linux-32-bit" class="anchor" href="#linux-32-bit"><span class="octicon octicon-link"></span></a>Linux 32 bit</h3>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x64.zip">Download</a></p>
+<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x32.zip">Download</a></p>
+
+<p><a href="https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip?dl=0">Alternate Download</a></p>
 
 <h3>
 <a name="linux-64-bit" class="anchor" href="#linux-64-bit"><span class="octicon octicon-link"></span></a>Linux 64 bit</h3>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x32.zip">Download</a></p>
+<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x64.zip">Download</a></p>
+
+<p><a href="https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip?dl=0">Alternate Download</a></p>
 
 <h2>
 <a name="beta-version-punchlist" class="anchor" href="#beta-version-punchlist"><span class="octicon octicon-link"></span></a>Beta Version Punchlist</h2>
@@ -112,9 +122,8 @@ Application Folder</p>
 <li>Add Tags</li>
 <li>Add Search</li>
 <li>Add Stats</li>
+<li>Fix bug when content footer pops up from bottom when mouse is hovered</li>
 <li>Fix info links to open in system browser, alternately in iframe</li>
-<li>Highlight days with content differently</li>
-<li>Move most notebook functionality to left bar and gui configuration/information to footer</li>
 <li>Add accordian/collapsible divs to left bar</li>
 <li>Reorganize and refactor application for modularity. Separate gui and notebook functionality. Make notebook the 
 first plugin</li>
@@ -140,7 +149,13 @@ first plugin</li>
 <li>Warn to save content on close is no file exists</li>
 <li>Make persistent storage agnostic</li>
 <li>Create services of sound and storage</li>
-</ul><h2>
+<li>Dates with content don't highlight until after a click on the calendar</li>
+<li>Clicks on calendar don't change word counts</li>
+<li>Intercept copy and paste to remove any html markup</li>
+<li>Create a more complex parser so saved content fits format: text, markdown, etc.</li>
+</ul>
+
+<h2>
 <a name="futute-roadmap" class="anchor" href="#futute-roadmap"><span class="octicon octicon-link"></span></a>Futute Roadmap</h2>
 
 <p>This is my wish and idea list</p>
@@ -153,7 +168,9 @@ online version and journal post permissions.</li>
 <li>Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will 
 require a more advanced theming system to change up element display (masonry block, outline, editing).</li>
 <li>Integrate PanDoc and consider a web service</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="source-code-in-ubuntu-1404" class="anchor" href="#source-code-in-ubuntu-1404"><span class="octicon octicon-link"></span></a>Source Code in Ubuntu 14.04</h2>
 
 <p>In order to get nodewebkit to work on Ubuntu 14.04 and later, you will have to make sure to do something like this. I
@@ -164,7 +181,9 @@ require a more advanced theming system to change up element display (masonry blo
 <li>Try to run the project</li>
 <li>If there is an error, copy it and search on Google</li>
 <li>Spend the next hour or two figuring out what the issue is</li>
-</ul><p>Anyway, this page here explains a few complicated ways to fix this issue: 
+</ul>
+
+<p>Anyway, this page here explains a few complicated ways to fix this issue: 
     <a href="https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0">https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0</a></p>
 
 <p>But I found out that just creating a symbolic link was easier.</p>
@@ -189,7 +208,18 @@ quick way to test the current dev version in the wild. I do use the software now
 the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
 with <code>npm start</code>
 </li>
-</ul><h2>
+<li>I tend to write sloppy code to get things done and see if they work and then go back and clean up. I am liking 
+Angular in that is is helping me do this when I choose too. This is my first project in Angular and I am used to PHP 
+frameworks. I am still not sure that it is the best choice. Others I am considering are Ember.js, 
+React.js and Backbone with Marionette. My familiarity with dependency injection has me liking Angular and I do like 
+two way data binding, though I hardly use it, since the main form is not a form at all but a contenteditable region 
+and currently not supported by Angular for two way data binding. But I figured out my way around it. I figure once I 
+get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
+I want the final application is structured, I can make a better choice among the various JavaScript frameworks. 
+Currently leaning toward React.js.</li>
+</ul>
+
+<h2>
 <a name="software-features-i-may-emulate" class="anchor" href="#software-features-i-may-emulate"><span class="octicon octicon-link"></span></a>Software Features I May Emulate</h2>
 
 <ul>
@@ -205,7 +235,9 @@ with <code>npm start</code>
 </li>
 <li>Scapple - <a href="https://www.literatureandlatte.com/scapple.php">https://www.literatureandlatte.com/scapple.php</a>
 </li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="technologies-used" class="anchor" href="#technologies-used"><span class="octicon octicon-link"></span></a>Technologies Used</h2>
 
 <ul>
