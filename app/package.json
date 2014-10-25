@@ -1,12 +1,12 @@
 {
     "webexe_settings": {
-        "linux-x32": true, 
+        "linux-x32": false, 
         "download_dir": "/Users/smiller/Dropbox/python/Web2Executable/files/downloads", 
         "windows": true, 
         "mac": false, 
         "nw_version": "0.10.5", 
         "force_download": false, 
-        "linux-x64": true
+        "linux-x64": false
     }, 
     "description": "A distraction free writing journal", 
     "repository": {

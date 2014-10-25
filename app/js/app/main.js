@@ -9,6 +9,7 @@ try {
     console.log(ex.message);
 }
 var fs = require('fs');
+gui.App.setCrashDumpDir('./');
 
 //Initialize Application
 //https://github.com/ocombe/ocLazyLoad
