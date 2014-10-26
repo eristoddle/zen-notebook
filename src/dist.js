@@ -315,7 +315,6 @@ if(isNodeWebkit) {
     fileHandler = 'fileDialog';
 }
 
-
 //Initialize Application
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
     .run(function($rootScope, storageFactory){
