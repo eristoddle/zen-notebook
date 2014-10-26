@@ -299,26 +299,30 @@ var os="Unknown ";
 if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
+var isNodeWebkit = (typeof process == "object");
+var fileHandler = null;
 
-//TODO: Seperate node code from angular
 //NW
-var gui = require('nw.gui');
-var win = gui.Window.get();
-if(os == 'Mac'){
-    var nativeMenuBar = new gui.Menu({ type: "menubar" });
-    try {
-        nativeMenuBar.createMacBuiltin("Zen Notebook");
-        win.menu = nativeMenuBar;
-    } catch (ex) {
+if(isNodeWebkit) {
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+    if (os == 'Mac') {
+        var nativeMenuBar = new gui.Menu({ type: "menubar" });
+        try {
+            nativeMenuBar.createMacBuiltin("Zen Notebook");
+            win.menu = nativeMenuBar;
+        } catch (ex) {
 
+        }
     }
+
+    //Node
+    var fs = require('fs');
+    fileHandler = 'DWand.nw-fileDialog';
 }
 
-//Node
-var fs = require('fs');
-
 //Initialize Application
-var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog'])
+var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
     .run(function($rootScope, storageFactory){
         //OS
         $rootScope.os = os;
