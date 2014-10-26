@@ -26,14 +26,14 @@ module.exports = function(grunt) {
             }
         },
         concat_css: {
-            all: {
-                src: [
-                    "app/css/app.css",
-                    "app/js/app/components/notebook/notebook.css",
-                    "app/js/app/components/nanowrimo/namowrimo.css"
-                ],
-                dest: "app/dist.css"
-            }
+//            all: {
+//                src: [
+//                    "app/css/app.css",
+//                    "app/css/notebook.css",
+//                    "app/css/namowrimo.css"
+//                ],
+//                dest: "app/dist.css"
+//            }
         },
         uglify: {
             options: {
@@ -58,10 +58,10 @@ module.exports = function(grunt) {
     //grunt.loadNpmTasks('grunt-contrib-qunit');
     //grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-concat-css');
+    //grunt.loadNpmTasks('grunt-concat-css');
 
     //grunt.registerTask('test', ['jshint', 'qunit']);
 
-    grunt.registerTask('default', ['concat', 'uglify', 'concat_css']);
+    grunt.registerTask('default', ['concat', 'uglify',]);
 
 };
