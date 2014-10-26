@@ -9,6 +9,7 @@ module.exports = function(grunt) {
                     'src/lib/angular.min.js',
                     "src/lib/angular-sanitize.min.js",
                     "src/lib/buzz.min.js",
+                    'src/app/modules/*.js',
                     'src/app/main.js',
                     'src/app/directives.js',
                     'src/app/controllers.js',
