@@ -304,6 +304,7 @@ if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
 var fileHandler = null;
+var mute = false;
 
 //NW
 if(isNodeWebkit) {
@@ -319,6 +320,9 @@ if(isNodeWebkit) {
 
         }
     }
+    if(os = "Windows"){
+        mute = true;
+    }
     fileHandler = 'nwDialog';
 }
 
@@ -326,7 +330,7 @@ if(isNodeWebkit) {
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
     .run(function($rootScope, storageFactory){
         //OS
-        $rootScope.os = os;
+        $rootScope.mute = mute;
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
@@ -349,7 +353,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
                 //TODO: I think Windows version has error if buzz is used
-                if ($rootScope.os != 'Windows'){
+                if ($rootScope.mute = true){
                     $injector.get('themeFactory').themeSound(event);
                 }
             });
@@ -933,10 +937,6 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     }
 
-    /*
-     * if given group is the selected group, deselect it
-     * else, select the given group
-     */
     $scope.toggleGroup = function(group) {
         if ($scope.isGroupShown(group)) {
             $scope.shownGroup = null;

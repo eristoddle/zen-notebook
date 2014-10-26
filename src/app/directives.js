@@ -12,7 +12,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
                 //TODO: I think Windows version has error if buzz is used
-                if ($rootScope.os != 'Windows'){
+                if ($rootScope.mute = true){
                     $injector.get('themeFactory').themeSound(event);
                 }
             });

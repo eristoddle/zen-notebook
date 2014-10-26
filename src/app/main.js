@@ -5,6 +5,7 @@ if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
 var fileHandler = null;
+var mute = false;
 
 //NW
 if(isNodeWebkit) {
@@ -20,6 +21,9 @@ if(isNodeWebkit) {
 
         }
     }
+    if(os = "Windows"){
+        mute = true;
+    }
     fileHandler = 'nwDialog';
 }
 
@@ -27,7 +31,7 @@ if(isNodeWebkit) {
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
     .run(function($rootScope, storageFactory){
         //OS
-        $rootScope.os = os;
+        $rootScope.mute = mute;
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
