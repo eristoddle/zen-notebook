@@ -14,10 +14,6 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     }
 
-    /*
-     * if given group is the selected group, deselect it
-     * else, select the given group
-     */
     $scope.toggleGroup = function(group) {
         if ($scope.isGroupShown(group)) {
             $scope.shownGroup = null;
