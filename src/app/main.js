@@ -21,6 +21,7 @@ if(isNodeWebkit) {
 
         }
     }
+    //TODO: I think Windows version has error if buzz is used
     if(os = "Windows"){
         mute = true;
     }
