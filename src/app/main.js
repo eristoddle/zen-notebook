@@ -1,3 +1,4 @@
+//Detect Platform
 var os="Unknown ";
 if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
