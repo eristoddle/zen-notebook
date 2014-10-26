@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="zenNotebook">
+
     <head>
         <title>Zen Notebook</title>
-        <script src="dist.js"></script>
+        <script src="dist.min.js"></script>
         <link href="dist.css" rel="stylesheet">
     </head>
+
     <body id="container" ng-class="theme" ng-controller="BodyController">
+
         <header ng-controller="NavController" style="-webkit-app-region: drag">
             <nav class="nav-menu" menu-data="menu">
                 <button ng-repeat="node in menu"
@@ -42,5 +45,6 @@
                 </div>
             </div>
         </footer>
+
     </body>
 </html>

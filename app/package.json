@@ -14,18 +14,21 @@
         "type": "git"
     }, 
     "nodejs": true, 
+    "name": "Zen Notebook", 
     "single-instance": true, 
-    "webkit": {
-        "page-cache": false, 
-        "java": false, 
-        "plugin": false
-    }, 
+    "keywords": [
+        "writing", 
+        "editor", 
+        "diary", 
+        "journal", 
+        "notebook"
+    ], 
     "window": {
         "fullscreen": true, 
         "resizable": true, 
         "title": "Zen Notebook", 
         "always-on-top": false, 
-        "frame": false, 
+        "frame": true, 
         "kiosk": false, 
         "height": 600, 
         "min_height": 480, 
@@ -35,24 +38,21 @@
         "position": "", 
         "show_in_taskbar": true, 
         "width": 900, 
-        "toolbar": false, 
+        "toolbar": true, 
         "icon": "icon.png"
     }, 
     "version": "0.1.0", 
-    "node-main": "", 
     "scripts": {
         "start": "nodewebkit", 
         "dependencies": {
             "nodewebkit": ">=0.9.0"
         }
     }, 
-    "keywords": [
-        "writing", 
-        "editor", 
-        "diary", 
-        "journal", 
-        "notebook"
-    ], 
+    "webkit": {
+        "page-cache": false, 
+        "java": false, 
+        "plugin": false
+    }, 
     "main": "index.html", 
-    "name": "Zen Notebook"
+    "node-main": ""
 }
