@@ -1,8 +1,7 @@
 zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [
         {title: 'Open Notebook', class: 'open', action: 'open'},
-        {title: 'Save Notebook', class: 'save', action: 'save'},
-        {title: 'Import Red Notebook', class: 'import', action: 'import'}
+        {title: 'Save Notebook', class: 'save', action: 'save'}
     ];
     $scope.$on('toggleLeft', function () {
          var stats = notebookFactory.getSidebar();
@@ -23,16 +22,11 @@ zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookF
         if (button.action == 'save') {
             fileDialog.saveAs(
                 function (filename) {
-                    notebookFactory.saveNotebook(filename);
+                     notebookFactory.saveNotebook(filename);
                 },
                 'notebook.json',
                 '.json'
             );
-        }
-        if (button.action == 'import') {
-            fileDialog.openDir(function (dir) {
-                notebookFactory.importRedNotebook(dir);
-            });
         }
     };
 }]);

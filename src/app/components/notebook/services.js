@@ -1,5 +1,5 @@
 //notebook
-zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
+zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($rootScope, fileDialog) {
     var notebook = {
         years: {},
         file: null,
@@ -149,8 +149,9 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             this.setDaysContent(this.activeDateText());
             journal = JSON.stringify(this);
             try {
-                fs.writeFileSync(filename, journal);
+                fileDialog.writeFile(filename, journal);
                 window.localStorage && window.localStorage.setItem('file', this.file);
+                return journal;
             } catch (err) {
                 //console.log(err);
                 window.localStorage && window.localStorage.setItem('error', err);
@@ -158,43 +159,13 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
             }
         },
         loadNotebook: function (file) {
-            var data = fs.readFileSync(file);
+            var data = fileDialog.readFile(file);
             tempJournal = JSON.parse(data);
             this.file = file;
             this.currentDate = new Date();
             this.activeMonth = this.activeMonth - 1;
             this.years = tempJournal.years;
             window.localStorage && window.localStorage.setItem('file', this.file);
-        },
-        //TODO: Only works without tags or categories
-        importRedNotebook: function (dir) {
-            var re = new RegExp(/(\d{1,2}): {text: ([^}]*)}\n/g),
-                files = fs.readdirSync(dir),
-                match,
-                data,
-                json,
-                newJson;
-            for (i = 0; i < files.length; i++) {
-                var fileparts = files[i].split('.');
-                var filedates = fileparts[0].split('-');
-                if (!(filedates[0] in this.years)) {
-                    this.years[parseInt(filedates[0])] = {};
-                }
-                if (!(filedates[1] in this.years[filedates[0]])) {
-                    this.years[parseInt(filedates[0])][parseInt(filedates[1])] = {};
-                }
-                data = fs.readFileSync(dir + '/' + files[i]);
-                json = {};
-                newJson = {};
-                while ((match = re.exec(data)) !== null) {
-                    json[match[1]] = match[2].replace(/['"]+/g, '');
-                }
-                for (var date in json) {
-                    newJson[date] = {};
-                    newJson[date]['content'] = json[date];
-                }
-                this.years[parseInt(filedates[0])][parseInt(filedates[1])] = newJson;
-            }
         }
     };
     if (!notebook.currentDate) {

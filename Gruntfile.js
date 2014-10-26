@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                     'src/app/components/nanowrimo/*.js'
                 ],
                 // the location of the resulting JS file
-                "dest": 'src/dist.js'
+                "dest": 'app/dist.js'
             }
         },
         uglify: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    'app/dist.min.js': ['src/dist.js']
+                    'app/dist.min.js': ['app/dist.js']
                 }
             }
         },

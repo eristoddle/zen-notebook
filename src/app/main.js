@@ -8,7 +8,6 @@ var fileHandler = null;
 
 //NW
 if(isNodeWebkit) {
-    //TODO: Move all node usage into module from component controllers
     //TODO: Create OS based modules that are injected into the application
     var gui = require('nw.gui');
     var win = gui.Window.get();

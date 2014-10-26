@@ -1,9 +1,9 @@
+//TODO: Move all Node functionality here and rename
 angular.module('fileDialog', [])
     .factory('fileDialog', [function(){
         var callDialog = function(dialog, callback) {
             dialog.addEventListener('change', function() {
-                var result = dialog.value;
-                callback(result);
+                callback(dialog.value);
             }, false);
             dialog.click();
         };
@@ -41,6 +41,14 @@ angular.module('fileDialog', [])
             dialog.type = 'file';
             dialog.nwdirectory = 'nwdirectory';
             callDialog(dialog, callback);
+        };
+
+        dialogs.writeFile = function(filename, content){
+            return fs.writeFileSync(filename, content);
+        };
+
+        dialogs.readFile = function(file){
+            return fs.readFileSync(file);
         };
 
         return dialogs;
