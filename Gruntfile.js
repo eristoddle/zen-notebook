@@ -6,19 +6,19 @@ module.exports = function(grunt) {
             "dist": {
                 // the files to concatenate
                 "src": [
-                    'app/js/lib/angular.min.js',
-                    "app/js/lib/angular-sanitize.min.js",
-                    "app/js/lib/nw-fileDialog.js",
-                    "app/js/lib/buzz.min.js",
-                    'app/js/app/main.js',
-                    'app/js/app/directives.js',
-                    'app/js/app/controllers.js',
-                    'app/js/app/services.js',
-                    'app/js/app/components/notebook/*.js',
-                    'app/js/app/components/nanowrimo/*.js'
+                    'src/lib/angular.min.js',
+                    "src/lib/angular-sanitize.min.js",
+                    "src/lib/nw-fileDialog.js",
+                    "src/lib/buzz.min.js",
+                    'src/app/main.js',
+                    'src/app/directives.js',
+                    'src/app/controllers.js',
+                    'src/app/services.js',
+                    'src/app/components/notebook/*.js',
+                    'src/app/components/nanowrimo/*.js'
                 ],
                 // the location of the resulting JS file
-                "dest": 'app/js/dist.js'
+                "dest": 'src/dist.js'
             }
         },
         uglify: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    'app/dist.min.js': ['app/js/dist.js']
+                    'app/dist.min.js': ['src/dist.js']
                 }
             }
         },
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         },
         watch: {
             src: {
-                files: ['app/js/app/**/*.js', 'scss/*.scss'],
+                files: ['src/app/**/*.js', 'scss/*.scss'],
                 tasks: ['default']
             }
         }
