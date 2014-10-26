@@ -302,18 +302,17 @@ try {
     nativeMenuBar.createMacBuiltin("Zen Notebook");
     win.menu = nativeMenuBar;
 } catch (ex) {
-    //console.log(ex.message);
+
 }
 var fs = require('fs');
 
 //Initialize Application
-//https://github.com/ocombe/ocLazyLoad
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog'])
     .run(function($rootScope, storageFactory){
         //OS
         $rootScope.os="Unknown ";
         if (navigator.appVersion.indexOf("Win")!=-1) $rootScope.os="Windows";
-        if (navigator.appVersion.indexOf("Mac")!=-1) $rootScope.os="MacOS";
+        if (navigator.appVersion.indexOf("Mac")!=-1) $rootScope.os="Mac";
         if (navigator.appVersion.indexOf("Linux")!=-1) $rootScope.os="Linux";
 
         //Active Component
