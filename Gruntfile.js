@@ -8,7 +8,6 @@ module.exports = function(grunt) {
                 "src": [
                     'src/lib/angular.min.js',
                     "src/lib/angular-sanitize.min.js",
-                    "src/lib/nw-fileDialog.js",
                     "src/lib/buzz.min.js",
                     'src/app/main.js',
                     'src/app/directives.js',

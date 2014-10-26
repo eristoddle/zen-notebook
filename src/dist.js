@@ -230,59 +230,6 @@ function(){this.$get=["$$sanitizeUri",function(a){return function(d){var c=[];G(
 if(!e)return e;for(var n,h=e,k=[],m,p;n=h.match(d);)m=n[0],n[2]==n[3]&&(m="mailto:"+m),p=n.index,l(h.substr(0,p)),f(m,n[0].replace(c,"")),h=h.substring(p+n[0].length);l(h);return a(k.join(""))}}])})(window,window.angular);
 //# sourceMappingURL=angular-sanitize.min.js.map
 
-/* https://github.com/DWand/nw-fileDialog
- * This program is free software. It comes without any warranty, to
- * the extent permitted by applicable law. You can redistribute it
- * and/or modify it under the terms of the Do What The Fuck You Want
- * To Public License, Version 2, as published by Sam Hocevar. See
- * http://www.wtfpl.net/ for more details. */
-angular.module('DWand.nw-fileDialog', [])
-.factory('fileDialog', [function(){
-  var callDialog = function(dialog, callback) {
-    dialog.addEventListener('change', function() {
-      var result = dialog.value;
-      callback(result);
-    }, false);
-    dialog.click();
-  };
-
-  var dialogs = {};
-  
-  dialogs.saveAs = function(callback, defaultFilename, acceptTypes) {
-    var dialog = document.createElement('input');
-    dialog.type = 'file';
-    dialog.nwsaveas = defaultFilename || '';
-    if (angular.isArray(acceptTypes)) {
-      dialog.accept = acceptTypes.join(',');
-    } else if (angular.isString(acceptTypes)) {
-      dialog.accept = acceptTypes;
-    }
-    callDialog(dialog, callback);
-  };
-  
-  dialogs.openFile = function(callback, multiple, acceptTypes) {
-    var dialog = document.createElement('input');
-    dialog.type = 'file';
-    if (multiple === true) {
-      dialog.multiple = 'multiple';
-    }
-    if (angular.isArray(acceptTypes)) {
-      dialog.accept = acceptTypes.join(',');
-    } else if (angular.isString(acceptTypes)) {
-      dialog.accept = acceptTypes;
-    }
-    callDialog(dialog, callback);
-  };
-  
-  dialogs.openDir = function(callback) {
-    var dialog = document.createElement('input');
-    dialog.type = 'file';
-    dialog.nwdirectory = 'nwdirectory';
-    callDialog(dialog, callback);
-  };
-  
-  return dialogs;
-}]);
  // ----------------------------------------------------------------------------
  // Buzz, a Javascript HTML5 Audio library
  // v1.1.6 - Built 2014-09-13 14:38
@@ -318,7 +265,54 @@ if(isNodeWebkit) {
 
     //Node
     var fs = require('fs');
-    fileHandler = 'DWand.nw-fileDialog';
+    angular.module('fileDialog', [])
+        .factory('fileDialog', [function(){
+            var callDialog = function(dialog, callback) {
+                dialog.addEventListener('change', function() {
+                    var result = dialog.value;
+                    callback(result);
+                }, false);
+                dialog.click();
+            };
+
+            var dialogs = {};
+
+            dialogs.saveAs = function(callback, defaultFilename, acceptTypes) {
+                var dialog = document.createElement('input');
+                dialog.type = 'file';
+                dialog.nwsaveas = defaultFilename || '';
+                if (angular.isArray(acceptTypes)) {
+                    dialog.accept = acceptTypes.join(',');
+                } else if (angular.isString(acceptTypes)) {
+                    dialog.accept = acceptTypes;
+                }
+                callDialog(dialog, callback);
+            };
+
+            dialogs.openFile = function(callback, multiple, acceptTypes) {
+                var dialog = document.createElement('input');
+                dialog.type = 'file';
+                if (multiple === true) {
+                    dialog.multiple = 'multiple';
+                }
+                if (angular.isArray(acceptTypes)) {
+                    dialog.accept = acceptTypes.join(',');
+                } else if (angular.isString(acceptTypes)) {
+                    dialog.accept = acceptTypes;
+                }
+                callDialog(dialog, callback);
+            };
+
+            dialogs.openDir = function(callback) {
+                var dialog = document.createElement('input');
+                dialog.type = 'file';
+                dialog.nwdirectory = 'nwdirectory';
+                callDialog(dialog, callback);
+            };
+
+            return dialogs;
+        }]);
+    fileHandler = 'fileDialog';
 }
 
 //Initialize Application
