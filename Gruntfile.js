@@ -34,12 +34,20 @@ module.exports = function(grunt) {
                     'app/dist.min.js': ['app/dist.js']
                 }
             }
+        },
+        compass: {
+            dist: {
+                options: {
+                    config: 'config.rb'
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-compass');
 
-    grunt.registerTask('default', ['concat', 'uglify',]);
+    grunt.registerTask('default', ['concat', 'uglify', 'compass']);
 
 };
