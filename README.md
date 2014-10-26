@@ -57,6 +57,9 @@ Application Folder
 
 ###Windows
 
+Note: Sounds are currently deactivated in the Windows version. I have tracked the issues down to sounds. I am not 
+sure if this is because the sounds get loaded from files or using the sounds themselves in the Windows version.
+
 [Download](http://stephanmiller.com/sites/default/files/software/windows.zip)
 
 [Alternate Download](https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=0)
@@ -162,6 +165,9 @@ and currently not supported by Angular for two way data binding. But I figured o
 get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
 I want the final application is structured, I can make a better choice among the various JavaScript frameworks. 
 Currently leaning toward React.js.
+* I am now using grunt to concat and minify the js and css instead of head.js. It seemed the windows versions of the 
+software had an issue loading the javascript files in the correct order or something. Only a windows issue that I 
+solved by concatenating the js files.
 
 ##Software Features I May Emulate
 

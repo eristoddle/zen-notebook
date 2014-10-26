@@ -6,10 +6,10 @@ try {
     nativeMenuBar.createMacBuiltin("Zen Notebook");
     win.menu = nativeMenuBar;
 } catch (ex) {
-    console.log(ex.message);
+    //console.log(ex.message);
 }
 var fs = require('fs');
-//gui.App.setCrashDumpDir('./');
+//gui.App.setCrashDumpDir('log');
 
 //Initialize Application
 //https://github.com/ocombe/ocLazyLoad

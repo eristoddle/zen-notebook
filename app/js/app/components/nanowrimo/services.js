@@ -95,7 +95,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
                 fs.writeFileSync(filename, book);
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 storageFactory.setStorage('error', err, 'nanowrimo');
                 storageFactory.setStorage('recovery', book, 'nanowrimo');
             }

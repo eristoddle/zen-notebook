@@ -152,7 +152,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                 fs.writeFileSync(filename, journal);
                 window.localStorage && window.localStorage.setItem('file', this.file);
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 window.localStorage && window.localStorage.setItem('error', err);
                 window.localStorage && window.localStorage.setItem('recovery', journal);
             }

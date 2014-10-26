@@ -70,6 +70,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
 
 //http://buzz.jaysalvat.com/documentation/sound/
 //http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
+//TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     return {
         theme : window.localStorage && window.localStorage.getItem('theme'),

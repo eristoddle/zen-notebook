@@ -28,7 +28,7 @@
         "resizable": true, 
         "title": "Zen Notebook", 
         "always-on-top": false, 
-        "frame": true, 
+        "frame": false, 
         "kiosk": false, 
         "height": 600, 
         "min_height": 480, 
@@ -38,7 +38,7 @@
         "position": "", 
         "show_in_taskbar": true, 
         "width": 900, 
-        "toolbar": true, 
+        "toolbar": false, 
         "icon": "icon.png"
     }, 
     "version": "0.1.0", 
