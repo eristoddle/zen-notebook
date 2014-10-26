@@ -14,12 +14,8 @@ module.exports = function(grunt) {
                     'app/js/app/directives.js',
                     'app/js/app/controllers.js',
                     'app/js/app/services.js',
-                    'app/js/app/components/notebook/directives.js',
-                    'app/js/app/components/notebook/controllers.js',
-                    'app/js/app/components/notebook/services.js',
-                    'app/js/app/components/nanowrimo/directives.js',
-                    'app/js/app/components/nanowrimo/controllers.js',
-                    'app/js/app/components/nanowrimo/services.js'
+                    'app/js/app/components/notebook/*.js',
+                    'app/js/app/components/nanowrimo/*.js'
                 ],
                 // the location of the resulting JS file
                 "dest": 'app/js/dist.js'
