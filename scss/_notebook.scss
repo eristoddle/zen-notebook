@@ -1,12 +1,65 @@
-// Library imports
-@import "compass/reset";
-@import "compass/css3";
-@import "compass/typography";
-@import "singularitygs";
-@import "toolkit";
-@import "breakpoint";
-
-// Project specific imports
-@import "variables";
-@import "theme";
-@import "calendar";
+div.cal {
+  display: inline-block;
+  height: 170px;
+  min-height: 140px;
+  margin: 40px;
+  font-size: 0.6em;
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+    padding-bottom: 5px;
+    color: #888;
+    border: 0px;
+  }
+  td {
+    &.cal-head {
+      text-align: center;
+      padding-bottom: 5px;
+      color: #888;
+      border: 0px;
+    }
+    text-align: center;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+  }
+  div {
+    &.cal-day {
+      padding: 6px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    &.cal-content{
+      background-color: $gray;
+      color: #AAA;
+    }
+    &.cal-highlight {
+      background-color: #AAA;
+      color: #FFF;
+    }
+    &.cal-highlight-active {
+      background-color: #222;
+      color: #fff;
+    }
+    &.cal-day:hover {
+      border: 1px solid #111;
+    }
+  }
+  .navigation{
+    color: #888;
+    margin-top: 10px;
+    .icon-triangle-left{
+      float: left;
+      cursor: pointer;
+    }
+    .today{
+      margin: 0 77px;
+      cursor: pointer;
+    }
+    .icon-triangle-right{
+      float: right;
+      cursor: pointer;
+    }
+  }
+}
