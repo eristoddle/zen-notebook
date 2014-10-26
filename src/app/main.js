@@ -31,8 +31,11 @@ if(isNodeWebkit) {
 //Initialize Application
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
     .run(function($rootScope, storageFactory){
-        //OS
+        //Sound
         $rootScope.mute = mute;
+        if(storageFactory.getStorage('mute')){
+            $rootScope.mute = mute;
+        }
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
