@@ -39,9 +39,16 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            scripts: {
+                files: 'src/app/**/*.js',
+                tasks: ['concat', 'uglify'],
+                options: {
+                    debounceDelay: 250
+                }
+            },
             src: {
-                files: ['src/app/**/*.js', 'scss/*.scss'],
-                tasks: ['default']
+                files: 'scss/*.scss',
+                tasks: ['compass']
             }
         }
     });
