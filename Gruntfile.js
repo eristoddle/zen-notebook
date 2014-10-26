@@ -25,16 +25,6 @@ module.exports = function(grunt) {
                 "dest": 'app/dist.js'
             }
         },
-        concat_css: {
-//            all: {
-//                src: [
-//                    "app/css/app.css",
-//                    "app/css/notebook.css",
-//                    "app/css/namowrimo.css"
-//                ],
-//                dest: "app/dist.css"
-//            }
-        },
         uglify: {
             options: {
                 mangle: false
@@ -44,23 +34,11 @@ module.exports = function(grunt) {
                     'app/dist.min.js': ['app/dist.js']
                 }
             }
-        },
-        qunit: {
-        },
-        jshint: {
-        },
-        watch: {
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    //grunt.loadNpmTasks('grunt-contrib-jshint');
-    //grunt.loadNpmTasks('grunt-contrib-qunit');
-    //grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.loadNpmTasks('grunt-concat-css');
-
-    //grunt.registerTask('test', ['jshint', 'qunit']);
 
     grunt.registerTask('default', ['concat', 'uglify',]);
 
