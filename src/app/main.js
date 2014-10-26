@@ -1,24 +1,30 @@
+var os="Unknown ";
+if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
+if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
+if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
+
 //TODO: Seperate node code from angular
+//NW
 var gui = require('nw.gui');
 var win = gui.Window.get();
-var nativeMenuBar = new gui.Menu({ type: "menubar" });
-try {
-    nativeMenuBar.createMacBuiltin("Zen Notebook");
-    win.menu = nativeMenuBar;
-} catch (ex) {
+if(os == 'Mac'){
+    var nativeMenuBar = new gui.Menu({ type: "menubar" });
+    try {
+        nativeMenuBar.createMacBuiltin("Zen Notebook");
+        win.menu = nativeMenuBar;
+    } catch (ex) {
 
+    }
 }
+
+//Node
 var fs = require('fs');
 
 //Initialize Application
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog'])
     .run(function($rootScope, storageFactory){
         //OS
-        $rootScope.os="Unknown ";
-        if (navigator.appVersion.indexOf("Win")!=-1) $rootScope.os="Windows";
-        if (navigator.appVersion.indexOf("Mac")!=-1) $rootScope.os="Mac";
-        if (navigator.appVersion.indexOf("Linux")!=-1) $rootScope.os="Linux";
-
+        $rootScope.os = os;
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
