@@ -302,10 +302,10 @@ try {
     nativeMenuBar.createMacBuiltin("Zen Notebook");
     win.menu = nativeMenuBar;
 } catch (ex) {
-    console.log(ex.message);
+    //console.log(ex.message);
 }
 var fs = require('fs');
-//gui.App.setCrashDumpDir('./');
+//gui.App.setCrashDumpDir('log');
 
 //Initialize Application
 //https://github.com/ocombe/ocLazyLoad
@@ -331,7 +331,16 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Bind events to content
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
-                $injector.get('themeFactory').themeSound(event);
+                //TODO: I think Windows version has error if buzz is used
+                //TODO: Move this to main
+                var OSName="Unknown OS";
+                if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+                if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+                if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+                if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+                if (OSName != 'Windows'){
+                    $injector.get('themeFactory').themeSound(event);
+                }
             });
 
             //Event sent by component whenever content should change
@@ -495,6 +504,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
 
 //http://buzz.jaysalvat.com/documentation/sound/
 //http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
+//TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     return {
         theme : window.localStorage && window.localStorage.getItem('theme'),
@@ -806,7 +816,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', function ($rootScope) {
                 fs.writeFileSync(filename, journal);
                 window.localStorage && window.localStorage.setItem('file', this.file);
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 window.localStorage && window.localStorage.setItem('error', err);
                 window.localStorage && window.localStorage.setItem('recovery', journal);
             }
@@ -1087,7 +1097,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
                 fs.writeFileSync(filename, book);
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 storageFactory.setStorage('error', err, 'nanowrimo');
                 storageFactory.setStorage('recovery', book, 'nanowrimo');
             }
