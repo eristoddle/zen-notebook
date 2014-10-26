@@ -1,4 +1,4 @@
-zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', function ($rootScope, storageFactory) {
+zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
     return {
         documents: {},
         file: null,
@@ -92,7 +92,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
             this.setChapterContent(this.activeDateText());
             book = JSON.stringify(this);
             try {
-                fs.writeFileSync(filename, book);
+                fileDialog.writeFile(filename, book);
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
             } catch (err) {
                 //console.log(err);
@@ -101,7 +101,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', functio
             }
         },
         loadBook: function (file) {
-            var data = fs.readFileSync(file);
+            var data = fileDialog.readFile(file);
             tempBook = JSON.parse(data);
             this.file = file;
             storageFactory.setStorage('file', this.file, 'nanowrimo');

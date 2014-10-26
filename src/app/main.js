@@ -20,10 +20,7 @@ if(isNodeWebkit) {
 
         }
     }
-
-    //Node
-    var fs = require('fs');
-    fileHandler = 'fileDialog';
+    fileHandler = 'nwDialog';
 }
 
 //Initialize Application

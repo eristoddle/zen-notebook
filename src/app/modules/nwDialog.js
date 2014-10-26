@@ -1,6 +1,7 @@
 //TODO: Move all Node functionality here and rename
-angular.module('fileDialog', [])
+angular.module('nwDialog', [])
     .factory('fileDialog', [function(){
+        var fs = require('fs');
         var callDialog = function(dialog, callback) {
             dialog.addEventListener('change', function() {
                 callback(dialog.value);
