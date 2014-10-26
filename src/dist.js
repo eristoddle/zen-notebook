@@ -311,6 +311,10 @@ var fs = require('fs');
 //https://github.com/ocombe/ocLazyLoad
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'DWand.nw-fileDialog'])
     .run(function($rootScope, storageFactory){
+        $rootScope.os="Unknown ";
+        if (navigator.appVersion.indexOf("Win")!=-1) $rootScope.os="Windows";
+        if (navigator.appVersion.indexOf("Mac")!=-1) $rootScope.os="MacOS";
+        if (navigator.appVersion.indexOf("Linux")!=-1) $rootScope.os="Linux";
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
             $rootScope.active_component = 'notebook';
@@ -332,13 +336,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
                 //TODO: I think Windows version has error if buzz is used
-                //TODO: Move this to main
-                var OSName="Unknown OS";
-                if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
-                if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-                if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
-                if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
-                if (OSName != 'Windows'){
+                if ($rootScope.os != 'Windows'){
                     $injector.get('themeFactory').themeSound(event);
                 }
             });
@@ -406,7 +404,7 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
     $scope.left = {};
 
     $scope.$on('toggleLeft', function () {
-        $scope.left.partial = 'js/app/components/' + $rootScope.active_component + '/sidebar.html';
+        $scope.left.partial = 'partials/' + $rootScope.active_component + '/sidebar.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);

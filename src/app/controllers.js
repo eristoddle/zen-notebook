@@ -52,7 +52,7 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
     $scope.left = {};
 
     $scope.$on('toggleLeft', function () {
-        $scope.left.partial = 'js/app/components/' + $rootScope.active_component + '/sidebar.html';
+        $scope.left.partial = 'partials/' + $rootScope.active_component + '/sidebar.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
