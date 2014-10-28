@@ -34,7 +34,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 this.setChapterContent(this.activeDateText());
                 this.saveBook(file);
             } else {
-                //TODO: Warning of lost data
+                //TODO: Create file?
             }
         },
         addChapter: function(name){

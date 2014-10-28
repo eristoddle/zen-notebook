@@ -5,7 +5,6 @@ if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
-
 //Global
 var win;
 var mute = false;

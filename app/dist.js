@@ -375,7 +375,6 @@ if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
-
 //Global
 var win;
 var mute = false;
@@ -1075,7 +1074,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 this.setChapterContent(this.activeDateText());
                 this.saveBook(file);
             } else {
-                //TODO: Warning of lost data
+                //TODO: Create file?
             }
         },
         addChapter: function(name){
