@@ -5,26 +5,13 @@ if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
+
+//Global
+var win;
 var mute = false;
 
 //NW
 if(isNodeWebkit) {
-    //TODO: Create OS based modules that are injected into the application
-    var gui = require('nw.gui');
-    var win = gui.Window.get();
-    if (os == 'Mac') {
-        var nativeMenuBar = new gui.Menu({ type: "menubar" });
-        try {
-            nativeMenuBar.createMacBuiltin("Zen Notebook");
-            win.menu = nativeMenuBar;
-        } catch (ex) {
-
-        }
-    }
-    //TODO: I think Windows version has error if buzz is used
-    if(os = "Windows"){
-        mute = true;
-    }
     platformModule = 'zenNodeWebkitModule';
 }else{
     platformModule = 'zenWebModule';

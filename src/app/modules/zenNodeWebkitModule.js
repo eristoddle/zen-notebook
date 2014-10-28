@@ -53,4 +53,21 @@ angular.module('zenNodeWebkitModule', [])
         };
 
         return dialogs;
-    }]);
+    }])
+    .run(function($rootScope){
+        var gui = require('nw.gui');
+        win = gui.Window.get();
+        if (os == 'Mac') {
+            var nativeMenuBar = new gui.Menu({ type: "menubar" });
+            try {
+                nativeMenuBar.createMacBuiltin("Zen Notebook");
+                win.menu = nativeMenuBar;
+            } catch (ex) {
+
+            }
+        }
+        //TODO: I think Windows version has error if buzz is used
+        if(os = "Windows"){
+            mute = true;
+        }
+    });
