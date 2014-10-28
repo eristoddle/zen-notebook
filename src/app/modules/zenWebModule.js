@@ -1,7 +1,5 @@
-//TODO: Move all Node functionality here and rename
-angular.module('nwDialog', [])
+angular.module('zenWebModule', [])
     .factory('fileDialog', [function(){
-        var fs = require('fs');
         var callDialog = function(dialog, callback) {
             dialog.addEventListener('change', function() {
                 callback(dialog.value);
@@ -45,11 +43,11 @@ angular.module('nwDialog', [])
         };
 
         dialogs.writeFile = function(filename, content){
-            return fs.writeFileSync(filename, content);
+            //return fs.writeFileSync(filename, content);
         };
 
         dialogs.readFile = function(file){
-            return fs.readFileSync(file);
+            //return fs.readFileSync(file);
         };
 
         return dialogs;

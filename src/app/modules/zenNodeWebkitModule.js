@@ -1,6 +1,7 @@
 //TODO: Move all Node functionality here and rename
-angular.module('webDialog', [])
+angular.module('zenNodeWebkitModule', [])
     .factory('fileDialog', [function(){
+        var fs = require('fs');
         var callDialog = function(dialog, callback) {
             dialog.addEventListener('change', function() {
                 callback(dialog.value);
@@ -44,11 +45,11 @@ angular.module('webDialog', [])
         };
 
         dialogs.writeFile = function(filename, content){
-            //return fs.writeFileSync(filename, content);
+            return fs.writeFileSync(filename, content);
         };
 
         dialogs.readFile = function(file){
-            //return fs.readFileSync(file);
+            return fs.readFileSync(file);
         };
 
         return dialogs;

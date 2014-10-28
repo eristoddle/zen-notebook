@@ -25,9 +25,9 @@ if(isNodeWebkit) {
     if(os = "Windows"){
         mute = true;
     }
-    fileHandler = 'nwDialog';
+    fileHandler = 'zenNodeWebkitModule';
 }else{
-    fileHandler = 'webDialog';
+    fileHandler = 'zenWebModule';
 }
 
 //Initialize Application
