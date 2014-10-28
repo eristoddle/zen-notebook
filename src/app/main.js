@@ -4,7 +4,7 @@ if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
 if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
 var isNodeWebkit = (typeof process == "object");
-var fileHandler = null;
+var platformModule = null;
 var mute = false;
 
 //NW
@@ -25,13 +25,13 @@ if(isNodeWebkit) {
     if(os = "Windows"){
         mute = true;
     }
-    fileHandler = 'zenNodeWebkitModule';
+    platformModule = 'zenNodeWebkitModule';
 }else{
-    fileHandler = 'zenWebModule';
+    platformModule = 'zenWebModule';
 }
 
 //Initialize Application
-var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
+var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
     .run(function($rootScope, storageFactory){
         //Sound
         $rootScope.mute = mute;
