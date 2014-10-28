@@ -297,6 +297,61 @@ angular.module('nwDialog', [])
 
         return dialogs;
     }]);
+//TODO: Move all Node functionality here and rename
+angular.module('webDialog', [])
+    .factory('fileDialog', [function(){
+        var callDialog = function(dialog, callback) {
+            dialog.addEventListener('change', function() {
+                callback(dialog.value);
+            }, false);
+            dialog.click();
+        };
+
+        var dialogs = {};
+
+        dialogs.saveAs = function(callback, defaultFilename, acceptTypes) {
+            var dialog = document.createElement('input');
+            dialog.type = 'file';
+            dialog.nwsaveas = defaultFilename || '';
+            if (angular.isArray(acceptTypes)) {
+                dialog.accept = acceptTypes.join(',');
+            } else if (angular.isString(acceptTypes)) {
+                dialog.accept = acceptTypes;
+            }
+            callDialog(dialog, callback);
+        };
+
+        dialogs.openFile = function(callback, multiple, acceptTypes) {
+            var dialog = document.createElement('input');
+            dialog.type = 'file';
+            if (multiple === true) {
+                dialog.multiple = 'multiple';
+            }
+            if (angular.isArray(acceptTypes)) {
+                dialog.accept = acceptTypes.join(',');
+            } else if (angular.isString(acceptTypes)) {
+                dialog.accept = acceptTypes;
+            }
+            callDialog(dialog, callback);
+        };
+
+        dialogs.openDir = function(callback) {
+            var dialog = document.createElement('input');
+            dialog.type = 'file';
+            dialog.nwdirectory = 'nwdirectory';
+            callDialog(dialog, callback);
+        };
+
+        dialogs.writeFile = function(filename, content){
+            //return fs.writeFileSync(filename, content);
+        };
+
+        dialogs.readFile = function(file){
+            //return fs.readFileSync(file);
+        };
+
+        return dialogs;
+    }]);
 //Detect Platform
 var os="Unknown ";
 if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
@@ -325,6 +380,8 @@ if(isNodeWebkit) {
         mute = true;
     }
     fileHandler = 'nwDialog';
+}else{
+    fileHandler = 'webDialog';
 }
 
 //Initialize Application
@@ -333,7 +390,7 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
         //Sound
         $rootScope.mute = mute;
         if(storageFactory.getStorage('mute')){
-            $rootScope.mute = mute;
+            $rootScope.mute = storageFactory.getStorage('mute');
         }
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
@@ -343,113 +400,6 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
         //$rootScope.active_component = 'nanowrimo';
         $rootScope.active_component = 'notebook';
     });
-//interact with contenteditable region
-zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($rootScope, $injector) {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            //Choose component
-            var factory = $injector.get($rootScope.active_component + 'Factory');
-            //Load component
-            element.html(factory.onLoad());
-
-            //Bind events to content
-            element.bind("blur keyup change focus", function (event) {
-                scope.$apply(factory.onWrite(element.html()));
-                if ($rootScope.mute == true){
-                    $injector.get('themeFactory').themeSound(event);
-                }
-            });
-
-            //Event sent by component whenever content should change
-            $rootScope.$on('changeContent', function (event, content){
-                factory.onWrite(element.html());
-                element.html(content);
-                factory.onWrite(element.html());
-            });
-        }
-    };
-}]);
-zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    //TODO: This can be part of the theme service
-    $scope.themes = {
-        zen_dark: 'zen dark',
-        zen_light: 'zen light',
-        terminal: 'terminal courier',
-        igcognito: 'incognito',
-        typewriter: 'typewriter light',
-        carbon: 'carbon dark',
-        relax: 'relax dark'
-    };
-    /*TODO: Implement theming system where there are classes in the template indicating
-     where a theme class has to be applied: theme-font, theme-main-color, theme-text-color
-     */
-    $scope.theme = window.localStorage && window.localStorage.getItem('theme');
-    if (!$scope.theme) {
-        $scope.theme = 'zen dark';
-    }
-    $scope.count = 0;
-
-    $scope.$on('body', function () {
-        var message = menuFactory.subscribeClick(),
-            nextCount,
-            rowCount = 0;
-        if ($scope.count == 7) {
-            $scope.count = 0;
-        }
-        nextCount = $scope.count + 1;
-        if (message.action == 'theme') {
-            for (var key in $scope.themes) {
-                rowCount = rowCount + 1;
-                if (rowCount == nextCount) {
-                    $scope.theme = $scope.themes[key];
-                    window.localStorage && window.localStorage.setItem('theme', $scope.theme);
-                    $scope.count = $scope.count + 1;
-                    return;
-                }
-            }
-        }
-    });
-}]);
-
-zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    var message = menuFactory.subscribeClick();
-    $scope.menu = menuFactory.menus.nav;
-    $scope.expr = function (locals) {
-        menuFactory.publishClick(locals);
-    }
-}]);
-
-zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
-    $scope.left = {};
-
-    $scope.$on('toggleLeft', function () {
-        $scope.left.partial = 'components/' + $rootScope.active_component + '.html';
-        $scope.leftChangeClass = !$scope.leftChangeClass;
-        $scope.expr = function (locals) {
-            menuFactory.publishClick(locals);
-        };
-    });
-}]);
-
-//TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    $scope.$on('toggleFoot', function () {
-        var message = menuFactory.subscribeClick(),
-            menus = menuFactory.menus.foot,
-            menu = menus[message.action];
-        $scope.footChangeClass = !$scope.footChangeClass;
-        if (menu) {
-            $scope.heading = menu.heading;
-            $scope.body = menu.body;
-            $scope.buttons = menu.buttons;
-        }
-
-        $scope.expr = function (locals) {
-            menuFactory.publishClick(locals);
-        }
-    });
-}]);
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
@@ -613,6 +563,113 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
             window.localStorage.setItem(key, data);
         }
     }
+}]);
+//interact with contenteditable region
+zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($rootScope, $injector) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            //Choose component
+            var factory = $injector.get($rootScope.active_component + 'Factory');
+            //Load component
+            element.html(factory.onLoad());
+
+            //Bind events to content
+            element.bind("blur keyup change focus", function (event) {
+                scope.$apply(factory.onWrite(element.html()));
+                if ($rootScope.mute == true){
+                    $injector.get('themeFactory').themeSound(event);
+                }
+            });
+
+            //Event sent by component whenever content should change
+            $rootScope.$on('changeContent', function (event, content){
+                factory.onWrite(element.html());
+                element.html(content);
+                factory.onWrite(element.html());
+            });
+        }
+    };
+}]);
+zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    //TODO: This can be part of the theme service
+    $scope.themes = {
+        zen_dark: 'zen dark',
+        zen_light: 'zen light',
+        terminal: 'terminal courier',
+        igcognito: 'incognito',
+        typewriter: 'typewriter light',
+        carbon: 'carbon dark',
+        relax: 'relax dark'
+    };
+    /*TODO: Implement theming system where there are classes in the template indicating
+     where a theme class has to be applied: theme-font, theme-main-color, theme-text-color
+     */
+    $scope.theme = window.localStorage && window.localStorage.getItem('theme');
+    if (!$scope.theme) {
+        $scope.theme = 'zen dark';
+    }
+    $scope.count = 0;
+
+    $scope.$on('body', function () {
+        var message = menuFactory.subscribeClick(),
+            nextCount,
+            rowCount = 0;
+        if ($scope.count == 7) {
+            $scope.count = 0;
+        }
+        nextCount = $scope.count + 1;
+        if (message.action == 'theme') {
+            for (var key in $scope.themes) {
+                rowCount = rowCount + 1;
+                if (rowCount == nextCount) {
+                    $scope.theme = $scope.themes[key];
+                    window.localStorage && window.localStorage.setItem('theme', $scope.theme);
+                    $scope.count = $scope.count + 1;
+                    return;
+                }
+            }
+        }
+    });
+}]);
+
+zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    var message = menuFactory.subscribeClick();
+    $scope.menu = menuFactory.menus.nav;
+    $scope.expr = function (locals) {
+        menuFactory.publishClick(locals);
+    }
+}]);
+
+zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+    $scope.left = {};
+
+    $scope.$on('toggleLeft', function () {
+        $scope.left.partial = 'components/' + $rootScope.active_component + '.html';
+        $scope.leftChangeClass = !$scope.leftChangeClass;
+        $scope.expr = function (locals) {
+            menuFactory.publishClick(locals);
+        };
+    });
+}]);
+
+//TODO: Modularize how markup is built
+zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    $scope.$on('toggleFoot', function () {
+        var message = menuFactory.subscribeClick(),
+            menus = menuFactory.menus.foot,
+            menu = menus[message.action];
+        $scope.footChangeClass = !$scope.footChangeClass;
+        if (menu) {
+            $scope.heading = menu.heading;
+            $scope.body = menu.body;
+            $scope.buttons = menu.buttons;
+        }
+
+        $scope.expr = function (locals) {
+            menuFactory.publishClick(locals);
+        }
+    });
 }]);
 zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [

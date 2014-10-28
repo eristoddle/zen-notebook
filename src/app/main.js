@@ -26,6 +26,8 @@ if(isNodeWebkit) {
         mute = true;
     }
     fileHandler = 'nwDialog';
+}else{
+    fileHandler = 'webDialog';
 }
 
 //Initialize Application
@@ -34,7 +36,7 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', fileHandler])
         //Sound
         $rootScope.mute = mute;
         if(storageFactory.getStorage('mute')){
-            $rootScope.mute = mute;
+            $rootScope.mute = storageFactory.getStorage('mute');
         }
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');

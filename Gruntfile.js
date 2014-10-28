@@ -11,9 +11,9 @@ module.exports = function(grunt) {
                     "src/lib/buzz.min.js",
                     'src/app/modules/*.js',
                     'src/app/main.js',
+                    'src/app/services.js',
                     'src/app/directives.js',
                     'src/app/controllers.js',
-                    'src/app/services.js',
                     'src/app/components/notebook/*.js',
                     'src/app/components/nanowrimo/*.js'
                 ],
