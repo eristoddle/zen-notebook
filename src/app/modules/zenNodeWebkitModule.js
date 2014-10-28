@@ -54,7 +54,7 @@ angular.module('zenNodeWebkitModule', [])
 
         return dialogs;
     }])
-    .run(function($rootScope){
+    .run(function(){
         var gui = require('nw.gui');
         win = gui.Window.get();
         if (os == 'Mac') {

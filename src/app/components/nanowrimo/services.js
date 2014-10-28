@@ -37,7 +37,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 //TODO: Create file?
             }
         },
-        addChapter: function(name){
+        createChapter: function(name){
             //TODO: Increment default chapter and check that chapter doesn't exist to get overwritten
             if(!name){
                 name = 'Chapter 1';
@@ -47,6 +47,11 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 sort_order: 0,
                 word_count: 0
             }
+            console.log(this.documents);
+        },
+        editChapter: function(old_name, new_name){
+            this.documents[new_name] = this.documents[old_name];
+            delete(this.documents[old_name]);
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {
