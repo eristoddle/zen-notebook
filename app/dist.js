@@ -1036,7 +1036,6 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     };
 }]);
 
-
 zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
     return {
         documents: {},
