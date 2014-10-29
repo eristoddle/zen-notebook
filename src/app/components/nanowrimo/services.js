@@ -8,6 +8,11 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         goalWords: null,
         currentDate: null,
         currentWords: null,
+        chapterCount: function(){
+            var count = 0;
+            for (var k in this.documents) if (this.documents.hasOwnProperty(k)) ++count;
+            return count;
+        },
         onLoad: function(){
             var file = storageFactory.getStorage('file', 'nanowrimo');
             var chapter= storageFactory.getStorage('chapter', 'nanowrimo');
@@ -37,21 +42,21 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 //TODO: Create file?
             }
         },
-        createChapter: function(name){
-            //TODO: Increment default chapter and check that chapter doesn't exist to get overwritten
-            if(!name){
-                name = 'Chapter 1';
-            }
+        createChapter: function(){
+            var name = 'Chapter ' + (this.chapterCount() + 1);
             this.documents[name] = {
+                name: name,
                 content: '',
                 sort_order: 0,
                 word_count: 0
-            }
+            };
             console.log(this.documents);
+            //return name;
         },
         editChapter: function(old_name, new_name){
             this.documents[new_name] = this.documents[old_name];
             delete(this.documents[old_name]);
+            //return new_name;
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {

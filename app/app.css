@@ -582,14 +582,11 @@ div.cal .navigation .icon-triangle-right {
   padding-bottom: 0;
   transition: 0.09s all linear;
 }
-
-/* line 7, ../scss/_nanowrimo.scss */
+/* line 6, ../scss/_nanowrimo.scss */
 .list .item.item-accordion.ng-hide {
   line-height: 0px;
 }
-
-/* line 10, ../scss/_nanowrimo.scss */
-.list .item.item-accordion.ng-hide-add,
-.list .item.item-accordion.ng-hide-remove {
+/* line 9, ../scss/_nanowrimo.scss */
+.list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }

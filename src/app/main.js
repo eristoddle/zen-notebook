@@ -29,6 +29,6 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         if(!$rootScope.active_component){
             $rootScope.active_component = 'notebook';
         }
-        //$rootScope.active_component = 'nanowrimo';
-        $rootScope.active_component = 'notebook';
+        $rootScope.active_component = 'nanowrimo';
+        //$rootScope.active_component = 'notebook';
     });

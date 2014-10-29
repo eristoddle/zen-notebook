@@ -1,19 +1,21 @@
 <h1>NanoWrimo</h1>
 <div class="nanowrimo">
     <div ng-controller="NanowrimoController">
-        <list>
-            <div ng-repeat="group in groups">
+        <div class="list">
+            <div ng-repeat="chapter in chapters">
                 <h2 class="item-stable"
-                          ng-click="toggleGroup(group)"
-                          ng-dblclick="editChapter(group)"
-                          ng-class="{active: isGroupShown(group)}">
-                    <i class="icon" ng-class="isGroupShown(group) ? 'minus' : 'plus'"></i>
+                          ng-dblclick="editChapter(chapter)"
+                          ng-class="{active: isChapterShown(chapter)}">
+                    <span class="icon"
+                          ng-click="toggleChapter(chapter)"
+                          ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
+                    </span>
                     &nbsp;
-                    {{group.name}}
+                    {{chapter.name}}
                 </h2>
                 <div class="item-accordion"
-                          ng-repeat="item in group.items"
-                          ng-show="isGroupShown(group)">
+                          ng-repeat="item in chapter.items"
+                          ng-show="isChapterShown(group)">
                     {{item}}
                 </div>
             </div>
@@ -21,7 +23,7 @@
                 New Chapter
             </div>
 
-        </list>
+        </div>
 
         <div id="stats">
             <div id="word_count">Current Word Count: {{ left.word_count }}</div>

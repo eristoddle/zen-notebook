@@ -399,8 +399,8 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         if(!$rootScope.active_component){
             $rootScope.active_component = 'notebook';
         }
-        //$rootScope.active_component = 'nanowrimo';
-        $rootScope.active_component = 'notebook';
+        $rootScope.active_component = 'nanowrimo';
+        //$rootScope.active_component = 'notebook';
     });
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var factory = $injector.get($rootScope.active_component + 'Factory'),
@@ -554,13 +554,13 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
         getStorage: function(key, component){
             if(component){
-                key = component + '-' + key;
+                key = component + '.' + key;
             }
             return window.localStorage.getItem(key);
         },
         setStorage: function(key, data, component){
             if(component){
-                key = component + '-' + key;
+                key = component + '.' + key;
             }
             window.localStorage.setItem(key, data);
         }
@@ -984,35 +984,22 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
     }
 }]);
 zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
-    var chapters = nanowrimoFactory.documents,
-        loadChapters = function(){
-            var count = 0;
-            for(var chapter in chapters){
-                $scope.groups[count] = {
-                    name: chapter,
-                    items: []
-                };
-                for (var j=0; j<3; j++) {
-                    $scope.groups[count].items.push(chapter + '-' + j);
-                }
-                count = count + 1;
-            }
-        };
-    $scope.groups = [];
+    $scope.chapters = nanowrimoFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'},
         {title: 'Save Book', class: 'save', action: 'save'}
     ];
-    loadChapters();
-    $scope.toggleGroup = function(group) {
-        if ($scope.isGroupShown(group)) {
-            $scope.shownGroup = null;
+
+    $scope.toggleChapter = function(chapter) {
+        if ($scope.isChapterShown(chapter)) {
+            $scope.shownChapter = null;
         } else {
-            $scope.shownGroup = group;
+            $scope.shownChapter = chapter;
         }
     };
-    $scope.isGroupShown = function(group) {
-        return $scope.shownGroup === group;
+
+    $scope.isChapterShown = function(chapter) {
+        return $scope.shownChapter === chapter;
     };
     $scope.$on('toggleLeft', function () {
 //        var stats = nanowrimoFactory.getSidebar();
@@ -1020,6 +1007,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
 //            $scope.left[key] = stats[key];
 //        }
     });
+
     $scope.expr = function(button) {
         if (button.action == 'open') {
             fileDialog.openFile(
@@ -1041,8 +1029,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
     $scope.createChapter = function(){
-        nanowrimoFactory.createChapter('Chapter 1');
-        loadChapters();
+        nanowrimoFactory.createChapter();
     };
     $scope.editChapter = function(title){
         nanowrimoFactory.editChapter('Chapter 1', title);
@@ -1060,6 +1047,11 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         goalWords: null,
         currentDate: null,
         currentWords: null,
+        chapterCount: function(){
+            var count = 0;
+            for (var k in this.documents) if (this.documents.hasOwnProperty(k)) ++count;
+            return count;
+        },
         onLoad: function(){
             var file = storageFactory.getStorage('file', 'nanowrimo');
             var chapter= storageFactory.getStorage('chapter', 'nanowrimo');
@@ -1089,21 +1081,21 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 //TODO: Create file?
             }
         },
-        createChapter: function(name){
-            //TODO: Increment default chapter and check that chapter doesn't exist to get overwritten
-            if(!name){
-                name = 'Chapter 1';
-            }
+        createChapter: function(){
+            var name = 'Chapter ' + (this.chapterCount() + 1);
             this.documents[name] = {
+                name: name,
                 content: '',
                 sort_order: 0,
                 word_count: 0
-            }
+            };
             console.log(this.documents);
+            //return name;
         },
         editChapter: function(old_name, new_name){
             this.documents[new_name] = this.documents[old_name];
             delete(this.documents[old_name]);
+            //return new_name;
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {

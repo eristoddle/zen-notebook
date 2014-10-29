@@ -1,33 +1,20 @@
 zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
-    var chapters = nanowrimoFactory.documents,
-        loadChapters = function(){
-            var count = 0;
-            for(var chapter in chapters){
-                $scope.groups[count] = {
-                    name: chapter,
-                    items: []
-                };
-                for (var j=0; j<3; j++) {
-                    $scope.groups[count].items.push(chapter + '-' + j);
-                }
-                count = count + 1;
-            }
-        };
-    $scope.groups = [];
+    $scope.chapters = nanowrimoFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'},
         {title: 'Save Book', class: 'save', action: 'save'}
     ];
-    loadChapters();
-    $scope.toggleGroup = function(group) {
-        if ($scope.isGroupShown(group)) {
-            $scope.shownGroup = null;
+
+    $scope.toggleChapter = function(chapter) {
+        if ($scope.isChapterShown(chapter)) {
+            $scope.shownChapter = null;
         } else {
-            $scope.shownGroup = group;
+            $scope.shownChapter = chapter;
         }
     };
-    $scope.isGroupShown = function(group) {
-        return $scope.shownGroup === group;
+
+    $scope.isChapterShown = function(chapter) {
+        return $scope.shownChapter === chapter;
     };
     $scope.$on('toggleLeft', function () {
 //        var stats = nanowrimoFactory.getSidebar();
@@ -35,6 +22,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
 //            $scope.left[key] = stats[key];
 //        }
     });
+
     $scope.expr = function(button) {
         if (button.action == 'open') {
             fileDialog.openFile(
@@ -56,8 +44,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
     $scope.createChapter = function(){
-        nanowrimoFactory.createChapter('Chapter 1');
-        loadChapters();
+        nanowrimoFactory.createChapter();
     };
     $scope.editChapter = function(title){
         nanowrimoFactory.editChapter('Chapter 1', title);
