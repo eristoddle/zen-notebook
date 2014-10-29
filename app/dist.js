@@ -1096,7 +1096,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 sort_order: 0,
                 word_count: 0
             };
-            this.currentChapter = name;
+            $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
         },
         editChapter: function(old_name, new_name){
             this.documents[new_name] = this.documents[old_name];
@@ -1110,6 +1110,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             this.currentChapter = chapter;
         },
         getChapterContent: function (chapter) {
+            this.currentChapter = chapter;
             try {
                 return this.documents[chapter]['content']
                     .replace(/\n/g, "<br>");
@@ -1159,6 +1160,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             try {
                 fileDialog.writeFile(filename, book);
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
+                storageFactory.setStorage('chapter', this.currentChapter, 'nanowrimo');
             } catch (err) {
                 storageFactory.setStorage('error', err, 'nanowrimo');
                 storageFactory.setStorage('recovery', book, 'nanowrimo');
