@@ -1035,7 +1035,8 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         //nanowrimoFactory.editChapter(old_title, new_title);
     };
     $scope.setChapter = function(chapter){
-        nanowrimoFactory.currentChapter = chapter;
+        $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
+        console.log(nanowrimoFactory);
     };
 }]);
 
@@ -1095,7 +1096,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 sort_order: 0,
                 word_count: 0
             };
-            console.log(this.documents);
+            this.currentChapter = name;
         },
         editChapter: function(old_name, new_name){
             this.documents[new_name] = this.documents[old_name];
@@ -1106,6 +1107,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             if (this.getActiveContent().length > 0) {
                 this.documents[chapter]['content'] = this.getActiveContent();
             }
+            this.currentChapter = chapter;
         },
         getChapterContent: function (chapter) {
             try {
@@ -1113,6 +1115,16 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                     .replace(/\n/g, "<br>");
             } catch (err) {
                 storageFactory.setStorage('error', err, 'nanowrimo');
+                return '';
+            }
+        },
+        onChangeChapter: function(oldChapter, newChapter){
+            if(oldChapter) {
+                this.setChapterContent(oldChapter);
+            }
+            if (this.getChapterContent(newChapter)) {
+                return this.getChapterContent(newChapter);
+            } else {
                 return '';
             }
         },
@@ -1148,7 +1160,6 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 fileDialog.writeFile(filename, book);
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
             } catch (err) {
-                //console.log(err);
                 storageFactory.setStorage('error', err, 'nanowrimo');
                 storageFactory.setStorage('recovery', book, 'nanowrimo');
             }

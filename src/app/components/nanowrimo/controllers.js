@@ -50,6 +50,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         //nanowrimoFactory.editChapter(old_title, new_title);
     };
     $scope.setChapter = function(chapter){
-        nanowrimoFactory.currentChapter = chapter;
+        $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
+        console.log(nanowrimoFactory);
     };
 }]);
