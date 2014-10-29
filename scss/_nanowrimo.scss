@@ -11,7 +11,11 @@
       display: block !important;
     }
   }
+  h2{
+    cursor: pointer;
+  }
   span {
+    cursor: pointer;
     &.icon {
       float: left;
       display: block;
