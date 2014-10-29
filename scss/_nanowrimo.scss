@@ -11,23 +11,17 @@
       display: block !important;
     }
   }
-  h2 {
-    span {
-      &.icon {
-        &.plus:before {
-          content: '+';
-          display: inline-block;
-          float: left;
-          height: 32px;
-          width: 32px;
-        }
-        &.minus:before {
-          content: '-';
-          display: inline-block;
-          float: left;
-          height: 32px;
-          width: 32px;
-        }
+  span {
+    &.icon {
+      float: left;
+      display: block;
+      position: absolute;
+      padding-right: 5px;
+      &.plus:before {
+        content: '+';
+      }
+      &.minus:before {
+        content: '-';
       }
     }
   }

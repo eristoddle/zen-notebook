@@ -3,19 +3,18 @@
     <div ng-controller="NanowrimoController">
         <div class="list">
             <div ng-repeat="chapter in chapters">
+                <span class="icon"
+                      ng-click="toggleChapter(chapter)"
+                      ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
+                </span>
                 <h2 class="item-stable"
-                          ng-dblclick="editChapter(chapter)"
-                          ng-class="{active: isChapterShown(chapter)}">
-                    <span class="icon"
-                          ng-click="toggleChapter(chapter)"
-                          ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
-                    </span>
-                    &nbsp;
+                          ng-dblclick="editChapter(chapter.name)"
+                          ng-click="setChapter(chapter.name)">
                     {{chapter.name}}
                 </h2>
                 <div class="item-accordion"
                           ng-repeat="item in chapter.items"
-                          ng-show="isChapterShown(group)">
+                          ng-show="isChapterShown(chapter)">
                     {{item}}
                 </div>
             </div>

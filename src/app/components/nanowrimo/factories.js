@@ -3,6 +3,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         documents: {},
         file: null,
         title: null,
+        currentChapter: null,
         startDate: null,
         goalDate: null,
         goalWords: null,
@@ -26,7 +27,10 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             } else {
 
             }
-            return this.getChapterContent(chapter);
+            if (chapter){
+                this.currentChapter = chapter;
+                return this.getChapterContent(chapter);
+            }
         },
         onWrite: function(content){
             var count = this.countWords(content);
@@ -36,7 +40,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         onExit: function () {
             var file = storageFactory.getStorage('file', 'nanowrimo');
             if (file) {
-                this.setChapterContent(this.activeDateText());
+                this.setChapterContent(this.currentChapter);
                 this.saveBook(file);
             } else {
                 //TODO: Create file?
@@ -51,17 +55,15 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 word_count: 0
             };
             console.log(this.documents);
-            //return name;
         },
         editChapter: function(old_name, new_name){
             this.documents[new_name] = this.documents[old_name];
             delete(this.documents[old_name]);
-            //return new_name;
+            console.log(this.documents);
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {
-//                this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content'] = this.getActiveContent();
-//                this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
+                this.documents[chapter]['content'] = this.getActiveContent();
             }
         },
         getChapterContent: function (chapter) {

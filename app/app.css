@@ -590,19 +590,18 @@ div.cal .navigation .icon-triangle-right {
 .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
-/* line 17, ../scss/_nanowrimo.scss */
-.list h2 span.icon.plus:before {
-  content: '+';
-  display: inline-block;
+/* line 15, ../scss/_nanowrimo.scss */
+.list span.icon {
   float: left;
-  height: 32px;
-  width: 32px;
+  display: block;
+  position: absolute;
+  padding-right: 5px;
 }
-/* line 24, ../scss/_nanowrimo.scss */
-.list h2 span.icon.minus:before {
+/* line 20, ../scss/_nanowrimo.scss */
+.list span.icon.plus:before {
+  content: '+';
+}
+/* line 23, ../scss/_nanowrimo.scss */
+.list span.icon.minus:before {
   content: '-';
-  display: inline-block;
-  float: left;
-  height: 32px;
-  width: 32px;
 }
