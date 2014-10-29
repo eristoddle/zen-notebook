@@ -575,18 +575,34 @@ div.cal .navigation .icon-triangle-right {
   cursor: pointer;
 }
 
-/* line 1, ../scss/_nanowrimo.scss */
+/* line 2, ../scss/_nanowrimo.scss */
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
   padding-bottom: 0;
   transition: 0.09s all linear;
 }
-/* line 6, ../scss/_nanowrimo.scss */
+/* line 7, ../scss/_nanowrimo.scss */
 .list .item.item-accordion.ng-hide {
   line-height: 0px;
 }
-/* line 9, ../scss/_nanowrimo.scss */
+/* line 10, ../scss/_nanowrimo.scss */
 .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove {
   display: block !important;
+}
+/* line 17, ../scss/_nanowrimo.scss */
+.list h2 span.icon.plus:before {
+  content: '+';
+  display: inline-block;
+  float: left;
+  height: 32px;
+  width: 32px;
+}
+/* line 24, ../scss/_nanowrimo.scss */
+.list h2 span.icon.minus:before {
+  content: '-';
+  display: inline-block;
+  float: left;
+  height: 32px;
+  width: 32px;
 }

@@ -1,12 +1,34 @@
-.list .item.item-accordion {
-  line-height: 38px;
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: 0.09s all linear;
-  &.ng-hide {
-    line-height: 0px;
+.list {
+  .item.item-accordion {
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+    &.ng-hide {
+      line-height: 0px;
+    }
+    &.ng-hide-add, &.ng-hide-remove {
+      display: block !important;
+    }
   }
-  &.ng-hide-add, &.ng-hide-remove {
-    display: block !important;
+  h2 {
+    span {
+      &.icon {
+        &.plus:before {
+          content: '+';
+          display: inline-block;
+          float: left;
+          height: 32px;
+          width: 32px;
+        }
+        &.minus:before {
+          content: '-';
+          display: inline-block;
+          float: left;
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
   }
 }
