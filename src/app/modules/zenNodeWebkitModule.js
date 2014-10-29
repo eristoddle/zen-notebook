@@ -1,4 +1,3 @@
-//TODO: Move all Node functionality here and rename
 angular.module('zenNodeWebkitModule', [])
     .factory('fileDialog', [function(){
         var fs = require('fs');
