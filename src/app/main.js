@@ -27,10 +27,9 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
-            $rootScope.active_component = 'notebook';
+            //$rootScope.active_component = 'notebook';
+            $rootScope.active_component = 'nanowrimo';
         }
-        $rootScope.active_component = 'nanowrimo';
-        //$rootScope.active_component = 'notebook';
         //TODO: Load Configuration and Features here
 
     });

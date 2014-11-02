@@ -396,10 +396,9 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('component');
         if(!$rootScope.active_component){
-            $rootScope.active_component = 'notebook';
+            //$rootScope.active_component = 'notebook';
+            $rootScope.active_component = 'nanowrimo';
         }
-        $rootScope.active_component = 'nanowrimo';
-        //$rootScope.active_component = 'notebook';
         //TODO: Load Configuration and Features here
 
     });
@@ -668,7 +667,7 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 }]);
 
 //TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
     $scope.foot = {};
     $scope.editing_component = false;
     $scope.$on('toggleFoot', function () {
@@ -683,6 +682,7 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
         $scope.changeComponent = function(component){
             $rootScope.active_component = component;
             $scope.editing_component = false;
+            storageFactory.setStorage('active_component', component);
         };
     });
 }]);
