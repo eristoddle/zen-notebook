@@ -73,10 +73,6 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
             menuFactory.publishClick(locals);
         };
 
-        $scope.isFormShown = function() {
-            return $scope.editing_component;
-        };
-
         $scope.changeComponent = function(component){
             $scope.active_component = component;
             $rootScope.active_component = component;
