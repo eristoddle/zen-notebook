@@ -27,14 +27,15 @@
         </div>
 
         <div class="main">
-            <div class="content" contenteditable data-date=""></div>
+            <div class="content" contenteditable></div>
         </div>
 
         <div class="right-sidebar"></div>
 
         <footer class="slide-menu" ng-controller="FootController" ng-mouseleave="expr({sub: 'foot'})">
-            <div class="foot-inner modal" ng-class="{'slide-out':footChangeClass}">
+            <div class="foot-inner modal" ng-model="foot" ng-class="{'slide-out':footChangeClass}">
                 <div class='footer-content'>
+                    <div ng-include="foot.partial"></div>
                     <h1>{{ heading }}</h1>
                     <div ng-bind-html="body"></div>
                     <span ng-repeat="node in buttons"

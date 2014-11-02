@@ -24,8 +24,8 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
                         '<p><a href="http://zen-notebook.com">Home Page</a></p>'
                 },
                 settings: {
-                    heading: 'Configuration',
-                    body: '//TODO: Configuration Options'
+                    heading: '',
+                    body: ''
                 },
                 export: {
                     heading: 'Export',

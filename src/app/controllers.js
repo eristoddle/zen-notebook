@@ -61,7 +61,10 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 }]);
 
 //TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+    $scope.foot = {};
+    $scope.foot.active_component = $rootScope.active_component;
+    $scope.foot.editing_component = $rootScope.editing_component;
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick(),
             menus = menuFactory.menus.foot,
@@ -71,10 +74,19 @@ zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($sc
             $scope.heading = menu.heading;
             $scope.body = menu.body;
             $scope.buttons = menu.buttons;
+            $scope.foot.partial = 'footer/' + message.action + '.html';
         }
 
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
-        }
+        };
+
+        $scope.editComponent = function(){
+            $scope.foot.editing_component = $scope.foot.editing_component === false ? true : false;
+        };
+
+        $scope.changeComponent = function(component){
+            $scope.foot.active_component = component;
+        };
     });
 }]);

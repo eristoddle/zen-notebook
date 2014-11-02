@@ -400,6 +400,7 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         }
         $rootScope.active_component = 'nanowrimo';
         //$rootScope.active_component = 'notebook';
+        $rootScope.editing_component = false;
         //TODO: Load Configuration and Features here
 
     });
@@ -439,8 +440,8 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
                         '<p><a href="http://zen-notebook.com">Home Page</a></p>'
                 },
                 settings: {
-                    heading: 'Configuration',
-                    body: '//TODO: Configuration Options'
+                    heading: '',
+                    body: ''
                 },
                 export: {
                     heading: 'Export',
@@ -687,7 +688,10 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 }]);
 
 //TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+    $scope.foot = {};
+    $scope.foot.active_component = $rootScope.active_component;
+    $scope.foot.editing_component = $rootScope.editing_component;
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick(),
             menus = menuFactory.menus.foot,
@@ -697,11 +701,20 @@ zenNotebook.controller('FootController', ['$scope', 'menuFactory', function ($sc
             $scope.heading = menu.heading;
             $scope.body = menu.body;
             $scope.buttons = menu.buttons;
+            $scope.foot.partial = 'footer/' + message.action + '.html';
         }
 
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
-        }
+        };
+
+        $scope.editComponent = function(){
+            $scope.foot.editing_component = $scope.foot.editing_component === false ? true : false;
+        };
+
+        $scope.changeComponent = function(component){
+            $scope.foot.active_component = component;
+        };
     });
 }]);
 zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
