@@ -400,7 +400,6 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         }
         $rootScope.active_component = 'nanowrimo';
         //$rootScope.active_component = 'notebook';
-        $rootScope.editing_component = false;
         //TODO: Load Configuration and Features here
 
     });
@@ -431,18 +430,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     return {
         message: null,
         menus: {
-            foot: {
-                settings: {
-                    heading: '',
-                    body: ''
-                },
-                export: {
-                    heading: 'Export',
-                    buttons: [
-                        {title: 'Export', class: 'export', sub: 'nw', action: 'export'}
-                    ]
-                }
-            },
             nav: nav
         },
         publishClick: function (message) {
@@ -683,12 +670,9 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 //TODO: Modularize how markup is built
 zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
     $scope.foot = {};
-    $scope.active_component = $rootScope.active_component;
-    $scope.editing_component = $rootScope.editing_component;
+    $scope.editing_component = false;
     $scope.$on('toggleFoot', function () {
-        var message = menuFactory.subscribeClick(),
-            menus = menuFactory.menus.foot,
-            menu = menus[message.action];
+        var message = menuFactory.subscribeClick();
         $scope.footChangeClass = !$scope.footChangeClass;
         $scope.foot.partial = 'footer/' + message.action + '.html';
 
@@ -696,11 +680,15 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
             menuFactory.publishClick(locals);
         };
 
+        $scope.isFormShown = function() {
+            return $scope.editing_component;
+        };
+
         $scope.changeComponent = function(component){
             $scope.active_component = component;
-            $scope.editing_component = false;
-            $rootScope.editing_component = false;
             $rootScope.active_component = component;
+            $scope.editing_component = false;
+            console.log($scope);
         };
     });
 }]);
@@ -1066,7 +1054,6 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     };
     $scope.setChapter = function(chapter){
         $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
-        console.log(nanowrimoFactory);
     };
     $scope.startEditing = function(chapter){
         $scope.setChapter(chapter);
@@ -1150,7 +1137,6 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 this.documents[new_name].old_name = new_name;
             }
             this.documents[new_name].editing = false;
-            console.log(this.documents);
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {

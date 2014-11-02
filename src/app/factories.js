@@ -15,18 +15,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     return {
         message: null,
         menus: {
-            foot: {
-                settings: {
-                    heading: '',
-                    body: ''
-                },
-                export: {
-                    heading: 'Export',
-                    buttons: [
-                        {title: 'Export', class: 'export', sub: 'nw', action: 'export'}
-                    ]
-                }
-            },
             nav: nav
         },
         publishClick: function (message) {

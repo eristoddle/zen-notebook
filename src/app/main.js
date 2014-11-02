@@ -31,7 +31,6 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         }
         $rootScope.active_component = 'nanowrimo';
         //$rootScope.active_component = 'notebook';
-        $rootScope.editing_component = false;
         //TODO: Load Configuration and Features here
 
     });

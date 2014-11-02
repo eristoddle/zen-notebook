@@ -50,7 +50,6 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     };
     $scope.setChapter = function(chapter){
         $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
-        console.log(nanowrimoFactory);
     };
     $scope.startEditing = function(chapter){
         $scope.setChapter(chapter);

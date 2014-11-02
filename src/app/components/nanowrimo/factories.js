@@ -68,7 +68,6 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 this.documents[new_name].old_name = new_name;
             }
             this.documents[new_name].editing = false;
-            console.log(this.documents);
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {
