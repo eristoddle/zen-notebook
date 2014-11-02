@@ -403,6 +403,16 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         //TODO: Load Configuration and Features here
 
     });
+//In order to use filter by, have to convert objects to an array
+zenNotebook.filter('object2Array', function() {
+    return function(input) {
+        var out = [];
+        for(i in input){
+            out.push(input[i]);
+        }
+        return out;
+    }
+});
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
@@ -1119,13 +1129,14 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             }
         },
         createChapter: function(){
-            var name = 'Chapter ' + (this.chapterCount() + 1);
+            var count = this.chapterCount() + 1,
+                name = 'Chapter ' + (count);
             this.documents[name] = {
                 name: name,
                 old_name: name,
                 editing: false,
                 content: '',
-                sort_order: 0,
+                sort_order: count,
                 word_count: 0
             };
             $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
@@ -1143,7 +1154,9 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         setChapterContent: function (chapter){
             if (this.getActiveContent().length > 0) {
-                this.documents[chapter]['content'] = this.getActiveContent();
+                var content = this.getActiveContent();
+                this.documents[chapter]['content'] = content;
+                this.documents[chapter]['word_count'] = this.countWords(content);
             }
             this.currentChapter = chapter;
         },
