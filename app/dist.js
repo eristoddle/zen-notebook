@@ -432,13 +432,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
         message: null,
         menus: {
             foot: {
-                about: {
-                    heading: 'About Zen Notebook',
-                    body: '<p>Zen Notebook is a minimalist notebook inspired by <a rel="external" href="http://github.com/tholman/zenpen">Zenpen</a> and ' +
-                        '<a href="http://rednotebook.sourceforge.net" target="_blank">RedNotebook</a></p>' +
-                        '<p>Created by <a href="http://stephanmiller.com" target="_blank">Stephan Miller</a></p>' +
-                        '<p><a href="http://zen-notebook.com">Home Page</a></p>'
-                },
                 settings: {
                     heading: '',
                     body: ''
@@ -690,30 +683,24 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 //TODO: Modularize how markup is built
 zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
     $scope.foot = {};
-    $scope.foot.active_component = $rootScope.active_component;
-    $scope.foot.editing_component = $rootScope.editing_component;
+    $scope.active_component = $rootScope.active_component;
+    $scope.editing_component = $rootScope.editing_component;
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick(),
             menus = menuFactory.menus.foot,
             menu = menus[message.action];
         $scope.footChangeClass = !$scope.footChangeClass;
-        if (menu) {
-            $scope.heading = menu.heading;
-            $scope.body = menu.body;
-            $scope.buttons = menu.buttons;
-            $scope.foot.partial = 'footer/' + message.action + '.html';
-        }
+        $scope.foot.partial = 'footer/' + message.action + '.html';
 
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
 
-        $scope.editComponent = function(){
-            $scope.foot.editing_component = $scope.foot.editing_component === false ? true : false;
-        };
-
         $scope.changeComponent = function(component){
-            $scope.foot.active_component = component;
+            $scope.active_component = component;
+            $scope.editing_component = false;
+            $rootScope.editing_component = false;
+            $rootScope.active_component = component;
         };
     });
 }]);

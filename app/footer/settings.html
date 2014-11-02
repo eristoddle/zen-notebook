@@ -1,5 +1,5 @@
 <h1>Settings</h1>
-<span ng-dblclick="editComponent()" ng-hide="editing_component">{{active_component}}</span>
+<span ng-dblclick="editing_component = !editing_component" ng-hide="editing_component">{{active_component}}</span>
 <form ng-submit="changeComponent(active_component)" ng-show="editing_component">
-    <input ng-blur="changeComponent(active_component)" ng-focus="active_component == active_component">
+    <input ng_model="active_component" ng-blur="changeComponent(active_component)">
 </form>

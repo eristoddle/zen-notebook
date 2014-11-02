@@ -16,13 +16,6 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
         message: null,
         menus: {
             foot: {
-                about: {
-                    heading: 'About Zen Notebook',
-                    body: '<p>Zen Notebook is a minimalist notebook inspired by <a rel="external" href="http://github.com/tholman/zenpen">Zenpen</a> and ' +
-                        '<a href="http://rednotebook.sourceforge.net" target="_blank">RedNotebook</a></p>' +
-                        '<p>Created by <a href="http://stephanmiller.com" target="_blank">Stephan Miller</a></p>' +
-                        '<p><a href="http://zen-notebook.com">Home Page</a></p>'
-                },
                 settings: {
                     heading: '',
                     body: ''
