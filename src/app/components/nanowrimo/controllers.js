@@ -4,6 +4,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         {title: 'Open Book', class: 'open', action: 'open'},
         {title: 'Save Book', class: 'save', action: 'save'}
     ];
+    $scope.editedChapter = null;
 
     $scope.toggleChapter = function(chapter) {
         if ($scope.isChapterShown(chapter)) {
@@ -44,13 +45,21 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
     $scope.createChapter = function(){
-        nanowrimoFactory.createChapter();
-    };
-    $scope.editChapter = function(old_title, new_title){
-        //nanowrimoFactory.editChapter(old_title, new_title);
+        var chapter = nanowrimoFactory.createChapter();
+        $scope.startEditing(chapter);
     };
     $scope.setChapter = function(chapter){
         $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
         console.log(nanowrimoFactory);
+    };
+    $scope.startEditing = function(chapter){
+        $scope.setChapter(chapter);
+        $scope.chapters[chapter].editing = true;
+        $scope.editedChapter = chapter;
+    };
+    $scope.doneEditing = function(oldChapter, newChapter){
+        nanowrimoFactory.editChapter(oldChapter, newChapter);
+        $scope.editedChapter = null;
+        $scope.chapters = nanowrimoFactory.documents;
     };
 }]);

@@ -50,15 +50,23 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             var name = 'Chapter ' + (this.chapterCount() + 1);
             this.documents[name] = {
                 name: name,
+                old_name: name,
+                editing: false,
                 content: '',
                 sort_order: 0,
                 word_count: 0
             };
             $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
+            return name;
         },
         editChapter: function(old_name, new_name){
-            this.documents[new_name] = this.documents[old_name];
-            delete(this.documents[old_name]);
+            if(old_name != new_name){
+                this.documents[new_name] = angular.copy(this.documents[old_name]);
+                delete(this.documents[old_name]);
+                this.documents[new_name].name = new_name;
+                this.documents[new_name].old_name = new_name;
+            }
+            this.documents[new_name].editing = false;
             console.log(this.documents);
         },
         setChapterContent: function (chapter){

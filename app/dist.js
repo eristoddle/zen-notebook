@@ -594,6 +594,26 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
+
+zenNotebook.directive('ngBlur', function () {
+    return function (scope, elem, attrs) {
+        elem.bind('blur', function () {
+            scope.$apply(attrs.ngBlur);
+        });
+    };
+});
+
+zenNotebook.directive('ngFocus', function ($timeout) {
+    return function (scope, elem, attrs) {
+        scope.$watch(attrs.ngFocus, function (newval) {
+            if (newval) {
+                $timeout(function () {
+                    elem[0].focus();
+                }, 0, false);
+            }
+        });
+    };
+});
 zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     //TODO: This can be part of the theme service
     $scope.themes = {
@@ -990,6 +1010,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         {title: 'Open Book', class: 'open', action: 'open'},
         {title: 'Save Book', class: 'save', action: 'save'}
     ];
+    $scope.editedChapter = null;
 
     $scope.toggleChapter = function(chapter) {
         if ($scope.isChapterShown(chapter)) {
@@ -1030,14 +1051,22 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
     $scope.createChapter = function(){
-        nanowrimoFactory.createChapter();
-    };
-    $scope.editChapter = function(old_title, new_title){
-        //nanowrimoFactory.editChapter(old_title, new_title);
+        var chapter = nanowrimoFactory.createChapter();
+        $scope.startEditing(chapter);
     };
     $scope.setChapter = function(chapter){
         $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
         console.log(nanowrimoFactory);
+    };
+    $scope.startEditing = function(chapter){
+        $scope.setChapter(chapter);
+        $scope.chapters[chapter].editing = true;
+        $scope.editedChapter = chapter;
+    };
+    $scope.doneEditing = function(oldChapter, newChapter){
+        nanowrimoFactory.editChapter(oldChapter, newChapter);
+        $scope.editedChapter = null;
+        $scope.chapters = nanowrimoFactory.documents;
     };
 }]);
 
@@ -1093,15 +1122,23 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             var name = 'Chapter ' + (this.chapterCount() + 1);
             this.documents[name] = {
                 name: name,
+                old_name: name,
+                editing: false,
                 content: '',
                 sort_order: 0,
                 word_count: 0
             };
             $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
+            return name;
         },
         editChapter: function(old_name, new_name){
-            this.documents[new_name] = this.documents[old_name];
-            delete(this.documents[old_name]);
+            if(old_name != new_name){
+                this.documents[new_name] = angular.copy(this.documents[old_name]);
+                delete(this.documents[old_name]);
+                this.documents[new_name].name = new_name;
+                this.documents[new_name].old_name = new_name;
+            }
+            this.documents[new_name].editing = false;
             console.log(this.documents);
         },
         setChapterContent: function (chapter){
