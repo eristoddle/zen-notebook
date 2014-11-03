@@ -1049,6 +1049,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     };
     $scope.createChapter = function(){
         var chapter = nanowrimoFactory.createChapter();
+        nanowrimoFactory.currentChapter = chapter;
         $scope.startEditing(chapter);
     };
     $scope.setChapter = function(chapter){
@@ -1088,10 +1089,6 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
 
             if (file) {
                 this.loadBook(file);
-                storageFactory.setStorage(
-                    'content',
-                    this.getDaysContent(this.activeDateText(), 'nanowrimo')
-                );
             } else {
 
             }
@@ -1108,7 +1105,6 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         onExit: function () {
             var file = storageFactory.getStorage('file', 'nanowrimo');
             if (file) {
-                this.setChapterContent(this.currentChapter);
                 this.saveBook(file);
             } else {
                 //TODO: Create file?
@@ -1191,7 +1187,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         saveBook: function (filename) {
             var book;
             this.file = filename;
-            this.setChapterContent(this.getActiveContent());
+            this.setChapterContent(this.currentChapter);
             book = JSON.stringify(this);
             try {
                 fileDialog.writeFile(filename, book);

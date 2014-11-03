@@ -46,6 +46,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     };
     $scope.createChapter = function(){
         var chapter = nanowrimoFactory.createChapter();
+        nanowrimoFactory.currentChapter = chapter;
         $scope.startEditing(chapter);
     };
     $scope.setChapter = function(chapter){
