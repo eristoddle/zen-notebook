@@ -394,10 +394,9 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
             $rootScope.mute = storageFactory.getStorage('mute');
         }
         //Active Component
-        $rootScope.active_component = storageFactory.getStorage('component');
+        $rootScope.active_component = storageFactory.getStorage('active_component');
         if(!$rootScope.active_component){
-            //$rootScope.active_component = 'notebook';
-            $rootScope.active_component = 'nanowrimo';
+            $rootScope.active_component = 'notebook';
         }
         //TODO: Load Configuration and Features here
 
@@ -584,6 +583,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
 
             $rootScope.$on('loadComponent', function (event){
                 factory = $injector.get($rootScope.active_component + 'Factory');
+                element.html(factory.onLoad());
             });
         }
     };

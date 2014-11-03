@@ -25,6 +25,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
 
             $rootScope.$on('loadComponent', function (event){
                 factory = $injector.get($rootScope.active_component + 'Factory');
+                element.html(factory.onLoad());
             });
         }
     };
