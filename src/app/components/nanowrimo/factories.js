@@ -123,7 +123,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         saveBook: function (filename) {
             var book;
             this.file = filename;
-            this.setChapterContent(this.activeDateText());
+            this.setChapterContent(this.getActiveContent());
             book = JSON.stringify(this);
             try {
                 fileDialog.writeFile(filename, book);
