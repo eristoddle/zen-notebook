@@ -77,6 +77,7 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
             $rootScope.active_component = component;
             $scope.editing_component = false;
             storageFactory.setStorage('active_component', component);
+            $rootScope.$broadcast('loadComponent');
         };
     });
 }]);

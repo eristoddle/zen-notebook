@@ -581,6 +581,10 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
                 element.html(content);
                 factory.onWrite(element.html());
             });
+
+            $rootScope.$on('loadComponent', function (event){
+                factory = $injector.get($rootScope.active_component + 'Factory');
+            });
         }
     };
 }]);
@@ -683,6 +687,7 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
             $rootScope.active_component = component;
             $scope.editing_component = false;
             storageFactory.setStorage('active_component', component);
+            $rootScope.$broadcast('loadComponent');
         };
     });
 }]);
