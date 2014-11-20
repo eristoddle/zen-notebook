@@ -165,6 +165,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             this.currentDate = new Date();
             this.activeMonth = this.activeMonth - 1;
             this.years = tempJournal.years;
+            console.log(this.years);
             window.localStorage && window.localStorage.setItem('file', this.file);
         }
     };

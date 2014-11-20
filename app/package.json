@@ -1,30 +1,28 @@
 {
     "webexe_settings": {
-        "linux-x32": false, 
-        "download_dir": "/Users/smiller/Dropbox/python/Web2Executable/files/downloads", 
+        "linux-x32": true, 
+        "download_dir": "/home/eristoddle/Dropbox/python/Web2Executable/files/downloads", 
         "windows": true, 
         "mac": false, 
         "nw_version": "0.10.5", 
         "force_download": false, 
-        "linux-x64": false
+        "linux-x64": true
     }, 
-    "description": "A distraction free writing journal", 
+    "name": "Zen Notebook", 
     "repository": {
         "url": "git@bitbucket.org:eristoddle/zen-notebook.git", 
         "type": "git"
     }, 
     "nodejs": true, 
-    "name": "Zen Notebook", 
     "single-instance": true, 
-    "keywords": [
-        "writing", 
-        "editor", 
-        "diary", 
-        "journal", 
-        "notebook"
-    ], 
+    "webkit": {
+        "page-cache": false, 
+        "java": false, 
+        "plugin": false
+    }, 
     "window": {
         "fullscreen": true, 
+        "exe_icon": "icon.png", 
         "resizable": true, 
         "title": "Zen Notebook", 
         "always-on-top": false, 
@@ -36,23 +34,27 @@
         "as_desktop": false, 
         "min_width": 640, 
         "position": "", 
-        "show_in_taskbar": true, 
+        "show_in_taskbar": false, 
+        "mac_app_icon": "icon.png", 
         "width": 900, 
         "toolbar": false, 
         "icon": "icon.png"
     }, 
     "version": "0.1.0", 
+    "node-main": "", 
     "scripts": {
         "start": "nodewebkit", 
         "dependencies": {
             "nodewebkit": ">=0.9.0"
         }
     }, 
-    "webkit": {
-        "page-cache": false, 
-        "java": false, 
-        "plugin": false
-    }, 
+    "keywords": [
+        "writing", 
+        "editor", 
+        "diary", 
+        "journal", 
+        "notebook"
+    ], 
     "main": "index.html", 
-    "node-main": ""
+    "description": "A distraction free writing journal"
 }
