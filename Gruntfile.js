@@ -4,7 +4,6 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         "concat": {
             "dist": {
-                // the files to concatenate
                 "src": [
                     'src/lib/angular.min.js',
                     "src/lib/angular-sanitize.min.js",
@@ -18,7 +17,6 @@ module.exports = function(grunt) {
                     'src/app/components/notebook/*.js',
                     'src/app/components/nanowrimo/*.js'
                 ],
-                // the location of the resulting JS file
                 "dest": 'app/dist.js'
             }
         },
@@ -42,26 +40,28 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: 'src/app/**/*.js',
-                tasks: ['concat', 'uglify'],
+                tasks: ['concat', 'uglify', 'copy'],
                 options: {
                     debounceDelay: 250
                 }
             },
             src: {
                 files: 'scss/*.scss',
-                tasks: ['compass']
+                tasks: ['compass', 'copy']
             }
         },
         copy: {
-            js: {
-                files: {
-
-                }
-            },
-            css: {
-                files: {
-
-                }
+            main: {
+                files: [
+                    {
+                        src: 'app/dist.min.js',
+                        dest: 'server/public/js/dist.min.js'
+                    },
+                    {
+                        src: 'app/app.css',
+                        dest: 'server/public/css/app.css'
+                    }
+                ]
             }
         }
     });
