@@ -1,0 +1,8 @@
+<h1>Settings</h1>
+<div class="settings">
+    <span class="label">Component: </span>
+    <span ng-dblclick="editing_component = !editing_component" ng-hide="editing_component">{{active_component}}</span>
+    <form ng-submit="changeComponent(active_component)" ng-mouseleave="editing_component = !editing_component" ng-show="editing_component">
+        <input ng_model="active_component" ng-blur="changeComponent(active_component)">
+    </form>
+</div>

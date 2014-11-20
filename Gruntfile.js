@@ -60,6 +60,22 @@ module.exports = function(grunt) {
                     {
                         src: 'app/app.css',
                         dest: 'server/public/css/app.css'
+                    },
+                    {
+                        src: 'assets/*',
+                        dest: 'server/public/assets/'
+                    },
+                    {
+                        src: 'app/fonts/*',
+                        dest: 'server/public/fonts/'
+                    },
+                    {
+                        src: 'app/components/*',
+                        dest: 'server/public/components/'
+                    },
+                    {
+                        src: 'app/footer/*',
+                        dest: 'server/public/footer/'
                     }
                 ]
             }
