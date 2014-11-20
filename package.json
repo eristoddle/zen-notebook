@@ -46,6 +46,7 @@
         "grunt-contrib-uglify": "~0.3",
         "grunt-contrib-watch": "~0.5",
         "grunt-contrib-compass": "~1.0.1",
-        "grunt-concat-css": "~0.3.1"
+        "grunt-concat-css": "~0.3.1",
+        "grunt-contrib-copy": "~0.7.0"
     }
 }

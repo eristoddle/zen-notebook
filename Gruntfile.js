@@ -51,6 +51,18 @@ module.exports = function(grunt) {
                 files: 'scss/*.scss',
                 tasks: ['compass']
             }
+        },
+        copy: {
+            js: {
+                files: {
+
+                }
+            },
+            css: {
+                files: {
+
+                }
+            }
         }
     });
 
@@ -58,7 +70,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'compass']);
+    grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
 
 };
