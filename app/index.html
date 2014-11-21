@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="zenNotebook">
+<html>
 
     <head>
         <title>Zen Notebook</title>
@@ -7,7 +7,7 @@
         <link href="app.css" rel="stylesheet">
     </head>
 
-    <body id="container" ng-class="theme" ng-controller="BodyController">
+    <body id="container" ng-app="zenNotebook" ng-class="theme" ng-controller="BodyController">
 
         <header ng-controller="NavController" style="-webkit-app-region: drag">
             <nav class="nav-menu" menu-data="menu">
