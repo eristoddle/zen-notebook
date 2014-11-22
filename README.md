@@ -112,6 +112,8 @@ first plugin
 * Clicks on calendar don't change word counts
 * Intercept copy and paste to remove any html markup
 * Create a more complex parser so saved content fits format: text, markdown, etc.
+* Add Markua support
+* Create Leanpub component
 
 ##Futute Roadmap
 
@@ -183,8 +185,10 @@ solved by concatenating the js files.
 - NodeWebkit : https://github.com/rogerwang/node-webkit
 - AngularJS  : https://angularjs.org/
 - Sass : http://sass-lang.com/
+- Grunt : 
+- Laravel : 
 - Buzz : http://buzz.jaysalvat.com/
 - Head : http://headjs.com/
 - Marked : https://github.com/chjj/marked
 - ngStorage : https://github.com/gsklee/ngStorage
-- nw-fileDialog : https://github.com/DWand/nw-fileDialog
+- Markua : Not yet but will be adding
