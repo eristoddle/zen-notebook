@@ -153,7 +153,8 @@ return array(
 
 		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',
-		'Auth'              => 'Illuminate\Support\Facades\Auth',
+		//'Auth'              => 'Illuminate\Support\Facades\Auth',
+        'Auth'              => 'Dingo\Api\Auth\BasicProvider',
 		'Blade'             => 'Illuminate\Support\Facades\Blade',
 		'Cache'             => 'Illuminate\Support\Facades\Cache',
 		'ClassLoader'       => 'Illuminate\Support\ClassLoader',

@@ -114,6 +114,8 @@ first plugin
 * Create a more complex parser so saved content fits format: text, markdown, etc.
 * Add Markua support
 * Create Leanpub component
+* Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
+* 
 
 ##Futute Roadmap
 
