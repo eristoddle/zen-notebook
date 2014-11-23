@@ -7,7 +7,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"dingo/api": "0.*",
-        "lucasdegaperi/oauth2-server-laravel": "3.*"
+        "lucadegasperi/oauth2-server-laravel": "3.0.*@dev"
 	},
 	"autoload": {
 		"classmap": [

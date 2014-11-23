@@ -121,7 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Dingo\Api\ApiServiceProvider'
+        'Dingo\Api\ApiServiceProvider',
+        'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 
 	),
 
@@ -154,7 +155,7 @@ return array(
 		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',
 		//'Auth'              => 'Illuminate\Support\Facades\Auth',
-        'Auth'              => 'Dingo\Api\Auth\BasicProvider',
+        'Auth'              => 'Dingo\Api\Auth',
 		'Blade'             => 'Illuminate\Support\Facades\Blade',
 		'Cache'             => 'Illuminate\Support\Facades\Cache',
 		'ClassLoader'       => 'Illuminate\Support\ClassLoader',
