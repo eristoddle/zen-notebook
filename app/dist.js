@@ -752,6 +752,7 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
     };
 }]);
 //notebook
+//TODO: Come up with good solution for month offset issue
 zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($rootScope, fileDialog) {
     var notebook = {
         years: {},
@@ -787,7 +788,10 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             window.localStorage && window.localStorage.setItem('word_count', count);
         },
         onChangeDate: function(oldDate, newDate){
-            this.setDaysContent(oldDate);
+            var old = oldDate.split('-');
+            this.setDaysContent(old[0] + '-' + (parseInt(old[1]) - 1) + '-' + old[2]);
+            console.log('oldDate: ' + oldDate);
+            console.log('newDate: ' + newDate);
             if (this.getDaysContent(newDate)) {
                 return this.getDaysContent(newDate);
             } else {
@@ -804,7 +808,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             }
         },
         getDaysContent: function (dateText) {
-            dates = dateText.split('-');
+            var dates = dateText.split('-');
             try {
                 return this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content']
                     .replace(/\n/g, "<br>");
@@ -837,7 +841,8 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             if (rawDate instanceof Date) {
                 date = rawDate;
             } else {
-                date = new Date(rawDate);
+                var dateList = rawDate.split('-');
+                date = new Date(dateList[0], dateList[1], dateList[2]);
             }
             this.activeDate = date;
             this.activeMonth = this.activeDate.getMonth() + offset;
@@ -852,6 +857,9 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             if (!this.years[this.activeYear][this.activeMonth][this.activeDay]) {
                 this.years[this.activeYear][this.activeMonth][this.activeDay] = {};
             }
+            console.log('rawDate: ' + rawDate);
+            console.log('date:' + date);
+            console.log('activeDate: ' +  this.activeDate);
         },
         //TODO:Parse before saving
         getActiveContent: function () {
