@@ -790,8 +790,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         onChangeDate: function(oldDate, newDate){
             var old = oldDate.split('-');
             this.setDaysContent(old[0] + '-' + (parseInt(old[1]) - 1) + '-' + old[2]);
-            console.log('oldDate: ' + oldDate);
-            console.log('newDate: ' + newDate);
             if (this.getDaysContent(newDate)) {
                 return this.getDaysContent(newDate);
             } else {
@@ -857,9 +855,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             if (!this.years[this.activeYear][this.activeMonth][this.activeDay]) {
                 this.years[this.activeYear][this.activeMonth][this.activeDay] = {};
             }
-            console.log('rawDate: ' + rawDate);
-            console.log('date:' + date);
-            console.log('activeDate: ' +  this.activeDate);
         },
         //TODO:Parse before saving
         getActiveContent: function () {
