@@ -22,6 +22,10 @@ Route::api(['version' => 'v1', 'prefix' => 'api'], function(){
         );
     });
 
+    Route::post('access_token', function() {
+        return Response::json(Authorizer::issueAccessToken());
+    });
+
     Route::get('users', ['protected' => true, function(){
         return User::all();
     }]);
