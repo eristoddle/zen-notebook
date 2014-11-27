@@ -14,13 +14,7 @@
 Route::get('/', 'HomeController@showWelcome');
 
 Route::api(['version' => 'v1'], function(){
-
-    Route::get('tests', function(){
-        return array(
-            'test' => 'here',
-            'this' => 'that'
-        );
-    });
+    //Route::post('token', 'ApiController@tokenAction');
 
     Route::post('token', function() {
         //oauth2
