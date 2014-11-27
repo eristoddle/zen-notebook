@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'vendor' => '',
+    'vendor' => 'zen-notebook',
 
     /*
     |--------------------------------------------------------------------------
@@ -76,23 +76,23 @@ return [
     */
 
     'auth' => [
-        'oauth' => function ($app) {
-                $provider = new Dingo\Api\Auth\LeagueOAuth2Provider($app['oauth2-server.authorizer']->getChecker());
-
-                $provider->setUserResolver(function ($id) {
-                    // Logic to return a user by their ID.
-                });
-
-                $provider->setClientResolver(function ($id) {
-                    // Logic to return a client by their ID.
-                });
-            },
+//        'oauth' => function ($app) {
+//                $provider = new Dingo\Api\Auth\LeagueOAuth2Provider($app['oauth2-server.authorizer']->getChecker());
+//
+//                $provider->setUserResolver(function ($id) {
+//                    // Logic to return a user by their ID.
+//                });
+//
+//                $provider->setClientResolver(function ($id) {
+//                    // Logic to return a client by their ID.
+//                });
+//            },
 //        'basic' => function ($app) {
 //                return new Dingo\Api\Auth\BasicProvider($app['auth']);
 //            },
-//        'jwt' => function ($app) {
-//            return new Dingo\Api\Auth\JWTProvider($app['tymon.jwt.auth']);
-//            }
+        'jwt' => function ($app) {
+            return new Dingo\Api\Auth\JWTProvider($app['tymon.jwt.auth']);
+            }
     ],
 
     /*

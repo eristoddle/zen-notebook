@@ -23,7 +23,17 @@ Route::api(['version' => 'v1'], function(){
     });
 
     Route::post('token', function() {
-        return Response::json(Authorizer::issueAccessToken());
+        //oauth2
+        //return Response::json(Authorizer::issueAccessToken());
+
+        $credentials = Input::only('email', 'password');
+
+        if ( ! $token = JWTAuth::attempt($credentials) )
+        {
+            // return 401 error response
+        }
+
+        return Response::json(compact('token'));
     });
 
     Route::get('users', ['protected' => true, function(){
