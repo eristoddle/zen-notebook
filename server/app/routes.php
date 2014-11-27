@@ -33,7 +33,7 @@ Route::api(['version' => 'v1'], function(){
             // return 401 error response
         }
 
-        return Response::json(compact('token'));
+        return compact('token');
     });
 
     Route::get('users', ['protected' => true, function(){

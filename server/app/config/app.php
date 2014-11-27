@@ -122,8 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Dingo\Api\Provider\ApiServiceProvider',
-        'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
-        'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
+        //'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
+        //'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
         'Tymon\JWTAuth\JWTAuthServiceProvider',
 	),
 
@@ -193,7 +193,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
         'API'               => 'Dingo\Api\Facade\API',
-        'Authorizer'        => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
+        //'Authorizer'        => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
         'JWTAuth'           => 'Tymon\JWTAuth\Facades\JWTAuth',
 	),
 
