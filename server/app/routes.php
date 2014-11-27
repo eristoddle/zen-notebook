@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::api(['version' => 'v1', 'prefix' => 'api'], function(){
+Route::api(['version' => 'v1'], function(){
 
     Route::get('tests', function(){
         return array(
@@ -22,7 +22,7 @@ Route::api(['version' => 'v1', 'prefix' => 'api'], function(){
         );
     });
 
-    Route::post('access_token', function() {
+    Route::post('token', function() {
         return Response::json(Authorizer::issueAccessToken());
     });
 
