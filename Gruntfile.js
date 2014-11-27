@@ -5,9 +5,9 @@ module.exports = function(grunt) {
         "concat": {
             "dist": {
                 "src": [
-                    'src/lib/angular.min.js',
-                    "src/lib/angular-sanitize.min.js",
-                    "src/lib/buzz.min.js",
+                    'src/lib/angular/angular.min.js',
+                    "src/lib/angular-sanitize/angular-sanitize.min.js",
+                    "src/lib/buzz/dist/buzz.min.js",
                     'src/app/modules/*.js',
                     'src/app/main.js',
                     'src/app/filters.js',
