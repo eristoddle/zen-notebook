@@ -76,18 +76,16 @@ return [
     */
 
     'auth' => [
-        'oauth2' => function($app) {
-                $provider = new Dingo\Api\Auth\LeagueOAuth2Provider($app['oauth2.resource-server']);
+        'oauth' => function ($app) {
+                $provider = new Dingo\Api\Auth\LeagueOAuth2Provider($app['oauth2-server.authorizer']->getChecker());
 
-                $provider->setUserCallback(function($id) {
-                    return User::find($id);
+                $provider->setUserResolver(function ($id) {
+                    // Logic to return a user by their ID.
                 });
 
-                $provider->setClientCallback(function($id) {
-                    return Client::find($id);
+                $provider->setClientResolver(function ($id) {
+                    // Logic to return a client by their ID.
                 });
-
-                return $provider;
             },
 //        'basic' => function ($app) {
 //                return new Dingo\Api\Auth\BasicProvider($app['auth']);
