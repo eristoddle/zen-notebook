@@ -135,7 +135,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         },
         getMenu: function(){
             return [
-                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'}
+                {title: 'Calendar', action: 'calendar', class: 'fa fa-calendar', sub: 'left'}
             ];
         },
         activeTags: '',
@@ -243,9 +243,9 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 row.push('</tr>');
                 tpl.push(row.join(''));
             }
-            tpl.push('</table><div class="navigation"><span class="icon-triangle-left" data-month=' + (month - 1) + ' data-action="month-back" changedate></span>' +
+            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (month - 1) + ' data-action="month-back" changedate></span>' +
                 '<span class="today" data-month=' + month + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
-                '<span class="icon-triangle-right" data-month=' + (month + 1) + 'data-action="month-forward" changedate></span></div></div>');
+                '<span class="fa fa-arrow-right" data-month=' + (month + 1) + 'data-action="month-forward" changedate></span></div></div>');
             return tpl.join('');
         }
     }

@@ -2,13 +2,13 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
         app_nav = [
-            {title: 'Export', action: 'export', class: 'icon-repo', sub: 'foot'},
-            {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
-            {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
-            {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
-            {title: 'Minimize', action: 'minimize', class: 'icon-resize2', sub: 'nw'},
-            {title: 'Maximize', action: 'maximize', class: 'icon-resize', sub: 'nw'},
-            {title: 'Exit', action: 'exit', class: 'icon-switch', sub: 'nw'}
+            {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
+            {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
+            {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
+            {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
+            {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
+            {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
+            {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
         ],
         nav = component_nav.concat(app_nav);
 

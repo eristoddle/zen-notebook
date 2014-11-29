@@ -451,13 +451,13 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
         app_nav = [
-            {title: 'Export', action: 'export', class: 'icon-repo', sub: 'foot'},
-            {title: 'Theme', action: 'theme', class: 'icon-yingyang', sub: 'body'},
-            {title: 'Settings', action: 'settings', class: 'icon-gear', sub: 'foot'},
-            {title: 'About', action: 'about', class: 'icon-info', sub: 'foot'},
-            {title: 'Minimize', action: 'minimize', class: 'icon-resize2', sub: 'nw'},
-            {title: 'Maximize', action: 'maximize', class: 'icon-resize', sub: 'nw'},
-            {title: 'Exit', action: 'exit', class: 'icon-switch', sub: 'nw'}
+            {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
+            {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
+            {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
+            {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
+            {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
+            {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
+            {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
         ],
         nav = component_nav.concat(app_nav);
 
@@ -924,7 +924,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         },
         getMenu: function(){
             return [
-                {title: 'Calendar', action: 'calendar', class: 'icon-calendar', sub: 'left'}
+                {title: 'Calendar', action: 'calendar', class: 'fa fa-calendar', sub: 'left'}
             ];
         },
         activeTags: '',
@@ -1032,9 +1032,9 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 row.push('</tr>');
                 tpl.push(row.join(''));
             }
-            tpl.push('</table><div class="navigation"><span class="icon-triangle-left" data-month=' + (month - 1) + ' data-action="month-back" changedate></span>' +
+            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (month - 1) + ' data-action="month-back" changedate></span>' +
                 '<span class="today" data-month=' + month + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
-                '<span class="icon-triangle-right" data-month=' + (month + 1) + 'data-action="month-forward" changedate></span></div></div>');
+                '<span class="fa fa-arrow-right" data-month=' + (month + 1) + 'data-action="month-forward" changedate></span></div></div>');
             return tpl.join('');
         }
     }

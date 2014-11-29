@@ -75,77 +75,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?uidhkg");
-  src: url("fonts/icomoon.eot?#iefixuidhkg") format("embedded-opentype"), url("fonts/icomoon.woff?uidhkg") format("woff"), url("fonts/icomoon.ttf?uidhkg") format("truetype"), url("fonts/icomoon.svg?uidhkg#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-/* line 28, ../src/scss/_fonts.scss */
-[class^="icon-"], [class*=" icon-"] {
-  font-family: "icomoon";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  font-size: 20px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* line 41, ../src/scss/_fonts.scss */
-.icon-calendar:before {
-  content: "\e600";
-}
-
-/* line 45, ../src/scss/_fonts.scss */
-.icon-resize:before {
-  content: "\e601";
-}
-
-/* line 49, ../src/scss/_fonts.scss */
-.icon-resize2:before {
-  content: "\e602";
-}
-
-/* line 53, ../src/scss/_fonts.scss */
-.icon-yingyang:before {
-  content: "\e603";
-}
-
-/* line 57, ../src/scss/_fonts.scss */
-.icon-switch:before {
-  content: "\e604";
-}
-
-/* line 61, ../src/scss/_fonts.scss */
-.icon-gear:before {
-  content: "\f02f";
-}
-
-/* line 65, ../src/scss/_fonts.scss */
-.icon-info:before {
-  content: "\f059";
-}
-
-/* line 69, ../src/scss/_fonts.scss */
-.icon-repo:before {
-  content: "\f001";
-}
-
-/* line 73, ../src/scss/_fonts.scss */
-.icon-triangle-left:before {
-  content: "\f044";
-}
-
-/* line 76, ../src/scss/_fonts.scss */
-.icon-triangle-right:before {
-  content: "\f05a";
-}
-
 /* line 1, ../src/scss/_base.scss */
 h1 {
   font-weight: bold;
@@ -325,7 +254,6 @@ h1 {
   -ms-transition: opacity 400ms;
   -o-transition: opacity 400ms;
   transition: opacity 400ms;
-  font-family: "icomoon";
   background: none;
   cursor: pointer;
   font-size: 25px;
@@ -336,7 +264,7 @@ h1 {
   border: none;
   outline: none;
 }
-/* line 166, ../src/scss/_theme.scss */
+/* line 165, ../src/scss/_theme.scss */
 .nav-menu button:hover {
   opacity: 1;
 }
@@ -550,7 +478,7 @@ div.cal .navigation {
   margin-top: 10px;
 }
 /* line 52, ../src/scss/_notebook.scss */
-div.cal .navigation .icon-triangle-left {
+div.cal .navigation .fa-arrow-left {
   float: left;
   cursor: pointer;
 }
@@ -560,7 +488,7 @@ div.cal .navigation .today {
   cursor: pointer;
 }
 /* line 60, ../src/scss/_notebook.scss */
-div.cal .navigation .icon-triangle-right {
+div.cal .navigation .fa-arrow-right {
   float: right;
   cursor: pointer;
 }

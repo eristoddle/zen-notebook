@@ -10,6 +10,7 @@ require 'compass-normalize'
 require 'toolkit'
 require 'singularitygs'
 require 'breakpoint'
+#require 'font-awesome-sass'
 
 # You can select your preferred output style here (can be overridden via the command line):
 output_style = :expanded
