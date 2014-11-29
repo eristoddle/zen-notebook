@@ -52,14 +52,33 @@ module.exports = function(grunt) {
         },
         nodewebkit: {
             options: {
-                //platforms: ['win', 'osx', 'linux32', 'linux64'],
-                platforms: ['win', 'linux32', 'linux64'],
+                platforms: ['win', 'osx', 'linux32', 'linux64'],
                 version: 'latest',
                 buildDir: './build',
                 macIcns: 'app/icon.icns'
                 //options.winIco: ''
             },
             src: ['./app/**/*']
+        },
+        shell: {
+            zipandmove: {
+                command: 'sh releaseBuilds.sh',
+                options: {
+                    stderr: false,
+                    execOptions: {
+                        cwd: 'scripts'
+                    }
+                }
+            },
+            quickbuild:{
+                command: 'sh buildQuick.sh',
+                options: {
+                    stderr: false,
+                    execOptions: {
+                        cwd: 'scripts'
+                    }
+                }
+            }
         },
         copy: {
             main: {
@@ -99,8 +118,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-node-webkit-builder');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
+    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove']);
+    grunt.registerTask('macbuild', ['shell:quickbuild']);
 
 };

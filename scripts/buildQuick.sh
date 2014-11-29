@@ -1,9 +1,7 @@
 #!/bin/sh
 
 #Mac
-cd app
-zip -r App.nw ./*
-mv ./App.nw "../build/Zen Notebook/mac/Zen Notebook.app/Contents/Resources/App.nw"
+cp ../app "../build/Zen Notebook/osx/Zen Notebook.app/Contents/Resources/app.nw"
 
 #Windows
 
