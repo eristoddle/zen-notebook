@@ -1,6 +1,6 @@
 <?php
 class ApiController extends BaseController {
-    public function tokenAction(){
+    public function token(){
         //oauth2
         //return Response::json(Authorizer::issueAccessToken());
 
