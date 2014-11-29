@@ -50,6 +50,17 @@ module.exports = function(grunt) {
                 tasks: ['compass', 'copy']
             }
         },
+        nodewebkit: {
+            options: {
+                //platforms: ['win', 'osx', 'linux32', 'linux64'],
+                platforms: ['win', 'linux32', 'linux64'],
+                version: 'latest',
+                buildDir: './build',
+                macIcns: 'app/icon.icns'
+                //options.winIco: ''
+            },
+            src: ['./app/**/*']
+        },
         copy: {
             main: {
                 files: [
@@ -87,7 +98,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-node-webkit-builder');
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
+    grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
 
 };

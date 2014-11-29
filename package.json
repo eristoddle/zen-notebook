@@ -1,52 +1,54 @@
 {
-    "name": "Zen_Notebook",
-    "nodejs": true,
-    "description": "A distraction free writing journal",
-    "single-instance": true,
-    "keywords": [],
-    "main": "./app/index.html",
-    "node-main": "",
-    "window": {
-        "fullscreen": false,
-        "resizable": true,
-        "title": "Zen Notebook",
-        "always-on-top": false,
-        "frame": true,
-        "height": 600,
-        "min_height": 480,
-        "visible": true,
-        "as_desktop": false,
-        "min_width": 640,
-        "position": "center",
-        "show_in_taskbar": true,
-        "width": 900,
-        "toolbar": true,
-        "kiosk": false,
-        "icon": "icon.png"
-    },
-    "version": "0.1.0",
-    "webkit": {
-        "page-cache": false,
-        "java": false,
-        "plugin": false
-    },
-    "scripts": {
-        "start": "nodewebkit",
-        "dependencies": {
-            "nodewebkit": ">=0.9.0"
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@bitbucket.org:eristoddle/zen-notebook.git"
-    },
-    "devDependencies": {
-        "grunt": "~0.4",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-uglify": "~0.3",
-        "grunt-contrib-watch": "~0.5",
-        "grunt-contrib-compass": "~1.0.1",
-        "grunt-concat-css": "~0.3.1",
-        "grunt-contrib-copy": "~0.7.0"
+  "name": "Zen_Notebook",
+  "nodejs": true,
+  "description": "A distraction free writing journal",
+  "single-instance": true,
+  "keywords": [],
+  "main": "./app/index.html",
+  "node-main": "",
+  "window": {
+    "fullscreen": false,
+    "resizable": true,
+    "title": "Zen Notebook",
+    "always-on-top": false,
+    "frame": true,
+    "height": 600,
+    "min_height": 480,
+    "visible": true,
+    "as_desktop": false,
+    "min_width": 640,
+    "position": "center",
+    "show_in_taskbar": true,
+    "width": 900,
+    "toolbar": true,
+    "kiosk": false,
+    "icon": "icon.png"
+  },
+  "version": "0.1.0",
+  "webkit": {
+    "page-cache": false,
+    "java": false,
+    "plugin": false
+  },
+  "scripts": {
+    "start": "nodewebkit",
+    "dependencies": {
+      "nodewebkit": ">=0.9.0"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:eristoddle/zen-notebook.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-concat-css": "~0.3.1",
+    "grunt-contrib-compass": "~1.0.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-uglify": "~0.3",
+    "grunt-contrib-watch": "~0.5",
+    "grunt-node-webkit-builder": "^0.3.0",
+    "node-webkit-builder": "^0.3.0"
+  }
 }

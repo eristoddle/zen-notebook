@@ -34,3 +34,4 @@ node_modules/*
 build/Zen Notebook/*
 dev
 atlassian-ide-plugin.xml
+cache
