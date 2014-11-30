@@ -55,8 +55,8 @@ module.exports = function(grunt) {
                 platforms: ['win', 'osx', 'linux32', 'linux64'],
                 version: 'latest',
                 buildDir: './build',
-                macIcns: 'app/icon.icns'
-                //winIco: 'app/icon.ico'
+                macIcns: 'app/icon.icns',
+                winIco: 'app/icon.ico'
             },
             src: ['./app/**/*']
         },
