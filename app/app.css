@@ -70,8 +70,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-style: normal;
 }
 @font-face {
-  font-family: "MyUnderwood";
-  src: url("fonts/MyUnderwood.ttf") format("truetype");
+  font-family: "SpecialElite";
+  src: url("fonts/SpecialElite.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -100,19 +100,19 @@ h2 {
 }
 
 /* line 2, ../src/scss/_theme.scss */
-.courier {
+.courier, .courier div {
   font-family: courier;
   font-size: 14px;
 }
 
 /* line 7, ../src/scss/_theme.scss */
-.typewriter, .carbon {
-  font-family: 'MyUnderwood';
+.typewriter, .typewriter div, .carbon, .carbon div {
+  font-family: 'SpecialElite';
   font-size: 18px;
 }
 
 /* line 12, ../src/scss/_theme.scss */
-.zen, .relax {
+.zen, .zen div, .relax, .relax div {
   font-family: 'Lora';
   font-size: 20px;
   line-height: 1.6;

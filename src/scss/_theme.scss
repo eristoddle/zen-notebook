@@ -1,15 +1,15 @@
 //Fonts
-.courier {
+.courier, .courier div {
   font-family: courier;
   font-size: 14px;
 }
 
-.typewriter, .carbon {
-  font-family: 'MyUnderwood';
+.typewriter, .typewriter div, .carbon , .carbon div{
+  font-family: 'SpecialElite';
   font-size: 18px;
 }
 
-.zen, .relax {
+.zen, .zen div, .relax, .relax div {
   font-family: 'Lora';
   font-size: 20px;
   line-height: 1.6;
