@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
+Route::get('/', 'HomeController@index');
 
 Route::api(['version' => 'v1'], function(){
     Route::post('token', 'ApiController@token');
