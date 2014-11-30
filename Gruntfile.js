@@ -55,8 +55,8 @@ module.exports = function(grunt) {
                 platforms: ['win', 'osx', 'linux32', 'linux64'],
                 version: 'latest',
                 buildDir: './build',
-                macIcns: 'app/icon.icns'
-                //options.winIco: ''
+                macIcns: 'app/icon.icns',
+                //winIco: 'app/icon.ico'
             },
             src: ['./app/**/*']
         },
@@ -123,6 +123,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
     grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove']);
-    grunt.registerTask('macbuild', ['shell:quickbuild']);
+    grunt.registerTask('quickbuild', ['shell:quickbuild']);
 
 };
