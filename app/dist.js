@@ -709,6 +709,12 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
 //TODO: Modularize how markup is built
 zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
     $scope.foot = {};
+    //TODO: Don't hard code the component
+    $scope.components = [
+        'notebook',
+        'nanowrimo',
+        'leanpub'
+    ];
     $scope.editing_component = false;
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();

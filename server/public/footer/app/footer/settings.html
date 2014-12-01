@@ -5,4 +5,9 @@
     <form ng-submit="changeComponent(active_component)" ng-mouseleave="editing_component = !editing_component" ng-show="editing_component">
         <input ng_model="active_component" ng-blur="changeComponent(active_component)">
     </form>
+    <form ng-submit="changeComponent(active_component)">
+        <select ng-model="active_component" ng-options="component for component in components">
+            <option value="">-- choose components --</option>
+        </select>
+    </form>
 </div>
