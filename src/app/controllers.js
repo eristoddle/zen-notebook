@@ -69,7 +69,6 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
         'nanowrimo',
         'leanpub'
     ];
-    $scope.editing_component = false;
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();
         $scope.footChangeClass = !$scope.footChangeClass;
@@ -81,7 +80,6 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
 
         $scope.changeComponent = function(component){
             $rootScope.active_component = component;
-            $scope.editing_component = false;
             storageFactory.setStorage('active_component', component);
             $rootScope.$broadcast('loadComponent');
         };
