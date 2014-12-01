@@ -1,9 +1,7 @@
 <h1>Settings</h1>
 <div class="settings">
     <span class="label">Component: </span>
-    <form ng-submit="changeComponent(active_component)">
-        <select ng-model="active_component" ng-options="component for component in components">
-            <option value="">-- choose components --</option>
-        </select>
-    </form>
+    <select ng-change="changeComponent(active_component)"
+            ng-model="active_component"
+            ng-options="component for component in components"></select>
 </div>
