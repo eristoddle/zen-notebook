@@ -1,11 +1,13 @@
+#cal{
+  width: 100%;
+}
 div.cal {
   display: inline-block;
   height: 170px;
   min-height: 140px;
-  margin: 40px;
-  font-size: 0.6em;
   table {
     border-collapse: collapse;
+    margin: auto;
   }
   th {
     text-align: center;
@@ -25,6 +27,7 @@ div.cal {
     border: 1px solid #ddd;
   }
   div {
+    font-size: 14px;
     &.cal-day {
       padding: 6px;
       cursor: pointer;

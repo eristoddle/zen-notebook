@@ -80,14 +80,16 @@ h1 {
   font-weight: bold;
   font-size: 1.5em;
   border-bottom: 2px solid;
+  margin-bottom: 20px;
 }
 
-/* line 6, ../src/scss/_base.scss */
+/* line 7, ../src/scss/_base.scss */
 h2 {
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* line 9, ../src/scss/_base.scss */
+/* line 11, ../src/scss/_base.scss */
 .button {
   -webkit-transition: color 250ms, background 250ms;
   transition: color 250ms, background 250ms;
@@ -128,74 +130,78 @@ h2 {
   background: #111;
 }
 /* line 25, ../src/scss/_theme.scss */
+.dark h1 {
+  border-bottom-color: #fafafa;
+}
+/* line 28, ../src/scss/_theme.scss */
 .dark .modal {
   background: rgba(255, 255, 255, 0.9);
   color: #111;
 }
 
-/* line 31, ../src/scss/_theme.scss */
+/* line 34, ../src/scss/_theme.scss */
 .light {
   background: #fdfdfd;
   color: #111;
 }
-/* line 34, ../src/scss/_theme.scss */
+/* line 37, ../src/scss/_theme.scss */
 .light header {
   background: #fdfdfd;
 }
-/* line 37, ../src/scss/_theme.scss */
+/* line 40, ../src/scss/_theme.scss */
 .light .modal {
   background-color: #111;
   color: #fafafa;
 }
-/* line 40, ../src/scss/_theme.scss */
+/* line 43, ../src/scss/_theme.scss */
 .light .modal .button {
   color: #111;
 }
-/* line 42, ../src/scss/_theme.scss */
+/* line 45, ../src/scss/_theme.scss */
 .light .modal .button:hover {
   color: #fafafa;
   border-color: #fafafa;
 }
 
-/* line 50, ../src/scss/_theme.scss */
+/* line 53, ../src/scss/_theme.scss */
 .terminal {
   background: #111;
   color: #00cc00;
 }
-/* line 53, ../src/scss/_theme.scss */
+/* line 56, ../src/scss/_theme.scss */
 .terminal .left-inner {
   background: rgba(255, 255, 255, 0.9);
   color: #111;
 }
 
-/* line 59, ../src/scss/_theme.scss */
+/* line 62, ../src/scss/_theme.scss */
 .incognito {
   background: #111;
   color: #111;
 }
-/* line 62, ../src/scss/_theme.scss */
+/* line 65, ../src/scss/_theme.scss */
 .incognito .nav-menu {
   color: #fafafa;
 }
-/* line 65, ../src/scss/_theme.scss */
+/* line 68, ../src/scss/_theme.scss */
 .incognito .nav-menu:hover button {
   opacity: 0.4;
 }
-/* line 69, ../src/scss/_theme.scss */
+/* line 72, ../src/scss/_theme.scss */
 .incognito .nav-menu button {
   opacity: 0;
 }
-/* line 71, ../src/scss/_theme.scss */
+/* line 74, ../src/scss/_theme.scss */
 .incognito .nav-menu button:hover {
   opacity: 1;
 }
-/* line 76, ../src/scss/_theme.scss */
+/* line 79, ../src/scss/_theme.scss */
 .incognito .modal {
   background: rgba(255, 255, 255, 0.9);
   color: #111;
 }
 
-/* line 109, ../src/scss/_theme.scss */
+/* line 85, ../src/scss/_theme.scss */
 .relax.dark, .relax.dark header {
   -webkit-animation: animate_bg 20s;
   animation: animate_bg 20s;
@@ -225,27 +231,22 @@ h2 {
     background: blue;
   }
 }
-/* line 128, ../src/scss/_theme.scss */
-h1 {
-  border-bottom-color: #111;
-}
-
-/* line 132, ../src/scss/_theme.scss */
+/* line 104, ../src/scss/_theme.scss */
 .button {
   background: #fdfdfd;
   border-color: #111;
 }
-/* line 135, ../src/scss/_theme.scss */
+/* line 107, ../src/scss/_theme.scss */
 .button:hover {
   background: #111;
   color: #fafafa;
 }
 
-/* line 144, ../src/scss/_theme.scss */
+/* line 116, ../src/scss/_theme.scss */
 .nav-menu:hover button {
   opacity: 0.2;
 }
-/* line 148, ../src/scss/_theme.scss */
+/* line 120, ../src/scss/_theme.scss */
 .nav-menu button {
   opacity: 0.05;
   -webkit-app-region: no-drag;
@@ -264,7 +265,7 @@ h1 {
   border: none;
   outline: none;
 }
-/* line 165, ../src/scss/_theme.scss */
+/* line 137, ../src/scss/_theme.scss */
 .nav-menu button:hover {
   opacity: 1;
 }
@@ -416,78 +417,86 @@ footer {
 }
 
 /* line 1, ../src/scss/_notebook.scss */
+#cal {
+  width: 100%;
+}
+
+/* line 4, ../src/scss/_notebook.scss */
 div.cal {
   display: inline-block;
   height: 170px;
   min-height: 140px;
-  margin: 40px;
-  font-size: 0.6em;
 }
-/* line 7, ../src/scss/_notebook.scss */
+/* line 8, ../src/scss/_notebook.scss */
 div.cal table {
   border-collapse: collapse;
+  margin: auto;
 }
-/* line 10, ../src/scss/_notebook.scss */
+/* line 12, ../src/scss/_notebook.scss */
 div.cal th {
   text-align: center;
   padding-bottom: 5px;
   color: #888;
   border: 0px;
 }
-/* line 16, ../src/scss/_notebook.scss */
+/* line 18, ../src/scss/_notebook.scss */
 div.cal td {
   text-align: center;
   font-size: 0.9em;
   border: 1px solid #ddd;
 }
-/* line 17, ../src/scss/_notebook.scss */
+/* line 19, ../src/scss/_notebook.scss */
 div.cal td.cal-head {
   text-align: center;
   padding-bottom: 5px;
   color: #888;
   border: 0px;
 }
-/* line 28, ../src/scss/_notebook.scss */
+/* line 29, ../src/scss/_notebook.scss */
+div.cal div {
+  font-size: 14px;
+}
+/* line 31, ../src/scss/_notebook.scss */
 div.cal div.cal-day {
   padding: 6px;
   cursor: pointer;
   border: 1px solid transparent;
 }
-/* line 33, ../src/scss/_notebook.scss */
+/* line 36, ../src/scss/_notebook.scss */
 div.cal div.cal-content {
   background-color: gray;
   color: #AAA;
 }
-/* line 37, ../src/scss/_notebook.scss */
+/* line 40, ../src/scss/_notebook.scss */
 div.cal div.cal-highlight {
   background-color: #AAA;
   color: #FFF;
 }
-/* line 41, ../src/scss/_notebook.scss */
+/* line 44, ../src/scss/_notebook.scss */
 div.cal div.cal-highlight-active {
   background-color: #222;
   color: #fff;
 }
-/* line 45, ../src/scss/_notebook.scss */
+/* line 48, ../src/scss/_notebook.scss */
 div.cal div.cal-day:hover {
   border: 1px solid #111;
 }
-/* line 49, ../src/scss/_notebook.scss */
+/* line 52, ../src/scss/_notebook.scss */
 div.cal .navigation {
   color: #888;
   margin-top: 10px;
 }
-/* line 52, ../src/scss/_notebook.scss */
+/* line 55, ../src/scss/_notebook.scss */
 div.cal .navigation .fa-arrow-left {
   float: left;
   cursor: pointer;
 }
-/* line 56, ../src/scss/_notebook.scss */
+/* line 59, ../src/scss/_notebook.scss */
 div.cal .navigation .today {
   margin: 0 77px;
   cursor: pointer;
 }
-/* line 60, ../src/scss/_notebook.scss */
+/* line 63, ../src/scss/_notebook.scss */
 div.cal .navigation .fa-arrow-right {
   float: right;
   cursor: pointer;

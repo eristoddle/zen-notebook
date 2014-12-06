@@ -22,6 +22,9 @@
   header{
     background: $black;
   }
+  h1{
+    border-bottom-color: $white-font;
+  }
   .modal{
     background: rgba(255, 255, 255, 0.9);
     color: $black;
@@ -78,34 +81,7 @@
     color: $black;
   }
 }
-//TODO: Concept only make smoother with js is necessary
-//https://www.google.com/webhp?q=continuously+changing+background+colors
-//http://jsfiddle.net/SidJadeja/XqwDC/
-//function anim() {
-//  $("body").animate({
-//  backgroundColor: "darkblue"
-//  }, {
-//  duration: 5000,
-//  complete: function () {
-//  $("body").animate({
-//  backgroundColor: "darkgreen"
-//  }, {
-//  duration: 5000,
-//  complete: function () {
-//  $("body").animate({
-//  backgroundColor: "darkred"
-//  }, {
-//  duration: 5000,
-//  complete: function () {
-//anim();
-//}
-//});
-//}
-//});
-//
-//}
-//});
-//}
+
 .relax.dark, .relax.dark header {
   -webkit-animation: animate_bg 20s;
   animation: animate_bg 20s;
@@ -123,10 +99,6 @@
   0%   {background:red;}
   50%  {background:green;}
   100% {background:blue;}
-}
-
-h1{
-  border-bottom-color: $black;
 }
 
 .button {
