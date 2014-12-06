@@ -169,7 +169,7 @@ h2 {
   color: #00cc00;
 }
 /* line 56, ../src/scss/_theme.scss */
-.terminal .left-inner {
+.terminal .modal {
   background: rgba(255, 255, 255, 0.9);
   color: #111;
 }
@@ -354,16 +354,15 @@ footer {
 
 /* line 1, ../src/scss/_slide.scss */
 .modal {
-  border-radius: 3px;
   z-index: 10;
   padding: 10px;
 }
-/* line 5, ../src/scss/_slide.scss */
+/* line 4, ../src/scss/_slide.scss */
 .modal h2 {
   margin: 5%;
   border-bottom: 1px solid;
 }
-/* line 9, ../src/scss/_slide.scss */
+/* line 8, ../src/scss/_slide.scss */
 .modal.left-inner {
   -moz-transition: left 1s;
   -webkit-transition: left 1s;
@@ -375,7 +374,7 @@ footer {
   bottom: 0px;
   left: -300px;
 }
-/* line 19, ../src/scss/_slide.scss */
+/* line 18, ../src/scss/_slide.scss */
 .modal.left-inner.slide-out {
   -moz-transition: left 1s;
   -webkit-transition: left 1s;
@@ -385,12 +384,12 @@ footer {
   position: fixed;
   height: 100%;
 }
-/* line 28, ../src/scss/_slide.scss */
+/* line 27, ../src/scss/_slide.scss */
 .modal.left-inner .block, .modal.left-inner .button {
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 33, ../src/scss/_slide.scss */
+/* line 32, ../src/scss/_slide.scss */
 .modal.foot-inner {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -402,11 +401,11 @@ footer {
   bottom: -300px;
   overflow: hidden;
 }
-/* line 43, ../src/scss/_slide.scss */
+/* line 42, ../src/scss/_slide.scss */
 .modal.foot-inner div {
   margin-top: 20px;
 }
-/* line 46, ../src/scss/_slide.scss */
+/* line 45, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -415,7 +414,7 @@ footer {
   bottom: 0px;
   height: 300px;
 }
-/* line 53, ../src/scss/_slide.scss */
+/* line 52, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out .footer-content {
   visibility: visible;
   display: block;
