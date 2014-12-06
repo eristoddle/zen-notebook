@@ -600,7 +600,10 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Choose component
             var factory = $injector.get($rootScope.active_component + 'Factory');
             //Load component
-            element.html(factory.onLoad());
+            //TODO: Hack to wait for file to load
+            window.setTimeout(function(){
+                element.html(factory.onLoad());
+            }, 500);
 
             //Bind events to content
             element.bind("blur keyup change focus", function (event) {
