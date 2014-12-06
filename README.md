@@ -190,7 +190,12 @@ solved by concatenating the js files.
 - Grunt : 
 - Laravel : 
 - Buzz : http://buzz.jaysalvat.com/
-- Head : http://headjs.com/
 - Marked : https://github.com/chjj/marked
-- ngStorage : https://github.com/gsklee/ngStorage
 - Markua : Not yet but will be adding
+
+## Component Ideas
+
+- Notebook: Default mode, a diary
+- Nanowrimo: Simple novel structure with word count and progress
+- Leanpub: Work from a Leanpub dropbox project folder
+- Jekyll: Work from a Jekyll blog git repo
