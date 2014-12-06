@@ -385,7 +385,12 @@ footer {
   position: fixed;
   height: 100%;
 }
-/* line 29, ../src/scss/_slide.scss */
+/* line 28, ../src/scss/_slide.scss */
+.modal.left-inner .block, .modal.left-inner .button {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* line 33, ../src/scss/_slide.scss */
 .modal.foot-inner {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -397,11 +402,11 @@ footer {
   bottom: -300px;
   overflow: hidden;
 }
-/* line 39, ../src/scss/_slide.scss */
+/* line 43, ../src/scss/_slide.scss */
 .modal.foot-inner div {
   margin-top: 20px;
 }
-/* line 42, ../src/scss/_slide.scss */
+/* line 46, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -410,93 +415,97 @@ footer {
   bottom: 0px;
   height: 300px;
 }
-/* line 49, ../src/scss/_slide.scss */
+/* line 53, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out .footer-content {
   visibility: visible;
   display: block;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /* line 1, ../src/scss/_notebook.scss */
 #cal {
-  width: 100%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-/* line 4, ../src/scss/_notebook.scss */
+/* line 6, ../src/scss/_notebook.scss */
 div.cal {
   display: inline-block;
   height: 170px;
   min-height: 140px;
 }
-/* line 8, ../src/scss/_notebook.scss */
+/* line 10, ../src/scss/_notebook.scss */
 div.cal table {
   border-collapse: collapse;
   margin: auto;
 }
-/* line 12, ../src/scss/_notebook.scss */
+/* line 14, ../src/scss/_notebook.scss */
 div.cal th {
   text-align: center;
   padding-bottom: 5px;
   color: #888;
   border: 0px;
 }
-/* line 18, ../src/scss/_notebook.scss */
+/* line 20, ../src/scss/_notebook.scss */
 div.cal td {
   text-align: center;
   font-size: 0.9em;
   border: 1px solid #ddd;
 }
-/* line 19, ../src/scss/_notebook.scss */
+/* line 21, ../src/scss/_notebook.scss */
 div.cal td.cal-head {
   text-align: center;
   padding-bottom: 5px;
   color: #888;
   border: 0px;
 }
-/* line 29, ../src/scss/_notebook.scss */
+/* line 31, ../src/scss/_notebook.scss */
 div.cal div {
   font-size: 14px;
 }
-/* line 31, ../src/scss/_notebook.scss */
+/* line 33, ../src/scss/_notebook.scss */
 div.cal div.cal-day {
   padding: 6px;
   cursor: pointer;
   border: 1px solid transparent;
 }
-/* line 36, ../src/scss/_notebook.scss */
+/* line 38, ../src/scss/_notebook.scss */
 div.cal div.cal-content {
   background-color: gray;
   color: #AAA;
 }
-/* line 40, ../src/scss/_notebook.scss */
+/* line 42, ../src/scss/_notebook.scss */
 div.cal div.cal-highlight {
   background-color: #AAA;
   color: #FFF;
 }
-/* line 44, ../src/scss/_notebook.scss */
+/* line 46, ../src/scss/_notebook.scss */
 div.cal div.cal-highlight-active {
   background-color: #222;
   color: #fff;
 }
-/* line 48, ../src/scss/_notebook.scss */
+/* line 50, ../src/scss/_notebook.scss */
 div.cal div.cal-day:hover {
   border: 1px solid #111;
 }
-/* line 52, ../src/scss/_notebook.scss */
+/* line 54, ../src/scss/_notebook.scss */
 div.cal .navigation {
   color: #888;
   margin-top: 10px;
 }
-/* line 55, ../src/scss/_notebook.scss */
+/* line 57, ../src/scss/_notebook.scss */
 div.cal .navigation .fa-arrow-left {
   float: left;
   cursor: pointer;
 }
-/* line 59, ../src/scss/_notebook.scss */
+/* line 61, ../src/scss/_notebook.scss */
 div.cal .navigation .today {
   margin: 0 77px;
   cursor: pointer;
 }
-/* line 63, ../src/scss/_notebook.scss */
+/* line 65, ../src/scss/_notebook.scss */
 div.cal .navigation .fa-arrow-right {
   float: right;
   cursor: pointer;

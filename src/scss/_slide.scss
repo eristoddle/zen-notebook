@@ -25,6 +25,10 @@
       position: fixed;
       height: 100%;
     }
+    .block, .button{
+      margin-left: 5%;
+      margin-right: 5%;
+    }
   }
   &.foot-inner {
     -moz-transition: all 1s;
@@ -49,6 +53,8 @@
       .footer-content {
         visibility: visible;
         display: block;
+        margin-left: 5%;
+        margin-right: 5%;
       }
     }
   }
