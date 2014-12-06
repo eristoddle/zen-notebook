@@ -112,7 +112,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         getMenu: function(){
             return [
-                {title: 'NanoWrimo', action: 'nanowrimo', class: 'icon-calendar', sub: 'left'}
+                {title: 'NanoWrimo', action: 'nanowrimo', class: 'fa fa-book', sub: 'left'}
             ];
         },
         saveBook: function (filename) {

@@ -66,8 +66,8 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
     //TODO: Don't hard code the component
     $scope.components = [
         'notebook',
-        'nanowrimo',
-        'leanpub'
+        'nanowrimo'
+        //'leanpub'
     ];
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();

@@ -712,8 +712,8 @@ zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory',
     //TODO: Don't hard code the component
     $scope.components = [
         'notebook',
-        'nanowrimo',
-        'leanpub'
+        'nanowrimo'
+        //'leanpub'
     ];
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();
@@ -811,14 +811,17 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
 
             if (file) {
                 this.loadNotebook(file);
+                this.activeMonth = this.activeMonth + 1;
+                var content = this.getDaysContent(this.activeDateText());
                 window.localStorage && window.localStorage.setItem(
                     'content',
-                    this.getDaysContent(this.activeDateText())
+                    content
                 );
             } else {
                 this.setActiveDate(this.currentDate);
                 this.activeMonth = this.activeMonth - 1;
             }
+            console.log(this.activeDateText());
             return this.getDaysContent(this.activeDateText())
         },
         onWrite: function(content){
@@ -1014,6 +1017,8 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                     row.push('<td>');
                     if (day <= monthLength && (i > 0 || j >= startDay)) {
                         var date = year + '-' + month + '-' + day;
+                        var trueMonth = month + 1;
+                        var trueDate = year + '-' + trueMonth + '-' + day;
                         if (dates.indexOf(day) == -1) {
                             //TODO: Have a today custom class
                             //TODO: This check doesn't work on first load - need a notebook init function
@@ -1223,7 +1228,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         getMenu: function(){
             return [
-                {title: 'NanoWrimo', action: 'nanowrimo', class: 'icon-calendar', sub: 'left'}
+                {title: 'NanoWrimo', action: 'nanowrimo', class: 'fa fa-book', sub: 'left'}
             ];
         },
         saveBook: function (filename) {
