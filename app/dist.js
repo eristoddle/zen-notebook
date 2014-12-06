@@ -603,7 +603,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //TODO: Hack to wait for file to load
             window.setTimeout(function(){
                 element.html(factory.onLoad());
-            }, 500);
+            }, 100);
 
             //Bind events to content
             element.bind("blur keyup change focus", function (event) {
