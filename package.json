@@ -33,7 +33,8 @@
   "scripts": {
     "start": "nodewebkit",
     "dependencies": {
-      "nodewebkit": ">=0.9.0"
+      "nodewebkit": ">=0.9.0",
+      "node-webkit-updater": "^0.2.3"
     }
   },
   "repository": {
