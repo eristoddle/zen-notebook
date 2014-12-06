@@ -21,7 +21,7 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
             }
             angular.element(
                 document.getElementById('cal'))
-                .replaceWith($compile(calendarFactory.getTemplate(parseInt(attrs.month) + 1, parseInt(attrs.year), [parseInt(attrs.day)]))(scope)
+                .replaceWith($compile(calendarFactory.getTemplate(parseInt(attrs.month), parseInt(attrs.year), [parseInt(attrs.day)]))(scope)
             );
         });
     };

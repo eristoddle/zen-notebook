@@ -18,7 +18,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
 
             if (file) {
                 this.loadNotebook(file);
-                this.activeMonth = this.activeMonth + 1;
                 var content = this.getDaysContent(this.activeDateText());
                 window.localStorage && window.localStorage.setItem(
                     'content',
@@ -26,9 +25,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
                 );
             } else {
                 this.setActiveDate(this.currentDate);
-                this.activeMonth = this.activeMonth - 1;
             }
-            console.log(this.activeDateText());
             return this.getDaysContent(this.activeDateText())
         },
         onWrite: function(content){
@@ -39,7 +36,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         },
         onChangeDate: function(oldDate, newDate){
             var old = oldDate.split('-');
-            this.setDaysContent(old[0] + '-' + (parseInt(old[1]) - 1) + '-' + old[2]);
+            this.setDaysContent(old[0] + '-' + old[1] + '-' + old[2]);
             if (this.getDaysContent(newDate)) {
                 return this.getDaysContent(newDate);
             } else {
@@ -58,7 +55,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         getDaysContent: function (dateText) {
             var dates = dateText.split('-');
             try {
-                return this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content']
+                return this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['content']
                     .replace(/\n/g, "<br>");
             } catch (err) {
                 window.localStorage && window.localStorage.setItem('error', err);
@@ -68,24 +65,21 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         setDaysContent: function (dateText) {
             if (this.getActiveContent().length > 0) {
                 dates = dateText.split('-');
-                if (!this.years[parseInt(dates[0])][parseInt(dates[1]) + 1]) {
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1] = {};
+                if (!this.years[parseInt(dates[0])][parseInt(dates[1])]) {
+                    this.years[parseInt(dates[0])][parseInt(dates[1])] = {};
                 }
-                if (this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]) {
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content'] = this.getActiveContent();
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
+                if (this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]) {
+                    this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['content'] = this.getActiveContent();
+                    this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
                 } else {
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])] = {};
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['content'] = this.getActiveContent();
-                    this.years[parseInt(dates[0])][parseInt(dates[1]) + 1][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
+                    this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])] = {};
+                    this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['content'] = this.getActiveContent();
+                    this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['word_count'] = this.countWords(this.getActiveContent());
                 }
             }
         },
-        setActiveDate: function (rawDate, offset) {
+        setActiveDate: function (rawDate) {
             var date;
-            if (offset == null) {
-                offset = 1;
-            }
             if (rawDate instanceof Date) {
                 date = rawDate;
             } else {
@@ -93,7 +87,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
                 date = new Date(dateList[0], dateList[1], dateList[2]);
             }
             this.activeDate = date;
-            this.activeMonth = this.activeDate.getMonth() + offset;
+            this.activeMonth = this.activeDate.getMonth();
             this.activeYear = this.activeDate.getFullYear();
             this.activeDay = this.activeDate.getDate();
             if (!this.years[this.activeYear]) {
@@ -168,7 +162,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             tempJournal = JSON.parse(data);
             this.file = file;
             this.currentDate = new Date();
-            this.activeMonth = this.activeMonth - 1;
             this.years = tempJournal.years;
             window.localStorage && window.localStorage.setItem('file', this.file);
         }
@@ -198,6 +191,7 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
             return m.charAt(0).toUpperCase() + m.slice(1) + ' ' + date.getFullYear();
         },
         currentDate: new Date(),
+        //TODO: Clean this up
         getTemplate: function (month, year, dates) {
             var month = ((isNaN(month) || month == null) ? this.currentDate.getMonth() + 1 : month) - 1,
                 year = (isNaN(year) || year == null) ? this.currentDate.getFullYear() : year,
@@ -223,22 +217,34 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 for (var j = 0; j < 7; j++) {
                     row.push('<td>');
                     if (day <= monthLength && (i > 0 || j >= startDay)) {
+                        var trueYear = year;
+                        var nextYear = year;
                         var date = year + '-' + month + '-' + day;
                         var trueMonth = month + 1;
+                        if (trueMonth == 13){
+                            trueMonth = 1;
+                            trueYear = year + 1;
+                            nextYear = trueYear;
+                        }
+                        var nextMonth = trueMonth + 1;
+                        if (nextMonth == 13){
+                            nextMonth = 1;
+                            nextYear = year + 1;
+                        }
                         var trueDate = year + '-' + trueMonth + '-' + day;
                         if (dates.indexOf(day) == -1) {
                             //TODO: Have a today custom class
                             //TODO: This check doesn't work on first load - need a notebook init function
                             if(notebookFactory.getDaysContent(date).length > 0){
-                                row.push('<div class="cal-day cal-content" data-date="' + date +
-                                    '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                                row.push('<div class="cal-day cal-content" data-date="' + trueDate +
+                                    '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                             }else {
-                                row.push('<div class="cal-day" data-date="' + date +
-                                    '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                                row.push('<div class="cal-day" data-date="' + trueDate +
+                                    '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                             }
                         }else{
-                            row.push('<div class="cal-day cal-highlight" data-date="' + date +
-                                '" data-month=' + month + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
+                            row.push('<div class="cal-day cal-highlight" data-date="' + trueDate +
+                                '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                         }
                         row.push(day + '</div>');
                         day++;
@@ -248,9 +254,9 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 row.push('</tr>');
                 tpl.push(row.join(''));
             }
-            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (month - 1) + ' data-action="month-back" changedate></span>' +
-                '<span class="today" data-month=' + month + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
-                '<span class="fa fa-arrow-right" data-month=' + (month + 1) + 'data-action="month-forward" changedate></span></div></div>');
+            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (trueMonth - 1) +  ' data-year=' + year + ' data-action="month-back" changedate></span>' +
+                '<span class="today" data-month=' + trueMonth + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
+                '<span class="fa fa-arrow-right" data-month=' + nextMonth + ' data-year=' + nextYear + ' data-action="month-forward" changedate></span></div></div>');
             return tpl.join('');
         }
     }
