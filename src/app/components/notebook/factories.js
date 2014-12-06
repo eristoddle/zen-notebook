@@ -235,7 +235,7 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                         if (dates.indexOf(day) == -1) {
                             //TODO: Have a today custom class
                             //TODO: This check doesn't work on first load - need a notebook init function
-                            if(notebookFactory.getDaysContent(date).length > 0){
+                            if(notebookFactory.getDaysContent(trueDate).length > 0){
                                 row.push('<div class="cal-day cal-content" data-date="' + trueDate +
                                     '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                             }else {
