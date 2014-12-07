@@ -114,7 +114,7 @@ sure if this is because the sounds get loaded from files or using the sounds the
 * Add self updating and update version in release script
 * Create application service that can map key codes events to functions in application and component
 * Add testing
-* Add grunt tasks: git (push on release, remote github site publish?), version incrementing for auto update
+* Add jsdoc
 * Slideshow/presentation functionality
 * Add tooltip type hover editor for markdown, like evernote, that can be switched off and on.
 
@@ -150,17 +150,8 @@ But I found out that just creating a symbolic link was easier.
 ##My Current Workflow
 
 * I am currently working on a Mac
-* I build the Windows and two Linux versions using [Web2Executable](https://github.com/jyapayne/Web2Executable)
-* Ironically that did not build the Mac version correctly because some of the necessary nodewbkit files were missing 
-and since I am not a Mac developer I built the initial Mac version with [nuwk!](http://codeb.it/nuwk/) which managed 
-to get everything I needed for nodewebkit assembled correctly but screwed up the app folder. So I ripped that apart 
-and figured out the source files are stored at Resources/App.nw which a zip file of the app folder. So I manually 
-fixed that App and then wrote the mac_build.sh script to do that automatically for me. It just wraps up the app 
-folder and puts it in the right place in the App and leaves all the nodewebkit files where they are. It gives me a 
-quick way to test the current dev version in the wild. I do use the software now that it is functional.
-* There are two package.json files. The one in the root folder is the dev version and the one in the app folder is 
-the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
-with `npm start`
+* I build using grunt and grunt-node-webkit-builder. Grunt does a lot of the tedious work for me and I mainly just 
+write code
 * I tend to write sloppy code to get things done and see if they work and then go back and clean up. I am liking 
 Angular in that is is helping me do this when I choose too. This is my first project in Angular and I am used to PHP 
 frameworks. I am still not sure that it is the best choice. Others I am considering are Ember.js, 
@@ -170,9 +161,6 @@ and currently not supported by Angular for two way data binding. But I figured o
 get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
 I want the final application is structured, I can make a better choice among the various JavaScript frameworks. 
 Currently leaning toward React.js.
-* I am now using grunt to concat and minify the js and css instead of head.js. It seemed the windows versions of the 
-software had an issue loading the javascript files in the correct order or something. Only a windows issue that I 
-solved by concatenating the js files.
 
 ##Software Features I May Emulate
 

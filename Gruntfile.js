@@ -81,11 +81,18 @@ module.exports = function(grunt) {
                 }
             }
         },
+        dgeni: {
+            options: {
+                basePath: './'
+            },
+            src: ['src/*.js'],
+            dest: '/docs'
+        },
         push: {
             options: {
                 files: ['package.json', './app/package.json'],
                 updateConfigs: [],
-                releaseBranch: ['develop', 'master'],
+                releaseBranch: ['master'],
                 add: true,
                 addFiles: ['.'],
                 commit: true,
@@ -141,10 +148,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-node-webkit-builder');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-push-release');
+    grunt.loadNpmTasks('grunt-dgeni');
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
-    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove', 'push']);
+    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove', 'dgeni', 'push']);
     grunt.registerTask('quickbuild', ['shell:quickbuild']);
 
 };
