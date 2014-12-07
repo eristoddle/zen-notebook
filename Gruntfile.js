@@ -1,4 +1,4 @@
-var path = require('canonical-path');
+var Dgeni = require('dgeni');
 
 module.exports = function(grunt) {
 
@@ -83,13 +83,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        dgeni: {
-            options: {
-                basePath: path.resolve(__dirname, '.')
-            },
-            src: ['./src/app/**/*.js'],
-            dest: './docs'
-        },
         push: {
             options: {
                 files: ['package.json', './app/package.json'],
@@ -150,11 +143,18 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-node-webkit-builder');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-push-release');
-    grunt.loadNpmTasks('grunt-dgeni');
+
+    grunt.registerTask('dgeni', 'Generate docs via dgeni-zen-notebook.js.', function () {
+        var done = this.async();
+        console.log('here');
+        var dgeni = new Dgeni([require('./docs/dgeni-zen-notebook.js')]);
+        console.log('here');
+        dgeni.generate().then(done);
+    });
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
-    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove', 'dgeni', 'push']);
+    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove', 'push']);
     grunt.registerTask('quickbuild', ['shell:quickbuild']);
 
 };
