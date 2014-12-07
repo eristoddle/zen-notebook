@@ -115,6 +115,8 @@ sure if this is because the sounds get loaded from files or using the sounds the
 * Create application service that can map key codes events to functions in application and component
 * Add testing
 * Add grunt tasks: git (push on release, remote github site publish?), version incrementing for auto update
+* Slideshow/presentation functionality
+* Add tooltip type hover editor for markdown, like evernote, that can be switched off and on.
 
 ##Futute Roadmap
 
@@ -178,7 +180,6 @@ solved by concatenating the js files.
 - Ulysses - http://www.ulyssesapp.com/
 - Scrivener - http://www.literatureandlatte.com/scrivener.php
 - Q10 - http://www.baara.com/q10/
-- Pen - https://github.com/sofish/pen
 - Scapple - https://www.literatureandlatte.com/scapple.php
 
 ##Technologies Used
@@ -186,10 +187,10 @@ solved by concatenating the js files.
 - NodeWebkit : https://github.com/rogerwang/node-webkit
 - AngularJS  : https://angularjs.org/
 - Sass : http://sass-lang.com/
-- Grunt : 
-- Laravel : 
+- Grunt
+- Laravel
 - Buzz : http://buzz.jaysalvat.com/
-- Marked : https://github.com/chjj/marked
+- Angular Showdown
 - Markua : Not yet but will be adding
 
 ## Component Ideas

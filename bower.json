@@ -1,24 +1,25 @@
 {
-  "name": "zen-notebook",
-  "version": "0.0.1",
-  "homepage": "https://github.com/eristoddle/zen-notebook",
-  "authors": [
-    "Stephan Miller"
-  ],
-  "description": "Distraction free editor",
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "src/lib",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular-sanitize": "~1.3.4",
-    "buzz": "~1.1.7",
-    "angular": "~1.3.4"
-  }
+    "name": "zen-notebook",
+    "version": "0.0.1",
+    "homepage": "https://github.com/eristoddle/zen-notebook",
+    "authors": [
+        "Stephan Miller"
+    ],
+    "description": "Distraction free editor",
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "src/lib",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular-sanitize": "~1.3.4",
+        "buzz": "~1.1.7",
+        "angular": "~1.3.4",
+        "angular-showdown": "~0.3.2"
+    }
 }
