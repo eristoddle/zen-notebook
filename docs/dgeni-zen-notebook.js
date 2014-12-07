@@ -1,17 +1,17 @@
 var path = require('canonical-path');
 var packagePath = __dirname;
 
-module.exports = function (config) {
-    console.log('here');
+console.log('here2');
 
-    config = basePackage(config);
+module.exports = function (config) {
+    console.log('here3');
 
     config.set('source.files', [
         { pattern: 'src/app/**/*.js', basePath: path.resolve(packagePath) }
         //{ pattern: '**/*.ngdoc', basePath: path.resolve(packagePath, 'content') }
     ]);
 
-    var currentVersion = { full: '1.2.10', major: '1', minor: '2', dot: '10', codeName: 'BruceBogTrotter', cdn: '1.2.10' };
+    var currentVersion = { full: '0.0.7', major: '0', minor: '0', dot: '7', codeName: 'Alpha'};
 
     config.set('source.currentVersion', currentVersion);
 

@@ -148,7 +148,7 @@ module.exports = function(grunt) {
         var done = this.async();
         console.log('here');
         var dgeni = new Dgeni([require('./docs/dgeni-zen-notebook.js')]);
-        console.log('here');
+        console.log('here4');
         dgeni.generate().then(done);
     });
 
