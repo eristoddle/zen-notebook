@@ -1,3 +1,5 @@
+var path = require('canonical-path');
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -83,7 +85,7 @@ module.exports = function(grunt) {
         },
         dgeni: {
             options: {
-                basePath: './'
+                basePath: path.resolve(__dirname, '..')
             },
             src: ['./src/*.js'],
             dest: './docs'
