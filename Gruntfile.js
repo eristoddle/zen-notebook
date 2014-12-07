@@ -85,8 +85,8 @@ module.exports = function(grunt) {
             options: {
                 basePath: './'
             },
-            src: ['src/*.js'],
-            dest: '/docs'
+            src: ['./src/*.js'],
+            dest: './docs'
         },
         push: {
             options: {
