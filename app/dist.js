@@ -665,7 +665,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //TODO: Hack to wait for file to load
             window.setTimeout(function(){
                 element.html(factory.onLoad());
-            }, 100);
+            }, 150);
 
             //Bind events to content
             //Calls component's onWrite method

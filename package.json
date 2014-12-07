@@ -20,7 +20,6 @@
             "execPath": "linux64/Zen Notebook"
         }
     },
-
     "nodejs": true,
     "description": "A distraction free writing journal",
     "single-instance": true,

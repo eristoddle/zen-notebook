@@ -8,7 +8,27 @@
         "force_download": false, 
         "linux-x64": true
     }, 
-    "name": "Zen Notebook", 
+    "name": "Zen Notebook",
+    "author": "Stephan Miller <stephanmil@gmail.com>",
+    "manifestUrl": "https://github.com/eristoddle/zen-notebook/blob/master/package.json",
+    "packages": {
+        "mac": {
+            "url": "https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip",
+            "execPath": "osx/Zen Notebook.app"
+        },
+        "win": {
+            "url": "https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip",
+            "execPath": "win/Zen Notebook.exe"
+        },
+        "linux32": {
+            "url": "https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip",
+            "execPath": "linux32/Zen Notebook"
+        },
+        "linux64": {
+            "url": "https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip",
+            "execPath": "linux64/Zen Notebook"
+        }
+    },
     "repository": {
         "url": "git@bitbucket.org:eristoddle/zen-notebook.git", 
         "type": "git"
