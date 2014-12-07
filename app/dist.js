@@ -515,7 +515,23 @@ angular.module('zenWebModule', [])
 
         return dialogs;
     }]);
-//Detect Platform
+/*
+ * Detect Platform
+ * If you wish to change the hide behavior with ngShow/ngHide then this can be achieved by
+ * restating the styles for the .ng-hide class in CSS:
+ * <pre>
+ * .ng-hide {
+ *   <div annotation title="CSS Specificity" content="Not to worry, this will override the AngularJS default...">
+ *   display:block!important;
+ *   </div>
+ *
+ *   //this is just another form of hiding an element
+ *   position:absolute;
+ *   top:-9999px;
+ *   left:-9999px;
+ * }
+ * </pre>
+ */
 var os="Unknown ";
 if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
