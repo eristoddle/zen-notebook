@@ -1,3 +1,5 @@
+//var _ = require('lodash');
+//var Package = require('dgeni').Package;
 var path = require('canonical-path');
 var packagePath = __dirname;
 

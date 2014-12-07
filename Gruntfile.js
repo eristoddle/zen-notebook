@@ -144,13 +144,22 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-push-release');
 
-    grunt.registerTask('dgeni', 'Generate docs via dgeni-zen-notebook.js.', function () {
+    grunt.registerTask('dgeni', 'Generate docs via dgeni.', function () {
+        var dgeni = require('dgeni');
         var done = this.async();
         console.log('here');
-        var dgeni = new Dgeni([require('./docs/dgeni-zen-notebook.js')]);
-        console.log('here4');
-        dgeni.generate().then(done);
+
+        dgeni(require('./docs/dgeni-zen-notebook.js'))
+            .generateDocs()
+            .then(done);
     });
+//    grunt.registerTask('dgeni', 'Generate docs via dgeni-zen-notebook.js.', function () {
+//        var done = this.async();
+//        console.log('here');
+//        var dgeni = new Dgeni([require('./docs/dgeni-zen-notebook.js')]);
+//        console.log('here4');
+//        dgeni.generate().then(done);
+//    });
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
