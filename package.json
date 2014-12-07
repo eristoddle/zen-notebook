@@ -1,7 +1,7 @@
 {
     "name": "Zen_Notebook",
     "author": "Stephan Miller <stephanmil@gmail.com>",
-    "manifestUrl": "https://github.com/eristoddle/zen-notebook/blob/master/package.json",
+    "manifestUrl": "https://raw.githubusercontent.com/eristoddle/zen-notebook/master/package.json",
     "packages": {
         "mac": {
             "url": "https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip",
@@ -76,8 +76,7 @@
         "grunt-push-release": "^0.1.1",
         "grunt-shell": "^1.1.1",
         "load-grunt-tasks": "^1.0.0",
-        "node-webkit-builder": "^0.3.0",
-        "node-webkit-updater": "^0.2.3"
+        "node-webkit-builder": "^0.3.0"
     },
     "dependencies": {
         "nodewebkit": ">=0.9.0",

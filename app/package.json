@@ -1,16 +1,16 @@
 {
     "webexe_settings": {
-        "linux-x32": true, 
-        "download_dir": "/home/eristoddle/Dropbox/python/Web2Executable/files/downloads", 
-        "windows": true, 
-        "mac": false, 
-        "nw_version": "0.10.5", 
-        "force_download": false, 
+        "linux-x32": true,
+        "download_dir": "/home/eristoddle/Dropbox/python/Web2Executable/files/downloads",
+        "windows": true,
+        "mac": false,
+        "nw_version": "0.10.5",
+        "force_download": false,
         "linux-x64": true
-    }, 
+    },
     "name": "Zen Notebook",
     "author": "Stephan Miller <stephanmil@gmail.com>",
-    "manifestUrl": "https://github.com/eristoddle/zen-notebook/blob/master/package.json",
+    "manifestUrl": "https://raw.githubusercontent.com/eristoddle/zen-notebook/master/package.json",
     "packages": {
         "mac": {
             "url": "https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip",
@@ -30,51 +30,51 @@
         }
     },
     "repository": {
-        "url": "git@bitbucket.org:eristoddle/zen-notebook.git", 
+        "url": "git@bitbucket.org:eristoddle/zen-notebook.git",
         "type": "git"
-    }, 
-    "nodejs": true, 
-    "single-instance": true, 
+    },
+    "nodejs": true,
+    "single-instance": true,
     "webkit": {
-        "page-cache": false, 
-        "java": false, 
+        "page-cache": false,
+        "java": false,
         "plugin": false
-    }, 
+    },
     "window": {
-        "fullscreen": true, 
-        "exe_icon": "icon.png", 
-        "resizable": true, 
-        "title": "Zen Notebook", 
-        "always-on-top": false, 
-        "frame": false, 
-        "kiosk": false, 
-        "height": 600, 
-        "min_height": 480, 
-        "visible": true, 
-        "as_desktop": false, 
-        "min_width": 640, 
-        "position": "", 
-        "show_in_taskbar": false, 
-        "mac_app_icon": "icon.png", 
-        "width": 900, 
-        "toolbar": false, 
+        "fullscreen": true,
+        "exe_icon": "icon.png",
+        "resizable": true,
+        "title": "Zen Notebook",
+        "always-on-top": false,
+        "frame": false,
+        "kiosk": false,
+        "height": 600,
+        "min_height": 480,
+        "visible": true,
+        "as_desktop": false,
+        "min_width": 640,
+        "position": "",
+        "show_in_taskbar": false,
+        "mac_app_icon": "icon.png",
+        "width": 900,
+        "toolbar": false,
         "icon": "icon.png"
-    }, 
-    "version": "0.0.9",
-    "node-main": "", 
+    },
+    "version": "0.0.8",
+    "node-main": "",
     "scripts": {
-        "start": "nodewebkit", 
+        "start": "nodewebkit",
         "dependencies": {
             "nodewebkit": ">=0.9.0"
         }
-    }, 
+    },
     "keywords": [
-        "writing", 
-        "editor", 
-        "diary", 
-        "journal", 
+        "writing",
+        "editor",
+        "diary",
+        "journal",
         "notebook"
-    ], 
-    "main": "index.html", 
+    ],
+    "main": "index.html",
     "description": "A distraction free writing journal"
 }
