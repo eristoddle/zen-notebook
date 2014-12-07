@@ -85,7 +85,7 @@ module.exports = function(grunt) {
         },
         dgeni: {
             options: {
-                basePath: path.resolve(__dirname, '..')
+                basePath: path.resolve(__dirname, '.')
             },
             src: ['./src/*.js'],
             dest: './docs'
