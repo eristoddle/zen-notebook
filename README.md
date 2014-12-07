@@ -113,6 +113,8 @@ sure if this is because the sounds get loaded from files or using the sounds the
 * Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
 * Add self updating and update version in release script
 * Create application service that can map key codes events to functions in application and component
+* Add testing
+* Add grunt tasks: git (push on release, remote github site publish?), version incrementing for auto update
 
 ##Futute Roadmap
 
