@@ -81,6 +81,26 @@ module.exports = function(grunt) {
                 }
             }
         },
+        push: {
+            options: {
+                files: ['package.json', './app/package.json'],
+                updateConfigs: [],
+                releaseBranch: ['develop', 'master'],
+                add: true,
+                addFiles: ['.'],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['-a'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'origin',
+                npm: false,
+                npmTag: 'Release v%VERSION%',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+            }
+        },
         copy: {
             main: {
                 files: [
@@ -120,10 +140,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-node-webkit-builder');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-push-release');
 
     grunt.registerTask('default', ['concat', 'uglify', 'compass', 'copy']);
     grunt.registerTask('build', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit']);
-    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove']);
+    grunt.registerTask('release', ['concat', 'uglify', 'compass', 'copy', 'nodewebkit', 'shell:zipandmove', 'push']);
     grunt.registerTask('quickbuild', ['shell:quickbuild']);
 
 };
