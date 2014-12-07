@@ -19,7 +19,7 @@
             </nav>
         </header>
 
-        <div class="left-sidebar slide-menu" ng-controller="LeftController">
+        <div class="left-sidebar slide-menu" ng-controller="ComponentController">
             <div class="left-inner modal" ng-model='left' ng-class="{'slide-out':leftChangeClass}"
                  ng-mouseleave="expr({sub: 'left'})">
                 <div ng-include="left.partial"></div>
@@ -32,7 +32,7 @@
 
         <div class="right-sidebar"></div>
 
-        <footer class="slide-menu" ng-controller="FootController" ng-mouseleave="expr({sub: 'foot'})">
+        <footer class="slide-menu" ng-controller="ApplicationController" ng-mouseleave="expr({sub: 'foot'})">
             <div class="foot-inner modal" ng-model="foot" ng-class="{'slide-out':footChangeClass}">
                 <div class='footer-content'>
                     <div ng-include="foot.partial"></div>

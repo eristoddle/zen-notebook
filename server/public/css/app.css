@@ -363,6 +363,15 @@ footer {
   border-bottom: 1px solid;
 }
 /* line 8, ../src/scss/_slide.scss */
+.modal p {
+  margin-bottom: 10px;
+}
+/* line 11, ../src/scss/_slide.scss */
+.modal .notice {
+  font-weight: bold;
+  color: red;
+}
+/* line 15, ../src/scss/_slide.scss */
 .modal.left-inner {
   -moz-transition: left 1s;
   -webkit-transition: left 1s;
@@ -374,7 +383,7 @@ footer {
   bottom: 0px;
   left: -300px;
 }
-/* line 18, ../src/scss/_slide.scss */
+/* line 25, ../src/scss/_slide.scss */
 .modal.left-inner.slide-out {
   -moz-transition: left 1s;
   -webkit-transition: left 1s;
@@ -384,12 +393,12 @@ footer {
   position: fixed;
   height: 100%;
 }
-/* line 27, ../src/scss/_slide.scss */
+/* line 34, ../src/scss/_slide.scss */
 .modal.left-inner .block, .modal.left-inner .button {
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 32, ../src/scss/_slide.scss */
+/* line 39, ../src/scss/_slide.scss */
 .modal.foot-inner {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -401,11 +410,11 @@ footer {
   bottom: -300px;
   overflow: hidden;
 }
-/* line 42, ../src/scss/_slide.scss */
+/* line 49, ../src/scss/_slide.scss */
 .modal.foot-inner div {
   margin-top: 20px;
 }
-/* line 45, ../src/scss/_slide.scss */
+/* line 52, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
@@ -414,7 +423,7 @@ footer {
   bottom: 0px;
   height: 300px;
 }
-/* line 52, ../src/scss/_slide.scss */
+/* line 59, ../src/scss/_slide.scss */
 .modal.foot-inner.slide-out .footer-content {
   visibility: visible;
   display: block;

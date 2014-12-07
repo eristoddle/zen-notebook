@@ -1,4 +1,6 @@
 //interact with contenteditable region
+//special implementation because contenteditable region isn't currently two-way bindable in Angular
+//so write my own by passing events back and forth to component
 zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($rootScope, $injector) {
     return {
         restrict: "A",
@@ -12,6 +14,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             }, 100);
 
             //Bind events to content
+            //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
                 if ($rootScope.mute == true){
@@ -34,6 +37,9 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
     };
 }]);
 
+//not currently in use but probably will be
+//in unison with ngFocus
+//so inputs can be saved on mouseenter and leave
 zenNotebook.directive('ngBlur', function () {
     return function (scope, elem, attrs) {
         elem.bind('blur', function () {
@@ -41,7 +47,6 @@ zenNotebook.directive('ngBlur', function () {
         });
     };
 });
-
 zenNotebook.directive('ngFocus', function ($timeout) {
     return function (scope, elem, attrs) {
         scope.$watch(attrs.ngFocus, function (newval) {

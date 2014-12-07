@@ -5,6 +5,13 @@
     margin: 5%;
     border-bottom: 1px solid;
   }
+  p{
+    margin-bottom: 10px;
+  }
+  .notice{
+    font-weight: bold;
+    color: red;
+  }
   &.left-inner {
     -moz-transition: left 1s;
     -webkit-transition: left 1s;

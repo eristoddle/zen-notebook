@@ -447,6 +447,12 @@ zenNotebook.filter('object2Array', function() {
         return out;
     }
 });
+//a global bus for clicks I guess
+//adds nav menu buttons from component
+//broadcasts messages to the controllers down the $rootScope
+//TODO: could be replaced with a proper router?
+//could be handle by the body controller?
+//early implementation while learning angular that worked, so I haven't done the research to fix it
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
@@ -498,8 +504,9 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     };
 }]);
 
-//http://buzz.jaysalvat.com/documentation/sound/
-//http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
+//handle theme change events
+//uses buzz: http://buzz.jaysalvat.com/documentation/sound/
+//reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     return {
@@ -576,6 +583,9 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     }
 }]);
 
+//handles non-file data storage
+//TODO: should this handle file storage also?
+//TODO: this needs to switch based on the platform because localStorage won't fly for all
 zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
         getStorage: function(key, component){
@@ -593,6 +603,8 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     }
 }]);
 //interact with contenteditable region
+//special implementation because contenteditable region isn't currently two-way bindable in Angular
+//so write my own by passing events back and forth to component
 zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($rootScope, $injector) {
     return {
         restrict: "A",
@@ -606,6 +618,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             }, 100);
 
             //Bind events to content
+            //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
                 if ($rootScope.mute == true){
@@ -628,6 +641,9 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
     };
 }]);
 
+//not currently in use but probably will be
+//in unison with ngFocus
+//so inputs can be saved on mouseenter and leave
 zenNotebook.directive('ngBlur', function () {
     return function (scope, elem, attrs) {
         elem.bind('blur', function () {
@@ -635,7 +651,6 @@ zenNotebook.directive('ngBlur', function () {
         });
     };
 });
-
 zenNotebook.directive('ngFocus', function ($timeout) {
     return function (scope, elem, attrs) {
         scope.$watch(attrs.ngFocus, function (newval) {
@@ -647,6 +662,9 @@ zenNotebook.directive('ngFocus', function ($timeout) {
         });
     };
 });
+//controller for changes that effect the whole document at the body element level
+//good for instantaneous changes from the the nav menu buttons
+//currently only used for theme
 zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     //TODO: This can be part of the theme service
     $scope.themes = {
@@ -689,6 +707,8 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
     });
 }]);
 
+//controller for the nav menu
+//the menu factory handles the functionality
 zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     var message = menuFactory.subscribeClick();
     $scope.menu = menuFactory.menus.nav;
@@ -697,7 +717,9 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
     }
 }]);
 
-zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+//controller for component sidebar functionality
+//the menu factory handles the functionality
+zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
     $scope.left = {};
 
     $scope.$on('toggleLeft', function () {
@@ -709,8 +731,8 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
     });
 }]);
 
-//TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
+//handles application vs component based settings that come back from the footer
+zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
     $scope.foot = {};
     //TODO: Don't hard code the component
     $scope.components = [
@@ -795,7 +817,7 @@ zenNotebook.directive("changedate", ['$rootScope', '$compile', 'calendarFactory'
     };
 }]);
 //notebook
-//TODO: Come up with good solution for month offset issue
+//TODO: Notice reuse between notebook and nanowrimo and refactor into base application
 zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($rootScope, fileDialog) {
     var notebook = {
         years: {},

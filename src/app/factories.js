@@ -1,3 +1,9 @@
+//a global bus for clicks I guess
+//adds nav menu buttons from component
+//broadcasts messages to the controllers down the $rootScope
+//TODO: could be replaced with a proper router?
+//could be handle by the body controller?
+//early implementation while learning angular that worked, so I haven't done the research to fix it
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var factory = $injector.get($rootScope.active_component + 'Factory'),
         component_nav = factory.getMenu(),
@@ -49,8 +55,9 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     };
 }]);
 
-//http://buzz.jaysalvat.com/documentation/sound/
-//http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
+//handle theme change events
+//uses buzz: http://buzz.jaysalvat.com/documentation/sound/
+//reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     return {
@@ -127,6 +134,9 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
     }
 }]);
 
+//handles non-file data storage
+//TODO: should this handle file storage also?
+//TODO: this needs to switch based on the platform because localStorage won't fly for all
 zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
         getStorage: function(key, component){

@@ -1,5 +1,5 @@
 //notebook
-//TODO: Come up with good solution for month offset issue
+//TODO: Notice reuse between notebook and nanowrimo and refactor into base application
 zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($rootScope, fileDialog) {
     var notebook = {
         years: {},

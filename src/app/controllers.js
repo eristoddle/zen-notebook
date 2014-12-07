@@ -1,3 +1,6 @@
+//controller for changes that effect the whole document at the body element level
+//good for instantaneous changes from the the nav menu buttons
+//currently only used for theme
 zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     //TODO: This can be part of the theme service
     $scope.themes = {
@@ -40,6 +43,8 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
     });
 }]);
 
+//controller for the nav menu
+//the menu factory handles the functionality
 zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     var message = menuFactory.subscribeClick();
     $scope.menu = menuFactory.menus.nav;
@@ -48,7 +53,9 @@ zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($sco
     }
 }]);
 
-zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+//controller for component sidebar functionality
+//the menu factory handles the functionality
+zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
     $scope.left = {};
 
     $scope.$on('toggleLeft', function () {
@@ -60,8 +67,8 @@ zenNotebook.controller('LeftController', ['$scope', '$rootScope', 'menuFactory',
     });
 }]);
 
-//TODO: Modularize how markup is built
-zenNotebook.controller('FootController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
+//handles application vs component based settings that come back from the footer
+zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
     $scope.foot = {};
     //TODO: Don't hard code the component
     $scope.components = [

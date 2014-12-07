@@ -84,10 +84,7 @@ sure if this is because the sounds get loaded from files or using the sounds the
 * Fix bug when content footer pops up from bottom when mouse is hovered
 * Fix info links to open in system browser, alternately in iframe
 * Add accordian/collapsible divs to left bar
-* Reorganize and refactor application for modularity. Separate gui and notebook functionality. Make notebook the 
-first plugin
 * Optimize code
-* Have a more automated build process with install packages, bower, minification, etc.
 * Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf
 * Smooth and mellow relax colors
 * Manage sound levels
@@ -107,15 +104,15 @@ first plugin
 * Fix today button
 * Warn to save content on close is no file exists
 * Make persistent storage agnostic
-* Create services of sound and storage
+* Create services of sound
 * Dates with content don't highlight until after a click on the calendar
 * Clicks on calendar don't change word counts
 * Intercept copy and paste to remove any html markup
-* Create a more complex parser so saved content fits format: text, markdown, etc.
 * Add Markua support
 * Create Leanpub component
 * Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
-* 
+* Add self updating and update version in release script
+* Create application service that can map key codes events to functions in application and component
 
 ##Futute Roadmap
 
