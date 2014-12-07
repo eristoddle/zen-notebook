@@ -128,10 +128,7 @@ sure if this is because the sounds get loaded from files or using the sounds the
 <li>Fix bug when content footer pops up from bottom when mouse is hovered</li>
 <li>Fix info links to open in system browser, alternately in iframe</li>
 <li>Add accordian/collapsible divs to left bar</li>
-<li>Reorganize and refactor application for modularity. Separate gui and notebook functionality. Make notebook the 
-first plugin</li>
 <li>Optimize code</li>
-<li>Have a more automated build process with install packages, bower, minification, etc.</li>
 <li>Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf</li>
 <li>Smooth and mellow relax colors</li>
 <li>Manage sound levels</li>
@@ -151,11 +148,15 @@ first plugin</li>
 <li>Fix today button</li>
 <li>Warn to save content on close is no file exists</li>
 <li>Make persistent storage agnostic</li>
-<li>Create services of sound and storage</li>
+<li>Create services of sound</li>
 <li>Dates with content don't highlight until after a click on the calendar</li>
 <li>Clicks on calendar don't change word counts</li>
 <li>Intercept copy and paste to remove any html markup</li>
-<li>Create a more complex parser so saved content fits format: text, markdown, etc.</li>
+<li>Add Markua support</li>
+<li>Create Leanpub component</li>
+<li>Possible json/folder mode switch which will save work in one json file or separate text files with meta data files</li>
+<li>Add self updating and update version in release script</li>
+<li>Create application service that can map key codes events to functions in application and component</li>
 </ul>
 
 <h2>
@@ -253,16 +254,23 @@ solved by concatenating the js files.</li>
 </li>
 <li>Sass : <a href="http://sass-lang.com/">http://sass-lang.com/</a>
 </li>
+<li>Grunt : </li>
+<li>Laravel : </li>
 <li>Buzz : <a href="http://buzz.jaysalvat.com/">http://buzz.jaysalvat.com/</a>
-</li>
-<li>Head : <a href="http://headjs.com/">http://headjs.com/</a>
 </li>
 <li>Marked : <a href="https://github.com/chjj/marked">https://github.com/chjj/marked</a>
 </li>
-<li>ngStorage : <a href="https://github.com/gsklee/ngStorage">https://github.com/gsklee/ngStorage</a>
-</li>
-<li>nw-fileDialog : <a href="https://github.com/DWand/nw-fileDialog">https://github.com/DWand/nw-fileDialog</a>
-</li>
+<li>Markua : Not yet but will be adding</li>
+</ul>
+
+<h2>
+<a id="component-ideas" class="anchor" href="#component-ideas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component Ideas</h2>
+
+<ul>
+<li>Notebook: Default mode, a diary</li>
+<li>Nanowrimo: Simple novel structure with word count and progress</li>
+<li>Leanpub: Work from a Leanpub dropbox project folder</li>
+<li>Jekyll: Work from a Jekyll blog git repo</li>
 </ul>
       </section>
       <footer>
