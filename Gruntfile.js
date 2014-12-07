@@ -87,7 +87,7 @@ module.exports = function(grunt) {
             options: {
                 basePath: path.resolve(__dirname, '.')
             },
-            src: ['./src/*.js'],
+            src: ['./src/app/**/*.js'],
             dest: './docs'
         },
         push: {
