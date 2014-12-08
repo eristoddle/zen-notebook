@@ -1,6 +1,6 @@
 //notebook
 //TODO: Notice reuse between notebook and nanowrimo and refactor into base application
-zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($rootScope, fileDialog) {
+zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
     var notebook = {
         years: {},
         file: null,
@@ -13,26 +13,21 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         activeMonth: null,
         activeDay: null,
         onLoad: function(){
-            //TODO: Use a storage service
-            var file = window.localStorage && window.localStorage.getItem('file');
+            var file = storageFactory.getStorage('file');
 
             if (file) {
                 this.loadNotebook(file);
                 var content = this.getDaysContent(this.activeDateText());
-                window.localStorage && window.localStorage.setItem(
-                    'content',
-                    content
-                );
+                storageFactory.setStorage('content', content);
             } else {
                 this.setActiveDate(this.currentDate);
             }
             return this.getDaysContent(this.activeDateText())
         },
         onWrite: function(content){
-            //TODO: Use a storage service
             var count = this.countWords(content);
-            window.localStorage && window.localStorage.setItem('content', content);
-            window.localStorage && window.localStorage.setItem('word_count', count);
+            storageFactory.setStorage('content', content);
+            storageFactory.setStorage('word_count', count);
         },
         onChangeDate: function(oldDate, newDate){
             var old = oldDate.split('-');
@@ -44,7 +39,8 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             }
         },
         onExit: function () {
-            var file = window.localStorage && window.localStorage.getItem('file');
+            var file = storageFactory.getStorage('file');
+
             if (file) {
                 this.setDaysContent(this.activeDateText());
                 this.saveNotebook(file);
@@ -58,7 +54,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
                 return this.years[parseInt(dates[0])][parseInt(dates[1])][parseInt(dates[2])]['content']
                     .replace(/\n/g, "<br>");
             } catch (err) {
-                window.localStorage && window.localStorage.setItem('error', err);
+                storageFactory.setStorage('error', err);
                 return '';
             }
         },
@@ -102,7 +98,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
         },
         //TODO:Parse before saving
         getActiveContent: function () {
-            return window.localStorage.getItem('content')
+            return storageFactory.getStorage('content')
                 .replace(/<br>/g, "\n")
                 .replace(/<div>/g, "\n")
                 .replace(/<\/div>/g, "")
@@ -136,13 +132,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             ];
         },
         activeTags: '',
-        //TODO: Use this to consolidate before a service
-        getStorage: function(key){
-            return window.localStorage.getItem(key);
-        },
-        setStorage: function(key, data){
-            window.localStorage.setItem(key, data);
-        },
         saveNotebook: function (filename) {
             var journal;
             this.file = filename;
@@ -150,11 +139,11 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             journal = JSON.stringify(this);
             try {
                 fileDialog.writeFile(filename, journal);
-                window.localStorage && window.localStorage.setItem('file', this.file);
+                storageFactory.setStorage('file', this.file);
                 return journal;
             } catch (err) {
-                window.localStorage && window.localStorage.setItem('error', err);
-                window.localStorage && window.localStorage.setItem('recovery', journal);
+                storageFactory.setStorage('error', err);
+                storageFactory.setStorage('recovery', journal);
             }
         },
         loadNotebook: function (file) {
@@ -163,7 +152,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'fileDialog', function ($r
             this.file = file;
             this.currentDate = new Date();
             this.years = tempJournal.years;
-            window.localStorage && window.localStorage.setItem('file', this.file);
+            storageFactory.setStorage('file', this.file);
         }
     };
     if (!notebook.currentDate) {

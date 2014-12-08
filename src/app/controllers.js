@@ -46,7 +46,6 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
 //controller for the nav menu
 //the menu factory handles the functionality
 zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    var message = menuFactory.subscribeClick();
     $scope.menu = menuFactory.menus.nav;
     $scope.expr = function (locals) {
         menuFactory.publishClick(locals);
@@ -70,7 +69,7 @@ zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFact
 //handles application vs component based settings that come back from the footer
 zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
     $scope.foot = {};
-    //TODO: Don't hard code the component
+    //TODO: Don't hard code the components
     $scope.components = [
         'notebook',
         'nanowrimo'
