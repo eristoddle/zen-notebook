@@ -872,9 +872,8 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
         };
 
         $scope.changeComponent = function(component){
-            //TODO: This does way too much just to get things to change
+            //TODO: Hack just reloading the page to get new component button to show correct icon
             $rootScope.active_component = component;
-            menuFactory.loadComponent();
             storageFactory.setStorage('active_component', component);
             $rootScope.$broadcast('loadComponent');
             window.location.reload();

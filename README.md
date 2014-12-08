@@ -53,7 +53,7 @@ Application Folder
 
 [Download](http://stephanmiller.com/sites/default/files/software/mac.zip)
 
-[Alternate Download](https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip?dl=0)
+[Alternate Download](https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip?dl=1)
 
 ###Windows
 
@@ -62,19 +62,19 @@ sure if this is because the sounds get loaded from files or using the sounds the
 
 [Download](http://stephanmiller.com/sites/default/files/software/windows.zip)
 
-[Alternate Download](https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=0)
+[Alternate Download](https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=1)
 
 ###Linux 32 bit
 
 [Download](http://stephanmiller.com/sites/default/files/software/linux-x32.zip)
 
-[Alternate Download](https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip?dl=0)
+[Alternate Download](https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip?dl=1)
 
 ###Linux 64 bit
 
 [Download](http://stephanmiller.com/sites/default/files/software/linux-x64.zip)
 
-[Alternate Download](https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip?dl=0)
+[Alternate Download](https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip?dl=1)
 
 ##Beta Version Punchlist
 
