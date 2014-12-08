@@ -570,9 +570,7 @@ zenNotebook.filter('object2Array', function() {
 //could be handle by the body controller?
 //early implementation while learning angular that worked, so I haven't done the research to fix it
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
-    var factory = $injector.get($rootScope.active_component + 'Factory'),
-        component_nav = factory.getMenu(),
-        app_nav = [
+    var app_nav = [
             {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
             {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
             {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
@@ -580,13 +578,17 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
             {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
             {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
             {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
-        ],
-        nav = component_nav.concat(app_nav);
+        ];
 
-    return {
+    var factory = {
         message: null,
-        menus: {
-            nav: nav
+        menus: null,
+        loadComponent: function(){
+            var factory = $injector.get($rootScope.active_component + 'Factory');
+            var component_nav = factory.getMenu();
+            this.menus = {
+                nav: component_nav.concat(app_nav)
+            }
         },
         publishClick: function (message) {
             this.message = message;
@@ -618,6 +620,10 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
             return message;
         }
     };
+
+    factory.loadComponent();
+
+    return factory;
 }]);
 
 //handle theme change events
@@ -866,9 +872,12 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
         };
 
         $scope.changeComponent = function(component){
+            //TODO: This does way too much just to get things to change
             $rootScope.active_component = component;
+            menuFactory.loadComponent();
             storageFactory.setStorage('active_component', component);
             $rootScope.$broadcast('loadComponent');
+            window.location.reload();
         };
     });
 }]);
