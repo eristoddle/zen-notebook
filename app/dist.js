@@ -495,7 +495,6 @@ var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
 //Global
 var win;
-var mute = false;
 
 //NW
 if(isNodeWebkit) {
@@ -508,7 +507,7 @@ if(isNodeWebkit) {
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
     .run(function($rootScope, storageFactory){
         //Sound
-        $rootScope.mute = mute;
+        $rootScope.mute = false;
         if(storageFactory.getStorage('mute')){
             $rootScope.mute = storageFactory.getStorage('mute');
         }
@@ -695,6 +694,12 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
         }
     }
 }]);
+
+zenNotebook.factory('dropboxFactory', ['$rootScope', function ($rootScope) {
+    return {
+
+    }
+}]);
 //interact with contenteditable region
 //special implementation because contenteditable region isn't currently two-way bindable in Angular
 //so write my own by passing events back and forth to component
@@ -733,28 +738,6 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
-
-//not currently in use but probably will be
-//in unison with ngFocus
-//so inputs can be saved on mouseenter and leave
-zenNotebook.directive('ngBlur', function () {
-    return function (scope, elem, attrs) {
-        elem.bind('blur', function () {
-            scope.$apply(attrs.ngBlur);
-        });
-    };
-});
-zenNotebook.directive('ngFocus', function ($timeout) {
-    return function (scope, elem, attrs) {
-        scope.$watch(attrs.ngFocus, function (newval) {
-            if (newval) {
-                $timeout(function () {
-                    elem[0].focus();
-                }, 0, false);
-            }
-        });
-    };
-});
 //controller for changes that effect the whole document at the body element level
 //good for instantaneous changes from the the nav menu buttons
 //currently only used for theme

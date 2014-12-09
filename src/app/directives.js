@@ -36,25 +36,3 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
-
-//not currently in use but probably will be
-//in unison with ngFocus
-//so inputs can be saved on mouseenter and leave
-zenNotebook.directive('ngBlur', function () {
-    return function (scope, elem, attrs) {
-        elem.bind('blur', function () {
-            scope.$apply(attrs.ngBlur);
-        });
-    };
-});
-zenNotebook.directive('ngFocus', function ($timeout) {
-    return function (scope, elem, attrs) {
-        scope.$watch(attrs.ngFocus, function (newval) {
-            if (newval) {
-                $timeout(function () {
-                    elem[0].focus();
-                }, 0, false);
-            }
-        });
-    };
-});

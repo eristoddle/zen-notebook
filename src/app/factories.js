@@ -160,3 +160,9 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
         }
     }
 }]);
+
+zenNotebook.factory('dropboxFactory', ['$rootScope', function ($rootScope) {
+    return {
+
+    }
+}]);

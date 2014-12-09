@@ -9,7 +9,6 @@ var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
 //Global
 var win;
-var mute = false;
 
 //NW
 if(isNodeWebkit) {
@@ -22,7 +21,7 @@ if(isNodeWebkit) {
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
     .run(function($rootScope, storageFactory){
         //Sound
-        $rootScope.mute = mute;
+        $rootScope.mute = false;
         if(storageFactory.getStorage('mute')){
             $rootScope.mute = storageFactory.getStorage('mute');
         }
