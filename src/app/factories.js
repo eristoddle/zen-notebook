@@ -15,12 +15,13 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
             {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
         ];
 
-    var factory = {
+    var menus = {
         message: null,
         menus: null,
+        factory: null,
         loadComponent: function(){
-            var factory = $injector.get($rootScope.active_component + 'Factory');
-            var component_nav = factory.getMenu();
+            this.factory = $injector.get($rootScope.active_component + 'Factory');
+            var component_nav = this.factory.getMenu();
             this.menus = {
                 nav: component_nav.concat(app_nav)
             }
@@ -44,7 +45,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
                     win.minimize();
                 }
                 if (message.action == 'exit') {
-                    factory.onExit();
+                    this.factory.onExit();
                     win.close();
                 }
             }
@@ -56,9 +57,9 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
         }
     };
 
-    factory.loadComponent();
+    menus.loadComponent();
 
-    return factory;
+    return menus;
 }]);
 
 //handle theme change events
