@@ -44,7 +44,7 @@
     "kiosk": false,
     "icon": "icon.png"
   },
-  "version": "0.0.14",
+  "version": "0.0.15",
   "webkit": {
     "page-cache": false,
     "java": false,
