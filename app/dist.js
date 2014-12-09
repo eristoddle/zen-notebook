@@ -396,54 +396,21 @@ angular.module('zenNodeWebkitModule', [])
     }])
     .factory('updateFactory', ['$rootScope', function ($rootScope) {
         // Args passed when new app is launched from temp dir during update
-        var runUpdate =function() {
-            var gui = require('nw.gui');
-            var pkg = require('./package.json');
-            var updater = require('node-webkit-updater');
-            var upd = new updater(pkg);
-            //var copyPath, execPath;
-//            if (gui.App.argv.length) {
-//                // ------------- Step 5 -------------
-//                copyPath = gui.App.argv[0];
-//                execPath = gui.App.argv[1];
-//
-//                // Replace old app, Run updated app from original location and close temp instance
-//                upd.install(copyPath, function (err) {
-//                    if (!err) {
-//
-//                        // ------------- Step 6 -------------
-//                        upd.run(execPath, null);
-//                        gui.App.quit();
-//                    }
-//                });
-//            }
-//            else {
-
-                // ------------- Step 1 -------------
+        var updater = {
+            runUpdate: function () {
+                var gui = require('nw.gui');
+                var pkg = require('./package.json');
+                //TODO: This package is useless to me now unless it can self-update correctly
+                var updater = require('node-webkit-updater');
+                var upd = new updater(pkg);
                 upd.checkNewVersion(function (error, newVersionExists, manifest) {
-                    if (!error && newVersionExists) {
+                    //$rootScope.version = gui.App.manifest.version;
                         $rootScope.update_available = newVersionExists;
-                        $rootScope.latest_version = manifest.version;
-                        // ------------- Step 2 -------------
-//                        upd.download(function (error, filename) {
-//                            if (!error) {
-//                                console.log('downloading');
-//                                // ------------- Step 3 -------------
-//                                upd.unpack(filename, function (error, newAppPath) {
-//                                    if (!error) {
-//                                        console.log('running installer');
-//                                        // ------------- Step 4 -------------
-//                                        upd.runInstaller(newAppPath, [upd.getAppPath(), upd.getAppExec()], {});
-//                                        gui.App.quit();
-//                                    }
-//                                }, manifest);
-//                            }
-//                        }, manifest);
-                    }
+                    //$rootScope.latest_version = manifest.version;
                 });
             }
-        //};
-        return runUpdate;
+        };
+        return updater;
     }])
     .run(function(updateFactory){
         var gui = require('nw.gui');
@@ -461,7 +428,7 @@ angular.module('zenNodeWebkitModule', [])
         if(os = "Windows"){
             mute = true;
         }
-        updateFactory();
+        updateFactory.runUpdate();
     });
 angular.module('zenWebModule', [])
     .factory('fileDialog', [function(){
