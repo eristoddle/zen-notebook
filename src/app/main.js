@@ -31,6 +31,9 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         if(!$rootScope.active_component){
             $rootScope.active_component = 'notebook';
         }
+        $rootScope.update_available = false;
+        $rootScope.version = null;
+        $rootScope.latest_version = null;
         //TODO: Load Configuration and Features here
 
     });
