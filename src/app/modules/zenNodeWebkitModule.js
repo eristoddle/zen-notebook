@@ -62,6 +62,21 @@ angular.module('zenNodeWebkitModule', [])
             }
         };
 
+        dialogs.readDir = function(dir){
+            var data;
+            try {
+                data = fs.readdirSync(dir);
+                return data;
+            } catch (e) {
+                if (e.code === 'ENOENT') {
+                    console.log('Directory not found!');
+                } else {
+                    throw e;
+                }
+                return false;
+            }
+        };
+
         return dialogs;
     }])
     .factory('updateFactory', ['$rootScope', function ($rootScope) {

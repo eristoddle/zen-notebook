@@ -12,7 +12,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
         activeYear: null,
         activeMonth: null,
         activeDay: null,
-        onLoad: function(){
+        onLoad: function () {
             var file = storageFactory.getStorage('file');
 
             if (file) {
@@ -24,12 +24,12 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
             }
             return this.getDaysContent(this.activeDateText())
         },
-        onWrite: function(content){
+        onWrite: function (content) {
             var count = this.countWords(content);
             storageFactory.setStorage('content', content);
             storageFactory.setStorage('word_count', count);
         },
-        onChangeDate: function(oldDate, newDate){
+        onChangeDate: function (oldDate, newDate) {
             var old = oldDate.split('-');
             this.setDaysContent(old[0] + '-' + old[1] + '-' + old[2]);
             if (this.getDaysContent(newDate)) {
@@ -109,24 +109,24 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
             s = s.replace(/\n /, "\n");
             return s.split(' ').length;
         },
-        getMonthCount: function(){
+        getMonthCount: function () {
             var count = 1000;
 
             return count;
         },
-        getMonthAverage: function(){
+        getMonthAverage: function () {
             var average = 1000;
 
             return average;
         },
-        getSidebar: function(){
+        getSidebar: function () {
             return {
                 word_count: this.countWords(this.getActiveContent()),
                 month_average: this.getMonthAverage(),
                 month_count: this.getMonthCount()
             };
         },
-        getMenu: function(){
+        getMenu: function () {
             return [
                 {title: 'Calendar', action: 'calendar', class: 'fa fa-calendar', sub: 'left'}
             ];
@@ -148,11 +148,15 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
         },
         loadNotebook: function (file) {
             var data = fileDialog.readFile(file);
-            tempJournal = JSON.parse(data);
-            this.file = file;
-            this.currentDate = new Date();
-            this.years = tempJournal.years;
-            storageFactory.setStorage('file', this.file);
+            if (data) {
+                tempJournal = JSON.parse(data);
+                this.file = file;
+                this.currentDate = new Date();
+                this.years = tempJournal.years;
+                storageFactory.setStorage('file', this.file);
+            } else {
+                storageFactory.deleteStorage('file');
+            }
         }
     };
     if (!notebook.currentDate) {
@@ -210,13 +214,13 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                         var nextYear = year;
                         var date = year + '-' + month + '-' + day;
                         var trueMonth = month + 1;
-                        if (trueMonth == 13){
+                        if (trueMonth == 13) {
                             trueMonth = 1;
                             trueYear = year + 1;
                             nextYear = trueYear;
                         }
                         var nextMonth = trueMonth + 1;
-                        if (nextMonth == 13){
+                        if (nextMonth == 13) {
                             nextMonth = 1;
                             nextYear = year + 1;
                         }
@@ -224,14 +228,14 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                         if (dates.indexOf(day) == -1) {
                             //TODO: Have a today custom class
                             //TODO: This check doesn't work on first load - need a notebook init function
-                            if(notebookFactory.getDaysContent(trueDate).length > 0){
+                            if (notebookFactory.getDaysContent(trueDate).length > 0) {
                                 row.push('<div class="cal-day cal-content" data-date="' + trueDate +
                                     '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
-                            }else {
+                            } else {
                                 row.push('<div class="cal-day" data-date="' + trueDate +
                                     '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                             }
-                        }else{
+                        } else {
                             row.push('<div class="cal-day cal-highlight" data-date="' + trueDate +
                                 '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                         }
@@ -243,7 +247,7 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 row.push('</tr>');
                 tpl.push(row.join(''));
             }
-            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (trueMonth - 1) +  ' data-year=' + year + ' data-action="month-back" changedate></span>' +
+            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (trueMonth - 1) + ' data-year=' + year + ' data-action="month-back" changedate></span>' +
                 '<span class="today" data-month=' + trueMonth + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
                 '<span class="fa fa-arrow-right" data-month=' + nextMonth + ' data-year=' + nextYear + ' data-action="month-forward" changedate></span></div></div>');
             return tpl.join('');

@@ -72,8 +72,8 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
     //TODO: Don't hard code the components
     $scope.components = [
         'notebook',
-        'nanowrimo'
-        //'leanpub'
+        'nanowrimo',
+        'leanpub'
     ];
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();
@@ -84,7 +84,7 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
             menuFactory.publishClick(locals);
         };
 
-        $scope.changeComponent = function(component){
+        $scope.changeComponent = function (component) {
             //TODO: Hack just reloading the page to get new component button to show correct icon
             $rootScope.active_component = component;
             storageFactory.setStorage('active_component', component);

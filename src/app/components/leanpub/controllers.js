@@ -1,5 +1,5 @@
-zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
-    $scope.chapters = nanowrimoFactory.documents;
+zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
+    $scope.chapters = leanpubFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'},
         {title: 'Save Book', class: 'save', action: 'save'}
@@ -18,7 +18,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         return $scope.shownChapter === chapter;
     };
     $scope.$on('toggleLeft', function () {
-//        var stats = nanowrimoFactory.getSidebar();
+//        var stats = leanpubFactory.getSidebar();
 //        for (var key in stats) {
 //            $scope.left[key] = stats[key];
 //        }
@@ -26,9 +26,9 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
 
     $scope.expr = function (button) {
         if (button.action == 'open') {
-            fileDialog.openFile(
-                function (filename) {
-                    nanowrimoFactory.loadBook(filename);
+            fileDialog.openDir(
+                function (dir) {
+                    leanpubFactory.loadBook(dir);
                 },
                 false,
                 '.json'
@@ -37,7 +37,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         if (button.action == 'save') {
             fileDialog.saveAs(
                 function (filename) {
-                    nanowrimoFactory.saveBook(filename);
+                    leanpubFactory.saveBook(filename);
                 },
                 'book.json',
                 '.json'
@@ -45,12 +45,12 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
     $scope.createChapter = function () {
-        var chapter = nanowrimoFactory.createChapter();
-        nanowrimoFactory.currentChapter = chapter;
+        var chapter = leanpubFactory.createChapter();
+        leanpubFactory.currentChapter = chapter;
         $scope.startEditing(chapter);
     };
     $scope.setChapter = function (chapter) {
-        $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
+        $rootScope.$broadcast('changeContent', leanpubFactory.onChangeChapter(leanpubFactory.currentChapter, chapter));
     };
     $scope.startEditing = function (chapter) {
         $scope.setChapter(chapter);
@@ -58,8 +58,8 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         $scope.editedChapter = chapter;
     };
     $scope.doneEditing = function (oldChapter, newChapter) {
-        nanowrimoFactory.editChapter(oldChapter, newChapter);
+        leanpubFactory.editChapter(oldChapter, newChapter);
         $scope.editedChapter = null;
-        $scope.chapters = nanowrimoFactory.documents;
+        $scope.chapters = leanpubFactory.documents;
     };
 }]);

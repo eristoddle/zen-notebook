@@ -9,7 +9,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             var factory = $injector.get($rootScope.active_component + 'Factory');
             //Load component
             //TODO: Hack to wait for file to load
-            window.setTimeout(function(){
+            window.setTimeout(function () {
                 element.html(factory.onLoad());
             }, 150);
 
@@ -17,19 +17,19 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
-                if ($rootScope.mute == true){
+                if ($rootScope.mute == true) {
                     $injector.get('themeFactory').themeSound(event);
                 }
             });
 
             //Event sent by component whenever content should change
-            $rootScope.$on('changeContent', function (event, content){
+            $rootScope.$on('changeContent', function (event, content) {
                 factory.onWrite(element.html());
                 element.html(content);
                 factory.onWrite(element.html());
             });
 
-            $rootScope.$on('loadComponent', function (event){
+            $rootScope.$on('loadComponent', function (event) {
                 factory = $injector.get($rootScope.active_component + 'Factory');
                 element.html(factory.onLoad());
             });

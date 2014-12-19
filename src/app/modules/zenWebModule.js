@@ -1,7 +1,7 @@
 angular.module('zenWebModule', [])
-    .factory('fileDialog', [function(){
-        var callDialog = function(dialog, callback) {
-            dialog.addEventListener('change', function() {
+    .factory('fileDialog', [function () {
+        var callDialog = function (dialog, callback) {
+            dialog.addEventListener('change', function () {
                 callback(dialog.value);
             }, false);
             dialog.click();
@@ -9,7 +9,7 @@ angular.module('zenWebModule', [])
 
         var dialogs = {};
 
-        dialogs.saveAs = function(callback, defaultFilename, acceptTypes) {
+        dialogs.saveAs = function (callback, defaultFilename, acceptTypes) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             dialog.nwsaveas = defaultFilename || '';
@@ -21,7 +21,7 @@ angular.module('zenWebModule', [])
             callDialog(dialog, callback);
         };
 
-        dialogs.openFile = function(callback, multiple, acceptTypes) {
+        dialogs.openFile = function (callback, multiple, acceptTypes) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             if (multiple === true) {
@@ -35,18 +35,18 @@ angular.module('zenWebModule', [])
             callDialog(dialog, callback);
         };
 
-        dialogs.openDir = function(callback) {
+        dialogs.openDir = function (callback) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             dialog.nwdirectory = 'nwdirectory';
             callDialog(dialog, callback);
         };
 
-        dialogs.writeFile = function(filename, content){
+        dialogs.writeFile = function (filename, content) {
             //return fs.writeFileSync(filename, content);
         };
 
-        dialogs.readFile = function(file){
+        dialogs.readFile = function (file) {
             //return fs.readFileSync(file);
         };
 

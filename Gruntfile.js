@@ -18,7 +18,8 @@ module.exports = function(grunt) {
                     'src/app/directives.js',
                     'src/app/controllers.js',
                     'src/app/components/notebook/*.js',
-                    'src/app/components/nanowrimo/*.js'
+                    'src/app/components/nanowrimo/*.js',
+                    'src/app/components/leanpub/*.js'
                 ],
                 "dest": 'app/dist.js'
             }

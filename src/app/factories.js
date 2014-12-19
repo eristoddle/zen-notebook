@@ -6,20 +6,20 @@
 //early implementation while learning angular that worked, so I haven't done the research to fix it
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var app_nav = [
-            {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
-            {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
-            {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
-            {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
-            {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
-            {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
-            {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
-        ];
+        {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
+        {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
+        {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
+        {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
+        {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
+        {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
+        {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
+    ];
 
     var menus = {
         message: null,
         menus: null,
         factory: null,
-        loadComponent: function(){
+        loadComponent: function () {
             this.factory = $injector.get($rootScope.active_component + 'Factory');
             var component_nav = this.factory.getMenu();
             this.menus = {
@@ -66,11 +66,11 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
 //uses buzz: http://buzz.jaysalvat.com/documentation/sound/
 //reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
-zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
+zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
     return {
-        theme : window.localStorage && window.localStorage.getItem('theme'),
-        relaxSound : new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
-        typeSounds : {
+        theme: window.localStorage && window.localStorage.getItem('theme'),
+        relaxSound: new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
+        typeSounds: {
             spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
             keyup: new buzz.sound("./assets/typewriter/keyup.ogg", {volume: 100}),
             bell: new buzz.sound("./assets/typewriter/bell.ogg", {volume: 100}),
@@ -127,7 +127,7 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
         relaxStop: function () {
             this.relaxSound.stop();
         },
-        themeSound: function(event){
+        themeSound: function (event) {
             var theme = window.localStorage && window.localStorage.getItem('theme');
             if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                 this.typeSound(event.keyIdentifier);
@@ -146,20 +146,20 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
 //TODO: this needs to switch based on the platform because localStorage won't fly for all
 zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
-        getStorage: function(key, component){
-            if(component){
+        getStorage: function (key, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             return window.localStorage.getItem(key);
         },
-        setStorage: function(key, data, component){
-            if(component){
+        setStorage: function (key, data, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             window.localStorage.setItem(key, data);
         },
-        deleteStorage: function(key, component){
-            if(component){
+        deleteStorage: function (key, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             window.localStorage.removeItem(key);

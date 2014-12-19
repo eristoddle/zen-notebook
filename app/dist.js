@@ -403,6 +403,21 @@ angular.module('zenNodeWebkitModule', [])
             }
         };
 
+        dialogs.readDir = function(dir){
+            var data;
+            try {
+                data = fs.readdirSync(dir);
+                return data;
+            } catch (e) {
+                if (e.code === 'ENOENT') {
+                    console.log('Directory not found!');
+                } else {
+                    throw e;
+                }
+                return false;
+            }
+        };
+
         return dialogs;
     }])
     .factory('updateFactory', ['$rootScope', function ($rootScope) {
@@ -442,9 +457,9 @@ angular.module('zenNodeWebkitModule', [])
         updateFactory.runUpdate();
     });
 angular.module('zenWebModule', [])
-    .factory('fileDialog', [function(){
-        var callDialog = function(dialog, callback) {
-            dialog.addEventListener('change', function() {
+    .factory('fileDialog', [function () {
+        var callDialog = function (dialog, callback) {
+            dialog.addEventListener('change', function () {
                 callback(dialog.value);
             }, false);
             dialog.click();
@@ -452,7 +467,7 @@ angular.module('zenWebModule', [])
 
         var dialogs = {};
 
-        dialogs.saveAs = function(callback, defaultFilename, acceptTypes) {
+        dialogs.saveAs = function (callback, defaultFilename, acceptTypes) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             dialog.nwsaveas = defaultFilename || '';
@@ -464,7 +479,7 @@ angular.module('zenWebModule', [])
             callDialog(dialog, callback);
         };
 
-        dialogs.openFile = function(callback, multiple, acceptTypes) {
+        dialogs.openFile = function (callback, multiple, acceptTypes) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             if (multiple === true) {
@@ -478,18 +493,18 @@ angular.module('zenWebModule', [])
             callDialog(dialog, callback);
         };
 
-        dialogs.openDir = function(callback) {
+        dialogs.openDir = function (callback) {
             var dialog = document.createElement('input');
             dialog.type = 'file';
             dialog.nwdirectory = 'nwdirectory';
             callDialog(dialog, callback);
         };
 
-        dialogs.writeFile = function(filename, content){
+        dialogs.writeFile = function (filename, content) {
             //return fs.writeFileSync(filename, content);
         };
 
-        dialogs.readFile = function(file){
+        dialogs.readFile = function (file) {
             //return fs.readFileSync(file);
         };
 
@@ -498,33 +513,33 @@ angular.module('zenWebModule', [])
 /**
  * @description  Zen Notebook
  */
-var os="Unknown ";
-if (navigator.appVersion.indexOf("Win")!=-1) os="Windows";
-if (navigator.appVersion.indexOf("Mac")!=-1) os="Mac";
-if (navigator.appVersion.indexOf("Linux")!=-1) os="Linux";
+var os = "Unknown ";
+if (navigator.appVersion.indexOf("Win") != -1) os = "Windows";
+if (navigator.appVersion.indexOf("Mac") != -1) os = "Mac";
+if (navigator.appVersion.indexOf("Linux") != -1) os = "Linux";
 var isNodeWebkit = (typeof process == "object");
 var platformModule = null;
 //Global
 var win;
 
 //NW
-if(isNodeWebkit) {
+if (isNodeWebkit) {
     platformModule = 'zenNodeWebkitModule';
-}else{
+} else {
     platformModule = 'zenWebModule';
 }
 
 //Initialize Application
 var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
-    .run(function($rootScope, storageFactory){
+    .run(function ($rootScope, storageFactory) {
         //Sound
         $rootScope.mute = false;
-        if(storageFactory.getStorage('mute')){
+        if (storageFactory.getStorage('mute')) {
             $rootScope.mute = storageFactory.getStorage('mute');
         }
         //Active Component
         $rootScope.active_component = storageFactory.getStorage('active_component');
-        if(!$rootScope.active_component){
+        if (!$rootScope.active_component) {
             $rootScope.active_component = 'notebook';
         }
         $rootScope.update_available = false;
@@ -534,10 +549,10 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
 
     });
 //In order to use filter by, have to convert objects to an array
-zenNotebook.filter('object2Array', function() {
-    return function(input) {
+zenNotebook.filter('object2Array', function () {
+    return function (input) {
         var out = [];
-        for(i in input){
+        for (i in input) {
             out.push(input[i]);
         }
         return out;
@@ -551,20 +566,20 @@ zenNotebook.filter('object2Array', function() {
 //early implementation while learning angular that worked, so I haven't done the research to fix it
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var app_nav = [
-            {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
-            {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
-            {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
-            {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
-            {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
-            {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
-            {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
-        ];
+        {title: 'Export', action: 'export', class: 'fa fa-download', sub: 'foot'},
+        {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
+        {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'foot'},
+        {title: 'About', action: 'about', class: 'fa fa-question', sub: 'foot'},
+        {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
+        {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
+        {title: 'Exit', action: 'exit', class: 'fa fa-power-off', sub: 'nw'}
+    ];
 
     var menus = {
         message: null,
         menus: null,
         factory: null,
-        loadComponent: function(){
+        loadComponent: function () {
             this.factory = $injector.get($rootScope.active_component + 'Factory');
             var component_nav = this.factory.getMenu();
             this.menus = {
@@ -611,11 +626,11 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
 //uses buzz: http://buzz.jaysalvat.com/documentation/sound/
 //reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
-zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
+zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
     return {
-        theme : window.localStorage && window.localStorage.getItem('theme'),
-        relaxSound : new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
-        typeSounds : {
+        theme: window.localStorage && window.localStorage.getItem('theme'),
+        relaxSound: new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
+        typeSounds: {
             spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
             keyup: new buzz.sound("./assets/typewriter/keyup.ogg", {volume: 100}),
             bell: new buzz.sound("./assets/typewriter/bell.ogg", {volume: 100}),
@@ -672,7 +687,7 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
         relaxStop: function () {
             this.relaxSound.stop();
         },
-        themeSound: function(event){
+        themeSound: function (event) {
             var theme = window.localStorage && window.localStorage.getItem('theme');
             if (event instanceof KeyboardEvent && (theme == 'typewriter light' || theme == 'carbon dark')) {
                 this.typeSound(event.keyIdentifier);
@@ -691,20 +706,20 @@ zenNotebook.factory('themeFactory', ['$rootScope', function($rootScope){
 //TODO: this needs to switch based on the platform because localStorage won't fly for all
 zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
     return {
-        getStorage: function(key, component){
-            if(component){
+        getStorage: function (key, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             return window.localStorage.getItem(key);
         },
-        setStorage: function(key, data, component){
-            if(component){
+        setStorage: function (key, data, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             window.localStorage.setItem(key, data);
         },
-        deleteStorage: function(key, component){
-            if(component){
+        deleteStorage: function (key, component) {
+            if (component) {
                 key = component + '.' + key;
             }
             window.localStorage.removeItem(key);
@@ -728,7 +743,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             var factory = $injector.get($rootScope.active_component + 'Factory');
             //Load component
             //TODO: Hack to wait for file to load
-            window.setTimeout(function(){
+            window.setTimeout(function () {
                 element.html(factory.onLoad());
             }, 150);
 
@@ -736,19 +751,19 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
-                if ($rootScope.mute == true){
+                if ($rootScope.mute == true) {
                     $injector.get('themeFactory').themeSound(event);
                 }
             });
 
             //Event sent by component whenever content should change
-            $rootScope.$on('changeContent', function (event, content){
+            $rootScope.$on('changeContent', function (event, content) {
                 factory.onWrite(element.html());
                 element.html(content);
                 factory.onWrite(element.html());
             });
 
-            $rootScope.$on('loadComponent', function (event){
+            $rootScope.$on('loadComponent', function (event) {
                 factory = $injector.get($rootScope.active_component + 'Factory');
                 element.html(factory.onLoad());
             });
@@ -829,8 +844,8 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
     //TODO: Don't hard code the components
     $scope.components = [
         'notebook',
-        'nanowrimo'
-        //'leanpub'
+        'nanowrimo',
+        'leanpub'
     ];
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();
@@ -841,7 +856,7 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
             menuFactory.publishClick(locals);
         };
 
-        $scope.changeComponent = function(component){
+        $scope.changeComponent = function (component) {
             //TODO: Hack just reloading the page to get new component button to show correct icon
             $rootScope.active_component = component;
             storageFactory.setStorage('active_component', component);
@@ -856,12 +871,12 @@ zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookF
         {title: 'Save Notebook', class: 'save', action: 'save'}
     ];
     $scope.$on('toggleLeft', function () {
-         var stats = notebookFactory.getSidebar();
+        var stats = notebookFactory.getSidebar();
         for (var key in stats) {
             $scope.left[key] = stats[key];
         }
     });
-    $scope.expr = function(button) {
+    $scope.expr = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {
@@ -874,7 +889,7 @@ zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookF
         if (button.action == 'save') {
             fileDialog.saveAs(
                 function (filename) {
-                     notebookFactory.saveNotebook(filename);
+                    notebookFactory.saveNotebook(filename);
                 },
                 'notebook.json',
                 '.json'
@@ -924,7 +939,7 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
         activeYear: null,
         activeMonth: null,
         activeDay: null,
-        onLoad: function(){
+        onLoad: function () {
             var file = storageFactory.getStorage('file');
 
             if (file) {
@@ -936,12 +951,12 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
             }
             return this.getDaysContent(this.activeDateText())
         },
-        onWrite: function(content){
+        onWrite: function (content) {
             var count = this.countWords(content);
             storageFactory.setStorage('content', content);
             storageFactory.setStorage('word_count', count);
         },
-        onChangeDate: function(oldDate, newDate){
+        onChangeDate: function (oldDate, newDate) {
             var old = oldDate.split('-');
             this.setDaysContent(old[0] + '-' + old[1] + '-' + old[2]);
             if (this.getDaysContent(newDate)) {
@@ -1021,24 +1036,24 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
             s = s.replace(/\n /, "\n");
             return s.split(' ').length;
         },
-        getMonthCount: function(){
+        getMonthCount: function () {
             var count = 1000;
 
             return count;
         },
-        getMonthAverage: function(){
+        getMonthAverage: function () {
             var average = 1000;
 
             return average;
         },
-        getSidebar: function(){
+        getSidebar: function () {
             return {
                 word_count: this.countWords(this.getActiveContent()),
                 month_average: this.getMonthAverage(),
                 month_count: this.getMonthCount()
             };
         },
-        getMenu: function(){
+        getMenu: function () {
             return [
                 {title: 'Calendar', action: 'calendar', class: 'fa fa-calendar', sub: 'left'}
             ];
@@ -1060,11 +1075,15 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
         },
         loadNotebook: function (file) {
             var data = fileDialog.readFile(file);
-            tempJournal = JSON.parse(data);
-            this.file = file;
-            this.currentDate = new Date();
-            this.years = tempJournal.years;
-            storageFactory.setStorage('file', this.file);
+            if (data) {
+                tempJournal = JSON.parse(data);
+                this.file = file;
+                this.currentDate = new Date();
+                this.years = tempJournal.years;
+                storageFactory.setStorage('file', this.file);
+            } else {
+                storageFactory.deleteStorage('file');
+            }
         }
     };
     if (!notebook.currentDate) {
@@ -1122,13 +1141,13 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                         var nextYear = year;
                         var date = year + '-' + month + '-' + day;
                         var trueMonth = month + 1;
-                        if (trueMonth == 13){
+                        if (trueMonth == 13) {
                             trueMonth = 1;
                             trueYear = year + 1;
                             nextYear = trueYear;
                         }
                         var nextMonth = trueMonth + 1;
-                        if (nextMonth == 13){
+                        if (nextMonth == 13) {
                             nextMonth = 1;
                             nextYear = year + 1;
                         }
@@ -1136,14 +1155,14 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                         if (dates.indexOf(day) == -1) {
                             //TODO: Have a today custom class
                             //TODO: This check doesn't work on first load - need a notebook init function
-                            if(notebookFactory.getDaysContent(trueDate).length > 0){
+                            if (notebookFactory.getDaysContent(trueDate).length > 0) {
                                 row.push('<div class="cal-day cal-content" data-date="' + trueDate +
                                     '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
-                            }else {
+                            } else {
                                 row.push('<div class="cal-day" data-date="' + trueDate +
                                     '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                             }
-                        }else{
+                        } else {
                             row.push('<div class="cal-day cal-highlight" data-date="' + trueDate +
                                 '" data-month=' + trueMonth + ' data-day=' + day + ' data-year=' + year + ' data-action="set-date" changedate>');
                         }
@@ -1155,7 +1174,7 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
                 row.push('</tr>');
                 tpl.push(row.join(''));
             }
-            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (trueMonth - 1) +  ' data-year=' + year + ' data-action="month-back" changedate></span>' +
+            tpl.push('</table><div class="navigation"><span class="fa fa-arrow-left" data-month=' + (trueMonth - 1) + ' data-year=' + year + ' data-action="month-back" changedate></span>' +
                 '<span class="today" data-month=' + trueMonth + ' data-day=' + this.currentDate.getDate() + ' data-year=' + year + ' data-action="set-date" changedate>Today</span>' +
                 '<span class="fa fa-arrow-right" data-month=' + nextMonth + ' data-year=' + nextYear + ' data-action="month-forward" changedate></span></div></div>');
             return tpl.join('');
@@ -1170,7 +1189,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
     ];
     $scope.editedChapter = null;
 
-    $scope.toggleChapter = function(chapter) {
+    $scope.toggleChapter = function (chapter) {
         if ($scope.isChapterShown(chapter)) {
             $scope.shownChapter = null;
         } else {
@@ -1178,7 +1197,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
         }
     };
 
-    $scope.isChapterShown = function(chapter) {
+    $scope.isChapterShown = function (chapter) {
         return $scope.shownChapter === chapter;
     };
     $scope.$on('toggleLeft', function () {
@@ -1188,7 +1207,7 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
 //        }
     });
 
-    $scope.expr = function(button) {
+    $scope.expr = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {
@@ -1208,20 +1227,20 @@ zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrim
             );
         }
     };
-    $scope.createChapter = function(){
+    $scope.createChapter = function () {
         var chapter = nanowrimoFactory.createChapter();
         nanowrimoFactory.currentChapter = chapter;
         $scope.startEditing(chapter);
     };
-    $scope.setChapter = function(chapter){
+    $scope.setChapter = function (chapter) {
         $rootScope.$broadcast('changeContent', nanowrimoFactory.onChangeChapter(nanowrimoFactory.currentChapter, chapter));
     };
-    $scope.startEditing = function(chapter){
+    $scope.startEditing = function (chapter) {
         $scope.setChapter(chapter);
         $scope.chapters[chapter].editing = true;
         $scope.editedChapter = chapter;
     };
-    $scope.doneEditing = function(oldChapter, newChapter){
+    $scope.doneEditing = function (oldChapter, newChapter) {
         nanowrimoFactory.editChapter(oldChapter, newChapter);
         $scope.editedChapter = null;
         $scope.chapters = nanowrimoFactory.documents;
@@ -1239,26 +1258,26 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         goalWords: null,
         currentDate: null,
         currentWords: null,
-        chapterCount: function(){
+        chapterCount: function () {
             var count = 0;
             for (var k in this.documents) if (this.documents.hasOwnProperty(k)) ++count;
             return count;
         },
-        onLoad: function(){
+        onLoad: function () {
             var file = storageFactory.getStorage('file', 'nanowrimo');
-            var chapter= storageFactory.getStorage('chapter', 'nanowrimo');
+            var chapter = storageFactory.getStorage('chapter', 'nanowrimo');
 
             if (file) {
                 this.loadBook(file);
             } else {
 
             }
-            if (chapter){
+            if (chapter) {
                 this.currentChapter = chapter;
                 return this.getChapterContent(chapter);
             }
         },
-        onWrite: function(content){
+        onWrite: function (content) {
             var count = this.countWords(content);
             storageFactory.setStorage('content', content, 'nanowrimo');
             storageFactory.setStorage('word_count', count, 'nanowrimo');
@@ -1271,7 +1290,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 //TODO: Create file?
             }
         },
-        createChapter: function(){
+        createChapter: function () {
             var count = this.chapterCount() + 1,
                 name = 'Chapter ' + (count);
             this.documents[name] = {
@@ -1285,8 +1304,8 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
             return name;
         },
-        editChapter: function(old_name, new_name){
-            if(old_name != new_name){
+        editChapter: function (old_name, new_name) {
+            if (old_name != new_name) {
                 this.documents[new_name] = angular.copy(this.documents[old_name]);
                 delete(this.documents[old_name]);
                 this.documents[new_name].name = new_name;
@@ -1294,7 +1313,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             }
             this.documents[new_name].editing = false;
         },
-        setChapterContent: function (chapter){
+        setChapterContent: function (chapter) {
             if (this.getActiveContent().length > 0) {
                 var content = this.getActiveContent();
                 this.documents[chapter]['content'] = content;
@@ -1312,8 +1331,8 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 return '';
             }
         },
-        onChangeChapter: function(oldChapter, newChapter){
-            if(oldChapter) {
+        onChangeChapter: function (oldChapter, newChapter) {
+            if (oldChapter) {
                 this.setChapterContent(oldChapter);
             }
             if (this.getChapterContent(newChapter)) {
@@ -1335,12 +1354,12 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             s = s.replace(/\n /, "\n");
             return s.split(' ').length;
         },
-        getSidebar: function(){
+        getSidebar: function () {
             return {
                 word_count: this.countWords(this.getActiveContent())
             };
         },
-        getMenu: function(){
+        getMenu: function () {
             return [
                 {title: 'NanoWrimo', action: 'nanowrimo', class: 'fa fa-book', sub: 'left'}
             ];
@@ -1361,13 +1380,221 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         loadBook: function (file) {
             var data = fileDialog.readFile(file);
-            if(data){
+            if (data) {
                 tempBook = JSON.parse(data);
                 this.file = file;
                 storageFactory.setStorage('file', this.file, 'nanowrimo');
                 this.documents = tempBook.documents;
-            }else{
+            } else {
                 storageFactory.deleteStorage('file', 'nanowrimo');
+            }
+        }
+    }
+}]);
+zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
+    $scope.chapters = leanpubFactory.documents;
+    $scope.buttons = [
+        {title: 'Open Book', class: 'open', action: 'open'},
+        {title: 'Save Book', class: 'save', action: 'save'}
+    ];
+    $scope.editedChapter = null;
+
+    $scope.toggleChapter = function (chapter) {
+        if ($scope.isChapterShown(chapter)) {
+            $scope.shownChapter = null;
+        } else {
+            $scope.shownChapter = chapter;
+        }
+    };
+
+    $scope.isChapterShown = function (chapter) {
+        return $scope.shownChapter === chapter;
+    };
+    $scope.$on('toggleLeft', function () {
+//        var stats = leanpubFactory.getSidebar();
+//        for (var key in stats) {
+//            $scope.left[key] = stats[key];
+//        }
+    });
+
+    $scope.expr = function (button) {
+        if (button.action == 'open') {
+            fileDialog.openDir(
+                function (dir) {
+                    leanpubFactory.loadBook(dir);
+                },
+                false,
+                '.json'
+            );
+        }
+        if (button.action == 'save') {
+            fileDialog.saveAs(
+                function (filename) {
+                    leanpubFactory.saveBook(filename);
+                },
+                'book.json',
+                '.json'
+            );
+        }
+    };
+    $scope.createChapter = function () {
+        var chapter = leanpubFactory.createChapter();
+        leanpubFactory.currentChapter = chapter;
+        $scope.startEditing(chapter);
+    };
+    $scope.setChapter = function (chapter) {
+        $rootScope.$broadcast('changeContent', leanpubFactory.onChangeChapter(leanpubFactory.currentChapter, chapter));
+    };
+    $scope.startEditing = function (chapter) {
+        $scope.setChapter(chapter);
+        $scope.chapters[chapter].editing = true;
+        $scope.editedChapter = chapter;
+    };
+    $scope.doneEditing = function (oldChapter, newChapter) {
+        leanpubFactory.editChapter(oldChapter, newChapter);
+        $scope.editedChapter = null;
+        $scope.chapters = leanpubFactory.documents;
+    };
+}]);
+
+zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
+    return {
+        documents: {},
+        file: null,
+        title: null,
+        currentChapter: null,
+        startDate: null,
+        goalDate: null,
+        goalWords: null,
+        currentDate: null,
+        currentWords: null,
+        chapterCount: function () {
+            var count = 0;
+            for (var k in this.documents) if (this.documents.hasOwnProperty(k)) ++count;
+            return count;
+        },
+        onLoad: function () {
+            var file = storageFactory.getStorage('file', 'leanpub');
+            var chapter = storageFactory.getStorage('chapter', 'leanpub');
+
+            if (file) {
+                this.loadBook(file);
+            } else {
+
+            }
+            if (chapter) {
+                this.currentChapter = chapter;
+                return this.getChapterContent(chapter);
+            }
+        },
+        onWrite: function (content) {
+            var count = this.countWords(content);
+            storageFactory.setStorage('content', content, 'leanpub');
+            storageFactory.setStorage('word_count', count, 'leanpub');
+        },
+        onExit: function () {
+            var file = storageFactory.getStorage('file', 'leanpub');
+            if (file) {
+                this.saveBook(file);
+            } else {
+                //TODO: Create file?
+            }
+        },
+        createChapter: function () {
+            var count = this.chapterCount() + 1,
+                name = 'Chapter ' + (count);
+            this.documents[name] = {
+                name: name,
+                old_name: name,
+                editing: false,
+                content: '',
+                sort_order: count,
+                word_count: 0
+            };
+            $rootScope.$broadcast('changeContent', this.onChangeChapter(this.currentChapter, name));
+            return name;
+        },
+        editChapter: function (old_name, new_name) {
+            if (old_name != new_name) {
+                this.documents[new_name] = angular.copy(this.documents[old_name]);
+                delete(this.documents[old_name]);
+                this.documents[new_name].name = new_name;
+                this.documents[new_name].old_name = new_name;
+            }
+            this.documents[new_name].editing = false;
+        },
+        setChapterContent: function (chapter) {
+            if (this.getActiveContent().length > 0) {
+                var content = this.getActiveContent();
+                this.documents[chapter]['content'] = content;
+                this.documents[chapter]['word_count'] = this.countWords(content);
+            }
+            this.currentChapter = chapter;
+        },
+        getChapterContent: function (chapter) {
+            this.currentChapter = chapter;
+            try {
+                return this.documents[chapter]['content']
+                    .replace(/\n/g, "<br>");
+            } catch (err) {
+                storageFactory.setStorage('error', err, 'leanpub');
+                return '';
+            }
+        },
+        onChangeChapter: function (oldChapter, newChapter) {
+            if (oldChapter) {
+                this.setChapterContent(oldChapter);
+            }
+            if (this.getChapterContent(newChapter)) {
+                return this.getChapterContent(newChapter);
+            } else {
+                return '';
+            }
+        },
+        //TODO:Parse before saving
+        getActiveContent: function () {
+            return storageFactory.getStorage('content', 'leanpub')
+                .replace(/<br>/g, "\n")
+                .replace(/<div>/g, "\n")
+                .replace(/<\/div>/g, "")
+        },
+        countWords: function (s) {
+            s = s.replace(/(^\s*)|(\s*$)/gi, "");
+            s = s.replace(/[ ]{2,}/gi, " ");
+            s = s.replace(/\n /, "\n");
+            return s.split(' ').length;
+        },
+        getSidebar: function () {
+            return {
+                word_count: this.countWords(this.getActiveContent())
+            };
+        },
+        getMenu: function () {
+            return [
+                {title: 'leanpub', action: 'leanpub', class: 'fa fa-book', sub: 'left'}
+            ];
+        },
+        saveBook: function (filename) {
+            var book;
+            this.file = filename;
+            this.setChapterContent(this.currentChapter);
+            book = JSON.stringify(this);
+            try {
+                fileDialog.writeFile(filename, book);
+                storageFactory.setStorage('file', this.file, 'leanpub');
+                storageFactory.setStorage('chapter', this.currentChapter, 'leanpub');
+            } catch (err) {
+                storageFactory.setStorage('error', err, 'leanpub');
+                storageFactory.setStorage('recovery', book, 'leanpub');
+            }
+        },
+        loadBook: function (dir) {
+            var data = fileDialog.readDir(dir);
+            if (data) {
+                console.log(data);
+                storageFactory.setStorage('file', this.file, 'leanpub');
+            } else {
+                storageFactory.deleteStorage('file', 'leanpub');
             }
         }
     }

@@ -1,4 +1,4 @@
-zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
+zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDialog', function ($rootScope, storageFactory, fileDialog) {
     return {
         documents: {},
         file: null,
@@ -15,8 +15,8 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             return count;
         },
         onLoad: function () {
-            var file = storageFactory.getStorage('file', 'nanowrimo');
-            var chapter = storageFactory.getStorage('chapter', 'nanowrimo');
+            var file = storageFactory.getStorage('file', 'leanpub');
+            var chapter = storageFactory.getStorage('chapter', 'leanpub');
 
             if (file) {
                 this.loadBook(file);
@@ -30,11 +30,11 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         onWrite: function (content) {
             var count = this.countWords(content);
-            storageFactory.setStorage('content', content, 'nanowrimo');
-            storageFactory.setStorage('word_count', count, 'nanowrimo');
+            storageFactory.setStorage('content', content, 'leanpub');
+            storageFactory.setStorage('word_count', count, 'leanpub');
         },
         onExit: function () {
-            var file = storageFactory.getStorage('file', 'nanowrimo');
+            var file = storageFactory.getStorage('file', 'leanpub');
             if (file) {
                 this.saveBook(file);
             } else {
@@ -78,7 +78,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
                 return this.documents[chapter]['content']
                     .replace(/\n/g, "<br>");
             } catch (err) {
-                storageFactory.setStorage('error', err, 'nanowrimo');
+                storageFactory.setStorage('error', err, 'leanpub');
                 return '';
             }
         },
@@ -94,7 +94,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         //TODO:Parse before saving
         getActiveContent: function () {
-            return storageFactory.getStorage('content', 'nanowrimo')
+            return storageFactory.getStorage('content', 'leanpub')
                 .replace(/<br>/g, "\n")
                 .replace(/<div>/g, "\n")
                 .replace(/<\/div>/g, "")
@@ -112,7 +112,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         getMenu: function () {
             return [
-                {title: 'NanoWrimo', action: 'nanowrimo', class: 'fa fa-book', sub: 'left'}
+                {title: 'leanpub', action: 'leanpub', class: 'fa fa-book', sub: 'left'}
             ];
         },
         saveBook: function (filename) {
@@ -122,22 +122,20 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
             book = JSON.stringify(this);
             try {
                 fileDialog.writeFile(filename, book);
-                storageFactory.setStorage('file', this.file, 'nanowrimo');
-                storageFactory.setStorage('chapter', this.currentChapter, 'nanowrimo');
+                storageFactory.setStorage('file', this.file, 'leanpub');
+                storageFactory.setStorage('chapter', this.currentChapter, 'leanpub');
             } catch (err) {
-                storageFactory.setStorage('error', err, 'nanowrimo');
-                storageFactory.setStorage('recovery', book, 'nanowrimo');
+                storageFactory.setStorage('error', err, 'leanpub');
+                storageFactory.setStorage('recovery', book, 'leanpub');
             }
         },
-        loadBook: function (file) {
-            var data = fileDialog.readFile(file);
+        loadBook: function (dir) {
+            var data = fileDialog.readDir(dir);
             if (data) {
-                tempBook = JSON.parse(data);
-                this.file = file;
-                storageFactory.setStorage('file', this.file, 'nanowrimo');
-                this.documents = tempBook.documents;
+                console.log(data);
+                storageFactory.setStorage('file', this.file, 'leanpub');
             } else {
-                storageFactory.deleteStorage('file', 'nanowrimo');
+                storageFactory.deleteStorage('file', 'leanpub');
             }
         }
     }
