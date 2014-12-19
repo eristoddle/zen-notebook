@@ -116,24 +116,17 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
             ];
         },
         saveBook: function (filename) {
-            var book;
-            this.file = filename;
-            this.setChapterContent(this.currentChapter);
-            book = JSON.stringify(this);
-            try {
-                fileDialog.writeFile(filename, book);
-                storageFactory.setStorage('file', this.file, 'leanpub');
-                storageFactory.setStorage('chapter', this.currentChapter, 'leanpub');
-            } catch (err) {
-                storageFactory.setStorage('error', err, 'leanpub');
-                storageFactory.setStorage('recovery', book, 'leanpub');
-            }
+
         },
         loadBook: function (dir) {
             var data = fileDialog.readDir(dir);
             if (data) {
-                console.log(data);
-                storageFactory.setStorage('file', this.file, 'leanpub');
+                if(data.indexOf('manuscript') > -1){
+                    console.log(data);
+                    storageFactory.setStorage('file', dir, 'leanpub');
+                }else {
+                    storageFactory.deleteStorage('file', 'leanpub');
+                }
             } else {
                 storageFactory.deleteStorage('file', 'leanpub');
             }

@@ -1,8 +1,7 @@
 zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
     $scope.chapters = leanpubFactory.documents;
     $scope.buttons = [
-        {title: 'Open Book', class: 'open', action: 'open'},
-        {title: 'Save Book', class: 'save', action: 'save'}
+        {title: 'Open Book', class: 'open', action: 'open'}
     ];
     $scope.editedChapter = null;
 
@@ -31,15 +30,6 @@ zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFac
                     leanpubFactory.loadBook(dir);
                 },
                 false,
-                '.json'
-            );
-        }
-        if (button.action == 'save') {
-            fileDialog.saveAs(
-                function (filename) {
-                    leanpubFactory.saveBook(filename);
-                },
-                'book.json',
                 '.json'
             );
         }

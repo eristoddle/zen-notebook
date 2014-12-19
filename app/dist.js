@@ -732,6 +732,42 @@ zenNotebook.factory('dropboxFactory', ['$rootScope', function ($rootScope) {
 
     }
 }]);
+
+//TODO: Have component factories inherit from a base componentFactory: http://blog.revolunet.com/blog/2014/02/14/angularjs-services-inheritance/
+zenNotebook.factory('componentFactory', ['$rootScope', function ($rootScope) {
+    console.log(this);
+    return {
+        factoryName: 'null',
+        documents: {},
+        onLoad: function(){
+
+        },
+        onWrite: function(){
+
+        },
+        onExit: function(){
+
+        },
+        getActiveContent: function(){
+
+        },
+        countWords: function(){
+
+        },
+        getSidebar: function(){
+
+        },
+        getMenus: function(){
+
+        },
+        saveData: function(){
+
+        },
+        loadData: function(){
+
+        }
+    }
+}]);
 //interact with contenteditable region
 //special implementation because contenteditable region isn't currently two-way bindable in Angular
 //so write my own by passing events back and forth to component
@@ -1394,8 +1430,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
 zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
     $scope.chapters = leanpubFactory.documents;
     $scope.buttons = [
-        {title: 'Open Book', class: 'open', action: 'open'},
-        {title: 'Save Book', class: 'save', action: 'save'}
+        {title: 'Open Book', class: 'open', action: 'open'}
     ];
     $scope.editedChapter = null;
 
@@ -1424,15 +1459,6 @@ zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFac
                     leanpubFactory.loadBook(dir);
                 },
                 false,
-                '.json'
-            );
-        }
-        if (button.action == 'save') {
-            fileDialog.saveAs(
-                function (filename) {
-                    leanpubFactory.saveBook(filename);
-                },
-                'book.json',
                 '.json'
             );
         }
@@ -1575,24 +1601,17 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
             ];
         },
         saveBook: function (filename) {
-            var book;
-            this.file = filename;
-            this.setChapterContent(this.currentChapter);
-            book = JSON.stringify(this);
-            try {
-                fileDialog.writeFile(filename, book);
-                storageFactory.setStorage('file', this.file, 'leanpub');
-                storageFactory.setStorage('chapter', this.currentChapter, 'leanpub');
-            } catch (err) {
-                storageFactory.setStorage('error', err, 'leanpub');
-                storageFactory.setStorage('recovery', book, 'leanpub');
-            }
+
         },
         loadBook: function (dir) {
             var data = fileDialog.readDir(dir);
             if (data) {
-                console.log(data);
-                storageFactory.setStorage('file', this.file, 'leanpub');
+                if(data.indexOf('manuscript') > -1){
+                    console.log(data);
+                    storageFactory.setStorage('file', dir, 'leanpub');
+                }else {
+                    storageFactory.deleteStorage('file', 'leanpub');
+                }
             } else {
                 storageFactory.deleteStorage('file', 'leanpub');
             }
