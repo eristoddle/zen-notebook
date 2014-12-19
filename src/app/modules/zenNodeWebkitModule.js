@@ -48,7 +48,18 @@ angular.module('zenNodeWebkitModule', [])
         };
 
         dialogs.readFile = function(file){
-            return fs.readFileSync(file);
+            var data;
+            try {
+                data = fs.readFileSync(file);
+                return data;
+            } catch (e) {
+                if (e.code === 'ENOENT') {
+                    console.log('File not found!');
+                } else {
+                    throw e;
+                }
+                return false;
+            }
         };
 
         return dialogs;
