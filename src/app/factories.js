@@ -157,6 +157,12 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
                 key = component + '.' + key;
             }
             window.localStorage.setItem(key, data);
+        },
+        deleteStorage: function(key, component){
+            if(component){
+                key = component + '.' + key;
+            }
+            window.localStorage.removeItem(key);
         }
     }
 }]);

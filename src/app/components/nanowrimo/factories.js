@@ -131,10 +131,14 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         },
         loadBook: function (file) {
             var data = fileDialog.readFile(file);
-            tempBook = JSON.parse(data);
-            this.file = file;
-            storageFactory.setStorage('file', this.file, 'nanowrimo');
-            this.documents = tempBook.documents;
+            if(data){
+                tempBook = JSON.parse(data);
+                this.file = file;
+                storageFactory.setStorage('file', this.file, 'nanowrimo');
+                this.documents = tempBook.documents;
+            }else{
+                storageFactory.deleteStorage('file', 'nanowrimo');
+            }
         }
     }
 }]);
