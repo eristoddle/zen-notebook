@@ -80,8 +80,7 @@ angular.module('zenNodeWebkitModule', [])
         return dialogs;
     }])
     .factory('updateFactory', ['$rootScope', function ($rootScope) {
-        // Args passed when new app is launched from temp dir during update
-        var updater = {
+        return {
             runUpdate: function () {
                 //var gui = require('nw.gui');
                 var pkg = require('./package.json');
@@ -95,7 +94,6 @@ angular.module('zenNodeWebkitModule', [])
                 });
             }
         };
-        return updater;
     }])
     .run(function (updateFactory) {
         var gui = require('nw.gui');
