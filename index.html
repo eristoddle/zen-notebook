@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Zen-notebook by eristoddle</title>
+    <meta name="description" content="Zen-notebook : A Distraction Free Journal/Notebook/Diary for Writing Practice">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Zen-notebook</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Zen-notebook</h1>
-        <p>A Distraction Free Journal/Notebook/Diary for Writing Practice</p>
 
-        <p class="view"><a href="https://github.com/eristoddle/zen-notebook">View the Project on GitHub <small>eristoddle/zen-notebook</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/eristoddle/zen-notebook">View on GitHub</a>
 
+          <h1 id="project_title">Zen-notebook</h1>
+          <h2 id="project_tagline">A Distraction Free Journal/Notebook/Diary for Writing Practice</h2>
 
-        <ul>
-          <li><a href="https://github.com/eristoddle/zen-notebook/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/eristoddle/zen-notebook/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/eristoddle/zen-notebook">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/eristoddle/zen-notebook/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/eristoddle/zen-notebook/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="zen-notebook" class="anchor" href="#zen-notebook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Zen Notebook</h1>
 
@@ -90,9 +93,7 @@ Application Folder</p>
 <h3>
 <a id="mac" class="anchor" href="#mac" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mac</h3>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/mac.zip">Download</a></p>
-
-<p><a href="https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip?dl=0">Alternate Download</a></p>
+<p><a href="https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip?dl=1">Download</a></p>
 
 <h3>
 <a id="windows" class="anchor" href="#windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Windows</h3>
@@ -100,23 +101,17 @@ Application Folder</p>
 <p>Note: Sounds are currently deactivated in the Windows version. I have tracked the issues down to sounds. I am not 
 sure if this is because the sounds get loaded from files or using the sounds themselves in the Windows version.</p>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/windows.zip">Download</a></p>
-
-<p><a href="https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=0">Alternate Download</a></p>
+<p><a href="https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip?dl=1">Download</a></p>
 
 <h3>
 <a id="linux-32-bit" class="anchor" href="#linux-32-bit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linux 32 bit</h3>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x32.zip">Download</a></p>
-
-<p><a href="https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip?dl=0">Alternate Download</a></p>
+<p><a href="https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip?dl=1">Download</a></p>
 
 <h3>
 <a id="linux-64-bit" class="anchor" href="#linux-64-bit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linux 64 bit</h3>
 
-<p><a href="http://stephanmiller.com/sites/default/files/software/linux-x64.zip">Download</a></p>
-
-<p><a href="https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip?dl=0">Alternate Download</a></p>
+<p><a href="https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip?dl=1">Download</a></p>
 
 <h2>
 <a id="beta-version-punchlist" class="anchor" href="#beta-version-punchlist" aria-hidden="true"><span class="octicon octicon-link"></span></a>Beta Version Punchlist</h2>
@@ -157,6 +152,10 @@ sure if this is because the sounds get loaded from files or using the sounds the
 <li>Possible json/folder mode switch which will save work in one json file or separate text files with meta data files</li>
 <li>Add self updating and update version in release script</li>
 <li>Create application service that can map key codes events to functions in application and component</li>
+<li>Add testing</li>
+<li>Add jsdoc</li>
+<li>Slideshow/presentation functionality</li>
+<li>Add tooltip type hover editor for markdown, like evernote, that can be switched off and on.</li>
 </ul>
 
 <h2>
@@ -199,19 +198,8 @@ require a more advanced theming system to change up element display (masonry blo
 
 <ul>
 <li>I am currently working on a Mac</li>
-<li>I build the Windows and two Linux versions using <a href="https://github.com/jyapayne/Web2Executable">Web2Executable</a>
-</li>
-<li>Ironically that did not build the Mac version correctly because some of the necessary nodewbkit files were missing 
-and since I am not a Mac developer I built the initial Mac version with <a href="http://codeb.it/nuwk/">nuwk!</a> which managed 
-to get everything I needed for nodewebkit assembled correctly but screwed up the app folder. So I ripped that apart 
-and figured out the source files are stored at Resources/App.nw which a zip file of the app folder. So I manually 
-fixed that App and then wrote the mac_build.sh script to do that automatically for me. It just wraps up the app 
-folder and puts it in the right place in the App and leaves all the nodewebkit files where they are. It gives me a 
-quick way to test the current dev version in the wild. I do use the software now that it is functional.</li>
-<li>There are two package.json files. The one in the root folder is the dev version and the one in the app folder is 
-the release version. In the dev version I leave the frame and access to developer tools in webkit. Either can be run 
-with <code>npm start</code>
-</li>
+<li>I build using grunt and grunt-node-webkit-builder. Grunt does a lot of the tedious work for me and I mainly just 
+write code</li>
 <li>I tend to write sloppy code to get things done and see if they work and then go back and clean up. I am liking 
 Angular in that is is helping me do this when I choose too. This is my first project in Angular and I am used to PHP 
 frameworks. I am still not sure that it is the best choice. Others I am considering are Ember.js, 
@@ -221,9 +209,6 @@ and currently not supported by Angular for two way data binding. But I figured o
 get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how 
 I want the final application is structured, I can make a better choice among the various JavaScript frameworks. 
 Currently leaning toward React.js.</li>
-<li>I am now using grunt to concat and minify the js and css instead of head.js. It seemed the windows versions of the 
-software had an issue loading the javascript files in the correct order or something. Only a windows issue that I 
-solved by concatenating the js files.</li>
 </ul>
 
 <h2>
@@ -237,8 +222,6 @@ solved by concatenating the js files.</li>
 <li>Scrivener - <a href="http://www.literatureandlatte.com/scrivener.php">http://www.literatureandlatte.com/scrivener.php</a>
 </li>
 <li>Q10 - <a href="http://www.baara.com/q10/">http://www.baara.com/q10/</a>
-</li>
-<li>Pen - <a href="https://github.com/sofish/pen">https://github.com/sofish/pen</a>
 </li>
 <li>Scapple - <a href="https://www.literatureandlatte.com/scapple.php">https://www.literatureandlatte.com/scapple.php</a>
 </li>
@@ -254,12 +237,11 @@ solved by concatenating the js files.</li>
 </li>
 <li>Sass : <a href="http://sass-lang.com/">http://sass-lang.com/</a>
 </li>
-<li>Grunt : </li>
-<li>Laravel : </li>
+<li>Grunt</li>
+<li>Laravel</li>
 <li>Buzz : <a href="http://buzz.jaysalvat.com/">http://buzz.jaysalvat.com/</a>
 </li>
-<li>Marked : <a href="https://github.com/chjj/marked">https://github.com/chjj/marked</a>
-</li>
+<li>Angular Showdown</li>
 <li>Markua : Not yet but will be adding</li>
 </ul>
 
@@ -273,12 +255,16 @@ solved by concatenating the js files.</li>
 <li>Jekyll: Work from a Jekyll blog git repo</li>
 </ul>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/eristoddle">eristoddle</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Zen-notebook maintained by <a href="https://github.com/eristoddle">eristoddle</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -289,6 +275,7 @@ solved by concatenating the js files.</li>
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
