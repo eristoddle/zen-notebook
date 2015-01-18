@@ -8,8 +8,17 @@
 		"laravel/framework": "4.2.*",
 		"dingo/api": "0.*",
         "lucadegasperi/oauth2-server-laravel": "3.*",
-        "tymon/jwt-auth": "0.3.*"
+        "laravelbook/ardent": "dev-master",
+        "lukaskorl/restful": "dev-develop",
+        "marcelgwerder/laravel-api-handler": "0.4.*",
+        "jlapp/swaggervel": "dev-master",
+        "doctrine/dbal": "~2.3"
 	},
+    "require-dev": {
+        "way/generators": "~2.0",
+        "raahul/larryfour": "1.*",
+        "barryvdh/laravel-ide-helper": "dev-master"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
