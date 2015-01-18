@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         nodewebkit: {
             options: {
                 platforms: ['win', 'osx', 'linux32', 'linux64'],
-                version: 'latest',
+                version: '0.11.2',
                 buildDir: './build',
                 macIcns: 'app/icon.icns',
                 winIco: 'app/icon.ico'

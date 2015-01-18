@@ -60,7 +60,7 @@
         "toolbar": false,
         "icon": "icon.png"
     },
-    "version": "0.0.15",
+    "version": "0.0.16",
     "node-main": "",
     "scripts": {
         "start": "nodewebkit",
