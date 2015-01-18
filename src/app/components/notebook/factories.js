@@ -32,7 +32,6 @@ zenNotebook.factory('notebookFactory', ['$rootScope', 'storageFactory', 'fileDia
         },
         onChangeDate: function (oldDate, newDate) {
             var old = oldDate.split('-');
-            console.log(oldDate + ' ' + newDate);
             this.setDaysContent(old[0] + '-' + old[1] + '-' + old[2]);
             if (this.getDaysContent(newDate)) {
                 return this.getDaysContent(newDate);
