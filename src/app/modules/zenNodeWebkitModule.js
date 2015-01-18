@@ -50,7 +50,7 @@ angular.module('zenNodeWebkitModule', [])
         dialogs.readFile = function (file) {
             var data;
             try {
-                data = fs.readFileSync(file);
+                data = fs.readFileSync(file, 'utf8');
                 return data;
             } catch (e) {
                 if (e.code === 'ENOENT') {

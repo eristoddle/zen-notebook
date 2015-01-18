@@ -119,10 +119,21 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
 
         },
         loadBook: function (dir) {
-            var data = fileDialog.readDir(dir);
+            var data = fileDialog.readDir(dir),
+                book,
+                frontmatter,
+                backmatter;
             if (data) {
                 if(data.indexOf('manuscript') > -1){
-                    console.log(data);
+                    //TODO: This is not cross platform
+                    book = fileDialog.readFile(dir + '/manuscript/Book.txt');
+                    this.documents.book = book.split('\n');
+                    frontmatter = fileDialog.readFile(dir + '/manuscript/frontmatter.txt');
+                    this.documents.frontmatter = frontmatter.split('\n');
+                    backmatter = fileDialog.readFile(dir + '/manuscript/backmatter.txt');
+                    this.documents.backmatter = backmatter.split('\n');
+                    console.log(this.documents);
+                    this.file = dir;
                     storageFactory.setStorage('file', dir, 'leanpub');
                 }else {
                     storageFactory.deleteStorage('file', 'leanpub');
