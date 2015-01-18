@@ -120,9 +120,7 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
         },
         loadBook: function (dir) {
             var data = fileDialog.readDir(dir),
-                book,
-                frontmatter,
-                backmatter;
+                book;
             if (data) {
                 if (data.indexOf('manuscript') > -1) {
                     //TODO: This is not cross platform
