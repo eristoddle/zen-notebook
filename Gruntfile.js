@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         nodewebkit: {
             options: {
                 platforms: ['win', 'osx', 'linux32', 'linux64'],
+                //TODO: Stuck in this version instead of latest because of download issue?
                 version: '0.11.2',
                 buildDir: './build',
                 macIcns: 'app/icon.icns',
@@ -101,7 +102,7 @@ module.exports = function(grunt) {
                 pushTo: 'origin master',
                 npm: false,
                 npmTag: 'Release v%VERSION%',
-                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
             }
         },
         copy: {
