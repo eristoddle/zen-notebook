@@ -7700,10 +7700,11 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
             if (data) {
                 if (data.indexOf('manuscript') > -1) {
                     //TODO: This is not cross platform
-                    book = fileDialog.readFile(dir + '/manuscript/Book.txt');
+                    this.file = dir + '/manuscript/';
+                    book = fileDialog.readFile(this.file + 'Book.txt');
                     this.documents.book = book.split('\n');
                     console.log(this.documents);
-                    this.file = dir;
+                    storageFactory.setStorage('book', this.documents.book, 'leanpub');
                     storageFactory.setStorage('file', dir, 'leanpub');
                 } else {
                     storageFactory.deleteStorage('file', 'leanpub');
