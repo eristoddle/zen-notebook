@@ -8,9 +8,10 @@
                       ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
                 </span>
                 <h2 class="item-stable"
-                          ng-dblclick="startEditing(chapter.name)"
-                          ng-click="setChapter(chapter.name)">
-                    <span ng-hide="chapter.editing">{{chapter.name}}</span>
+                    ng-dblclick="startEditing(chapter.key)"
+                    ng-click="setChapter(chapter.key)">
+                    <span ng-hide="chapter.editing">{{chapter.title}}</span>
+
                     <form ng-submit="doneEditing(chapter.old_name, chapter.name)" ng-show="chapter.editing">
                         <input ng-model="chapter.name" ng-blur="doneEditing(chapter.old_name, chapter.name)" ng-focus="chapter.name == editedChapter">
                     </form>

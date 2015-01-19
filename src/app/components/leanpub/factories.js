@@ -128,6 +128,18 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
                     book = fileDialog.readFile(this.file + 'Book.txt');
                     this.documents.book = book.split('\n');
                     console.log(this.documents);
+                    for (var i = 0; i < this.documents.book.length; i++) {
+                        var key = this.documents.book[i].replace('.txt', '');
+                        var content = fileDialog.readFile(this.file + this.documents.book[i]);
+                        this.documents[key] = {
+                            key: key,
+                            file: this.documents.book[i],
+                            title: key,
+                            content: content,
+                            word_count: this.countWords(content)
+                        }
+                    }
+                    console.log(this.documents);
                     storageFactory.setStorage('book', this.documents.book, 'leanpub');
                     storageFactory.setStorage('file', dir, 'leanpub');
                 } else {
