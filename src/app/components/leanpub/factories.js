@@ -115,8 +115,16 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
                 {title: 'leanpub', action: 'leanpub', class: 'fa fa-book', sub: 'left'}
             ];
         },
-        saveBook: function (filename) {
-
+        saveBook: function (dir) {
+            var content, file, key, book = '';
+            for (var i = 0; i < this.documents.book.length; i++) {
+                book = book + this.documents.book[i] + '\n';
+                key = this.documents.book[i].replace('.txt', '');
+                content = this.documents[key]['content'];
+                file = this.file + this.documents.book[i];
+                fileDialog.writeFile(file, content);
+            }
+            fileDialog.writeFile(this.file + 'Book.txt', book);
         },
         loadBook: function (dir) {
             var data = fileDialog.readDir(dir),
