@@ -120,7 +120,8 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
         },
         loadBook: function (dir) {
             var data = fileDialog.readDir(dir),
-                book;
+                book,
+                sort = 0;
             if (data) {
                 if (data.indexOf('manuscript') > -1) {
                     //TODO: This is not cross platform
@@ -135,8 +136,10 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
                             file: this.documents.book[i],
                             title: key,
                             content: content,
-                            word_count: this.countWords(content)
-                        }
+                            word_count: this.countWords(content),
+                            sort_order: sort
+                        };
+                        sort = sort + 1;
                     }
                     console.log(this.documents);
                     storageFactory.setStorage('file', dir, 'leanpub');
