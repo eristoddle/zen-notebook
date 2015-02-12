@@ -277,133 +277,6 @@
       ]
     },
     {
-      "name": "laravel/framework",
-      "version": "v5.0.4",
-      "version_normalized": "5.0.4.0",
-        "source": {
-            "type": "git",
-          "url": "https://github.com/laravel/framework.git",
-          "reference": "b5eafda7dba3d1367a63095b83a068a73d32d97f"
-        },
-        "dist": {
-            "type": "zip",
-          "url": "https://api.github.com/repos/laravel/framework/zipball/b5eafda7dba3d1367a63095b83a068a73d32d97f",
-          "reference": "b5eafda7dba3d1367a63095b83a068a73d32d97f",
-            "shasum": ""
-        },
-        "require": {
-          "classpreloader/classpreloader": "~1.2",
-          "danielstjules/stringy": "~1.8",
-          "doctrine/inflector": "~1.0",
-          "ext-mbstring": "*",
-          "ext-mcrypt": "*",
-          "ext-openssl": "*",
-          "ircmaxell/password-compat": "~1.0",
-          "jeremeamia/superclosure": "~2.0",
-          "league/flysystem": "~1.0",
-          "monolog/monolog": "~1.11",
-          "mtdowling/cron-expression": "~1.0",
-          "nesbot/carbon": "~1.0",
-          "php": ">=5.4.0",
-          "psy/psysh": "0.3.*",
-          "swiftmailer/swiftmailer": "~5.1",
-          "symfony/console": "2.6.*",
-          "symfony/debug": "2.6.*",
-          "symfony/finder": "2.6.*",
-          "symfony/http-foundation": "2.6.*",
-          "symfony/http-kernel": "2.6.*",
-          "symfony/process": "2.6.*",
-          "symfony/routing": "2.6.*",
-          "symfony/security-core": "2.6.*",
-          "symfony/translation": "2.6.*",
-          "symfony/var-dumper": "2.6.*",
-          "vlucas/phpdotenv": "~1.0"
-        },
-      "replace": {
-        "illuminate/auth": "self.version",
-        "illuminate/bus": "self.version",
-        "illuminate/cache": "self.version",
-        "illuminate/config": "self.version",
-        "illuminate/console": "self.version",
-        "illuminate/container": "self.version",
-        "illuminate/contracts": "self.version",
-        "illuminate/cookie": "self.version",
-        "illuminate/database": "self.version",
-        "illuminate/encryption": "self.version",
-        "illuminate/events": "self.version",
-        "illuminate/exception": "self.version",
-        "illuminate/filesystem": "self.version",
-        "illuminate/foundation": "self.version",
-        "illuminate/hashing": "self.version",
-        "illuminate/http": "self.version",
-        "illuminate/log": "self.version",
-        "illuminate/mail": "self.version",
-        "illuminate/pagination": "self.version",
-        "illuminate/pipeline": "self.version",
-        "illuminate/queue": "self.version",
-        "illuminate/redis": "self.version",
-        "illuminate/routing": "self.version",
-        "illuminate/session": "self.version",
-        "illuminate/support": "self.version",
-        "illuminate/translation": "self.version",
-        "illuminate/validation": "self.version",
-        "illuminate/view": "self.version"
-      },
-        "require-dev": {
-          "aws/aws-sdk-php": "~2.4",
-          "iron-io/iron_mq": "~1.5",
-          "mockery/mockery": "~0.9",
-          "pda/pheanstalk": "~3.0",
-          "phpunit/phpunit": "~4.0",
-          "predis/predis": "~1.0"
-        },
-        "suggest": {
-          "aws/aws-sdk-php": "Required to use the SQS queue driver (~2.4).",
-          "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
-          "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers (~5.0).",
-          "iron-io/iron_mq": "Required to use the iron queue driver (~1.5).",
-          "league/flysystem-aws-s3-v2": "Required to use the Flysystem S3 driver (~1.0).",
-          "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
-          "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
-          "predis/predis": "Required to use the redis cache and queue drivers (~1.0)."
-        },
-      "time": "2015-02-11 20:37:48",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-              "dev-master": "5.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-          "classmap": [
-            "src/Illuminate/Queue/IlluminateQueueClosure.php"
-          ],
-          "files": [
-            "src/Illuminate/Foundation/helpers.php",
-            "src/Illuminate/Support/helpers.php"
-          ],
-          "psr-4": {
-            "Illuminate\\": "src/Illuminate/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-              "name": "Taylor Otwell",
-              "email": "taylorotwell@gmail.com"
-            }
-        ],
-      "description": "The Laravel Framework.",
-      "keywords": [
-        "framework",
-        "laravel"
-      ]
-    },
-    {
       "name": "sebastian/version",
       "version": "1.0.4",
       "version_normalized": "1.0.4.0",
@@ -419,46 +292,46 @@
             "shasum": ""
         },
       "time": "2014-12-15 14:25:24",
-      "type": "library",
-      "installation-source": "dist",
-      "autoload": {
-        "classmap": [
-          "src/"
-        ]
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+          "classmap": [
+            "src/"
+          ]
         },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "BSD-3-Clause"
-      ],
-      "authors": [
-        {
-          "name": "Sebastian Bergmann",
-          "email": "sebastian@phpunit.de",
-          "role": "lead"
-        }
-      ],
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+              "name": "Sebastian Bergmann",
+              "email": "sebastian@phpunit.de",
+              "role": "lead"
+            }
+        ],
       "description": "Library that helps with managing the version number of Git-hosted PHP projects",
       "homepage": "https://github.com/sebastianbergmann/version"
     },
-  {
-    "name": "phpunit/php-text-template",
-    "version": "1.2.0",
-    "version_normalized": "1.2.0.0",
-    "source": {
-      "type": "git",
-      "url": "https://github.com/sebastianbergmann/php-text-template.git",
-      "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a"
+    {
+      "name": "phpunit/php-text-template",
+      "version": "1.2.0",
+      "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+          "url": "https://github.com/sebastianbergmann/php-text-template.git",
+          "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a"
         },
-    "dist": {
-      "type": "zip",
-      "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
-      "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
-      "shasum": ""
+        "dist": {
+            "type": "zip",
+          "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
+          "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
+            "shasum": ""
         },
-    "require": {
-      "php": ">=5.3.3"
+      "require": {
+        "php": ">=5.3.3"
         },
-    "time": "2014-01-30 17:20:04",
+      "time": "2014-01-30 17:20:04",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -467,9 +340,9 @@
           ]
         },
         "notification-url": "https://packagist.org/downloads/",
-    "include-path": [
-      ""
-    ],
+      "include-path": [
+        ""
+      ],
         "license": [
           "BSD-3-Clause"
         ],
@@ -480,11 +353,11 @@
               "role": "lead"
             }
         ],
-    "description": "Simple template engine.",
-    "homepage": "https://github.com/sebastianbergmann/php-text-template/",
-    "keywords": [
-      "template"
-    ]
+      "description": "Simple template engine.",
+      "homepage": "https://github.com/sebastianbergmann/php-text-template/",
+      "keywords": [
+        "template"
+      ]
     },
     {
       "name": "phpunit/php-timer",
@@ -551,27 +424,27 @@
             "php": ">=5.3.3"
         },
       "time": "2013-10-10 15:34:57",
-      "type": "library",
-      "installation-source": "dist",
-      "autoload": {
-        "classmap": [
-          "File/"
-        ]
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+          "classmap": [
+            "File/"
+          ]
         },
-      "notification-url": "https://packagist.org/downloads/",
+        "notification-url": "https://packagist.org/downloads/",
       "include-path": [
         ""
       ],
-      "license": [
-        "BSD-3-Clause"
-      ],
-      "authors": [
-        {
-          "name": "Sebastian Bergmann",
-          "email": "sb@sebastian-bergmann.de",
-          "role": "lead"
-        }
-      ],
+        "license": [
+          "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+              "name": "Sebastian Bergmann",
+              "email": "sb@sebastian-bergmann.de",
+              "role": "lead"
+            }
+        ],
       "description": "FilterIterator implementation that filters files based on a list of suffixes.",
       "homepage": "https://github.com/sebastianbergmann/php-file-iterator/",
       "keywords": [
@@ -579,99 +452,25 @@
         "iterator"
       ]
     },
-  {
-    "name": "phpunit/phpunit",
-    "version": "4.5.0",
-    "version_normalized": "4.5.0.0",
-    "source": {
-      "type": "git",
-      "url": "https://github.com/sebastianbergmann/phpunit.git",
-      "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5"
-    },
-    "dist": {
-      "type": "zip",
-      "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5b578d3865a9128b9c209b011fda6539ec06e7a5",
-      "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5",
-      "shasum": ""
-    },
-    "require": {
-      "ext-dom": "*",
-      "ext-json": "*",
-      "ext-pcre": "*",
-      "ext-reflection": "*",
-      "ext-spl": "*",
-      "php": ">=5.3.3",
-      "phpspec/prophecy": "~1.3.1",
-      "phpunit/php-code-coverage": "~2.0",
-      "phpunit/php-file-iterator": "~1.3.2",
-      "phpunit/php-text-template": "~1.2",
-      "phpunit/php-timer": "~1.0.2",
-      "phpunit/phpunit-mock-objects": "~2.3",
-      "sebastian/comparator": "~1.1",
-      "sebastian/diff": "~1.1",
-      "sebastian/environment": "~1.2",
-      "sebastian/exporter": "~1.2",
-      "sebastian/global-state": "~1.0",
-      "sebastian/version": "~1.0",
-      "symfony/yaml": "~2.0"
-    },
-        "suggest": {
-          "phpunit/php-invoker": "~1.1"
+    {
+      "name": "phpspec/php-diff",
+      "version": "v1.0.2",
+      "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+          "url": "https://github.com/phpspec/php-diff.git",
+          "reference": "30e103d19519fe678ae64a60d77884ef3d71b28a"
         },
-    "time": "2015-02-05 15:51:19",
-    "bin": [
-      "phpunit"
-    ],
+        "dist": {
+            "type": "zip",
+          "url": "https://api.github.com/repos/phpspec/php-diff/zipball/30e103d19519fe678ae64a60d77884ef3d71b28a",
+          "reference": "30e103d19519fe678ae64a60d77884ef3d71b28a",
+            "shasum": ""
+        },
+      "time": "2013-11-01 13:02:21",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-              "dev-master": "4.5.x-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-          "classmap": [
-            "src/"
-          ]
-        },
-    "notification-url": "https://packagist.org/downloads/",
-    "license": [
-      "BSD-3-Clause"
-    ],
-    "authors": [
-      {
-        "name": "Sebastian Bergmann",
-        "email": "sebastian@phpunit.de",
-        "role": "lead"
-      }
-    ],
-    "description": "The PHP Unit Testing framework.",
-    "homepage": "https://phpunit.de/",
-    "keywords": [
-      "phpunit",
-      "testing",
-      "xunit"
-    ]
-  },
-  {
-    "name": "phpspec/php-diff",
-    "version": "v1.0.2",
-    "version_normalized": "1.0.2.0",
-    "source": {
-      "type": "git",
-      "url": "https://github.com/phpspec/php-diff.git",
-      "reference": "30e103d19519fe678ae64a60d77884ef3d71b28a"
-    },
-    "dist": {
-      "type": "zip",
-      "url": "https://api.github.com/repos/phpspec/php-diff/zipball/30e103d19519fe678ae64a60d77884ef3d71b28a",
-      "reference": "30e103d19519fe678ae64a60d77884ef3d71b28a",
-      "shasum": ""
-    },
-    "time": "2013-11-01 13:02:21",
-    "type": "library",
-    "installation-source": "dist",
-    "autoload": {
             "psr-0": {
               "Diff": "lib/"
             }
@@ -687,85 +486,7 @@
               "role": "Original developer"
             }
         ],
-    "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays)."
-    },
-    {
-      "name": "phpspec/phpspec",
-      "version": "2.1.1",
-      "version_normalized": "2.1.1.0",
-        "source": {
-            "type": "git",
-          "url": "https://github.com/phpspec/phpspec.git",
-          "reference": "66a1df93099282b1514e9e001fcf6e9393f7783d"
-        },
-        "dist": {
-            "type": "zip",
-          "url": "https://api.github.com/repos/phpspec/phpspec/zipball/66a1df93099282b1514e9e001fcf6e9393f7783d",
-          "reference": "66a1df93099282b1514e9e001fcf6e9393f7783d",
-            "shasum": ""
-        },
-        "require": {
-          "doctrine/instantiator": "~1.0,>=1.0.1",
-            "php": ">=5.3.3",
-          "phpspec/php-diff": "~1.0.0",
-          "phpspec/prophecy": "~1.1",
-          "sebastian/exporter": "~1.0",
-          "symfony/console": "~2.3",
-          "symfony/event-dispatcher": "~2.1",
-          "symfony/finder": "~2.1",
-          "symfony/process": "~2.1",
-          "symfony/yaml": "~2.1"
-        },
-        "require-dev": {
-          "behat/behat": "~3.0,>=3.0.11",
-          "bossa/phpspec2-expect": "~1.0",
-          "symfony/filesystem": "~2.1"
-        },
-        "suggest": {
-          "phpspec/nyan-formatters": "~1.0 – Adds Nyan formatters"
-        },
-      "time": "2015-01-09 13:21:45",
-      "bin": [
-        "bin/phpspec"
-      ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-              "dev-master": "2.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-              "PhpSpec": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-              "name": "Konstantin Kudryashov",
-              "email": "ever.zet@gmail.com",
-              "homepage": "http://everzet.com"
-            },
-            {
-              "name": "Marcello Duarte",
-              "homepage": "http://marcelloduarte.net/"
-            }
-        ],
-      "description": "Specification-oriented BDD framework for PHP 5.3+",
-      "homepage": "http://phpspec.net/",
-      "keywords": [
-        "BDD",
-        "SpecBDD",
-        "TDD",
-        "spec",
-        "specification",
-        "testing",
-        "tests"
-      ]
+      "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays)."
     },
     {
       "name": "nikic/php-parser",
@@ -2662,7 +2383,7 @@
     "keywords": [
       "tokenizer"
     ]
-  },
+    },
   {
     "name": "phpunit/php-code-coverage",
     "version": "dev-master",
@@ -3218,13 +2939,13 @@
       "type": "git",
       "url": "https://github.com/doctrine/common.git",
       "reference": "56360cc13bfd13893731c6c4d1d82005a61d7694"
-    },
+        },
     "dist": {
       "type": "zip",
       "url": "https://api.github.com/repos/doctrine/common/zipball/56360cc13bfd13893731c6c4d1d82005a61d7694",
       "reference": "56360cc13bfd13893731c6c4d1d82005a61d7694",
       "shasum": ""
-    },
+        },
     "require": {
       "doctrine/annotations": "1.*",
       "doctrine/cache": "1.*",
@@ -3232,10 +2953,10 @@
       "doctrine/inflector": "1.*",
       "doctrine/lexer": "1.*",
       "php": ">=5.3.2"
-    },
+        },
     "require-dev": {
       "phpunit/phpunit": "~3.7"
-    },
+        },
     "time": "2015-01-23 18:43:22",
         "type": "library",
         "extra": {
@@ -3456,7 +3177,7 @@
       "Guzzle",
       "stream"
     ]
-  },
+    },
   {
     "name": "guzzlehttp/guzzle",
     "version": "4.2.3",
@@ -3522,6 +3243,287 @@
       "http client",
       "rest",
       "web service"
+    ]
+    },
+  {
+    "name": "phpunit/phpunit",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/sebastianbergmann/phpunit.git",
+      "reference": "7c1de6a854a36ba330b352a005a4f5f928619f53"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7c1de6a854a36ba330b352a005a4f5f928619f53",
+      "reference": "7c1de6a854a36ba330b352a005a4f5f928619f53",
+      "shasum": ""
+    },
+    "require": {
+      "ext-dom": "*",
+      "ext-json": "*",
+      "ext-pcre": "*",
+      "ext-reflection": "*",
+      "ext-spl": "*",
+      "php": ">=5.3.3",
+      "phpspec/prophecy": "~1.3.1",
+      "phpunit/php-code-coverage": "~2.0",
+      "phpunit/php-file-iterator": "~1.3",
+      "phpunit/php-text-template": "~1.2",
+      "phpunit/php-timer": "~1.0",
+      "phpunit/phpunit-mock-objects": "~2.3",
+      "sebastian/comparator": "~1.1",
+      "sebastian/diff": "~1.2",
+      "sebastian/environment": "~1.2",
+      "sebastian/exporter": "~1.2",
+      "sebastian/global-state": "~1.0",
+      "sebastian/version": "~1.0",
+      "symfony/yaml": "~2.1|~3.0"
+    },
+    "suggest": {
+      "phpunit/php-invoker": "~1.1"
+    },
+    "time": "2015-02-09 06:38:12",
+    "bin": [
+      "phpunit"
+    ],
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "4.7.x-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "classmap": [
+        "src/"
+      ]
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "BSD-3-Clause"
+    ],
+    "authors": [
+      {
+        "name": "Sebastian Bergmann",
+        "email": "sebastian@phpunit.de",
+        "role": "lead"
+      }
+    ],
+    "description": "The PHP Unit Testing framework.",
+    "homepage": "https://phpunit.de/",
+    "keywords": [
+      "phpunit",
+      "testing",
+      "xunit"
+    ]
+    },
+  {
+    "name": "phpspec/phpspec",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/phpspec/phpspec.git",
+      "reference": "974f648141c3a3a4363b31c24f16d521d623d701"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/phpspec/phpspec/zipball/974f648141c3a3a4363b31c24f16d521d623d701",
+      "reference": "974f648141c3a3a4363b31c24f16d521d623d701",
+      "shasum": ""
+    },
+    "require": {
+      "doctrine/instantiator": "^1.0.1",
+      "php": ">=5.3.3",
+      "phpspec/php-diff": "~1.0.0",
+      "phpspec/prophecy": "~1.1",
+      "sebastian/exporter": "~1.0",
+      "symfony/console": "~2.3",
+      "symfony/event-dispatcher": "~2.1",
+      "symfony/finder": "~2.1",
+      "symfony/process": "~2.1",
+      "symfony/yaml": "~2.1"
+    },
+    "require-dev": {
+      "behat/behat": "^3.0.11",
+      "bossa/phpspec2-expect": "~1.0",
+      "phpunit/phpunit": "~4.4",
+      "symfony/filesystem": "~2.1",
+      "symfony/process": "~2.1"
+    },
+    "suggest": {
+      "phpspec/nyan-formatters": "~1.0 – Adds Nyan formatters"
+    },
+    "time": "2015-02-09 21:37:03",
+    "bin": [
+      "bin/phpspec"
+    ],
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "2.1.x-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "PhpSpec": "src/"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Konstantin Kudryashov",
+        "email": "ever.zet@gmail.com",
+        "homepage": "http://everzet.com"
+      },
+      {
+        "name": "Marcello Duarte",
+        "homepage": "http://marcelloduarte.net/"
+      }
+    ],
+    "description": "Specification-oriented BDD framework for PHP 5.3+",
+    "homepage": "http://phpspec.net/",
+    "keywords": [
+      "BDD",
+      "SpecBDD",
+      "TDD",
+      "spec",
+      "specification",
+      "testing",
+      "tests"
+    ]
+    },
+  {
+    "name": "laravel/framework",
+    "version": "5.0.x-dev",
+    "version_normalized": "5.0.9999999.9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/laravel/framework.git",
+      "reference": "b5eafda7dba3d1367a63095b83a068a73d32d97f"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/laravel/framework/zipball/b5eafda7dba3d1367a63095b83a068a73d32d97f",
+      "reference": "b5eafda7dba3d1367a63095b83a068a73d32d97f",
+      "shasum": ""
+    },
+    "require": {
+      "classpreloader/classpreloader": "~1.2",
+      "danielstjules/stringy": "~1.8",
+      "doctrine/inflector": "~1.0",
+      "ext-mbstring": "*",
+      "ext-mcrypt": "*",
+      "ext-openssl": "*",
+      "ircmaxell/password-compat": "~1.0",
+      "jeremeamia/superclosure": "~2.0",
+      "league/flysystem": "~1.0",
+      "monolog/monolog": "~1.11",
+      "mtdowling/cron-expression": "~1.0",
+      "nesbot/carbon": "~1.0",
+      "php": ">=5.4.0",
+      "psy/psysh": "0.3.*",
+      "swiftmailer/swiftmailer": "~5.1",
+      "symfony/console": "2.6.*",
+      "symfony/debug": "2.6.*",
+      "symfony/finder": "2.6.*",
+      "symfony/http-foundation": "2.6.*",
+      "symfony/http-kernel": "2.6.*",
+      "symfony/process": "2.6.*",
+      "symfony/routing": "2.6.*",
+      "symfony/security-core": "2.6.*",
+      "symfony/translation": "2.6.*",
+      "symfony/var-dumper": "2.6.*",
+      "vlucas/phpdotenv": "~1.0"
+    },
+    "replace": {
+      "illuminate/auth": "self.version",
+      "illuminate/bus": "self.version",
+      "illuminate/cache": "self.version",
+      "illuminate/config": "self.version",
+      "illuminate/console": "self.version",
+      "illuminate/container": "self.version",
+      "illuminate/contracts": "self.version",
+      "illuminate/cookie": "self.version",
+      "illuminate/database": "self.version",
+      "illuminate/encryption": "self.version",
+      "illuminate/events": "self.version",
+      "illuminate/exception": "self.version",
+      "illuminate/filesystem": "self.version",
+      "illuminate/foundation": "self.version",
+      "illuminate/hashing": "self.version",
+      "illuminate/http": "self.version",
+      "illuminate/log": "self.version",
+      "illuminate/mail": "self.version",
+      "illuminate/pagination": "self.version",
+      "illuminate/pipeline": "self.version",
+      "illuminate/queue": "self.version",
+      "illuminate/redis": "self.version",
+      "illuminate/routing": "self.version",
+      "illuminate/session": "self.version",
+      "illuminate/support": "self.version",
+      "illuminate/translation": "self.version",
+      "illuminate/validation": "self.version",
+      "illuminate/view": "self.version"
+    },
+    "require-dev": {
+      "aws/aws-sdk-php": "~2.4",
+      "iron-io/iron_mq": "~1.5",
+      "mockery/mockery": "~0.9",
+      "pda/pheanstalk": "~3.0",
+      "phpunit/phpunit": "~4.0",
+      "predis/predis": "~1.0"
+    },
+    "suggest": {
+      "aws/aws-sdk-php": "Required to use the SQS queue driver (~2.4).",
+      "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
+      "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers (~5.0).",
+      "iron-io/iron_mq": "Required to use the iron queue driver (~1.5).",
+      "league/flysystem-aws-s3-v2": "Required to use the Flysystem S3 driver (~1.0).",
+      "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
+      "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
+      "predis/predis": "Required to use the redis cache and queue drivers (~1.0)."
+    },
+    "time": "2015-02-11 20:37:48",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "5.0-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "classmap": [
+        "src/Illuminate/Queue/IlluminateQueueClosure.php"
+      ],
+      "files": [
+        "src/Illuminate/Foundation/helpers.php",
+        "src/Illuminate/Support/helpers.php"
+      ],
+      "psr-4": {
+        "Illuminate\\": "src/Illuminate/"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Taylor Otwell",
+        "email": "taylorotwell@gmail.com"
+      }
+    ],
+    "description": "The Laravel Framework.",
+    "keywords": [
+      "framework",
+      "laravel"
         ]
     }
 ]

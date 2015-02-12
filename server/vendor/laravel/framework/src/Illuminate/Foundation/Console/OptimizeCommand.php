@@ -104,7 +104,7 @@ class OptimizeCommand extends Command {
 	{
 		$app = $this->laravel;
 
-		$core = require __DIR__ . '/Optimize/config.php';
+        $core = require __DIR__ . '/Optimize/config.php';
 
 		$files = array_merge($core, $this->laravel['config']->get('compile.files', []));
 
