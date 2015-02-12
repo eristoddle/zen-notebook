@@ -111,5 +111,6 @@ angular.module('zenNodeWebkitModule', [])
         if (os = "Windows") {
             mute = true;
         }
-        updateFactory.runUpdate();
+        //TODO: Disabled temporarily because of Cannot find module error
+        //updateFactory.runUpdate();
     });
