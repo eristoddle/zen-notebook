@@ -20,7 +20,8 @@
     "doctrine/dbal": "~2.3",
     "guzzlehttp/guzzle": "~4.0",
     "league/fractal": "0.11.*@dev",
-    "janhenkgerritsen/codeception-laravel5": "~1.0"
+    "janhenkgerritsen/codeception-laravel5": "~1.0",
+    "tymon/jwt-auth": "dev-develop"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
