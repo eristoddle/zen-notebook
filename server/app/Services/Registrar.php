@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace ZenNotebook\Services;
 
-use App\User;
+use ZenNotebook\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

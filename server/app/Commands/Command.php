@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace ZenNotebook\Commands;
 
 abstract class Command {
 
