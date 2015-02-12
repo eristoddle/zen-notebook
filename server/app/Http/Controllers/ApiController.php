@@ -1,6 +1,6 @@
-<?php namespace ZenNotebook\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
-use ZenNotebook\Http\Responses\Output;
+use App\Http\Responses\Output;
 
 use Illuminate\Http\Response;
 

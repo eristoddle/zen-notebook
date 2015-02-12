@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: ZenNotebook
-        psr4_prefix: ZenNotebook
+        namespace: App
+        psr4_prefix: App
         src_path: app

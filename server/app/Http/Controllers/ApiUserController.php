@@ -1,7 +1,7 @@
-<?php namespace ZenNotebook\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
-use ZenNotebook\Http\Requests;
-use ZenNotebook\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ApiUserController extends ApiController

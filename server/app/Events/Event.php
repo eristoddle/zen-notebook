@@ -1,4 +1,4 @@
-<?php namespace ZenNotebook\Events;
+<?php namespace App\Events;
 
 abstract class Event {
 

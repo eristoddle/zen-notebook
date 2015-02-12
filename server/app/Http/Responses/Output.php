@@ -1,4 +1,4 @@
-<?php namespace ZenNotebook\Http\Responses;
+<?php namespace App\Http\Responses;
 
 use League\Fractal\Manager as Fractal;
 

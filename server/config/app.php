@@ -144,11 +144,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-        'ZenNotebook\Providers\AppServiceProvider',
-        'ZenNotebook\Providers\BusServiceProvider',
-        'ZenNotebook\Providers\ConfigServiceProvider',
-        'ZenNotebook\Providers\EventServiceProvider',
-        'ZenNotebook\Providers\RouteServiceProvider',
+        'App\Providers\AppServiceProvider',
+        'App\Providers\BusServiceProvider',
+        'App\Providers\ConfigServiceProvider',
+        'App\Providers\EventServiceProvider',
+        'App\Providers\RouteServiceProvider',
 
 	],
 

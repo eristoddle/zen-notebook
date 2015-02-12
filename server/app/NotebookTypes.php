@@ -1,4 +1,4 @@
-<?php namespace ZenNotebook;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,4 +1,4 @@
-<?php namespace ZenNotebook\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -34,7 +34,7 @@
       "database"
     ],
     "psr-4": {
-      "ZenNotebook\\": "app/"
+      "App\\": "app/"
     }
   },
   "autoload-dev": {
