@@ -1,7 +1,7 @@
 <?php
 
-require_once dirname(__DIR__) . '/EsmtpTransportTest.php';
-require_once dirname(dirname(dirname(dirname(__DIR__)))) . '/fixtures/EsmtpTransportFixture.php';
+require_once dirname(__DIR__).'/EsmtpTransportTest.php';
+require_once dirname(dirname(dirname(dirname(__DIR__)))).'/fixtures/EsmtpTransportFixture.php';
 
 interface Swift_Transport_EsmtpHandlerMixin extends Swift_Transport_EsmtpHandler
 {

@@ -162,7 +162,7 @@ class ClassNotFoundFatalErrorHandlerTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Can only be run on case insensitive filesystems');
         }
 
-        require_once __DIR__ . '/../FIXTURES/RequiredTwice.php';
+        require_once __DIR__.'/../FIXTURES/REQUIREDTWICE.PHP';
 
         $error = array(
             'type' => 1,

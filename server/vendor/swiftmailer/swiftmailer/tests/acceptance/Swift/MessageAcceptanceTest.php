@@ -1,7 +1,7 @@
 <?php
 
 require_once 'swift_required.php';
-require_once __DIR__ . '/Mime/SimpleMessageAcceptanceTest.php';
+require_once __DIR__.'/Mime/SimpleMessageAcceptanceTest.php';
 
 class Swift_MessageAcceptanceTest extends Swift_Mime_SimpleMessageAcceptanceTest
 {

@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+      "php": ">=5.3.9"
     },
     "autoload": {
         "psr-0": { "Symfony\\Component\\Yaml\\": "" }
@@ -25,7 +25,7 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.6-dev"
+          "dev-master": "2.7-dev"
         }
     }
 }

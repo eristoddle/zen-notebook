@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/AbstractSmtpTest.php';
+require_once __DIR__.'/AbstractSmtpTest.php';
 
 abstract class Swift_Transport_AbstractSmtpEventSupportTest extends Swift_Transport_AbstractSmtpTest
 {

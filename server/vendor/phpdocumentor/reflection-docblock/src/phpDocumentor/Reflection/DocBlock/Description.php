@@ -26,7 +26,7 @@ class Description implements \Reflector
     /** @var string */
     protected $contents = '';
 
-    /** @var array The contents, as an array of strings and Tag objects. */
+    /** @var array|null The contents, as an array of strings and Tag objects or null if it is not parsed yet. */
     protected $parsedContents = null;
 
     /** @var DocBlock The DocBlock which this description belongs to. */
@@ -35,7 +35,7 @@ class Description implements \Reflector
     /**
      * Populates the fields of a description.
      *
-     * @param string   $content  The description's conetnts.
+     * @param string   $content  The description's content.
      * @param DocBlock $docblock The DocBlock which this description belongs to.
      */
     public function __construct($content, DocBlock $docblock = null)
