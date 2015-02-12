@@ -16,10 +16,22 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 Route::group(['prefix' => 'api'], function () {
-    Route::resource('sample', 'SampleController', ['only' => ['index', 'show']]);
+
+    Route::post('login', function () {
+        $credentials = Input::only('email', 'password');
+
+        if (!$token = JWTAuth::attempt($credentials)) {
+            // return 401 error response
+        }
+
+        return Response::json(compact('token'));
+    });
+
+    Route::resource('user', 'ApiUserController', ['only' => ['index', 'show']]);
+
 });

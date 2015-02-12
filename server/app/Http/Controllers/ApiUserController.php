@@ -4,7 +4,7 @@ use ZenNotebook\Http\Requests;
 use ZenNotebook\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SampleController extends ApiController
+class ApiUserController extends ApiController
 {
 
     /**
