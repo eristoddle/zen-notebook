@@ -18,11 +18,15 @@
     "laravel/framework": "5.0.*",
     "jlapp/swaggervel": "dev-master",
     "doctrine/dbal": "~2.3",
-    "guzzlehttp/guzzle": "~4.0"
+    "guzzlehttp/guzzle": "~4.0",
+    "league/fractal": "0.11.*@dev",
+    "janhenkgerritsen/codeception-laravel5": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1"
+    "phpspec/phpspec": "~2.1",
+    "league/factory-muffin": "3.0.*@dev",
+    "league/oauth2-client": "0.7.*@dev"
   },
   "autoload": {
     "classmap": [

@@ -1138,12 +1138,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/bobthecow/psysh.git",
-          "reference": "be93c2fcac1d7091bc0fb5d37fc2fe5e149087c1"
+          "reference": "ff51bb68576eee03245a965cf1805a9573d79919"
         },
         "dist": {
             "type": "zip",
-          "url": "https://api.github.com/repos/bobthecow/psysh/zipball/be93c2fcac1d7091bc0fb5d37fc2fe5e149087c1",
-          "reference": "be93c2fcac1d7091bc0fb5d37fc2fe5e149087c1",
+          "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ff51bb68576eee03245a965cf1805a9573d79919",
+          "reference": "ff51bb68576eee03245a965cf1805a9573d79919",
             "shasum": ""
         },
         "require": {
@@ -1164,7 +1164,7 @@
             "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
             "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
         },
-      "time": "2015-02-12 06:57:47",
+      "time": "2015-02-12 19:36:02",
         "bin": [
             "bin/psysh"
         ],
@@ -2884,24 +2884,24 @@
         "phpunit/phpunit": ">=3.7",
         "predis/predis": "~1.0",
         "satooshi/php-coveralls": "~0.6"
-      },
+        },
       "time": "2015-02-01 04:40:53",
       "type": "library",
       "extra": {
         "branch-alias": {
           "dev-master": "1.5.x-dev"
         }
-      },
+        },
       "installation-source": "dist",
       "autoload": {
         "psr-0": {
           "Doctrine\\Common\\Cache\\": "lib/"
         }
-      },
+        },
       "notification-url": "https://packagist.org/downloads/",
       "license": [
         "MIT"
-        ],
+      ],
       "authors": [
         {
           "name": "Roman Borschel",
@@ -3524,6 +3524,630 @@
     "keywords": [
       "framework",
       "laravel"
+    ]
+    },
+  {
+    "name": "league/fractal",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/thephpleague/fractal.git",
+      "reference": "e1512f350a8dee2316d280ec94d1acc3a99f83b9"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/thephpleague/fractal/zipball/e1512f350a8dee2316d280ec94d1acc3a99f83b9",
+      "reference": "e1512f350a8dee2316d280ec94d1acc3a99f83b9",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.3"
+    },
+    "require-dev": {
+      "illuminate/pagination": "~4.1",
+      "mockery/mockery": "~0.9",
+      "pagerfanta/pagerfanta": "~1.0.0",
+      "phpunit/phpunit": "~4.0",
+      "squizlabs/php_codesniffer": "~1.5",
+      "zendframework/zend-paginator": "~2.3"
+    },
+    "suggest": {
+      "illuminate/pagination": "The Illuminate Pagination component.",
+      "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+      "zendframework/zend-paginator": "Zend Framework Paginator"
+    },
+    "time": "2014-12-10 18:05:28",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "0.11-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-4": {
+        "League\\Fractal\\": "src"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Phil Sturgeon",
+        "email": "me@philsturgeon.uk",
+        "homepage": "http://philsturgeon.uk/",
+        "role": "Developer"
+      }
+    ],
+    "description": "Handle the output of complex data structures ready for JSON output.",
+    "homepage": "http://fractal.thephpleague.com/",
+    "keywords": [
+      "api",
+      "json",
+      "league",
+      "rest"
+    ]
+    },
+  {
+    "name": "facebook/webdriver",
+    "version": "v0.5.1",
+    "version_normalized": "0.5.1.0",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/facebook/php-webdriver.git",
+      "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bbcb697efb394d17bd9ec3d467e7da847cde4509",
+      "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.3.19"
+    },
+    "require-dev": {
+      "phpdocumentor/phpdocumentor": "2.*",
+      "phpunit/phpunit": "3.7.*"
+    },
+    "time": "2014-11-05 20:53:09",
+    "type": "library",
+    "installation-source": "dist",
+    "autoload": {
+      "classmap": [
+        "lib/"
+      ]
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "Apache-2.0"
+    ],
+    "description": "A php client for WebDriver",
+    "homepage": "https://github.com/facebook/php-webdriver",
+    "keywords": [
+      "facebook",
+      "php",
+      "selenium",
+      "webdriver"
+    ]
+    },
+  {
+    "name": "symfony/dom-crawler",
+    "version": "2.7.x-dev",
+    "version_normalized": "2.7.9999999.9999999-dev",
+    "target-dir": "Symfony/Component/DomCrawler",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/symfony/DomCrawler.git",
+      "reference": "e1355f67898ca94fe18425c3f2d2d4e905ea894f"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/e1355f67898ca94fe18425c3f2d2d4e905ea894f",
+      "reference": "e1355f67898ca94fe18425c3f2d2d4e905ea894f",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.3.9"
+    },
+    "require-dev": {
+      "symfony/css-selector": "~2.3|~3.0.0"
+    },
+    "suggest": {
+      "symfony/css-selector": ""
+    },
+    "time": "2015-02-11 07:17:51",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "2.7-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Symfony\\Component\\DomCrawler\\": ""
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Symfony Community",
+        "homepage": "http://symfony.com/contributors"
+      },
+      {
+        "name": "Fabien Potencier",
+        "email": "fabien@symfony.com"
+      }
+    ],
+    "description": "Symfony DomCrawler Component",
+    "homepage": "http://symfony.com"
+    },
+  {
+    "name": "symfony/css-selector",
+    "version": "2.7.x-dev",
+    "version_normalized": "2.7.9999999.9999999-dev",
+    "target-dir": "Symfony/Component/CssSelector",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/symfony/CssSelector.git",
+      "reference": "e37b4cd8a5ea27d2bd4775a4980f32d39d5daf31"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/symfony/CssSelector/zipball/e37b4cd8a5ea27d2bd4775a4980f32d39d5daf31",
+      "reference": "e37b4cd8a5ea27d2bd4775a4980f32d39d5daf31",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.3.9"
+    },
+    "time": "2015-02-11 07:17:51",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "2.7-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Symfony\\Component\\CssSelector\\": ""
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Symfony Community",
+        "homepage": "http://symfony.com/contributors"
+      },
+      {
+        "name": "Jean-François Simon",
+        "email": "jeanfrancois.simon@sensiolabs.com"
+      },
+      {
+        "name": "Fabien Potencier",
+        "email": "fabien@symfony.com"
+      }
+    ],
+    "description": "Symfony CssSelector Component",
+    "homepage": "http://symfony.com"
+    },
+  {
+    "name": "symfony/browser-kit",
+    "version": "2.7.x-dev",
+    "version_normalized": "2.7.9999999.9999999-dev",
+    "target-dir": "Symfony/Component/BrowserKit",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/symfony/BrowserKit.git",
+      "reference": "7b8c4f5e8839122a931f45978c1330749ef9e83a"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/7b8c4f5e8839122a931f45978c1330749ef9e83a",
+      "reference": "7b8c4f5e8839122a931f45978c1330749ef9e83a",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.3.9",
+      "symfony/dom-crawler": "~2.0,>=2.0.5|~3.0.0"
+    },
+    "require-dev": {
+      "symfony/css-selector": "~2.0,>=2.0.5|~3.0.0",
+      "symfony/process": "~2.0,>=2.0.5|~3.0.0"
+    },
+    "suggest": {
+      "symfony/process": ""
+    },
+    "time": "2015-02-11 07:17:51",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "2.7-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Symfony\\Component\\BrowserKit\\": ""
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Symfony Community",
+        "homepage": "http://symfony.com/contributors"
+      },
+      {
+        "name": "Fabien Potencier",
+        "email": "fabien@symfony.com"
+      }
+    ],
+    "description": "Symfony BrowserKit Component",
+    "homepage": "http://symfony.com"
+    },
+  {
+    "name": "codeception/codeception",
+    "version": "2.0.9",
+    "version_normalized": "2.0.9.0",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/Codeception/Codeception.git",
+      "reference": "0094191ac0d6e87821fba41de002103ebe79a279"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/Codeception/Codeception/zipball/0094191ac0d6e87821fba41de002103ebe79a279",
+      "reference": "0094191ac0d6e87821fba41de002103ebe79a279",
+      "shasum": ""
+    },
+    "require": {
+      "ext-json": "*",
+      "ext-mbstring": "*",
+      "facebook/webdriver": "~0.4",
+      "guzzlehttp/guzzle": "~4.0|~5.0",
+      "php": ">=5.4.0",
+      "phpunit/phpunit": "~4.0",
+      "symfony/browser-kit": "~2.4",
+      "symfony/console": "~2.4",
+      "symfony/css-selector": "~2.4",
+      "symfony/dom-crawler": "~2.4,!=2.4.5",
+      "symfony/event-dispatcher": "~2.4",
+      "symfony/finder": "~2.4",
+      "symfony/yaml": "~2.4"
+    },
+    "require-dev": {
+      "codeception/specify": "~0.3",
+      "codegyre/robo-ci": "@dev",
+      "facebook/php-sdk": "~3.2",
+      "flow/jsonpath": "~0.1",
+      "monolog/monolog": "~1.8",
+      "pda/pheanstalk": "~2.0",
+      "phpseclib/phpseclib": "~0.3.6",
+      "videlalvaro/php-amqplib": "~2.4"
+    },
+    "suggest": {
+      "codeception/phpbuiltinserver": "Extension to start and stop PHP built-in web server for your tests",
+      "codeception/specify": "BDD-style code blocks",
+      "codeception/verify": "BDD-style assertions",
+      "monolog/monolog": "Log test steps",
+      "phpseclib/phpseclib": "Extension required to use the SFTP option in the FTP Module."
+    },
+    "time": "2014-12-19 23:54:20",
+    "bin": [
+      "codecept"
+    ],
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "2.1-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Codeception": "src"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Michael Bodnarchuk",
+        "email": "davert@mail.ua",
+        "homepage": "http://codegyre.com"
+      }
+    ],
+    "description": "BDD-style testing framework",
+    "homepage": "http://codeception.com/",
+    "keywords": [
+      "BDD",
+      "TDD",
+      "acceptance testing",
+      "functional testing",
+      "unit testing"
+    ]
+    },
+  {
+    "name": "guzzle/guzzle",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/guzzle/guzzle3.git",
+      "reference": "d898326a716f23fdd778942ea9404aeccbe16a46"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/d898326a716f23fdd778942ea9404aeccbe16a46",
+      "reference": "d898326a716f23fdd778942ea9404aeccbe16a46",
+      "shasum": ""
+    },
+    "require": {
+      "ext-curl": "*",
+      "php": ">=5.3.3",
+      "symfony/event-dispatcher": "~2.1"
+    },
+    "replace": {
+      "guzzle/batch": "self.version",
+      "guzzle/cache": "self.version",
+      "guzzle/common": "self.version",
+      "guzzle/http": "self.version",
+      "guzzle/inflection": "self.version",
+      "guzzle/iterator": "self.version",
+      "guzzle/log": "self.version",
+      "guzzle/parser": "self.version",
+      "guzzle/plugin": "self.version",
+      "guzzle/plugin-async": "self.version",
+      "guzzle/plugin-backoff": "self.version",
+      "guzzle/plugin-cache": "self.version",
+      "guzzle/plugin-cookie": "self.version",
+      "guzzle/plugin-curlauth": "self.version",
+      "guzzle/plugin-error-response": "self.version",
+      "guzzle/plugin-history": "self.version",
+      "guzzle/plugin-log": "self.version",
+      "guzzle/plugin-md5": "self.version",
+      "guzzle/plugin-mock": "self.version",
+      "guzzle/plugin-oauth": "self.version",
+      "guzzle/service": "self.version",
+      "guzzle/stream": "self.version"
+    },
+    "require-dev": {
+      "doctrine/cache": "~1.3",
+      "monolog/monolog": "~1.0",
+      "phpunit/phpunit": "3.7.*",
+      "psr/log": "~1.0",
+      "symfony/class-loader": "~2.1",
+      "zendframework/zend-cache": "2.*,<2.3",
+      "zendframework/zend-log": "2.*,<2.3"
+    },
+    "suggest": {
+      "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
+    },
+    "time": "2015-01-28 21:05:25",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "3.9-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Guzzle": "src/",
+        "Guzzle\\Tests": "tests/"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Michael Dowling",
+        "email": "mtdowling@gmail.com",
+        "homepage": "https://github.com/mtdowling"
+      },
+      {
+        "name": "Guzzle Community",
+        "homepage": "https://github.com/guzzle/guzzle/contributors"
+      }
+    ],
+    "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
+    "homepage": "http://guzzlephp.org/",
+    "keywords": [
+      "client",
+      "curl",
+      "framework",
+      "http",
+      "http client",
+      "rest",
+      "web service"
+    ]
+    },
+  {
+    "name": "janhenkgerritsen/codeception-laravel5",
+    "version": "1.0.10",
+    "version_normalized": "1.0.10.0",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/janhenkgerritsen/codeception-laravel5.git",
+      "reference": "6308e72a73dfb015164689646676cda6827409d5"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/janhenkgerritsen/codeception-laravel5/zipball/6308e72a73dfb015164689646676cda6827409d5",
+      "reference": "6308e72a73dfb015164689646676cda6827409d5",
+      "shasum": ""
+    },
+    "require": {
+      "codeception/codeception": "~2.0",
+      "php": ">=5.4.0"
+    },
+    "time": "2015-02-07 10:02:06",
+    "type": "library",
+    "installation-source": "dist",
+    "autoload": {
+      "psr-0": {
+        "Codeception": "src"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Jan-Henk Gerritsen",
+        "email": "j.h.gerritsen@movage.nl"
+      }
+    ],
+    "description": "Laravel5 module for Codeception",
+    "keywords": [
+      "codeception",
+      "laravel",
+      "laravel5"
+    ]
+    },
+  {
+    "name": "league/factory-muffin",
+    "version": "dev-master",
+    "version_normalized": "9999999-dev",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/thephpleague/factory-muffin.git",
+      "reference": "052ab2ede406ed5b018ee24e72e790c1edf0cc16"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/thephpleague/factory-muffin/zipball/052ab2ede406ed5b018ee24e72e790c1edf0cc16",
+      "reference": "052ab2ede406ed5b018ee24e72e790c1edf0cc16",
+      "shasum": ""
+    },
+    "require": {
+      "php": ">=5.4.0"
+    },
+    "replace": {
+      "zizaco/factory-muff": "self.version"
+    },
+    "require-dev": {
+      "illuminate/database": "~4.1",
+      "league/factory-muffin-faker": "~1.0@dev",
+      "phpunit/phpunit": "~4.0"
+    },
+    "suggest": {
+      "illuminate/database": "Factory Muffin works well with eloquent models.",
+      "league/factory-muffin-faker": "Factory Muffin works well with faker."
+    },
+    "time": "2015-02-05 22:18:44",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "3.0-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-4": {
+        "League\\FactoryMuffin\\": "src/"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Graham Campbell",
+        "email": "graham@mineuk.com"
+      },
+      {
+        "name": "Scott Robertson",
+        "email": "scottymeuk@gmail.com"
+      }
+    ],
+    "description": "The goal of this package is to enable the rapid creation of objects for the purpose of testing.",
+    "homepage": "http://factory-muffin.thephpleague.com/",
+    "keywords": [
+      "factory",
+      "laravel",
+      "testing"
+    ]
+    },
+  {
+    "name": "league/oauth2-client",
+    "version": "0.7.2",
+    "version_normalized": "0.7.2.0",
+    "source": {
+      "type": "git",
+      "url": "https://github.com/thephpleague/oauth2-client.git",
+      "reference": "428a28efb15e70fda89eca717b557a68c2035d4d"
+    },
+    "dist": {
+      "type": "zip",
+      "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/428a28efb15e70fda89eca717b557a68c2035d4d",
+      "reference": "428a28efb15e70fda89eca717b557a68c2035d4d",
+      "shasum": ""
+    },
+    "require": {
+      "guzzle/guzzle": "~3.7",
+      "php": ">=5.4.0"
+    },
+    "require-dev": {
+      "mockery/mockery": "~0.9",
+      "phpunit/phpunit": "~4.0",
+      "squizlabs/php_codesniffer": "~2.0"
+    },
+    "time": "2015-02-03 15:27:33",
+    "type": "library",
+    "extra": {
+      "branch-alias": {
+        "dev-master": "0.7.x-dev"
+      }
+    },
+    "installation-source": "dist",
+    "autoload": {
+      "psr-4": {
+        "League\\OAuth2\\Client\\": "src/"
+      }
+    },
+    "notification-url": "https://packagist.org/downloads/",
+    "license": [
+      "MIT"
+    ],
+    "authors": [
+      {
+        "name": "Alex Bilbie",
+        "email": "hello@alexbilbie.com",
+        "homepage": "http://www.alexbilbie.com",
+        "role": "Developer"
+      }
+    ],
+    "description": "OAuth 2.0 Client Library",
+    "keywords": [
+      "Authentication",
+      "SSO",
+      "authorization",
+      "identity",
+      "idp",
+      "oauth",
+      "oauth2",
+      "single sign on"
         ]
     }
 ]
