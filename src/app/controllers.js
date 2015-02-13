@@ -97,3 +97,21 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
         };
     });
 }]);
+
+zenNotebook.controller('LoginController', ['$scope', '$http', 'storageFactory', function ($scope, $http, storageFactory) {
+    $scope.login = function (user) {
+        $http.post('http://zen-notebook.local:8000/api/login', {email: user.email, password: user.password}).
+            success(function (data, status, headers, config) {
+                if (data.token == false) {
+                    $scope.message = "Incorrect Login Details"
+                } else {
+                    $scope.message = "Success";
+                    storageFactory.setStorage('zen_notebook_token', data.token);
+                }
+            }).
+            error(function (data, status, headers, config) {
+                $scope.message = "Error!";
+                console.log(data);
+            });
+    };
+}]);

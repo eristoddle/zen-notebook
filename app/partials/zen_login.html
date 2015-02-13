@@ -1,16 +1,9 @@
-<!--TODO: Figure out how to open links in outside application or do frame with back button inside app-->
-<h1>About</h1>
-<p>
-    Zen Notebook is a minimalist notebook inspired by <a rel="external"
-                                                         href="http://github.com/tholman/zenpen">Zenpen</a> and
-    <a href="http://rednotebook.sourceforge.net" target="_blank">RedNotebook</a>
-</p>
-<p>
-    Created by <a href="http://stephanmiller.com" target="_blank">Stephan Miller</a>
-</p>
-<div ng-if="$root.update_available" class="notice">
-    <p>Update Available</p>
+<h1>Login</h1>
+<div ng-controller="LoginController">
+    <form>
+        E-mail: <input type="text" ng-model="user.email"/><br>
+        Password: <input type="password" ng-model="user.password"/><br>
+        <input type="submit" ng-click="login(user)" value="Login"/>
+    </form>
+    <div>{{message}}</div>
 </div>
-<p>
-    <a href="http://zen-notebook.com">Home Page</a>
-</p>
