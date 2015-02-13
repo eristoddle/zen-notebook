@@ -10,20 +10,17 @@
                       ng-click="toggleChapter(chapter)"
                       ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
                 </span>
-
                 <h2 class="item-stable"
-                    ng-dblclick="startEditing(chapter.name)"
-                    ng-click="setChapter(chapter.name)">
+                          ng-dblclick="startEditing(chapter.name)"
+                          ng-click="setChapter(chapter.name)">
                     <span ng-hide="chapter.editing">{{chapter.name}}</span>
-
                     <form ng-submit="doneEditing(chapter.old_name, chapter.name)" ng-show="chapter.editing">
-                        <input ng-model="chapter.name" ng-blur="doneEditing(chapter.old_name, chapter.name)"
-                               ng-focus="chapter.name == editedChapter">
+                        <input ng-model="chapter.name" ng-blur="doneEditing(chapter.old_name, chapter.name)" ng-focus="chapter.name == editedChapter">
                     </form>
                 </h2>
                 <div class="item-accordion"
-                     ng-repeat="item in chapter.items"
-                     ng-show="isChapterShown(chapter)">
+                          ng-repeat="item in chapter.items"
+                          ng-show="isChapterShown(chapter)">
                     {{item}}
                 </div>
             </div>

@@ -541,6 +541,7 @@ var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
         if (!$rootScope.active_component) {
             $rootScope.active_component = 'notebook';
         }
+
         $rootScope.update_available = false;
         $rootScope.version = null;
         $rootScope.latest_version = null;
@@ -1502,7 +1503,6 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
         onLoad: function () {
             var file = storageFactory.getStorage('file', 'leanpub');
             var chapter = storageFactory.getStorage('chapter', 'leanpub');
-
             if (file) {
                 this.loadBook(file);
             } else {
@@ -1620,7 +1620,10 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
                     //TODO: This is not cross platform
                     this.file = dir + '/manuscript/';
                     book = fileDialog.readFile(this.file + 'Book.txt');
-                    this.documents.book = book.split('\n');
+                    this.documents.book = book.split('\n').filter(function (e) {
+                        if (e === 0) e = '0';
+                        return e
+                    });
                     for (var i = 0; i < this.documents.book.length; i++) {
                         var key = this.documents.book[i].replace('.txt', '');
                         var content = fileDialog.readFile(this.file + this.documents.book[i]);
