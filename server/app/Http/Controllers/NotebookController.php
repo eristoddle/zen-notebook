@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ApiUserController extends ApiController
+class NotebookController extends ApiController
 {
 
     /**
@@ -14,7 +14,7 @@ class ApiUserController extends ApiController
      */
     public function index()
     {
-        $samples = [
+        $notebooks = [
             [
                 'id' => '1',
                 'name' => 'Sample1'
@@ -25,10 +25,10 @@ class ApiUserController extends ApiController
             ]
         ];
 
-        return $this->respondWithCollection($samples, function ($sample) {
+        return $this->respondWithCollection($notebooks, function ($notebook) {
             return [
-                'id' => (integer)$sample['id'],
-                'name' => $sample['name']
+                'id' => (integer)$notebook['id'],
+                'name' => $notebook['name']
             ];
         });
     }

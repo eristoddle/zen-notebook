@@ -22,16 +22,16 @@ Route::controllers([
 
 Route::group(['prefix' => 'api'], function () {
 
-    Route::post('login', function () {
+    Route::post('attempt', function () {
         $credentials = Input::only('email', 'password');
-
         if (!$token = JWTAuth::attempt($credentials)) {
             // return 401 error response
         }
-
         return Response::json(compact('token'));
     });
 
-    Route::resource('user', 'ApiUserController', ['only' => ['index', 'show']]);
+    Route::resource('users', 'UserController');
+
+    Route::resource('notebooks', 'NotebookController');
 
 });

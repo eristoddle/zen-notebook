@@ -106,7 +106,7 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
 zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory', function ($scope, $http, storageFactory) {
     $scope.endpoint = 'http://zen-notebook.local:8000/api/';
     $scope.login = function (user) {
-        $http.post($scope.endpoint + 'login', {email: user.email, password: user.password}).
+        $http.post($scope.endpoint + 'attempt', {email: user.email, password: user.password}).
             success(function (data, status, headers, config) {
                 if (data.token == false) {
                     $scope.message = "Incorrect Login Details"
