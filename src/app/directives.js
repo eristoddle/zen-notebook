@@ -17,7 +17,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
-                if ($rootScope.mute == true) {
+                if ($rootScope.mute == false) {
                     $injector.get('themeFactory').themeSound(event);
                 }
             });

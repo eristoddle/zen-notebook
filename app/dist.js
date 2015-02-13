@@ -787,7 +787,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
             //Calls component's onWrite method
             element.bind("blur keyup change focus", function (event) {
                 scope.$apply(factory.onWrite(element.html()));
-                if ($rootScope.mute == true) {
+                if ($rootScope.mute == false) {
                     $injector.get('themeFactory').themeSound(event);
                 }
             });
@@ -1621,8 +1621,10 @@ zenNotebook.factory('leanpubFactory', ['$rootScope', 'storageFactory', 'fileDial
                     this.file = dir + '/manuscript/';
                     book = fileDialog.readFile(this.file + 'Book.txt');
                     this.documents.book = book.split('\n').filter(function (e) {
-                        if (e === 0) e = '0';
-                        return e
+                        if (e === 0) {
+                            e = '0';
+                        }
+                        return e;
                     });
                     for (var i = 0; i < this.documents.book.length; i++) {
                         var key = this.documents.book[i].replace('.txt', '');
