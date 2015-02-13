@@ -11,6 +11,7 @@ module.exports = function(grunt) {
                     "src/lib/angular-sanitize/angular-sanitize.min.js",
                     "src/lib/buzz/dist/buzz.min.js",
                     "src/lib/angular-showdown/compressed/showdown.js",
+                    'src/lib/ngDialog/js/ngDialog.min.js',
                     'src/app/modules/*.js',
                     'src/app/main.js',
                     'src/app/filters.js',

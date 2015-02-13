@@ -18,7 +18,7 @@ if (isNodeWebkit) {
 }
 
 //Initialize Application
-var zenNotebook = angular.module("zenNotebook", ['ngSanitize', platformModule])
+var zenNotebook = angular.module("zenNotebook", ['ngSanitize', 'ngDialog', platformModule])
     .run(function ($rootScope, storageFactory) {
         //Sound
         $rootScope.mute = false;
