@@ -1,0 +1,10 @@
+<h1>Zen-Notebook.com Account</h1>
+<div ng-controller="ZencomController">
+    <div>{{message}}</div>
+    <div class="zencom_notebook">
+        <span class="label">Notebook: </span>
+        <select ng-change="getNotebook(active_component)"
+                ng-model="zencom_notebook"
+                ng-options="component for component in components"></select>
+    </div>
+</div>
