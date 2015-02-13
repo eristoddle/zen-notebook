@@ -173,6 +173,10 @@ zenNotebook.factory('dropboxFactory', ['$rootScope', function ($rootScope) {
     }
 }]);
 
+zenNotebook.factory('zenComFactory', ['$rootScope', function ($rootScope) {
+    return {}
+}]);
+
 //TODO: Have component factories inherit from a base componentFactory: http://blog.revolunet.com/blog/2014/02/14/angularjs-services-inheritance/
 zenNotebook.factory('componentFactory', ['$rootScope', function ($rootScope) {
     console.log(this);

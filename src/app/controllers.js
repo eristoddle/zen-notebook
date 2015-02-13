@@ -29,6 +29,7 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
             $scope.count = 0;
         }
         nextCount = $scope.count + 1;
+
         if (message.action == 'theme') {
             for (var key in $scope.themes) {
                 rowCount = rowCount + 1;
@@ -39,6 +40,10 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
                     return;
                 }
             }
+        }
+
+        if (message.action == 'cloud_open') {
+            console.log('modal');
         }
     });
 }]);
@@ -58,7 +63,7 @@ zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFact
     $scope.left = {};
 
     $scope.$on('toggleLeft', function () {
-        $scope.left.partial = 'components/' + $rootScope.active_component + '.html';
+        $scope.left.partial = 'partials/' + $rootScope.active_component + '.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
@@ -78,8 +83,7 @@ zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFa
     $scope.$on('toggleFoot', function () {
         var message = menuFactory.subscribeClick();
         $scope.footChangeClass = !$scope.footChangeClass;
-        $scope.foot.partial = 'footer/' + message.action + '.html';
-
+        $scope.foot.partial = 'partials/' + message.action + '.html';
         $scope.expr = function (locals) {
             menuFactory.publishClick(locals);
         };
