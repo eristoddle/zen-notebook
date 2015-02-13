@@ -30,8 +30,6 @@ class VerifyCsrfToken extends BaseVerifier
             'api/login'
         ];
 
-        //die(print_r($request));
-
         foreach ($routes as $route) {
             if ($request->is($route)) {
                 return true;
