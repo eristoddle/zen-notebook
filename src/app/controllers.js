@@ -43,7 +43,6 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         }
 
         if (message.action == 'cloud_open') {
-            console.log('modal');
             ngDialog.open({template: 'partials/zen_login.html'});
         }
     });
