@@ -47,7 +47,6 @@ caption, th, td {
 q, blockquote {
   quotes: none;
 }
-
 /* line 103, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
@@ -3176,7 +3175,6 @@ div.cal .navigation .fa-arrow-right {
         opacity: 0;
     }
 }
-
 @keyframes ngdialog-fadeout {
     0% {
         opacity: 1;
@@ -3185,7 +3183,6 @@ div.cal .navigation .fa-arrow-right {
         opacity: 0;
     }
 }
-
 @-webkit-keyframes ngdialog-fadein {
     0% {
         opacity: 0;
@@ -3194,7 +3191,6 @@ div.cal .navigation .fa-arrow-right {
         opacity: 1;
     }
 }
-
 @keyframes ngdialog-fadein {
     0% {
         opacity: 0;
@@ -3204,14 +3200,14 @@ div.cal .navigation .fa-arrow-right {
     }
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 39, ../src/scss/_ngDialog.scss */
 .ngdialog, .ngdialog *, .ngdialog :after, .ngdialog :before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 45, ../src/scss/_ngDialog.scss */
 .ngdialog {
     position: fixed;
     overflow: auto;
@@ -3223,7 +3219,7 @@ div.cal .navigation .fa-arrow-right {
     left: 0;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 56, ../src/scss/_ngDialog.scss */
 .ngdialog-overlay {
     position: fixed;
     background: rgba(0, 0, 0, 0.4);
@@ -3233,39 +3229,241 @@ div.cal .navigation .fa-arrow-right {
     left: 0;
     -webkit-backface-visibility: hidden;
     -webkit-animation: ngdialog-fadein .5s;
-    animation: ngdialog-fadein .5s;
+    animation: ngdialog-fadein 0.5s;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 68, ../src/scss/_ngDialog.scss */
 .ngdialog.ngdialog-closing .ngdialog-overlay {
     -webkit-backface-visibility: hidden;
     -webkit-animation: ngdialog-fadeout .5s;
-    animation: ngdialog-fadeout .5s;
+    animation: ngdialog-fadeout 0.5s;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 74, ../src/scss/_ngDialog.scss */
 .ngdialog-content {
     background: #fff;
     -webkit-backface-visibility: hidden;
     -webkit-animation: ngdialog-fadein .5s;
-    animation: ngdialog-fadein .5s;
+    animation: ngdialog-fadein 0.5s;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 81, ../src/scss/_ngDialog.scss */
 .ngdialog.ngdialog-closing .ngdialog-content {
     -webkit-backface-visibility: hidden;
     -webkit-animation: ngdialog-fadeout .5s;
-    animation: ngdialog-fadeout .5s;
+    animation: ngdialog-fadeout 0.5s;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 87, ../src/scss/_ngDialog.scss */
 .ngdialog-close:before {
     font-family: Helvetica, Arial, sans-serif;
     content: '\00D7';
     cursor: pointer;
 }
 
-/* line 3, ../src/scss/_ngDialog.scss */
+/* line 93, ../src/scss/_ngDialog.scss */
 body.ngdialog-open {
     overflow: hidden;
+}
+
+/*! ng-dialog - v0.3.11 (https://github.com/likeastore/ngDialog) */
+@-webkit-keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+}
+
+/* line 155, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default {
+    padding-bottom: 160px;
+    padding-top: 160px;
+}
+
+/* line 160, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default.ngdialog-closing .ngdialog-content {
+    -webkit-animation: ngdialog-flyout .5s;
+    animation: ngdialog-flyout 0.5s;
+}
+
+/* line 165, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    -webkit-animation: ngdialog-flyin .5s;
+    animation: ngdialog-flyin .5s;
+    background: #f0f0f0;
+    border-radius: 5px;
+    color: #444;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1em;
+    position: relative;
+    width: 450px;
+}
+
+/* line 181, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-close {
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* line 189, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-close:before {
+    background: 0 0;
+    border-radius: 3px;
+    color: #bbb;
+    content: '\00D7';
+    font-size: 26px;
+    font-weight: 400;
+    height: 30px;
+    line-height: 26px;
+    position: absolute;
+    right: 3px;
+    text-align: center;
+    top: 3px;
+    width: 30px;
+}
+
+/* line 205, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-close:active:before, .ngdialog.ngdialog-theme-default .ngdialog-close:hover:before {
+    color: #777;
+}
+
+/* line 209, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-message {
+    margin-bottom: 0.5em;
+}
+
+/* line 213, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-input {
+    margin-bottom: 1em;
+}
+
+/* line 217, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-input input[type=email], .ngdialog.ngdialog-theme-default .ngdialog-input input[type=password], .ngdialog.ngdialog-theme-default .ngdialog-input input[type=text], .ngdialog.ngdialog-theme-default .ngdialog-input input[type=url], .ngdialog.ngdialog-theme-default .ngdialog-input textarea {
+    background: #fff;
+    border: 0;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0 0 .25em;
+    min-height: 2.5em;
+    padding: .25em .67em;
+    width: 100%;
+}
+
+/* line 230, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-input input[type=email]:focus, .ngdialog.ngdialog-theme-default .ngdialog-input input[type=password]:focus, .ngdialog.ngdialog-theme-default .ngdialog-input input[type=text]:focus, .ngdialog.ngdialog-theme-default .ngdialog-input input[type=url]:focus, .ngdialog.ngdialog-theme-default .ngdialog-input textarea:focus {
+    -webkit-box-shadow: inset 0 0 0 2px #8dbdf1;
+    box-shadow: inset 0 0 0 2px #8dbdf1;
+    outline: 0;
+}
+
+/* line 236, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-buttons {
+    *zoom: 1;
+}
+
+/* line 240, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-buttons:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* line 246, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-button {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+    font-family: inherit;
+    font-size: .8em;
+    letter-spacing: .1em;
+    line-height: 1em;
+    margin: 0 0 0 .5em;
+    padding: .75em 2em;
+    text-transform: uppercase;
+}
+
+/* line 260, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-button:focus {
+    -webkit-animation: ngdialog-pulse 1.1s infinite;
+    animation: ngdialog-pulse 1.1s infinite;
+    outline: 0;
+}
+
+@media (max-width: 568px) {
+    /* line 267, ../src/scss/_ngDialog.scss */
+    .ngdialog.ngdialog-theme-default .ngdialog-button:focus {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+/* line 273, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary {
+    background: #3288e6;
+    color: #fff;
+}
+
+/* line 278, ../src/scss/_ngDialog.scss */
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-secondary {
+    background: #e0e0e0;
+    color: #777;
 }

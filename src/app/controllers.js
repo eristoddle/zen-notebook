@@ -1,7 +1,7 @@
 //controller for changes that effect the whole document at the body element level
 //good for instantaneous changes from the the nav menu buttons
 //currently only used for theme
-zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', function ($scope, menuFactory, ngDialog) {
     //TODO: This can be part of the theme service
     $scope.themes = {
         zen_dark: 'zen dark',
@@ -44,6 +44,7 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', function ($sc
 
         if (message.action == 'cloud_open') {
             console.log('modal');
+            ngDialog.open({template: 'partials/zen_login.html'});
         }
     });
 }]);
