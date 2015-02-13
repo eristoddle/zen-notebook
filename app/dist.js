@@ -1104,7 +1104,7 @@ zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory',
     };
 
     $scope.isConnected = function () {
-        $http.post($scope.endpoint + 'login', data).
+        $http.post($scope.endpoint + 'auth', data).
             success(function (data, status, headers, config) {
 
             }).
