@@ -38,32 +38,4 @@
       margin-right: 5%;
     }
   }
-  &.foot-inner {
-    -moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
-    height: 0px;
-    width: 100%;
-    position: absolute;
-    bottom: -300px;
-    overflow: hidden;
-    div {
-      margin-top: 20px;
-    }
-    &.slide-out {
-      -moz-transition: all 1s;
-      -webkit-transition: all 1s;
-      -o-transition: all 1s;
-      transition: all 1s;
-      bottom: 0px;
-      height: 300px;
-      .footer-content {
-        visibility: visible;
-        display: block;
-        margin-left: 5%;
-        margin-right: 5%;
-      }
-    }
-  }
 }

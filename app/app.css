@@ -400,38 +400,6 @@ footer {
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 41, ../src/scss/_slide.scss */
-.modal.foot-inner {
-  -moz-transition: all 1s;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-  height: 0px;
-  width: 100%;
-  position: absolute;
-  bottom: -300px;
-  overflow: hidden;
-}
-/* line 51, ../src/scss/_slide.scss */
-.modal.foot-inner div {
-  margin-top: 20px;
-}
-/* line 54, ../src/scss/_slide.scss */
-.modal.foot-inner.slide-out {
-  -moz-transition: all 1s;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-  bottom: 0px;
-  height: 300px;
-}
-/* line 61, ../src/scss/_slide.scss */
-.modal.foot-inner.slide-out .footer-content {
-  visibility: visible;
-  display: block;
-  margin-left: 5%;
-  margin-right: 5%;
-}
 
 /* line 1, ../src/scss/_notebook.scss */
 #cal {
@@ -3199,7 +3167,6 @@ div.cal .navigation .fa-arrow-right {
         opacity: 1;
     }
 }
-
 /* line 39, ../src/scss/_ngDialog.scss */
 .ngdialog, .ngdialog *, .ngdialog :after, .ngdialog :before {
     -webkit-box-sizing: border-box;
@@ -3279,7 +3246,6 @@ body.ngdialog-open {
         transform: translateY(0);
     }
 }
-
 @keyframes ngdialog-flyin {
     0% {
         opacity: 0;
@@ -3294,7 +3260,6 @@ body.ngdialog-open {
         transform: translateY(0);
     }
 }
-
 @-webkit-keyframes ngdialog-flyout {
     0% {
         opacity: 1;
@@ -3307,7 +3272,6 @@ body.ngdialog-open {
         transform: translateY(-40px);
     }
 }
-
 @keyframes ngdialog-flyout {
     0% {
         opacity: 1;
@@ -3322,7 +3286,6 @@ body.ngdialog-open {
         transform: translateY(-40px);
     }
 }
-
 /* line 155, ../src/scss/_ngDialog.scss */
 .ngdialog.ngdialog-theme-default {
     padding-bottom: 160px;
@@ -3455,7 +3418,6 @@ body.ngdialog-open {
         animation: none;
     }
 }
-
 /* line 273, ../src/scss/_ngDialog.scss */
 .ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary {
     background: #3288e6;
