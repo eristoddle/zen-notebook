@@ -12,6 +12,11 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         carbon: 'carbon dark',
         relax: 'relax dark'
     };
+    $scope.components = [
+        'notebook',
+        'nanowrimo',
+        'leanpub'
+    ];
     /*TODO: Implement theming system where there are classes in the template indicating
      where a theme class has to be applied: theme-font, theme-main-color, theme-text-color
      */
@@ -49,6 +54,20 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         if (message.action == 'open_remote') {
             ngDialog.open({template: 'partials/zen_user.html'});
         }
+
+        ngDialog.open({template: 'partials/' + message.action + '.html'});
+
+        $scope.expr = function (locals) {
+            menuFactory.publishClick(locals);
+        };
+
+        $scope.changeComponent = function (component) {
+            //TODO: Hack just reloading the page to get new component button to show correct icon
+            $rootScope.active_component = component;
+            storageFactory.setStorage('active_component', component);
+            $rootScope.$broadcast('loadComponent');
+            window.location.reload();
+        };
     });
 }]);
 
@@ -75,34 +94,8 @@ zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFact
     });
 }]);
 
-//handles application vs component based settings that come back from the footer
-zenNotebook.controller('ApplicationController', ['$scope', '$rootScope', 'menuFactory', 'storageFactory', function ($scope, $rootScope, menuFactory, storageFactory) {
-    $scope.foot = {};
-    //TODO: Don't hard code the components
-    $scope.components = [
-        'notebook',
-        'nanowrimo',
-        'leanpub'
-    ];
-    $scope.$on('toggleFoot', function () {
-        var message = menuFactory.subscribeClick();
-        $scope.footChangeClass = !$scope.footChangeClass;
-        $scope.foot.partial = 'partials/' + message.action + '.html';
-        $scope.expr = function (locals) {
-            menuFactory.publishClick(locals);
-        };
-
-        $scope.changeComponent = function (component) {
-            //TODO: Hack just reloading the page to get new component button to show correct icon
-            $rootScope.active_component = component;
-            storageFactory.setStorage('active_component', component);
-            $rootScope.$broadcast('loadComponent');
-            window.location.reload();
-        };
-    });
-}]);
-
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
+//http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
 zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory', function ($scope, $http, storageFactory) {
     $scope.endpoint = 'http://zen-notebook.local:8000/api/';
     $scope.login = function (user) {
