@@ -8,7 +8,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     var app_nav = [
         {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
         {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'body'},
-        {title: 'Zen Notebook', action: 'zen_notebook', class: 'fa fa-cloud-upload', sub: 'body'},
+        {title: 'Zen Notebook', action: 'remote', class: 'fa fa-cloud-upload', sub: 'body'},
         {title: 'About', action: 'about', class: 'fa fa-question', sub: 'body'},
         {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
         {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
