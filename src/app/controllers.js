@@ -124,7 +124,7 @@ zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory',
     $scope.isConnected = function () {
         $http.post($scope.endpoint + 'auth', data).
             success(function (data, status, headers, config) {
-
+                console.log(data);
             }).
             error(function (data, status, headers, config) {
                 $scope.message = "Error!";
@@ -135,7 +135,7 @@ zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory',
     $scope.getNoteBooks = function () {
         $http.post($scope.endpoint + 'login', data).
             success(function (data, status, headers, config) {
-
+                console.log(data);
             }).
             error(function (data, status, headers, config) {
                 $scope.message = "Error!";
@@ -146,7 +146,7 @@ zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory',
     $scope.getNoteBook = function (id) {
         $http.post($scope.endpoint + 'login', data).
             success(function (data, status, headers, config) {
-
+                console.log(data);
             }).
             error(function (data, status, headers, config) {
                 $scope.message = "Error!";
@@ -157,7 +157,7 @@ zenNotebook.controller('ZencomController', ['$scope', '$http', 'storageFactory',
     $scope.saveNotebook = function (id) {
         $http.post($scope.endpoint + 'login', data).
             success(function (data, status, headers, config) {
-
+                console.log(data);
             }).
             error(function (data, status, headers, config) {
                 $scope.message = "Error!";
