@@ -1032,26 +1032,16 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
     };
 }]);
 
-//controller for the nav menu
-//the menu factory handles the functionality
 zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
     $scope.menu = menuFactory.menus.nav;
-    $scope.expr = function (locals) {
-        menuFactory.publishClick(locals);
-    }
 }]);
 
 //controller for component sidebar functionality
 //the menu factory handles the functionality
 zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
-    $scope.left = {};
-
     $scope.$on('toggleLeft', function () {
-        $scope.left.partial = 'partials/sidebar/' + $rootScope.active_component + '.html';
+        $scope.partial = 'partials/sidebar/' + $rootScope.active_component + '.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
-        $scope.expr = function (locals) {
-            menuFactory.publishClick(locals);
-        };
     });
 }]);
 
