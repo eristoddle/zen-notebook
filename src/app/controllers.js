@@ -43,11 +43,11 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         }
 
         ngDialog.open({template: 'partials/dialog/' + message.action + '.html'});
-
-        $scope.expr = function (locals) {
-            menuFactory.publishClick(locals);
-        };
     });
+
+    $scope.expr = function (locals) {
+        menuFactory.publishClick(locals);
+    };
 }]);
 
 //controller for the nav menu

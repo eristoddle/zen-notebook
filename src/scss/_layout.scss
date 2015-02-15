@@ -6,6 +6,12 @@
 #container{
     @include grid-span(12, 1);
     height: 100%;
+  .motion-detector {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+  }
 }
 
 header {
