@@ -326,27 +326,6 @@ header .nav-menu {
   overflow-y: auto;
 }
 
-/* line 38, ../src/scss/_layout.scss */
-.right-sidebar {
-  width: 14.89362%;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
-}
-
-/* line 42, ../src/scss/_layout.scss */
-footer {
-  min-height: 64px;
-  width: 65.95745%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 17.02128%;
-  clear: none;
-  position: fixed;
-  bottom: 0px;
-}
-
 /* line 2, ../src/scss/_content.scss */
 .content:focus {
   outline: 0px solid transparent;
@@ -394,8 +373,19 @@ footer {
   left: 0px;
   position: fixed;
   height: 100%;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
 }
-/* line 36, ../src/scss/_slide.scss */
+
+/* line 38, ../src/scss/_slide.scss */
+.modal.left-inner.slide-out .left-include {
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+}
+
+/* line 44, ../src/scss/_slide.scss */
 .modal.left-inner .block, .modal.left-inner .button {
   margin-left: 5%;
   margin-right: 5%;

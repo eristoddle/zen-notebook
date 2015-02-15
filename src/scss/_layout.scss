@@ -34,14 +34,3 @@ header {
     max-height: 80%;
     overflow-y: auto;
 }
-
-.right-sidebar {
-    @include grid-span(2, 11);
-}
-
-footer{
-    min-height: $icon-size;
-    @include grid-span(8, 3);
-    position:fixed;
-    bottom:0px;
-}
