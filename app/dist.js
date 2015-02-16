@@ -730,8 +730,6 @@ zenNotebook.filter('object2Array', function () {
 });
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
 //http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
-//http://www.benlesh.com/2013/02/angularjs-creating-service-with-http.html
-//http://stackoverflow.com/questions/12505760/processing-http-response-in-service
 zenNotebook.factory('accountFactory', ['$http', function ($http) {
     return {
         token: '',
@@ -739,6 +737,9 @@ zenNotebook.factory('accountFactory', ['$http', function ($http) {
         notebooks: {},
         login: function (email, pass) {
             return $http.post(this.endpoint + 'attempt', {email: email, password: pass}).then(function (response) {
+                if (response.data.token) {
+                    this.token = response.data.token;
+                }
                 return response.data;
             });
         },
