@@ -728,12 +728,77 @@ zenNotebook.filter('object2Array', function () {
         return out;
     }
 });
-//a global bus for clicks I guess
-//adds nav menu buttons from component
-//broadcasts messages to the controllers down the $rootScope
-//TODO: could be replaced with a proper router?
-//could be handle by the body controller?
-//early implementation while learning angular that worked, so I haven't done the research to fix it
+zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
+    return {
+        token: '',
+        endpoint: 'http://zen-notebook.local:8000/api/',
+        notebooks: {},
+        postData: function () {
+            $http.post(this.endpoint + 'login', data).
+                success(function (data, status, headers, config) {
+                    console.log(data);
+                }).
+                error(function (data, status, headers, config) {
+                    $scope.message = "Error!";
+                    console.log(data);
+                });
+        },
+        getData: function () {
+
+        },
+        login: function (email, pass) {
+
+        },
+        isLoggedIn: function () {
+
+        },
+        getNotebooks: function () {
+
+        },
+        getNotebook: function (id) {
+
+        },
+        saveNotebook: function () {
+
+        }
+    };
+}]);
+
+//TODO: Have component factories inherit from a base componentFactory: http://blog.revolunet.com/blog/2014/02/14/angularjs-services-inheritance/
+zenNotebook.factory('componentFactory', ['$rootScope', function ($rootScope) {
+    console.log(this);
+    return {
+        factoryName: 'null',
+        documents: {},
+        onLoad: function () {
+
+        },
+        onWrite: function () {
+
+        },
+        onExit: function () {
+
+        },
+        getActiveContent: function () {
+
+        },
+        countWords: function () {
+
+        },
+        getSidebar: function () {
+
+        },
+        getMenus: function () {
+
+        },
+        saveData: function () {
+
+        },
+        loadData: function () {
+
+        }
+    }
+}]);
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var app_nav = [
         {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
@@ -791,7 +856,31 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
 
     return menus;
 }]);
-
+//handles non-file data storage
+//TODO: should this handle file storage also?
+//TODO: this needs to switch based on the platform because localStorage won't fly for all
+zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
+    return {
+        getStorage: function (key, component) {
+            if (component) {
+                key = component + '.' + key;
+            }
+            return window.localStorage.getItem(key);
+        },
+        setStorage: function (key, data, component) {
+            if (component) {
+                key = component + '.' + key;
+            }
+            window.localStorage.setItem(key, data);
+        },
+        deleteStorage: function (key, component) {
+            if (component) {
+                key = component + '.' + key;
+            }
+            window.localStorage.removeItem(key);
+        }
+    }
+}]);
 //handle theme change events
 //uses buzz: http://buzz.jaysalvat.com/documentation/sound/
 //reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
@@ -867,78 +956,6 @@ zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
             } else if (event instanceof FocusEvent && theme != 'relax dark') {
                 this.relaxStop();
             }
-        }
-    }
-}]);
-
-//handles non-file data storage
-//TODO: should this handle file storage also?
-//TODO: this needs to switch based on the platform because localStorage won't fly for all
-zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
-    return {
-        getStorage: function (key, component) {
-            if (component) {
-                key = component + '.' + key;
-            }
-            return window.localStorage.getItem(key);
-        },
-        setStorage: function (key, data, component) {
-            if (component) {
-                key = component + '.' + key;
-            }
-            window.localStorage.setItem(key, data);
-        },
-        deleteStorage: function (key, component) {
-            if (component) {
-                key = component + '.' + key;
-            }
-            window.localStorage.removeItem(key);
-        }
-    }
-}]);
-
-zenNotebook.factory('dropboxFactory', ['$rootScope', function ($rootScope) {
-    return {
-
-    }
-}]);
-
-zenNotebook.factory('zenComFactory', ['$rootScope', function ($rootScope) {
-    return {}
-}]);
-
-//TODO: Have component factories inherit from a base componentFactory: http://blog.revolunet.com/blog/2014/02/14/angularjs-services-inheritance/
-zenNotebook.factory('componentFactory', ['$rootScope', function ($rootScope) {
-    console.log(this);
-    return {
-        factoryName: 'null',
-        documents: {},
-        onLoad: function(){
-
-        },
-        onWrite: function(){
-
-        },
-        onExit: function(){
-
-        },
-        getActiveContent: function(){
-
-        },
-        countWords: function(){
-
-        },
-        getSidebar: function(){
-
-        },
-        getMenus: function(){
-
-        },
-        saveData: function(){
-
-        },
-        loadData: function(){
-
         }
     }
 }]);
@@ -1031,11 +1048,6 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         menuFactory.publishClick(locals);
     };
 }]);
-
-zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    $scope.menu = menuFactory.menus.nav;
-}]);
-
 //controller for component sidebar functionality
 //the menu factory handles the functionality
 zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
@@ -1044,7 +1056,6 @@ zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFact
         $scope.leftChangeClass = !$scope.leftChangeClass;
     });
 }]);
-
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
 //http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
 //TODO: This should be an injected service
@@ -1080,7 +1091,8 @@ zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory',
             });
     };
 
-    $scope.isConnected = function () {
+    $scope.isLoggedIn = function () {
+        return false;
         $http.post($scope.endpoint + 'auth', data).
             success(function (data, status, headers, config) {
                 console.log(data);
@@ -1091,38 +1103,9 @@ zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory',
             });
     };
 
-    $scope.getNoteBooks = function () {
-        $http.post($scope.endpoint + 'login', data).
-            success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
-    };
-
-    $scope.getNoteBook = function (id) {
-        $http.post($scope.endpoint + 'login', data).
-            success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
-    };
-
-    $scope.saveNotebook = function (id) {
-        $http.post($scope.endpoint + 'login', data).
-            success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
-    };
+}]);
+zenNotebook.controller('NavController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    $scope.menu = menuFactory.menus.nav;
 }]);
 zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [

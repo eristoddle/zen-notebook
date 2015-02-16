@@ -3424,3 +3424,26 @@ body.ngdialog-open {
   background: #e0e0e0;
   color: #777;
 }
+
+/* line 3, ../src/scss/_dialogs.scss */
+.ngdialog .ngdialog-content .zen-icon {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+/* line 9, ../src/scss/_dialogs.scss */
+.ngdialog .ngdialog-content p {
+    margin-bottom: 15px;
+}
+
+/* line 12, ../src/scss/_dialogs.scss */
+.ngdialog .ngdialog-content .button {
+    display: inline;
+}
+
+/* line 16, ../src/scss/_dialogs.scss */
+.ngdialog .ngdialog-content .login-form .button {
+    float: left;
+}

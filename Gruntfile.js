@@ -15,9 +15,9 @@ module.exports = function(grunt) {
                     'src/app/modules/*.js',
                     'src/app/main.js',
                     'src/app/filters.js',
-                    'src/app/factories.js',
+                    'src/app/factories/*.js',
                     'src/app/directives.js',
-                    'src/app/controllers.js',
+                    'src/app/controllers/*.js',
                     'src/app/components/notebook/*.js',
                     'src/app/components/nanowrimo/*.js',
                     'src/app/components/leanpub/*.js'

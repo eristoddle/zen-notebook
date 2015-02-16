@@ -1,14 +1,16 @@
 <h1>Zen-Notebook Account</h1>
 <div ng-controller="DialogController">
-    <form>
-        E-mail: <input type="text" ng-model="user.email"/><br>
-        Password: <input type="password" ng-model="user.password"/><br>
-
+    <form class="login-form" ng-show="!isLoggedIn()">
         <div class="button" ng-click="login(user)">Login</div>
+        <div class="fields">
+            E-mail: <input type="text" ng-model="user.email"/><br>
+            Password: <input type="password" ng-model="user.password"/>
+        </div>
     </form>
-    Notebooks: <select ng-change="getNotebook(active_component)"
-                       ng-model="zencom_notebook"
-                       ng-options="component for component in components"></select>
-
+    <div class="user-account" ng-show="isLoggedIn()">
+        Notebooks: <select ng-change="getNotebook(id)"
+                           ng-model="zencom_notebook"
+                           ng-options="id for id in notebooks"></select>
+    </div>
     <div class="notice">{{message}}</div>
 </div>
