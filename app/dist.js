@@ -728,44 +728,35 @@ zenNotebook.filter('object2Array', function () {
         return out;
     }
 });
-zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
+//TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
+//http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
+zenNotebook.factory('accountFactory', ['$http', function ($http) {
     return {
         token: '',
         endpoint: 'http://zen-notebook.local:8000/api/',
         notebooks: {},
-        postData: function (path, data) {
-            $http.post(this.endpoint + path, data).
+        login: function (email, pass) {
+            $http.post(this.endpoint + 'attempt', {email: email, password: pass}).
                 success(function (data, status, headers, config) {
-                    return {
-                        data: data,
-                        message: 'Success'
+                    if (data.token == false) {
+                        return {
+                            token: false,
+                            message: "Incorrect Login"
+                        }
+                    } else {
+                        this.token = data.token;
+                        return {
+                            token: data.token,
+                            message: "Success"
+                        }
                     }
                 }).
                 error(function (data, status, headers, config) {
                     return {
-                        data: true,
-                        message: 'Error'
+                        token: false,
+                        message: "Error"
                     }
                 });
-        },
-        getData: function () {
-
-        },
-        login: function (email, pass) {
-            var result = this.postData(
-                'attempt',
-                {
-                    email: email,
-                    password: pass
-                }
-            );
-            if (result.data.token) {
-                this.token = result.data.token;
-                return this.token;
-            } else {
-                return 'Incorrect Details';
-            }
-            return result.message;
         },
         isLoggedIn: function () {
             return false;
@@ -1070,11 +1061,7 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
         $scope.leftChangeClass = !$scope.leftChangeClass;
     });
 }]);
-//TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
-//http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
-//TODO: This should be an injected service
-zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory', 'accountFactory', function ($scope, $http, storageFactory, accountFactory) {
-    $scope.endpoint = 'http://zen-notebook.local:8000/api/';
+zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
     $scope.components = [
         'notebook',
         'nanowrimo',
@@ -1090,19 +1077,12 @@ zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory',
     };
 
     $scope.login = function (user) {
-        $http.post($scope.endpoint + 'attempt', {email: user.email, password: user.password}).
-            success(function (data, status, headers, config) {
-                if (data.token == false) {
-                    $scope.message = "Incorrect Login Details"
-                } else {
-                    $scope.message = "Success";
-                    storageFactory.setStorage('zen_notebook_token', data.token);
-                }
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
+        storageFactory.setStorage('zen_notebook_token', null);
+        var result = accountFactory.login(user.email, user.password);
+        if(result.token) {
+            storageFactory.setStorage('zen_notebook_token', result.token);
+        }
+        $scope.message = result.message;
     };
 
     $scope.isLoggedIn = function () {
