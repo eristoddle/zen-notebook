@@ -12,6 +12,7 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         carbon: 'carbon dark',
         relax: 'relax dark'
     };
+    $scope.menu = menuFactory.menus.nav;
     /*TODO: Implement theming system where there are classes in the template indicating
      where a theme class has to be applied: theme-font, theme-main-color, theme-text-color
      */
