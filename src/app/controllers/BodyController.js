@@ -1,4 +1,4 @@
-zenNotebook.controller('bodyController', ['$scope', 'menuFactory', 'ngDialog', function ($scope, menuFactory, ngDialog) {
+zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, ngDialog) {
     //TODO: This can be part of the theme service
     $scope.themes = {
         zen_dark: 'zen dark',
@@ -46,4 +46,9 @@ zenNotebook.controller('bodyController', ['$scope', 'menuFactory', 'ngDialog', f
     $scope.expr = function (locals) {
         menuFactory.publishClick(locals);
     };
+
+    $scope.$on('toggleLeft', function () {
+        $scope.partial = 'partials/sidebar/' + $rootScope.active_component + '.html';
+        $scope.leftChangeClass = !$scope.leftChangeClass;
+    });
 }]);

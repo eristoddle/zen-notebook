@@ -733,21 +733,39 @@ zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
         token: '',
         endpoint: 'http://zen-notebook.local:8000/api/',
         notebooks: {},
-        postData: function () {
-            $http.post(this.endpoint + 'login', data).
+        postData: function (path, data) {
+            $http.post(this.endpoint + path, data).
                 success(function (data, status, headers, config) {
-                    console.log(data);
+                    return {
+                        data: data,
+                        message: 'Success'
+                    }
                 }).
                 error(function (data, status, headers, config) {
-                    $scope.message = "Error!";
-                    console.log(data);
+                    return {
+                        data: true,
+                        message: 'Error'
+                    }
                 });
         },
         getData: function () {
 
         },
         login: function (email, pass) {
-
+            var result = this.postData(
+                'attempt',
+                {
+                    email: email,
+                    password: pass
+                }
+            );
+            if (result.data.token) {
+                this.token = result.data.token;
+                return this.token;
+            } else {
+                return 'Incorrect Details';
+            }
+            return result.message;
         },
         isLoggedIn: function () {
             return false;
@@ -799,6 +817,7 @@ zenNotebook.factory('componentFactory', ['$rootScope', function ($rootScope) {
         }
     }
 }]);
+//TODO: Get rid of this. Was an old idea.
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var app_nav = [
         {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
@@ -997,7 +1016,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
-zenNotebook.controller('bodyController', ['$scope', 'menuFactory', 'ngDialog', function ($scope, menuFactory, ngDialog) {
+zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, ngDialog) {
     //TODO: This can be part of the theme service
     $scope.themes = {
         zen_dark: 'zen dark',
@@ -1045,8 +1064,7 @@ zenNotebook.controller('bodyController', ['$scope', 'menuFactory', 'ngDialog', f
     $scope.expr = function (locals) {
         menuFactory.publishClick(locals);
     };
-}]);
-zenNotebook.controller('componentController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+
     $scope.$on('toggleLeft', function () {
         $scope.partial = 'partials/sidebar/' + $rootScope.active_component + '.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;

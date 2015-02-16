@@ -3,21 +3,39 @@ zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
         token: '',
         endpoint: 'http://zen-notebook.local:8000/api/',
         notebooks: {},
-        postData: function () {
-            $http.post(this.endpoint + 'login', data).
+        postData: function (path, data) {
+            $http.post(this.endpoint + path, data).
                 success(function (data, status, headers, config) {
-                    console.log(data);
+                    return {
+                        data: data,
+                        message: 'Success'
+                    }
                 }).
                 error(function (data, status, headers, config) {
-                    $scope.message = "Error!";
-                    console.log(data);
+                    return {
+                        data: true,
+                        message: 'Error'
+                    }
                 });
         },
         getData: function () {
 
         },
         login: function (email, pass) {
-
+            var result = this.postData(
+                'attempt',
+                {
+                    email: email,
+                    password: pass
+                }
+            );
+            if (result.data.token) {
+                this.token = result.data.token;
+                return this.token;
+            } else {
+                return 'Incorrect Details';
+            }
+            return result.message;
         },
         isLoggedIn: function () {
             return false;

@@ -1,3 +1,4 @@
+//TODO: Get rid of this. Was an old idea.
 zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootScope, $injector) {
     var app_nav = [
         {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
