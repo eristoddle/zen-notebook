@@ -881,8 +881,12 @@ zenNotebook.factory('storageFactory', ['$rootScope', function ($rootScope) {
 //reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
+    var theme = window.localStorage && window.localStorage.getItem('theme');
+    if (!theme) {
+        theme = 'zen dark';
+    }
     return {
-        theme: window.localStorage && window.localStorage.getItem('theme'),
+        theme: theme,
         themes: {
             zen_dark: 'zen dark',
             zen_light: 'zen light',
@@ -1004,9 +1008,6 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
 zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'themeFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, themeFactory, ngDialog) {
     $scope.menu = menuFactory.menus.nav;
     $scope.theme = themeFactory.theme;
-    if (!$scope.theme) {
-        $scope.theme = 'zen dark';
-    }
     $scope.count = 0;
 
     $scope.$on('body', function () {

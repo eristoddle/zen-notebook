@@ -3,8 +3,12 @@
 //reacts to keypress events: http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413/keyset.html
 //TODO: I think Windows version has error if buzz is used, file path?
 zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
+    var theme = window.localStorage && window.localStorage.getItem('theme');
+    if (!theme) {
+        theme = 'zen dark';
+    }
     return {
-        theme: window.localStorage && window.localStorage.getItem('theme'),
+        theme: theme,
         themes: {
             zen_dark: 'zen dark',
             zen_light: 'zen light',
