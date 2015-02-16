@@ -15,11 +15,14 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
 
     $scope.login = function (user) {
         storageFactory.setStorage('zen_notebook_token', null);
-        var result = accountFactory.login(user.email, user.password);
-        if(result.token) {
-            storageFactory.setStorage('zen_notebook_token', result.token);
-        }
-        $scope.message = result.message;
+        accountFactory.login(user.email, user.password).then(function (d) {
+            if (d.token) {
+                $scope.message = "Success";
+                storageFactory.setStorage('zen_notebook_token', d.token);
+            } else {
+                $scope.message = "Error";
+            }
+        });
     };
 
     $scope.isLoggedIn = function () {

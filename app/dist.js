@@ -1063,9 +1063,11 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
     $scope.login = function (user) {
         storageFactory.setStorage('zen_notebook_token', null);
         accountFactory.login(user.email, user.password).then(function (d) {
-            $scope.message = d.message;
             if (d.token) {
+                $scope.message = "Success";
                 storageFactory.setStorage('zen_notebook_token', d.token);
+            } else {
+                $scope.message = "Error";
             }
         });
     };
