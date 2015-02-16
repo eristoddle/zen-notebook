@@ -5,6 +5,15 @@
 zenNotebook.factory('themeFactory', ['$rootScope', function ($rootScope) {
     return {
         theme: window.localStorage && window.localStorage.getItem('theme'),
+        themes: {
+            zen_dark: 'zen dark',
+            zen_light: 'zen light',
+            terminal: 'terminal courier',
+            igcognito: 'incognito',
+            typewriter: 'typewriter light',
+            carbon: 'carbon dark',
+            relax: 'relax dark'
+        },
         relaxSound: new buzz.sound("./assets/relax/rain.ogg", {loop: true, volume: 80}),
         typeSounds: {
             spacebar: new buzz.sound("./assets/typewriter/spacebar.ogg", {volume: 60}),
