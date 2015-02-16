@@ -1,8 +1,4 @@
-//TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
-//http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
-//TODO: This should be an injected service
-zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory', 'accountFactory', function ($scope, $http, storageFactory, accountFactory) {
-    $scope.endpoint = 'http://zen-notebook.local:8000/api/';
+zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
     $scope.components = [
         'notebook',
         'nanowrimo',
@@ -18,19 +14,12 @@ zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory',
     };
 
     $scope.login = function (user) {
-        $http.post($scope.endpoint + 'attempt', {email: user.email, password: user.password}).
-            success(function (data, status, headers, config) {
-                if (data.token == false) {
-                    $scope.message = "Incorrect Login Details"
-                } else {
-                    $scope.message = "Success";
-                    storageFactory.setStorage('zen_notebook_token', data.token);
-                }
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
+        storageFactory.setStorage('zen_notebook_token', null);
+        var result = accountFactory.login(user.email, user.password);
+        if(result.token) {
+            storageFactory.setStorage('zen_notebook_token', result.token);
+        }
+        $scope.message = result.message;
     };
 
     $scope.isLoggedIn = function () {
