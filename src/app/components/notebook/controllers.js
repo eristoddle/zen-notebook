@@ -1,4 +1,4 @@
-zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
+zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [
         {title: 'Open Notebook', class: 'open', action: 'open'},
         {title: 'Save Notebook', class: 'save', action: 'save'}

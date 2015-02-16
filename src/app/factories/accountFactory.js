@@ -20,7 +20,7 @@ zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
 
         },
         isLoggedIn: function () {
-
+            return false;
         },
         getNotebooks: function () {
 

@@ -1,4 +1,4 @@
-zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
+zenNotebook.controller('nanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
     $scope.chapters = nanowrimoFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'},

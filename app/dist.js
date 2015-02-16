@@ -750,7 +750,7 @@ zenNotebook.factory('accountFactory', ['$rootScope', function ($rootScope) {
 
         },
         isLoggedIn: function () {
-
+            return false;
         },
         getNotebooks: function () {
 
@@ -997,10 +997,7 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
-//controller for changes that effect the whole document at the body element level
-//good for instantaneous changes from the the nav menu buttons
-//currently only used for theme
-zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', function ($scope, menuFactory, ngDialog) {
+zenNotebook.controller('bodyController', ['$scope', 'menuFactory', 'ngDialog', function ($scope, menuFactory, ngDialog) {
     //TODO: This can be part of the theme service
     $scope.themes = {
         zen_dark: 'zen dark',
@@ -1049,9 +1046,7 @@ zenNotebook.controller('BodyController', ['$scope', 'menuFactory', 'ngDialog', f
         menuFactory.publishClick(locals);
     };
 }]);
-//controller for component sidebar functionality
-//the menu factory handles the functionality
-zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFactory', function ($scope, $rootScope, menuFactory) {
+zenNotebook.controller('componentController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.$on('toggleLeft', function () {
         $scope.partial = 'partials/sidebar/' + $rootScope.active_component + '.html';
         $scope.leftChangeClass = !$scope.leftChangeClass;
@@ -1060,7 +1055,7 @@ zenNotebook.controller('ComponentController', ['$scope', '$rootScope', 'menuFact
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
 //http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
 //TODO: This should be an injected service
-zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory', function ($scope, $http, storageFactory) {
+zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory', 'accountFactory', function ($scope, $http, storageFactory, accountFactory) {
     $scope.endpoint = 'http://zen-notebook.local:8000/api/';
     $scope.components = [
         'notebook',
@@ -1093,19 +1088,11 @@ zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory',
     };
 
     $scope.isLoggedIn = function () {
-        return false;
-        $http.post($scope.endpoint + 'auth', data).
-            success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
+        return accountFactory.isLoggedIn();
     };
 
 }]);
-zenNotebook.controller('NotebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
+zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [
         {title: 'Open Notebook', class: 'open', action: 'open'},
         {title: 'Save Notebook', class: 'save', action: 'save'}
@@ -1422,7 +1409,7 @@ zenNotebook.factory('calendarFactory', ['$rootScope', 'notebookFactory', functio
         }
     }
 }]);
-zenNotebook.controller('NanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
+zenNotebook.controller('nanowrimoController', ['$scope', '$rootScope', 'nanowrimoFactory', 'fileDialog', function ($scope, $rootScope, nanowrimoFactory, fileDialog) {
     $scope.chapters = nanowrimoFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'},
@@ -1632,7 +1619,7 @@ zenNotebook.factory('nanowrimoFactory', ['$rootScope', 'storageFactory', 'fileDi
         }
     }
 }]);
-zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
+zenNotebook.controller('leanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
     $scope.chapters = leanpubFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'}

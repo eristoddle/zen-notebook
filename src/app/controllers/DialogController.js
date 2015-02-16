@@ -1,7 +1,7 @@
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
 //http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
 //TODO: This should be an injected service
-zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory', function ($scope, $http, storageFactory) {
+zenNotebook.controller('dialogController', ['$scope', '$http', 'storageFactory', 'accountFactory', function ($scope, $http, storageFactory, accountFactory) {
     $scope.endpoint = 'http://zen-notebook.local:8000/api/';
     $scope.components = [
         'notebook',
@@ -34,15 +34,7 @@ zenNotebook.controller('DialogController', ['$scope', '$http', 'storageFactory',
     };
 
     $scope.isLoggedIn = function () {
-        return false;
-        $http.post($scope.endpoint + 'auth', data).
-            success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                $scope.message = "Error!";
-                console.log(data);
-            });
+        return accountFactory.isLoggedIn();
     };
 
 }]);

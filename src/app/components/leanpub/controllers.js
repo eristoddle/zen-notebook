@@ -1,4 +1,4 @@
-zenNotebook.controller('LeanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
+zenNotebook.controller('leanpubController', ['$scope', '$rootScope', 'leanpubFactory', 'fileDialog', function ($scope, $rootScope, leanpubFactory, fileDialog) {
     $scope.chapters = leanpubFactory.documents;
     $scope.buttons = [
         {title: 'Open Book', class: 'open', action: 'open'}
