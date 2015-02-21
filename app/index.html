@@ -12,19 +12,19 @@
                 <button ng-repeat="node in menu"
                         title="{{node.title}}"
                         class="{{node.class}}"
-                        ng-click="expr(node)">
+                        ng-click="action(node)">
                 </button>
             </nav>
         </header>
 
     <div class="left-sidebar slide-menu">
             <div class="left-inner modal" ng-model='left' ng-class="{'slide-out':leftChangeClass}"
-                 ng-mouseleave="expr({sub: 'left'})">
+                 ng-mouseleave="action({sub: 'left'})">
                 <div class="left-include" ng-include="partial"></div>
             </div>
         </div>
 
-        <div class="motion-detector" ng-mouseover="expr({sub: 'left'})"></div>
+    <div class="motion-detector" ng-mouseover="action({sub: 'left'})"></div>
 
         <div class="main">
             <div class="content" contenteditable></div>

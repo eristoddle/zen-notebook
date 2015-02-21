@@ -24,7 +24,7 @@ zenNotebook.controller('nanowrimoController', ['$scope', '$rootScope', 'nanowrim
 //        }
     });
 
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {

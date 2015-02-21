@@ -23,7 +23,7 @@ zenNotebook.controller('leanpubController', ['$scope', '$rootScope', 'leanpubFac
 //        }
     });
 
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openDir(
                 function (dir) {

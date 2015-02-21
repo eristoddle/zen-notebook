@@ -9,7 +9,7 @@ zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookF
             $scope[key] = stats[key];
         }
     });
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {

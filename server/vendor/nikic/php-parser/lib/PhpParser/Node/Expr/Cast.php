@@ -5,7 +5,7 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node\Expr;
 
 /**
- * @property Expr $expr Expression
+ * @property Expr $action Expression
  */
 abstract class Cast extends Expr
 {
@@ -18,7 +18,7 @@ abstract class Cast extends Expr
     public function __construct(Expr $expr, array $attributes = array()) {
         parent::__construct(
             array(
-                'expr' => $expr
+                'action' => $expr
             ),
             $attributes
         );

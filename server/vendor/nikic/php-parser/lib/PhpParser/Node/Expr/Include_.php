@@ -5,7 +5,7 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node\Expr;
 
 /**
- * @property Expr $expr Expression
+ * @property Expr $action Expression
  * @property int  $type Type of include
  */
 class Include_ extends Expr
@@ -25,7 +25,7 @@ class Include_ extends Expr
     public function __construct(Expr $expr, $type, array $attributes = array()) {
         parent::__construct(
             array(
-                'expr' => $expr,
+                'action' => $expr,
                 'type' => $type
             ),
             $attributes

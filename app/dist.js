@@ -1039,7 +1039,7 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
         $scope.leftChangeClass = !$scope.leftChangeClass;
     });
 
-    $scope.expr = function (locals) {
+    $scope.action = function (locals) {
         menuFactory.publishClick(locals);
     };
 }]);
@@ -1086,7 +1086,7 @@ zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookF
             $scope[key] = stats[key];
         }
     });
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {
@@ -1418,7 +1418,7 @@ zenNotebook.controller('nanowrimoController', ['$scope', '$rootScope', 'nanowrim
 //        }
     });
 
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openFile(
                 function (filename) {
@@ -1627,7 +1627,7 @@ zenNotebook.controller('leanpubController', ['$scope', '$rootScope', 'leanpubFac
 //        }
     });
 
-    $scope.expr = function (button) {
+    $scope.action = function (button) {
         if (button.action == 'open') {
             fileDialog.openDir(
                 function (dir) {

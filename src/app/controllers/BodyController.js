@@ -32,7 +32,7 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
         $scope.leftChangeClass = !$scope.leftChangeClass;
     });
 
-    $scope.expr = function (locals) {
+    $scope.action = function (locals) {
         menuFactory.publishClick(locals);
     };
 }]);

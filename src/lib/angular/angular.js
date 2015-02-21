@@ -14350,9 +14350,9 @@ function $RootScopeProvider() {
        *
        * # Pseudo-Code of `$apply()`
        * ```js
-           function $apply(expr) {
+       function $apply(action) {
              try {
-               return $eval(expr);
+               return $eval(action);
              } catch (e) {
                $exceptionHandler(e);
              } finally {
@@ -21924,7 +21924,7 @@ var ngBindHtmlDirective = ['$sce', '$parse', '$compile', function($sce, $parse, 
         $compile.$$addBindingInfo(element, attr.ngBindHtml);
 
         scope.$watch(ngBindHtmlWatch, function ngBindHtmlWatchAction() {
-          // we re-evaluate the expr because we want a TrustedValueHolderType
+            // we re-evaluate the action because we want a TrustedValueHolderType
           // for $sce, not a string
           element.html($sce.getTrustedHtml(ngBindHtmlGetter(scope)) || '');
         });

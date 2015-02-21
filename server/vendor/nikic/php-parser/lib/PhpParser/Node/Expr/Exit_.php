@@ -5,7 +5,7 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node\Expr;
 
 /**
- * @property null|Expr $expr Expression
+ * @property null|Expr $action Expression
  */
 class Exit_ extends Expr
 {
@@ -18,7 +18,7 @@ class Exit_ extends Expr
     public function __construct(Expr $expr = null, array $attributes = array()) {
         parent::__construct(
             array(
-                'expr' => $expr
+                'action' => $expr
             ),
             $attributes
         );
