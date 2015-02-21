@@ -19,6 +19,7 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
             if (d.token) {
                 $scope.message = "Success";
                 storageFactory.setStorage('zen_notebook_token', d.token);
+                $scope.isLoggedIn(d.token);
             } else {
                 $scope.message = "Error";
             }
@@ -26,7 +27,10 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
     };
 
     $scope.isLoggedIn = function () {
-        return accountFactory.isLoggedIn();
+        var token = storageFactory.getStorage('zen_notebook_token');
+        var success = accountFactory.isLoggedIn(token);
+        console.log(success);
+        //return accountFactory.isLoggedIn(token);
     };
 
 }]);

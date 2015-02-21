@@ -743,7 +743,10 @@ zenNotebook.factory('accountFactory', ['$http', function ($http) {
                 return response.data;
             });
         },
-        isLoggedIn: function () {
+        isLoggedIn: function (token) {
+            //return $http.post(this.endpoint + 'auth', {token: token}).then(function (response) {
+            //    return response.data;
+            //});
             return false;
         },
         getNotebooks: function () {
@@ -1064,6 +1067,7 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
             if (d.token) {
                 $scope.message = "Success";
                 storageFactory.setStorage('zen_notebook_token', d.token);
+                $scope.isLoggedIn(d.token);
             } else {
                 $scope.message = "Error";
             }
@@ -1071,7 +1075,10 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
     };
 
     $scope.isLoggedIn = function () {
-        return accountFactory.isLoggedIn();
+        var token = storageFactory.getStorage('zen_notebook_token');
+        var success = accountFactory.isLoggedIn(token);
+        console.log(success);
+        //return accountFactory.isLoggedIn(token);
     };
 
 }]);

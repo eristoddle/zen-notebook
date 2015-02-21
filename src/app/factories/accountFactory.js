@@ -13,7 +13,10 @@ zenNotebook.factory('accountFactory', ['$http', function ($http) {
                 return response.data;
             });
         },
-        isLoggedIn: function () {
+        isLoggedIn: function (token) {
+            //return $http.post(this.endpoint + 'auth', {token: token}).then(function (response) {
+            //    return response.data;
+            //});
             return false;
         },
         getNotebooks: function () {
