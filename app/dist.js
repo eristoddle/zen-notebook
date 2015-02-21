@@ -1083,7 +1083,7 @@ zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookF
     $scope.$on('toggleLeft', function () {
         var stats = notebookFactory.getSidebar();
         for (var key in stats) {
-            $scope.left[key] = stats[key];
+            $scope[key] = stats[key];
         }
     });
     $scope.expr = function (button) {
