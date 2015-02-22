@@ -10,7 +10,7 @@
     <div class="user-account" ng-show="account.loggedIn">
         Notebooks: <select ng-change="getNotebook(id)"
                            ng-model="account.notebooks"
-                           ng-options="name for name in account.notebooks | object2Array"></select>
+                           ng-options="name for name in account.notebooks | filter:object2Array"></select>
     </div>
     <div class="notice">{{account.message}}</div>
 </div>

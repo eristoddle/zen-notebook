@@ -769,7 +769,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
                     'Authorization': 'Bearer ' + this.token
                 }
             }).then(function (response) {
-                this.notebooks = response.data;
+                this.notebooks = response.data.data;
                 return response;
             });
         },
