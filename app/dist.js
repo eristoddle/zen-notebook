@@ -730,33 +730,73 @@ zenNotebook.filter('object2Array', function () {
 });
 //TODO: http://fdietz.github.io/recipes-with-angular-js/consuming-external-services/consuming-restful-apis.html
 //http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application
-zenNotebook.factory('accountFactory', ['$http', function ($http) {
+zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($http, storageFactory) {
     return {
-        token: '',
+        token: storageFactory.getStorage('zen_notebook_token'),
+        last_auth: storageFactory.getStorage('zen_notebook_last_auth'),
+        message: '',
+        email: storageFactory.getStorage('zen_notebook_email'),
         endpoint: 'http://zen-notebook.local:8000/api/',
-        notebooks: {},
+        current_notebook: '',
+        notebooks: null,
         login: function (email, pass) {
+            storageFactory.setStorage('zen_notebook_token', null);
             return $http.post(this.endpoint + 'attempt', {email: email, password: pass}).then(function (response) {
                 if (response.data.token) {
+                    this.message = "Logged In";
+                    storageFactory.setStorage('zen_notebook_email', email);
+                    storageFactory.setStorage('zen_notebook_token', response.data.token);
                     this.token = response.data.token;
+                    //storageFactory.setStorage('zen_notebook_last_auth', Date());
                 }
                 return response.data;
             });
         },
-        isLoggedIn: function (token) {
-            //return $http.post(this.endpoint + 'auth', {token: token}).then(function (response) {
-            //    return response.data;
-            //});
+        checkLogin: function () {
+            if (this.token) {
+                return $http.get(this.endpoint + 'auth' + '?token=' + this.token).
+                    then(function (response) {
+                        return response;
+                    });
+            }
             return false;
         },
         getNotebooks: function () {
-
+            return $http({
+                method: 'GET',
+                url: this.endpoint + 'notebooks',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                }
+            }).then(function (response) {
+                this.notebooks = response.data.data;
+                return response;
+            });
         },
         getNotebook: function (id) {
-
+            return $http({
+                method: 'GET',
+                url: this.endpoint + 'notebooks' + id,
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                }
+            }).then(function (response) {
+                return response;
+            });
         },
-        saveNotebook: function () {
-
+        saveNotebook: function (notebook) {
+            return $http({
+                method: 'POST',
+                url: this.endpoint + 'notebooks',
+                headers: {
+                    'Authorization': 'Bearer ' + this.token
+                },
+                data: {
+                    notebook: notebook
+                }
+            }).then(function (response) {
+                return response;
+            });
         }
     };
 }]);
@@ -801,7 +841,7 @@ zenNotebook.factory('menuFactory', ['$rootScope', '$injector', function ($rootSc
     var app_nav = [
         {title: 'Theme', action: 'theme', class: 'fa fa-adjust', sub: 'body'},
         {title: 'Settings', action: 'settings', class: 'fa fa-gears', sub: 'body'},
-        {title: 'Zen Notebook', action: 'remote', class: 'fa fa-cloud-upload', sub: 'body'},
+        {title: 'Zen Notebook', action: 'account', class: 'fa fa-cloud-upload', sub: 'body'},
         {title: 'About', action: 'about', class: 'fa fa-question', sub: 'body'},
         {title: 'Minimize', action: 'minimize', class: 'fa fa-arrow-down', sub: 'nw'},
         {title: 'Maximize', action: 'maximize', class: 'fa fa-arrows-alt', sub: 'nw'},
@@ -1047,11 +1087,22 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
     };
 }]);
 zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
-    $scope.components = [
-        'notebook',
-        'nanowrimo',
-        'leanpub'
-    ];
+    $scope.settings = {
+        components: [
+            'notebook',
+            'nanowrimo',
+            'leanpub'
+        ]
+    };
+    $scope.account = {
+        login: {
+            email: accountFactory.email
+        },
+        token: accountFactory.token,
+        loggedIn: false,
+        message: accountFactory.message,
+        notebooks: {}
+    };
 
     $scope.changeComponent = function (component) {
         //TODO: Hack just reloading the page to get new component button to show correct icon
@@ -1062,25 +1113,23 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
     };
 
     $scope.login = function (user) {
-        storageFactory.setStorage('zen_notebook_token', null);
-        accountFactory.login(user.email, user.password).then(function (d) {
-            if (d.token) {
-                $scope.message = "Success";
-                storageFactory.setStorage('zen_notebook_token', d.token);
-                $scope.isLoggedIn(d.token);
-            } else {
-                $scope.message = "Error";
-            }
+        accountFactory.login(user.email, user.password).then(function (res) {
+            $scope.account.message = accountFactory.message;
+            $scope.account.loggedIn = true;
         });
     };
 
-    $scope.isLoggedIn = function () {
-        var token = storageFactory.getStorage('zen_notebook_token');
-        var success = accountFactory.isLoggedIn(token);
-        console.log(success);
-        //return accountFactory.isLoggedIn(token);
-    };
+    //accountFactory.checkLogin().then(function (res) {
+    //    $scope.account.message = accountFactory.message;
+    //    $scope.account.loggedIn = true;
+    //});
 
+    accountFactory.getNotebooks().then(function (res) {
+        console.log(res.data);
+        $scope.account.message = accountFactory.message;
+        $scope.account.notebooks = accountFactory.notebooks;
+        $scope.account.loggedIn = true;
+    });
 }]);
 zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [

@@ -43,18 +43,6 @@ Route::group(['prefix' => 'api'], function () {
         return Response::json(compact('user'));
     });
 
-    Route::post('auth', function () {
-        try {
-            $user = JWTAuth::parseToken()->toUser();
-        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return Response::json(['error' => 'token_expired'], 401);
-        }
-        if (!$user) {
-            return Response::json(['error' => 'user_not_found'], 404);
-        }
-        return Response::json(compact('user'));
-    });
-
     Route::resource('users', 'UserController');
 
     Route::resource('notebooks', 'NotebookController');

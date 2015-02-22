@@ -1,9 +1,20 @@
 zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
-    $scope.components = [
-        'notebook',
-        'nanowrimo',
-        'leanpub'
-    ];
+    $scope.settings = {
+        components: [
+            'notebook',
+            'nanowrimo',
+            'leanpub'
+        ]
+    };
+    $scope.account = {
+        login: {
+            email: accountFactory.email
+        },
+        token: accountFactory.token,
+        loggedIn: false,
+        message: accountFactory.message,
+        notebooks: {}
+    };
 
     $scope.changeComponent = function (component) {
         //TODO: Hack just reloading the page to get new component button to show correct icon
@@ -14,23 +25,21 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
     };
 
     $scope.login = function (user) {
-        storageFactory.setStorage('zen_notebook_token', null);
-        accountFactory.login(user.email, user.password).then(function (d) {
-            if (d.token) {
-                $scope.message = "Success";
-                storageFactory.setStorage('zen_notebook_token', d.token);
-                $scope.isLoggedIn(d.token);
-            } else {
-                $scope.message = "Error";
-            }
+        accountFactory.login(user.email, user.password).then(function (res) {
+            $scope.account.message = accountFactory.message;
+            $scope.account.loggedIn = true;
         });
     };
 
-    $scope.isLoggedIn = function () {
-        var token = storageFactory.getStorage('zen_notebook_token');
-        var success = accountFactory.isLoggedIn(token);
-        console.log(success);
-        //return accountFactory.isLoggedIn(token);
-    };
+    //accountFactory.checkLogin().then(function (res) {
+    //    $scope.account.message = accountFactory.message;
+    //    $scope.account.loggedIn = true;
+    //});
 
+    accountFactory.getNotebooks().then(function (res) {
+        console.log(res.data);
+        $scope.account.message = accountFactory.message;
+        $scope.account.notebooks = accountFactory.notebooks;
+        $scope.account.loggedIn = true;
+    });
 }]);

@@ -17,18 +17,21 @@ class NotebookController extends ApiController
         $notebooks = [
             [
                 'id' => '1',
-                'name' => 'Sample1'
+                'name' => 'Sample1',
+                'type' => 'notebook'
             ],
             [
                 'id' => '2',
-                'name' => 'Sample2'
+                'name' => 'Sample2',
+                'type' => 'nanowrimo'
             ]
         ];
 
         return $this->respondWithCollection($notebooks, function ($notebook) {
             return [
                 'id' => (integer)$notebook['id'],
-                'name' => $notebook['name']
+                'name' => $notebook['name'],
+                'type' => $notebook['type']
             ];
         });
     }
@@ -41,15 +44,24 @@ class NotebookController extends ApiController
      */
     public function show($id)
     {
-        $sample = [
-            'id' => "{$id}",
-            'name' => "Sample{$id}"
+        $notebooks = [
+            [
+                'id' => '1',
+                'name' => 'Sample1',
+                'type' => 'notebook'
+            ],
+            [
+                'id' => '2',
+                'name' => 'Sample2',
+                'type' => 'nanowrimo'
+            ]
         ];
 
-        return $this->respondWithItem($sample, function ($sample) {
+        return $this->respondWithItem($notebooks[$id], function ($notebook) {
             return [
-                'id' => (integer)$sample['id'],
-                'name' => $sample['name']
+                'id' => (integer)$notebook['id'],
+                'name' => $notebook['name'],
+                'type' => $notebook['type']
             ];
         });
     }
