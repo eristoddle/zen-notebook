@@ -1048,6 +1048,36 @@ zenNotebook.directive("contenteditable", ['$rootScope', '$injector', function ($
         }
     };
 }]);
+zenNotebook.controller('accountController', ['$scope', 'accountFactory', function ($scope, accountFactory) {
+    $scope.account = {
+        login: {
+            email: accountFactory.email
+        },
+        token: accountFactory.token,
+        loggedIn: false,
+        message: accountFactory.message,
+        notebooks: {}
+    };
+
+    $scope.login = function (user) {
+        accountFactory.login(user.email, user.password).then(function (res) {
+            $scope.account.message = accountFactory.message;
+            $scope.account.loggedIn = true;
+        });
+    };
+
+    //accountFactory.checkLogin().then(function (res) {
+    //    $scope.account.message = accountFactory.message;
+    //    $scope.account.loggedIn = true;
+    //});
+
+    accountFactory.getNotebooks().then(function (res) {
+        console.log(res.data);
+        $scope.account.message = accountFactory.message;
+        $scope.account.notebooks = accountFactory.notebooks;
+        $scope.account.loggedIn = true;
+    });
+}]);
 zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'themeFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, themeFactory, ngDialog) {
     $scope.menu = menuFactory.menus.nav;
     $scope.theme = themeFactory.theme;
@@ -1086,22 +1116,13 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
         menuFactory.publishClick(locals);
     };
 }]);
-zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
+zenNotebook.controller('settingsController', ['$scope', 'storageFactory', function ($scope, storageFactory) {
     $scope.settings = {
         components: [
             'notebook',
             'nanowrimo',
             'leanpub'
         ]
-    };
-    $scope.account = {
-        login: {
-            email: accountFactory.email
-        },
-        token: accountFactory.token,
-        loggedIn: false,
-        message: accountFactory.message,
-        notebooks: {}
     };
 
     $scope.changeComponent = function (component) {
@@ -1111,25 +1132,6 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
         $rootScope.$broadcast('loadComponent');
         window.location.reload();
     };
-
-    $scope.login = function (user) {
-        accountFactory.login(user.email, user.password).then(function (res) {
-            $scope.account.message = accountFactory.message;
-            $scope.account.loggedIn = true;
-        });
-    };
-
-    //accountFactory.checkLogin().then(function (res) {
-    //    $scope.account.message = accountFactory.message;
-    //    $scope.account.loggedIn = true;
-    //});
-
-    accountFactory.getNotebooks().then(function (res) {
-        console.log(res.data);
-        $scope.account.message = accountFactory.message;
-        $scope.account.notebooks = accountFactory.notebooks;
-        $scope.account.loggedIn = true;
-    });
 }]);
 zenNotebook.controller('notebookController', ['$scope', '$rootScope', 'notebookFactory', 'fileDialog', function ($scope, $rootScope, notebookFactory, fileDialog) {
     $scope.buttons = [

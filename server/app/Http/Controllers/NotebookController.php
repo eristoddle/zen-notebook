@@ -44,6 +44,7 @@ class NotebookController extends ApiController
      */
     public function show($id)
     {
+        $notebook = null;
         $notebooks = [
             [
                 'id' => '1',
@@ -57,7 +58,13 @@ class NotebookController extends ApiController
             ]
         ];
 
-        return $this->respondWithItem($notebooks[$id], function ($notebook) {
+        foreach ($notebooks as $n) {
+            if($n['id'] == $id){
+                $notebook = $n;
+            }
+        }
+
+        return $this->respondWithItem($notebook, function ($notebook) {
             return [
                 'id' => (integer)$notebook['id'],
                 'name' => $notebook['name'],

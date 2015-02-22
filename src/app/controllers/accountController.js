@@ -1,11 +1,4 @@
-zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'accountFactory', function ($scope, storageFactory, accountFactory) {
-    $scope.settings = {
-        components: [
-            'notebook',
-            'nanowrimo',
-            'leanpub'
-        ]
-    };
+zenNotebook.controller('accountController', ['$scope', 'accountFactory', function ($scope, accountFactory) {
     $scope.account = {
         login: {
             email: accountFactory.email
@@ -14,14 +7,6 @@ zenNotebook.controller('dialogController', ['$scope', 'storageFactory', 'account
         loggedIn: false,
         message: accountFactory.message,
         notebooks: {}
-    };
-
-    $scope.changeComponent = function (component) {
-        //TODO: Hack just reloading the page to get new component button to show correct icon
-        $rootScope.active_component = component;
-        storageFactory.setStorage('active_component', component);
-        $rootScope.$broadcast('loadComponent');
-        window.location.reload();
     };
 
     $scope.login = function (user) {
