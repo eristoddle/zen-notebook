@@ -769,7 +769,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
                     'Authorization': 'Bearer ' + this.token
                 }
             }).then(function (response) {
-                this.notebooks = response.data.data;
+                this.notebooks = response.data;
                 return response;
             });
         },
@@ -1073,7 +1073,7 @@ zenNotebook.controller('accountController', ['$scope', 'accountFactory', functio
 
     accountFactory.getNotebooks().then(function (res) {
         console.log(res.data);
-        $scope.account.notebooks = accountFactory.notebooks;
+        $scope.account.notebooks = res.data.data;
     });
 }]);
 zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'themeFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, themeFactory, ngDialog) {

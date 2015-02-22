@@ -23,6 +23,6 @@ zenNotebook.controller('accountController', ['$scope', 'accountFactory', functio
 
     accountFactory.getNotebooks().then(function (res) {
         console.log(res.data);
-        $scope.account.notebooks = accountFactory.notebooks;
+        $scope.account.notebooks = res.data.data;
     });
 }]);
