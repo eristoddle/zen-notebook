@@ -1117,13 +1117,11 @@ zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory',
     };
 }]);
 zenNotebook.controller('settingsController', ['$scope', 'storageFactory', function ($scope, storageFactory) {
-    $scope.settings = {
-        components: [
-            'notebook',
-            'nanowrimo',
-            'leanpub'
-        ]
-    };
+    $scope.components = [
+        'notebook',
+        'nanowrimo',
+        'leanpub'
+    ];
 
     $scope.changeComponent = function (component) {
         //TODO: Hack just reloading the page to get new component button to show correct icon
