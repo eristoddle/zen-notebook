@@ -5,6 +5,13 @@ use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 
 class EventServiceProvider extends ServiceProvider {
 
+    /**
+     * The event handler mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [];
+
 	/**
 	 * The subscriber classes to register.
 	 *

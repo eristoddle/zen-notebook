@@ -157,7 +157,11 @@ class Guard implements GuardContract {
 		{
 			$user = $this->getUserByRecaller($recaller);
 
-			if ($user) $this->fireLoginEvent($user, true);
+            if ($user) {
+                $this->updateSession($user->getAuthIdentifier());
+
+                $this->fireLoginEvent($user, true);
+            }
 		}
 
 		return $this->user = $user;

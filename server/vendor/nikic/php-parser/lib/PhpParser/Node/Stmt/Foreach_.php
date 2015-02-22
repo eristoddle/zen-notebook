@@ -5,7 +5,7 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 
 /**
- * @property Node\Expr      $action     Expression to iterate
+ * @property Node\Expr      $expr     Expression to iterate
  * @property null|Node\Expr $keyVar   Variable to assign key to
  * @property bool                     $byRef    Whether to assign value by reference
  * @property Node\Expr      $valueVar Variable to assign value to
@@ -27,7 +27,7 @@ class Foreach_ extends Node\Stmt
     public function __construct(Node\Expr $expr, Node\Expr $valueVar, array $subNodes = array(), array $attributes = array()) {
         parent::__construct(
             array(
-                'action' => $expr,
+                'expr' => $expr,
                 'keyVar'   => isset($subNodes['keyVar']) ? $subNodes['keyVar'] : null,
                 'byRef'    => isset($subNodes['byRef'])  ? $subNodes['byRef']  : false,
                 'valueVar' => $valueVar,

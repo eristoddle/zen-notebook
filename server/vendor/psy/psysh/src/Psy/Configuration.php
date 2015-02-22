@@ -21,6 +21,7 @@ use Psy\Readline\GNUReadline;
 use Psy\Readline\Libedit;
 use Psy\Readline\Readline;
 use Psy\Readline\Transient;
+use Psy\TabCompletion\AutoCompleter;
 use XdgBaseDir\Xdg;
 
 /**
@@ -32,6 +33,7 @@ class Configuration
         'defaultIncludes', 'useReadline', 'usePcntl', 'codeCleaner', 'pager',
         'loop', 'configDir', 'dataDir', 'runtimeDir', 'manualDbFile',
         'presenters', 'requireSemicolons', 'historySize', 'eraseDuplicates',
+        'tabCompletion',
     );
 
     private $defaultIncludes;
@@ -49,6 +51,8 @@ class Configuration
     private $usePcntl;
     private $newCommands = array();
     private $requireSemicolons = false;
+    private $tabCompletion;
+    private $tabCompletionMatchers = array();
 
     // services
     private $readline;
@@ -59,6 +63,7 @@ class Configuration
     private $loop;
     private $manualDb;
     private $presenters;
+    private $completer;
 
     /**
      * Construct a Configuration instance.
@@ -129,12 +134,12 @@ class Configuration
 
         foreach ($this->getConfigDirs() as $dir) {
             $file = $dir . '/config.php';
-            if (is_file($file)) {
+            if (@is_file($file)) {
                 return $this->configFile = $file;
             }
 
             $file = $dir . '/rc.php';
-            if (is_file($file)) {
+            if (@is_file($file)) {
                 return $this->configFile = $file;
             }
         }
@@ -220,7 +225,7 @@ class Configuration
             }
         }
 
-        foreach (array('commands') as $option) {
+        foreach (array('commands', 'tabCompletionMatchers') as $option) {
             if (isset($options[$option])) {
                 $method = 'add' . ucfirst($option);
                 $this->$method($options[$option]);
@@ -235,7 +240,7 @@ class Configuration
      * The config file may directly manipulate the configuration, or may return
      * an array of options which will be merged with the current configuration.
      *
-     * @throws InvalidArgumentException if the config file returns a non-array result.
+     * @throws \InvalidArgumentException if the config file returns a non-array result.
      *
      * @param string $file
      */
@@ -397,12 +402,12 @@ class Configuration
 
         foreach ($this->getConfigDirs() as $dir) {
             $file = $dir . '/psysh_history';
-            if (is_file($file)) {
+            if (@is_file($file)) {
                 return $this->historyFile = $file;
             }
 
             $file = $dir . '/history';
-            if (is_file($file)) {
+            if (@is_file($file)) {
                 return $this->historyFile = $file;
             }
         }
@@ -425,7 +430,7 @@ class Configuration
     }
 
     /**
-     * Set the readline max history size
+     * Set the readline max history size.
      *
      * @param int $value
      */
@@ -435,7 +440,7 @@ class Configuration
     }
 
     /**
-     * Get the readline max history size
+     * Get the readline max history size.
      *
      * @return int
      */
@@ -670,6 +675,29 @@ class Configuration
     }
 
     /**
+     * Enable or disable tab completion.
+     *
+     * @param bool $tabCompletion
+     */
+    public function setTabCompletion($tabCompletion)
+    {
+        $this->tabCompletion = (bool)$tabCompletion;
+    }
+
+    /**
+     * Check whether to use tab completion.
+     *
+     * If `setTabCompletion` has been set to true, but readline is not actually
+     * available, this will return false.
+     *
+     * @return bool True if the current Shell should use tab completion.
+     */
+    public function getTabCompletion()
+    {
+        return isset($this->tabCompletion) ? ($this->hasReadline && $this->tabCompletion) : $this->hasReadline;
+    }
+
+    /**
      * Set the Shell Output service.
      *
      * @param ShellOutput $output
@@ -772,6 +800,43 @@ class Configuration
     }
 
     /**
+     * Get an AutoCompleter service instance.
+     *
+     * @return AutoCompleter
+     */
+    public function getAutoCompleter()
+    {
+        if (!isset($this->completer)) {
+            $this->completer = new AutoCompleter();
+        }
+
+        return $this->completer;
+    }
+
+    /**
+     * Get user specified tab completion matchers for the AutoCompleter.
+     *
+     * @return array
+     */
+    public function getTabCompletionMatchers()
+    {
+        return $this->tabCompletionMatchers;
+    }
+
+    /**
+     * Add additional tab completion matchers to the AutoCompleter.
+     *
+     * @param array $matchers
+     */
+    public function addTabCompletionMatchers(array $matchers)
+    {
+        $this->tabCompletionMatchers = array_merge($this->tabCompletionMatchers, $matchers);
+        if (isset($this->shell)) {
+            $this->shell->addTabCompletionMatchers($this->tabCompletionMatchers);
+        }
+    }
+
+    /**
      * Add commands to the Shell.
      *
      * This will buffer new commands in the event that the Shell has not yet
@@ -838,7 +903,7 @@ class Configuration
 
         foreach ($this->getDataDirs() as $dir) {
             $file = $dir . '/php_manual.sqlite';
-            if (is_file($file)) {
+            if (@is_file($file)) {
                 return $this->manualDbFile = $file;
             }
         }

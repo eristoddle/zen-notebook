@@ -5,7 +5,7 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node\Expr;
 
 /**
- * @property Expr $action Expression
+ * @property Expr $expr Expression
  */
 class BitwiseNot extends Expr
 {
@@ -18,7 +18,7 @@ class BitwiseNot extends Expr
     public function __construct(Expr $expr, array $attributes = array()) {
         parent::__construct(
             array(
-                'action' => $expr
+                'expr' => $expr
             ),
             $attributes
         );

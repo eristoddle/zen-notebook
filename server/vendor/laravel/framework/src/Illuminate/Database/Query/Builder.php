@@ -174,8 +174,9 @@ class Builder {
 		'=', '<', '>', '<=', '>=', '<>', '!=',
 		'like', 'not like', 'between', 'ilike',
 		'&', '|', '^', '<<', '>>',
-		'rlike', 'regexp', 'not regexp',
-		'~', '~*', '!~', '!~*',
+        'rlike', 'regexp', 'not regexp',
+        '~', '~*', '!~', '!~*', 'similar to',
+        'not similar to',
 	);
 
 	/**
@@ -1370,12 +1371,7 @@ class Builder {
 	 */
 	protected function runSelect()
 	{
-		if ($this->useWritePdo)
-		{
-			return $this->connection->select($this->toSql(), $this->getBindings(), false);
-		}
-
-		return $this->connection->select($this->toSql(), $this->getBindings());
+        return $this->connection->select($this->toSql(), $this->getBindings(), !$this->useWritePdo);
 	}
 
 	/**

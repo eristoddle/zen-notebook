@@ -1,5 +1,6 @@
 <?php namespace Illuminate\Foundation\Testing;
 
+use Dotenv;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 
@@ -27,8 +28,8 @@ trait ApplicationTrait {
 	protected function refreshApplication()
 	{
 		putenv('APP_ENV=testing');
-		
-		$this->app = $this->createApplication();
+
+        $this->app = $this->createApplication();
 	}
 
 	/**

@@ -8,10 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     $vendorDir . '/nikic/php-parser/lib/bootstrap.php',
     $vendorDir . '/symfony/var-dumper/Symfony/Component/VarDumper/Resources/functions/dump.php',
-    $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Random.php',
     $vendorDir . '/ircmaxell/password-compat/lib/password.php',
     $vendorDir . '/guzzlehttp/streams/src/functions.php',
     $vendorDir . '/guzzlehttp/guzzle/src/functions.php',
+    $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Random.php',
     $vendorDir . '/danielstjules/stringy/src/Create.php',
     $vendorDir . '/psy/psysh/src/Psy/functions.php',
     $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',

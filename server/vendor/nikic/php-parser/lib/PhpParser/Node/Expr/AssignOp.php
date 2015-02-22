@@ -6,7 +6,7 @@ use PhpParser\Node\Expr;
 
 /**
  * @property Expr $var  Variable
- * @property Expr $action Expression
+ * @property Expr $expr Expression
  */
 abstract class AssignOp extends Expr
 {
@@ -21,7 +21,7 @@ abstract class AssignOp extends Expr
         parent::__construct(
             array(
                 'var'  => $var,
-                'action' => $expr
+                'expr' => $expr
             ),
             $attributes
         );

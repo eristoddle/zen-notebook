@@ -6,7 +6,7 @@ use PhpParser\Node\Expr;
 
 /**
  * @property Expr $var  Variable reference is assigned to
- * @property Expr $action Variable which is referenced
+ * @property Expr $expr Variable which is referenced
  */
 class AssignRef extends Expr
 {
@@ -21,7 +21,7 @@ class AssignRef extends Expr
         parent::__construct(
             array(
                 'var'  => $var,
-                'action' => $expr
+                'expr' => $expr
             ),
             $attributes
         );

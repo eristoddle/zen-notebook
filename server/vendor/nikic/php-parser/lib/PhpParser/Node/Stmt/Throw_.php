@@ -5,7 +5,7 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 
 /**
- * @property Node\Expr $action Expression
+ * @property Node\Expr $expr Expression
  */
 class Throw_ extends Node\Stmt
 {
@@ -18,7 +18,7 @@ class Throw_ extends Node\Stmt
     public function __construct(Node\Expr $expr, array $attributes = array()) {
         parent::__construct(
             array(
-                'action' => $expr,
+                'expr' => $expr,
             ),
             $attributes
         );

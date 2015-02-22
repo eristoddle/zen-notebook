@@ -21,7 +21,7 @@ class NodeDumper
         }
 
         foreach ($node as $key => $value) {
-            $r .= "\n" . '    ' . $key . ': ';
+            $r .= "\n    " . $key . ': ';
 
             if (null === $value) {
                 $r .= 'null';
@@ -32,10 +32,10 @@ class NodeDumper
             } elseif (is_scalar($value)) {
                 $r .= $value;
             } else {
-                $r .= str_replace("\n", "\n" . '    ', $this->dump($value));
+                $r .= str_replace("\n", "\n    ", $this->dump($value));
             }
         }
 
-        return $r . "\n" . ')';
+        return $r . "\n)";
     }
 }

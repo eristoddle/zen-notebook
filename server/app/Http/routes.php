@@ -25,33 +25,33 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('attempt', function () {
         $credentials = Input::only('email', 'password');
         if (!$token = JWTAuth::attempt($credentials)) {
-            return Response::json(['error' => 'token_expired'], 401);
+            return Response::json(['error' => 'user_not_found'], 404);
         }
         return Response::json(compact('token'));
     });
 
     Route::get('auth', function () {
-        $token = Input::only('token');
-        if (!$user = JWTAuth::authenticate($token)) {
-            // return 401 error response
+        $token = Input::only('token')['token'];
+        try {
+            $user = JWTAuth::authenticate($token);
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            return Response::json(['error' => 'token_expired'], 401);
+        }
+        if (!$user) {
+            return Response::json(['error' => 'user_not_found'], 404);
         }
         return Response::json(compact('user'));
     });
 
     Route::post('auth', function () {
-
         try {
             $user = JWTAuth::parseToken()->toUser();
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            // token has expired
             return Response::json(['error' => 'token_expired'], 401);
         }
-
         if (!$user) {
-            // user not found
             return Response::json(['error' => 'user_not_found'], 404);
         }
-
         return Response::json(compact('user'));
     });
 

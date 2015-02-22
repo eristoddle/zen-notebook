@@ -518,6 +518,8 @@ class UrlGenerator implements UrlGeneratorContract {
 	 * @param  mixed   $parameters
 	 * @param  bool    $absolute
 	 * @return string
+     *
+     * @throws \InvalidArgumentException
 	 */
 	public function action($action, $parameters = array(), $absolute = true)
 	{
@@ -530,7 +532,11 @@ class UrlGenerator implements UrlGeneratorContract {
 			$action = trim($action, '\\');
 		}
 
-		return $this->toRoute($this->routes->getByAction($action), $parameters, $absolute);
+        if (!is_null($route = $this->routes->getByAction($action))) {
+            return $this->toRoute($route, $parameters, $absolute);
+        }
+
+        throw new InvalidArgumentException("Action {$action} not defined.");
 	}
 
 	/**

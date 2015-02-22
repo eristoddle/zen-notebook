@@ -5,7 +5,7 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 
 /**
- * @property null|Node\Expr $action Expression
+ * @property null|Node\Expr $expr Expression
  */
 class Return_ extends Node\Stmt
 {
@@ -18,7 +18,7 @@ class Return_ extends Node\Stmt
     public function __construct(Node\Expr $expr = null, array $attributes = array()) {
         parent::__construct(
             array(
-                'action' => $expr,
+                'expr' => $expr,
             ),
             $attributes
         );

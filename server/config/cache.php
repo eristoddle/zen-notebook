@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'default' => env('CACHE_DRIVER', 'file'),
+    'default' => env('CACHE_DRIVER', 'apc'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,11 +41,15 @@ return [
 			'table'  => 'cache',
 			'connection' => null,
 		],
+//TODO: temp hack for auth token cache?
+//		'file' => [
+//			'driver' => 'file',
+//			'path'   => storage_path().'/framework/cache',
+//		],
 
-		'file' => [
-			'driver' => 'file',
-			'path'   => storage_path().'/framework/cache',
-		],
+        'file' => [
+            'driver' => 'apc',
+        ],
 
 		'memcached' => [
 			'driver'  => 'memcached',
