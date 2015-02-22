@@ -8,7 +8,7 @@
         </div>
     </form>
     <div class="user-account" ng-show="account.loggedIn">
-        Notebooks: <select ng-change="getNotebook(id)"
+        Notebooks: <select ng-change="getNotebook(notebook.id)"
                            ng-model="account.notebooks"
                            ng-options="notebook.id as notebook.name for notebook in account.notebooks"></select>
     </div>
