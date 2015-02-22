@@ -7,28 +7,32 @@ use Illuminate\Http\Request;
 class UserController extends ApiController
 {
 
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function getNotebooks()
     {
-        $samples = [
+        $notebooks = [
             [
                 'id' => '1',
-                'name' => 'Sample1'
+                'name' => 'Sample1',
+                'type' => 'notebook'
             ],
             [
                 'id' => '2',
-                'name' => 'Sample2'
+                'name' => 'Sample2',
+                'type' => 'nanowrimo'
             ]
         ];
 
-        return $this->respondWithCollection($samples, function ($sample) {
+        return $this->respondWithCollection($notebooks, function ($notebook) {
             return [
-                'id' => (integer)$sample['id'],
-                'name' => $sample['name']
+                'id' => (integer)$notebook['id'],
+                'name' => $notebook['name'],
+                'type' => $notebook['type']
             ];
         });
     }
@@ -39,17 +43,33 @@ class UserController extends ApiController
      * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function getNotebook($id)
     {
-        $sample = [
-            'id' => "{$id}",
-            'name' => "Sample{$id}"
+        $notebook = null;
+        $notebooks = [
+            [
+                'id' => '1',
+                'name' => 'Sample1',
+                'type' => 'notebook'
+            ],
+            [
+                'id' => '2',
+                'name' => 'Sample2',
+                'type' => 'nanowrimo'
+            ]
         ];
 
-        return $this->respondWithItem($sample, function ($sample) {
+        foreach ($notebooks as $n) {
+            if ($n['id'] == $id) {
+                $notebook = $n;
+            }
+        }
+
+        return $this->respondWithItem($notebook, function ($notebook) {
             return [
-                'id' => (integer)$sample['id'],
-                'name' => $sample['name']
+                'id' => (integer)$notebook['id'],
+                'name' => $notebook['name'],
+                'type' => $notebook['type']
             ];
         });
     }

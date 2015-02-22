@@ -16,15 +16,13 @@ zenNotebook.controller('accountController', ['$scope', 'accountFactory', functio
         });
     };
 
-    //accountFactory.checkLogin().then(function (res) {
-    //    $scope.account.message = accountFactory.message;
-    //    $scope.account.loggedIn = true;
-    //});
+    accountFactory.checkLogin().then(function (res) {
+        $scope.account.message = accountFactory.message;
+        $scope.account.loggedIn = true;
+    });
 
     accountFactory.getNotebooks().then(function (res) {
         console.log(res.data);
-        $scope.account.message = accountFactory.message;
         $scope.account.notebooks = accountFactory.notebooks;
-        $scope.account.loggedIn = true;
     });
 }]);

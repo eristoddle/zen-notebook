@@ -34,7 +34,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
         getNotebooks: function () {
             return $http({
                 method: 'GET',
-                url: this.endpoint + 'notebooks',
+                url: this.endpoint + 'users/notebooks',
                 headers: {
                     'Authorization': 'Bearer ' + this.token
                 }
@@ -46,7 +46,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
         getNotebook: function (id) {
             return $http({
                 method: 'GET',
-                url: this.endpoint + 'notebooks' + id,
+                url: this.endpoint + 'users/notebook?id=' + id,
                 headers: {
                     'Authorization': 'Bearer ' + this.token
                 }

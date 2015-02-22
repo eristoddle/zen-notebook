@@ -764,7 +764,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
         getNotebooks: function () {
             return $http({
                 method: 'GET',
-                url: this.endpoint + 'notebooks',
+                url: this.endpoint + 'users/notebooks',
                 headers: {
                     'Authorization': 'Bearer ' + this.token
                 }
@@ -776,7 +776,7 @@ zenNotebook.factory('accountFactory', ['$http', 'storageFactory', function ($htt
         getNotebook: function (id) {
             return $http({
                 method: 'GET',
-                url: this.endpoint + 'notebooks' + id,
+                url: this.endpoint + 'users/notebook?id=' + id,
                 headers: {
                     'Authorization': 'Bearer ' + this.token
                 }
@@ -1066,16 +1066,14 @@ zenNotebook.controller('accountController', ['$scope', 'accountFactory', functio
         });
     };
 
-    //accountFactory.checkLogin().then(function (res) {
-    //    $scope.account.message = accountFactory.message;
-    //    $scope.account.loggedIn = true;
-    //});
+    accountFactory.checkLogin().then(function (res) {
+        $scope.account.message = accountFactory.message;
+        $scope.account.loggedIn = true;
+    });
 
     accountFactory.getNotebooks().then(function (res) {
         console.log(res.data);
-        $scope.account.message = accountFactory.message;
         $scope.account.notebooks = accountFactory.notebooks;
-        $scope.account.loggedIn = true;
     });
 }]);
 zenNotebook.controller('bodyController', ['$scope', '$rootScope', 'menuFactory', 'themeFactory', 'ngDialog', function ($scope, $rootScope, menuFactory, themeFactory, ngDialog) {

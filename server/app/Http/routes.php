@@ -43,8 +43,8 @@ Route::group(['prefix' => 'api'], function () {
         return Response::json(compact('user'));
     });
 
-    Route::resource('users', 'UserController');
+    Route::controller('users', 'UserController');
 
-    Route::resource('notebooks', 'NotebookController');
+    Route::controller('notebooks', 'NotebookController');
 
 });
