@@ -1,4 +1,4 @@
-zenNotebook.controller('settingsController', ['$scope', 'storageFactory', function ($scope, storageFactory) {
+zenNotebook.controller('settingsController', ['$scope', '$rootScope', 'storageFactory', function ($scope, $rootScope, storageFactory) {
     $scope.components = [
         'notebook',
         'nanowrimo',
