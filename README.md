@@ -1,5 +1,7 @@
 # Zen Notebook #
 
+[![Join the chat at https://gitter.im/eristoddle/zen-notebook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eristoddle/zen-notebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ##A Distraction Free Journal/Notebook/Diary for Writing Practice
 
 When I was 14, I bought Writing Down the Bones by Natalie Goldberg. I have kept up with writing practice off and on 
