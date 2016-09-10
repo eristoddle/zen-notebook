@@ -1,4 +1,7 @@
+[![Stories in Ready](https://badge.waffle.io/eristoddle/zen-notebook.png?label=ready&title=Ready)](https://waffle.io/eristoddle/zen-notebook)
 # Zen Notebook #
+
+[![Join the chat at https://gitter.im/eristoddle/zen-notebook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eristoddle/zen-notebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ##A Distraction Free Journal/Notebook/Diary for Writing Practice
 
