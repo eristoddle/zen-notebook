@@ -12,17 +12,17 @@ module.exports = function(grunt) {
                     "src/lib/buzz/dist/buzz.min.js",
                     "src/lib/angular-showdown/compressed/showdown.js",
                     'src/lib/ngDialog/js/ngDialog.min.js',
-                    'src/app/modules/*.js',
-                    'src/app/main.js',
-                    'src/app/filters.js',
-                    'src/app/factories/*.js',
-                    'src/app/directives.js',
-                    'src/app/controllers/*.js',
-                    'src/app/components/notebook/*.js',
-                    'src/app/components/nanowrimo/*.js',
-                    'src/app/components/leanpub/*.js'
+                    'src/app-old/modules/*.js',
+                    'src/app-old/main.js',
+                    'src/app-old/filters.js',
+                    'src/app-old/factories/*.js',
+                    'src/app-old/directives.js',
+                    'src/app-old/controllers/*.js',
+                    'src/app-old/components/notebook/*.js',
+                    'src/app-old/components/nanowrimo/*.js',
+                    'src/app-old/components/leanpub/*.js'
                 ],
-                "dest": 'app/dist.js'
+                "dest": 'app-old/dist.js'
             }
         },
         uglify: {
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    'app/dist.min.js': ['app/dist.js']
+                    'app-old/dist.min.js': ['app-old/dist.js']
                 }
             }
         },
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: 'src/app/**/*.js',
+                files: 'src/app-old/**/*.js',
                 tasks: ['concat', 'uglify', 'copy'],
                 options: {
                     debounceDelay: 250
@@ -61,10 +61,10 @@ module.exports = function(grunt) {
                 //TODO: Stuck in this version instead of latest because of download issue?
                 version: '0.11.2',
                 buildDir: './build',
-                macIcns: 'app/icon.icns',
-                winIco: 'app/icon.ico'
+                macIcns: 'app-old/icon.icns',
+                winIco: 'app-old/icon.ico'
             },
-            src: ['./app/**/*']
+            src: ['./app-old/**/*']
         },
         shell: {
             zipandmove: {
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
         },
         push: {
             options: {
-                files: ['package.json', './app/package.json'],
+                files: ['package.json', './app-old/package.json'],
                 updateConfigs: [],
                 releaseBranch: ['master'],
                 add: true,
@@ -110,11 +110,11 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {
-                        src: 'app/dist.min.js',
+                        src: 'app-old/dist.min.js',
                         dest: 'server/public/js/dist.min.js'
                     },
                     {
-                        src: 'app/app.css',
+                        src: 'app-old/app.css',
                         dest: 'server/public/css/app.css'
                     },
                     {
@@ -122,11 +122,11 @@ module.exports = function(grunt) {
                         dest: 'server/public/assets/'
                     },
                     {
-                        src: 'app/fonts/*',
+                        src: 'app-old/fonts/*',
                         dest: 'server/public/fonts/'
                     },
                     {
-                        src: 'app/components/*',
+                        src: 'app-old/components/*',
                         dest: 'server/public/components/'
                     },
                     {
