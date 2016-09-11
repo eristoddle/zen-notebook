@@ -44,14 +44,8 @@
     "kiosk": false,
     "icon": "icon.png"
   },
-  "version": "0.0.27",
-  "webkit": {
-    "page-cache": false,
-    "java": false,
-    "plugin": false
-  },
+  "version": "1.0.0",
   "scripts": {
-    "start": "nodewebkit",
 	"electron": "electron .",
     "electron dist": "electron .",
     "clear:osx": "rm -rf *-darwin-x64; rm -rf ./platforms/*-mas-x64",
@@ -59,15 +53,11 @@
     "clear:nix": "rm -rf *-linux-ia32; rm -rf ./platforms/*-linux-x64",
     "pack:osx": "npm run clear:osx && electron-packager ./www/ --platform=darwin,mas --arch=x64 --asar --out=platforms ",
     "pack:win": "npm run clear:win && electron-packager ./www/ --platform=win32 --arch=ia32,x64 --asar --out=platforms ",
-    "pack:nix": "npm run clear:nix && electron-packager ./www/ --platform=linux --arch=ia32,x64 --asar --out=platforms ",
-    "dependencies": {
-      "nodewebkit": ">=0.9.0",
-      "node-webkit-updater": "^0.2.3"
-    }
+    "pack:nix": "npm run clear:nix && electron-packager ./www/ --platform=linux --arch=ia32,x64 --asar --out=platforms "
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:eristoddle/zen-notebook.git"
+    "url": "https://github.com/eristoddle/zen-notebook"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
@@ -102,18 +92,6 @@
     "bower": "^1.3.12",
     "canonical-path": "0.0.2",
     "dgeni": "^0.4.1",
-    "grunt": "~0.4",
-    "grunt-concat-css": "~0.3.1",
-    "grunt-contrib-compass": "~1.0.1",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-copy": "~0.7.0",
-    "grunt-contrib-uglify": "~0.3",
-    "grunt-contrib-watch": "~0.5",
-    "grunt-node-webkit-builder": "^0.3.0",
-    "grunt-push-release": "^0.1.1",
-    "grunt-shell": "^1.1.1",
-    "load-grunt-tasks": "^1.0.0",
-    "node-webkit-builder": "^0.3.0",
     "lodash-node": "~2.4.1"
   },
   "dependencies": {

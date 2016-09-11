@@ -6,7 +6,11 @@
 
 ## Update - 9/10/2016
 
-Well, I got busy after a while away. I am upgrading the code so I can create phone apps also. And then on to bug fixes and features.
+Well, I got busy after a while away. I am upgrading the code so I can create phone apps also. And then on to bug fixes and features. So currently on this branch, running the gulp commands will only run or build the example app until I get the Zen Notebook code updated for the new stack.
+
+The old version of the app using Angular 1 and Node Webkit will always be available on the `legacy-angular1-nodewebkit` branch. And last time I checked everything built correctly, but I will not be supporting that version.
+
+The new version will be able to open the data files of the old version. I am just changing the code stack.
 
 ## A Distraction Free Journal/Notebook/Diary for Writing Practice
 
@@ -106,36 +110,28 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 - Add jsdoc
 - Slideshow/presentation functionality
 - Add tooltip type hover editor for markdown, like evernote, that can be switched off and on.
+- Add line by line markdown preview instead of dual pane preview
 
-## Futute Roadmap
+## Future Roadmap
 
 This is my wish and idea list
 
 - Sync content to cloud services instead of just the file system
-- Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions
+- ~~Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions~~
 - Flesh out website. Write writing prompts integration and consider users, writing groups, online version and journal post permissions.
 - Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will require a more advanced theming system to change up element display (masonry block, outline, editing).
 - Integrate PanDoc and consider a web service
 
-## Source Code in Ubuntu 14.04
+## Development
 
-In order to get nodewebkit to work on Ubuntu 14.04 and later, you will have to make sure to do something like this. I would explain it more, but I forget how I figured this out because it was months ago, and now that it finally works, I only care that it does. So it may or may not work for you. Anyway you know the process.
+1. Pull down the repo
+2. Run `npm install gulp -g` and `npm install ionic -g` unless you already have those installed
+3. Run `npm install`
+4. `ionic serve` will run the local Ionic Server.
+5. `gulp build` will build the web, android and ios apps.
+6. `gulp electon:all` will build the Windows, OSX, and Linux applications.
 
-- Try to run the project
-- If there is an error, copy it and search on Google
-- Spend the next hour or two figuring out what the issue is
-
-Anyway, this page here explains a few complicated ways to fix this issue: <https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0>
-
-But I found out that just creating a symbolic link was easier.
-
-`sudo ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0`
-
-## My Current Workflow
-
-- I am currently working on a Mac
-- I build using grunt and grunt-node-webkit-builder. Grunt does a lot of the tedious work for me and I mainly just write code
-- I tend to write sloppy code to get things done and see if they work and then go back and clean up. I am liking Angular in that is is helping me do this when I choose too. This is my first project in Angular and I am used to PHP frameworks. I am still not sure that it is the best choice. Others I am considering are Ember.js, React.js and Backbone with Marionette. My familiarity with dependency injection has me liking Angular and I do like two way data binding, though I hardly use it, since the main form is not a form at all but a contenteditable region and currently not supported by Angular for two way data binding. But I figured out my way around it. I figure once I get more familiar with one framework then I can survey the others. Once I am sure I have a beta version and know how I want the final application is structured, I can make a better choice among the various JavaScript frameworks. Currently leaning toward React.js.
+Note that currently I am still converting the old app into the new Ionic app and until that is done, the process able will only run an example boilerplate application
 
 ## Software Features I May Emulate
 
@@ -144,6 +140,7 @@ But I found out that just creating a symbolic link was easier.
 - Scrivener - <http://www.literatureandlatte.com/scrivener.php>
 - Q10 - <http://www.baara.com/q10/>
 - Scapple - <https://www.literatureandlatte.com/scapple.php>
+- Typora = <http://www.typora.io/>
 
 ## Technologies Used
 
