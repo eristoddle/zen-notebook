@@ -144,7 +144,8 @@ gulp.task('electron:nix', function () {
     return run('npm run pack:nix').exec();
 });
 
-//Windows stupid shit
+//Windows stupid shit to remove read-only attribute
+//May not need. Found it was an invisible Electron app running and owning the folder
 gulp.task('remove-readonly-attributes', function() {
     require("child_process").exec("attrib -r <dir-name>\*.* /s");
 });

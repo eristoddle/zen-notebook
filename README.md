@@ -103,6 +103,7 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 - Add more sounds to relax theme
 
 - Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
+
 - Fix margin bottom on content when taller than window. No text sitting on the bottom
 - Add more typewriter styling
 - Fix month forward arrow on calendar
@@ -173,6 +174,8 @@ That being said, until I have a server or Dropbox syncing in place, I am not sur
 Okay, I kept running into read-only issues and EPERM errors on Windows.
 
 I found a lot of the time it had to do with having an electron app running I couldn't see that owned the dist folder. Check the task manager.
+
+To build the OSX on Windows, you need to be running cmd as Admin.
 
 - <https://support.microsoft.com/en-us/kb/326549>
 - <https://www.dropbox.com/help/72>
