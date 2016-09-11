@@ -125,26 +125,26 @@ gulp.task('electron:all', function () {
 });
 
 gulp.task('electron:build', function () {
-    return run('npm run build').exec()
-        .pipe(gulp.dest('output'));
+    return run('npm run build').exec();
 });
 
 gulp.task('electron:pack', function () {
-    return run('npm run pack').exec()
-        .pipe(gulp.dest('output'));
+    return run('npm run pack').exec();
 });
 
 gulp.task('electron:osx', function () {
-    return run('npm run pack:osx').exec()
-        .pipe(gulp.dest('output'));
+    return run('npm run pack:osx').exec();
 });
 
 gulp.task('electron:win', function () {
-    return run('npm run pack:win').exec()
-        .pipe(gulp.dest('output'));
+    return run('npm run pack:win').exec();
 });
 
 gulp.task('electron:nix', function () {
-    return run('npm run pack:nix').exec()
-        .pipe(gulp.dest('output'));
+    return run('npm run pack:nix').exec();
+});
+
+//Windows stupid shit
+gulp.task('remove-readonly-attributes', function() {
+    require("child_process").exec("attrib -r <dir-name>\*.* /s");
 });

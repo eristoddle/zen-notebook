@@ -93,10 +93,15 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 - Manage sound levels
 
 - Allow for custom theme: font, background, text color
+
 - Possibly make typewriter theme scroll paper from bottom
+
 - Typewriter combine carriage return sounds into one? or play them right after the other
+
 - Fix sound effects on typewriter for cylinder clicking sound
+
 - Add more sounds to relax theme
+
 - Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
 - Fix margin bottom on content when taller than window. No text sitting on the bottom
 - Add more typewriter styling
@@ -167,9 +172,13 @@ That being said, until I have a server or Dropbox syncing in place, I am not sur
 
 Okay, I kept running into read-only issues and EPERM errors on Windows.
 
+I found a lot of the time it had to do with having an electron app running I couldn't see that owned the dist folder. Check the task manager.
+
 - <https://support.microsoft.com/en-us/kb/326549>
 - <https://www.dropbox.com/help/72>
 - <https://github.com/electron-userland/electron-packager/issues/402>
+- <http://stackoverflow.com/questions/29483772/remove-windows-file-readonly-attribute-in-gulp-file>
+- <https://github.com/gulpjs/gulp/issues/660>
 
 ## Software Features I May Emulate
 
