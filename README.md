@@ -30,7 +30,7 @@ And of course, being the nerd again, thought of all the other writing tools I wo
 
 ## Features Currently in Executable Version
 
-The application is still in alpha. The most recently version will be in the source code and in the Mac build because I am currently working on a Mac. I will keep the executables updated on a regular basis when I have added important features or fix major bugs. But I can tell I didn't start creating executables until I had a version I trusted to use on a daily basis as a replacement for Red Notebook. And most of the beta version punchlist items come from bugs I found and ideas I had while using it every day.
+The application is still in alpha. The most recently version will be in the source code and in the Mac build because I am currently working on a Mac. I will keep the executables updated on a regular basis when I have added important features or fix major bugs. But I can tell I didn't start creating executables until I had a version I trusted to use on a daily basis as a replacement for Red Notebook. And most of the beta version punch list items come from bugs I found and ideas I had while using it every day.
 
 - Distraction free writing environment: All menus and configuration options are hidden until needed. A small barely visible nav bar at the top left of the GUI becomes 100% visible when hovered with the mouse. The buttons activate various menus. The application can be made full screen.
 - Emulates a daily journal/diary/notebook in an electronic application: Written content is saved to dates and the date can be changed used an interactive calendar
@@ -105,9 +105,13 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 - Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
 
 - Fix margin bottom on content when taller than window. No text sitting on the bottom
+
 - Add more typewriter styling
+
 - Fix month forward arrow on calendar
+
 - Double check that all functionality works from scratch without existing journal
+
 - Add markdown support
 - Add configuration loading
 - Create configuration menu
@@ -142,10 +146,10 @@ This is my wish and idea list
 ## Development
 
 1. Pull down the repo
-2. Run `npm install gulp ionic electron -g` unless you already have those installed globally
+2. Run `npm install gulp ionic cordova electron -g` unless you already have those installed globally
 3. Run `npm install`
 4. `ionic serve` will run the local Ionic Server.
-5. `gulp build` will build the web, Android and IOS apps.
+5. `ionic build` will build the web, Android and IOS apps.
 6. `gulp electron:all` will build the Windows, OSX, and Linux binary applications.
 7. `gulp electron:build` will build installation applications for Windows, OSX, and Linux
 
