@@ -64,84 +64,68 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 
 ## Beta Version Punch List
 
-- Remove all legacy cruft from master branch
+- [ ] Remove all legacy cruft from master branch
+  - [ ] get current example app building correctly for all platforms
+  - [ ] package.json clean up
+  - [ ] convert grunt tasks to gulp tasks
+  - [ ] find a new one shot release workflow using electron-packager and gulp
+  - [ ] bower to npm ?
+  - [ ] search and destroy all remaining files and folders from old application
+  - [ ] Convert AngularJS code to Angular2
+  - [ ] Merge Angular2 branch into master
+- [ ] Add Tags
+- [ ] Add Search
+- [ ] Add Stats
+- [ ] Fix bug when content footer pops up from bottom when mouse is hovered
+- [ ] Fix info links to open in system browser, alternately in iframe
+- [ ] Add accordian/collapsible divs to left bar
+- [ ] Optimize code
+- [ ] Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf
+- [ ] Smooth and mellow relax colors
+- [ ] Manage sound levels
+- [ ] Allow for custom theme: font, background, text color
+- [ ] Possibly make typewriter theme scroll paper from bottom
+- [ ] Typewriter combine carriage return sounds into one? or play them right after the other
+- [ ] Fix sound effects on typewriter for cylinder clicking sound
+- [ ] Add more sounds to relax theme
+- [ ] Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
+- [ ] Fix margin bottom on content when taller than window. No text sitting on the bottom
+- [ ] Add more typewriter styling
+- [ ] Fix month forward arrow on calendar
+- [ ] Double check that all functionality works from scratch without existing journal
+- [ ] Add configuration loading
+- [ ] Create configuration menu
+- [ ] Fix today button
+- [ ] Warn to save content on close is no file exists
+- [ ] Make persistent storage agnostic
+- [ ] Create services of sound
+- [ ] Dates with content don't highlight until after a click on the calendar
+- [ ] Clicks on calendar don't change word counts
+- [ ] Intercept copy and paste to remove any html markup
+- [ ] Add Markua support
+- [ ] Create Leanpub component
+- [ ] Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
+- [ ] Add self updating
+- [ ] Create application service that can map key codes events to functions in application and component
+- [ ] Add testing
+- [ ] Add jsdoc
+- [ ] Slideshow/presentation functionality
+- [ ] Add tooltip type hover editor for markdown, like Evernote or Typora, that can be switched off and on.
+- [ ] Add line by line markdown preview instead of dual pane preview
 
-  - package.json
-  - convert grunt tasks to gulp tasks
-  - find a new one shot release gulp tasks
-  - bower to npm ?
-  - add linux build and pack
-
-- Add Tags
-
-- Add Search
-
-- Add Stats
-
-- Fix bug when content footer pops up from bottom when mouse is hovered
-
-- Fix info links to open in system browser, alternately in iframe
-
-- Add accordian/collapsible divs to left bar
-
-- Optimize code
-
-- Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf
-
-- Smooth and mellow relax colors
-
-- Manage sound levels
-
-- Allow for custom theme: font, background, text color
-
-- Possibly make typewriter theme scroll paper from bottom
-
-- Typewriter combine carriage return sounds into one? or play them right after the other
-
-- Fix sound effects on typewriter for cylinder clicking sound
-
-- Add more sounds to relax theme
-
-- Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
-
-- Fix margin bottom on content when taller than window. No text sitting on the bottom
-
-- Add more typewriter styling
-
-- Fix month forward arrow on calendar
-
-- Double check that all functionality works from scratch without existing journal
-
-- Add markdown support
-- Add configuration loading
-- Create configuration menu
-- Fix today button
-- Warn to save content on close is no file exists
-- Make persistent storage agnostic
-- Create services of sound
-- Dates with content don't highlight until after a click on the calendar
-- Clicks on calendar don't change word counts
-- Intercept copy and paste to remove any html markup
-- Add Markua support
-- Create Leanpub component
-- Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
-- Add self updating and update version in release script <http://electron.rocks/electron-angular-adding-automatic-updates/>
-- Create application service that can map key codes events to functions in application and component
-- Add testing
-- Add jsdoc
-- Slideshow/presentation functionality
-- Add tooltip type hover editor for markdown, like evernote, that can be switched off and on.
-- Add line by line markdown preview instead of dual pane preview
-
-## Future Roadmap
+## Future Roadmap and Wish List
 
 This is my wish and idea list
 
-- Sync content to cloud services instead of just the file system
-- ~~Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions~~
-- Flesh out website. Write writing prompts integration and consider users, writing groups, online version and journal post permissions.
-- Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will require a more advanced theming system to change up element display (masonry block, outline, editing).
-- Integrate PanDoc and consider a web service
+- [ ] Sync content to cloud services instead of just the file system
+- [x] Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions
+- [ ] Flesh out website. Write writing prompts integration and consider users, writing groups, online version and journal post permissions.
+- [ ] Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will require a more advanced theming system to change up element display (masonry block, outline, editing).
+- [ ] Integrate PanDoc and consider a web service
+- [ ] Create a plugin system similar to Atom's
+- [ ] Add Pomodoro
+- [ ] Add timed writing exercises
+- [ ] Add simple project mode for a folder of markdown files
 
 ## Development
 
@@ -202,3 +186,4 @@ To build the OSX on Windows, you need to be running cmd as Admin.
 - Nanowrimo: Simple novel structure with word count and progress
 - Leanpub: Work from a Leanpub dropbox project folder
 - Jekyll: Work from a Jekyll blog git repo
+- Markdown Project: Folder of markdown files
