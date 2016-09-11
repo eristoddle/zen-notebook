@@ -47,5 +47,5 @@ plugins/
 Thumbs.db
 release
 cache
-visual-inventory-*
 output
+dist

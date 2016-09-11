@@ -121,7 +121,17 @@ gulp.task('copy-package-json', function () {
 });
 
 gulp.task('electron:all', function () {
-    return runSequence('clean', 'build', 'copy-package-json', 'electron:osx', 'electron:win', 'electron:nix');
+    return runSequence('clean', 'build', 'copy-package-json', 'electron:pack');
+});
+
+gulp.task('electron:build', function () {
+    return run('npm run build').exec()
+        .pipe(gulp.dest('output'));
+});
+
+gulp.task('electron:pack', function () {
+    return run('npm run pack').exec()
+        .pipe(gulp.dest('output'));
 });
 
 gulp.task('electron:osx', function () {

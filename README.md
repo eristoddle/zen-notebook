@@ -62,7 +62,7 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 
 [Download](https://www.dropbox.com/s/9tk3zr6dtkmgv2g/linux-x64.zip?dl=1)
 
-## Beta Version Punchlist
+## Beta Version Punch List
 
 - Remove all legacy cruft from master branch
 
@@ -70,17 +70,28 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
   - convert grunt tasks to gulp tasks
   - find a new one shot release gulp tasks
   - bower to npm ?
+  - add linux build and pack
 
 - Add Tags
+
 - Add Search
+
 - Add Stats
+
 - Fix bug when content footer pops up from bottom when mouse is hovered
+
 - Fix info links to open in system browser, alternately in iframe
+
 - Add accordian/collapsible divs to left bar
+
 - Optimize code
+
 - Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf
+
 - Smooth and mellow relax colors
+
 - Manage sound levels
+
 - Allow for custom theme: font, background, text color
 - Possibly make typewriter theme scroll paper from bottom
 - Typewriter combine carriage return sounds into one? or play them right after the other
@@ -104,7 +115,7 @@ Note: Sounds are currently deactivated in the Windows version. I have tracked th
 - Add Markua support
 - Create Leanpub component
 - Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
-- Add self updating and update version in release script
+- Add self updating and update version in release script <http://electron.rocks/electron-angular-adding-automatic-updates/>
 - Create application service that can map key codes events to functions in application and component
 - Add testing
 - Add jsdoc
@@ -125,13 +136,40 @@ This is my wish and idea list
 ## Development
 
 1. Pull down the repo
-2. Run `npm install gulp -g` and `npm install ionic -g` unless you already have those installed
+2. Run `npm install gulp ionic electron -g` unless you already have those installed globally
 3. Run `npm install`
 4. `ionic serve` will run the local Ionic Server.
-5. `gulp build` will build the web, android and ios apps.
-6. `gulp electon:all` will build the Windows, OSX, and Linux applications.
+5. `gulp build` will build the web, Android and IOS apps.
+6. `gulp electron:all` will build the Windows, OSX, and Linux binary applications.
+7. `gulp electron:build` will build installation applications for Windows, OSX, and Linux
 
-Note that currently I am still converting the old app into the new Ionic app and until that is done, the process able will only run an example boilerplate application
+_Note that electron-builder used to create the installers has it's only requirements based on which platform you are building on listed [here](https://www.npmjs.com/package/electron-builder)_
+
+_Note that currently I am still converting the old app into the new Ionic app and until that is done, the process able will only run an example boilerplate application._
+
+I am following the conventions of Ionic and Electron for the most part, so for further info, please see their respective documentation.
+
+Don't worry about the Laravel backend for now. It has never been production ready and I started work on it for the future: phone app project syncing, PanDoc compiling on the server, collaboration, etc. But currently all functionality is through local files. Also, as it stands now, the server part of the application was last updated two years ago and I have plenty of work migrating the code and fixing all the bugs before I even get to that again.
+
+That being said, until I have a server or Dropbox syncing in place, I am not sure how useful the phone apps that result will be. I currently sync the files my desktop apps use by saving the notebook.json file to a Dropbox folder and I just point the app to that file on whichever computer I am on. It has worked for 2 years now and I have moved through all three platforms. And currently I jump back and forth from Windows to Linux almost daily.
+
+## Technologies Used
+
+- Electron : <http://electron.atom.io/docs/>
+- Electron Builder: <https://www.npmjs.com/package/electron-builder>
+- Ionic2 (+ Angular2) : <http://ionicframework.com/docs/v2/getting-started/installation/>
+- Gulp
+- Laravel
+- Buzz : <http://buzz.jaysalvat.com/>
+- Markua : Not yet but will be adding
+
+## Random Windows Issues
+
+Okay, I kept running into read-only issues and EPERM errors on Windows.
+
+- <https://support.microsoft.com/en-us/kb/326549>
+- <https://www.dropbox.com/help/72>
+- <https://github.com/electron-userland/electron-packager/issues/402>
 
 ## Software Features I May Emulate
 
@@ -141,17 +179,6 @@ Note that currently I am still converting the old app into the new Ionic app and
 - Q10 - <http://www.baara.com/q10/>
 - Scapple - <https://www.literatureandlatte.com/scapple.php>
 - Typora = <http://www.typora.io/>
-
-## Technologies Used
-
-- NodeWebkit : <https://github.com/rogerwang/node-webkit>
-- AngularJS : <https://angularjs.org/>
-- Sass : <http://sass-lang.com/>
-- Grunt
-- Laravel
-- Buzz : <http://buzz.jaysalvat.com/>
-- Angular Showdown
-- Markua : Not yet but will be adding
 
 ## Component Ideas
 
