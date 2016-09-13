@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {Notebook} from './pages/notebook/notebook';
 import {ListPage} from './pages/list/list';
 
 
@@ -11,8 +11,8 @@ import {ListPage} from './pages/list/list';
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
+  // make Notebook the root (or first) page
+  rootPage: any = Notebook;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -23,7 +23,7 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
+      { title: 'Notebook', component: Notebook },
       { title: 'My First List', component: ListPage }
     ];
   }
