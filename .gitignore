@@ -49,3 +49,4 @@ release
 cache
 output
 dist
+server/vendor
