@@ -1,8 +1,15 @@
 import {Component} from '@angular/core';
+import {contentEditableDirective} from '../../components/contenteditable/contenteditable';
 
 @Component({
-    templateUrl: 'build/pages/notebook/notebook.html'
+    templateUrl: 'build/pages/notebook/notebook.html',
+    directives: [contentEditableDirective],
+    providers: []
 })
 export class Notebook {
-    constructor() { }
+    public editorContent: string;
+
+    constructor() {
+        this.editorContent = '';
+    }
 }

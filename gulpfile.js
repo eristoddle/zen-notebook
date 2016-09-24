@@ -1,3 +1,4 @@
+'use strict';
 var gulp = require('gulp'),
     run = require('gulp-run'),
     gulpWatch = require('gulp-watch'),
@@ -7,6 +8,9 @@ var gulp = require('gulp'),
     electron = require('gulp-electron'),
     runSequence = require('run-sequence'),
     packageJson = require('./package.json');
+
+    const release = require('gulp-release');
+    release.register(gulp);
 
 process.NODE_ENV = 'test';
 
