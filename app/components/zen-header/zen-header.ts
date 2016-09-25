@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ZenHeader {
 
-  text: string;
-
   constructor() {
-    this.text = 'Hello World';
+
   }
 }

@@ -1,6 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
+
+//TODO: Ionic 2 Beta 12, then Angular 2 RC 5 with NgModule, then I can add this.
+//import {DynamicComponentModule} from 'angular2-dynamic-component/index';
+
 import {Notebook} from './pages/notebook/notebook';
 import {ListPage} from './pages/list/list';
 
