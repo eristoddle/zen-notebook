@@ -2,34 +2,34 @@
 import { Directive, Component, Input, ViewContainerRef, ComponentResolver, ComponentMetadata, ReflectiveInjector, ComponentFactory } from '@angular/core';
 import { Calendar } from '../calendar/calendar';
 
-@Directive( {
+@Directive({
     selector: 'dynamic-html-wrap'
-} )
+})
 export class DynamicHTMLDirective {
     @Input() src: string;
 
-    constructor( private vcRef: ViewContainerRef, private resolver: ComponentResolver ) {}
+    constructor(private vcRef: ViewContainerRef, private resolver: ComponentResolver) { }
 
-    createComponentFactory( resolver: ComponentResolver, metadata: ComponentMetadata ) {
-        const cmpClass = class DynamicComponent {};
-        const decoratedCmp = Component( metadata )( cmpClass );
+    createComponentFactory(resolver: ComponentResolver, metadata: ComponentMetadata) {
+        const cmpClass = class DynamicComponent { };
+        const decoratedCmp = Component(metadata)(cmpClass);
 
-        return resolver.resolveComponent( decoratedCmp );
+        return resolver.resolveComponent(decoratedCmp);
     }
 
     ngOnChanges() {
         if (!this.src) return;
 
-        const metadata = new ComponentMetadata( {
+        const metadata = new ComponentMetadata({
             selector: 'dynamic-html',
-            directives: [ Calendar ],
+            directives: [Calendar],
             template: this.src,
-        } );
+        });
 
-        this.createComponentFactory( this.resolver, metadata )
-        .then( factory => {
-            const injector = ReflectiveInjector.fromResolvedProviders( [], this.vcRef.parentInjector );
-            this.vcRef.createComponent( factory, 0, injector, [] );
-        } );
+        this.createComponentFactory(this.resolver, metadata)
+            .then(factory => {
+                const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
+                this.vcRef.createComponent(factory, 0, injector, []);
+            });
     }
 }
