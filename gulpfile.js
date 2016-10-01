@@ -9,8 +9,8 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     packageJson = require('./package.json');
 
-    const release = require('gulp-release');
-    release.register(gulp);
+const release = require('gulp-release');
+release.register(gulp);
 
 process.NODE_ENV = 'test';
 
