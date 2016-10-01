@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-
+//OR: https://www.npmjs.com/package/angular2-calendar
 @Component({
     selector: 'calendar',
     template: '<div>{{calendarMarkup}}</div>'
@@ -29,7 +29,7 @@ export class Calendar {
         return m.charAt(0).toUpperCase() + m.slice(1) + ' ' + date.getFullYear();
     }
 
-    getTemplate(month, year, dates) {
+    getTemplate(month: number, year: number, dates:number) {
         var month = ((isNaN(month) || month == null) ? this.currentDate.getMonth() + 1 : month) - 1,
             year = (isNaN(year) || year == null) ? this.currentDate.getFullYear() : year,
             firstDay = new Date(
