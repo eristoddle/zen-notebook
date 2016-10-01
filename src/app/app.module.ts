@@ -9,7 +9,6 @@ import {Notebook} from '../pages/notebook/notebook';
 import {ListPage} from '../pages/list/list';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 
-
 @NgModule({
   declarations: [
     MyApp,
