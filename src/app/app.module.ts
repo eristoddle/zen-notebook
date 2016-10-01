@@ -8,7 +8,8 @@ import { MyApp } from './app.component';
 import { Notebook } from '../pages/notebook/notebook';
 import { ListPage } from '../pages/list/list';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ZenHeader } from '../components/zen-header/zen-header'
+import { ZenHeader } from '../components/zen-header/zen-header';
+import { contentEditableDirective } from '../components/contenteditable/contenteditable';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import { ZenHeader } from '../components/zen-header/zen-header'
     Notebook,
     ItemDetailsPage,
     ListPage,
-    ZenHeader
+    ZenHeader,
+    contentEditableDirective
   ],
   imports: [
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
+  //TODO: Check that I am doing the right thing here
   entryComponents: [
     MyApp,
     Notebook,

@@ -4,7 +4,7 @@ import {ZenHeader} from '../../components/zen-header/zen-header';
 
 
 @Component({
-    //selector: 'notebook',
+    selector: 'notebook',
     templateUrl: 'notebook.html'
 })
 export class Notebook {
