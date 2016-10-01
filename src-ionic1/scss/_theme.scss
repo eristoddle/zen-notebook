@@ -1,0 +1,141 @@
+//Fonts
+.courier, .courier div {
+  font-family: courier;
+  font-size: 14px;
+}
+
+.typewriter, .typewriter div, .carbon , .carbon div{
+  font-family: 'SpecialElite';
+  font-size: 18px;
+}
+
+.zen, .zen div, .relax, .relax div {
+  font-family: 'Lora';
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+//Colors
+.dark {
+  background-color: $black;
+  color: $white-font;
+  header{
+    background: $black;
+  }
+  h1{
+    border-bottom-color: $white-font;
+  }
+  .modal{
+    background: rgba(255, 255, 255, 0.9);
+    color: $black;
+  }
+}
+
+.light {
+  background: $white-background;
+  color: $black;
+  header{
+    background: $white-background;
+  }
+  .modal{
+    background-color: $black;
+    color: $white-font;
+    .button{
+      color: $black;
+      &:hover{
+        color: $white-font;
+        border-color: $white-font;
+      }
+    }
+  }
+}
+
+.terminal {
+  background: $black;
+  color: $terminal-green;
+  .modal{
+    background: rgba(255, 255, 255, 0.9);
+    color: $black;
+  }
+}
+
+.incognito {
+  background: $black;
+  color: $black;
+  .nav-menu {
+    color: $white-font;
+    &:hover{
+      button{
+        opacity: 0.4;
+      }
+    }
+    button {
+      opacity: 0;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+  .modal{
+    background: rgba(255, 255, 255, 0.9);
+    color: $black;
+  }
+}
+
+.relax.dark, .relax.dark header {
+  -webkit-animation: animate_bg 20s;
+  animation: animate_bg 20s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate_bg {
+  0%   {background:red;}
+  50%  {background:green;}
+  100% {background:blue;}
+}
+
+@-webkit-keyframes animate_bg {
+  0%   {background:red;}
+  50%  {background:green;}
+  100% {background:blue;}
+}
+
+.button {
+  background: $white-background;
+  border-color: $black;
+  &:hover {
+    background: $black;
+    color: $white-font;
+  }
+}
+
+//Menu
+.nav-menu {
+  &:hover{
+    button{
+      opacity: 0.2;
+    }
+  }
+  button {
+    opacity: 0.05;
+    -webkit-app-region: no-drag;
+    -webkit-transition: opacity 400ms;
+    -moz-transition: opacity 400ms;
+    -ms-transition: opacity 400ms;
+    -o-transition: opacity 400ms;
+    transition: opacity 400ms;
+    background: none;
+    cursor: pointer;
+    font-size: 25px;
+    color: inherit;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    border: none;
+    outline:none;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

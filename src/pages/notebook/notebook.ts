@@ -5,8 +5,7 @@ import {ZenHeader} from '../../components/zen-header/zen-header';
 
 @Component({
     selector: 'notebook',
-    templateUrl: 'notebook.html',
-    directives: [contentEditableDirective, ZenHeader]
+    templateUrl: 'notebook.html'
 })
 export class Notebook {
     public editorContent: string;

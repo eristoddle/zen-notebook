@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>dropbox.js test suite</title>
+  <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+  <script src="../../test/js/platform.js"></script>
+  <script src="../../lib/dropbox.js"></script>
+
+  <!-- NOTE: the list of files below must be kept in sync with
+             test/src/helpers/web_worker_main.coffee -->
+
+  <script src="../../test/vendor/sinon.js"></script>
+  <!--[if IE]>
+  <script src="../../test/vendor/sinon-ie.js"></script>
+  <![endif]-->
+  <script src="../../test/vendor/chai.js"></script>
+  <script src="../../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+  <script src="../../node_modules/mocha/mocha.js"></script>
+  <script src="../../test/js/helpers/browser_mocha_setup.js"></script>
+
+  <script src="../../test/token/token.browser.js"></script>
+  <script src="../../test/vendor/favicon.browser.js"></script>
+  <script src="../../test/js/helpers/setup.js"></script>
+
+  <script src="../../test/js/auth_driver/browser_test.js"></script>
+  <script src="../../test/js/auth_driver/chrome_test.js"></script>
+  <script src="../../test/js/auth_driver/cordova_test.js"></script>
+  <script src="../../test/js/client_test.js"></script>
+  <script src="../../test/js/fast/account_info_test.js"></script>
+  <script src="../../test/js/fast/api_error_test.js"></script>
+  <script src="../../test/js/fast/auth_driver/browser_test.js"></script>
+  <script src="../../test/js/fast/auth_error_test.js"></script>
+  <script src="../../test/js/fast/client_test.js"></script>
+  <script src="../../test/js/fast/file/references_test.js"></script>
+  <script src="../../test/js/fast/file/stat_test.js"></script>
+  <script src="../../test/js/fast/http/app_info_test.js"></script>
+  <script src="../../test/js/fast/http/poll_result_test.js"></script>
+  <script src="../../test/js/fast/http/pulled_changes_test.js"></script>
+  <script src="../../test/js/fast/http/range_info_test.js"></script>
+  <script src="../../test/js/fast/http/upload_cursor_test.js"></script>
+  <script src="../../test/js/fast/util/base64_test.js"></script>
+  <script src="../../test/js/fast/util/event_source_test.js"></script>
+  <script src="../../test/js/fast/util/hmac_test.js"></script>
+  <script src="../../test/js/fast/util/oauth_test.js"></script>
+  <script src="../../test/js/fast/util/parse_date_test.js"></script>
+  <script src="../../test/js/fast/util/xhr_test.js"></script>
+  <script src="../../test/js/web_worker_test.js"></script>
+
+  <script src="../../test/js/helpers/browser_mocha_runner.js"></script>
+
+  <style type="text/css">
+    /* Get scrolling to work in Chrome apps. */
+    html {
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.list {
+  .item.item-accordion {
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+    &.ng-hide {
+      line-height: 0px;
+    }
+    &.ng-hide-add, &.ng-hide-remove {
+      display: block !important;
+    }
+  }
+  h2{
+    cursor: pointer;
+  }
+  span {
+    cursor: pointer;
+    &.icon {
+      float: left;
+      display: block;
+      position: absolute;
+      padding-right: 5px;
+      &.plus:before {
+        content: '+';
+      }
+      &.minus:before {
+        content: '-';
+      }
+    }
+  }
+}

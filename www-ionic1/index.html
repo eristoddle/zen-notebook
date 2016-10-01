@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zen Notebook</title>
+        <link href="app.css" rel="stylesheet">
+        <script src="dist.js"></script>
+    </head>
+
+    <body id="container" ng-app="zenNotebook" ng-class="theme" ng-controller="bodyController">
+    <header style="-webkit-app-region: drag">
+            <nav class="nav-menu" menu-data="menu">
+                <button ng-repeat="node in menu"
+                        title="{{node.title}}"
+                        class="{{node.class}}"
+                        ng-click="action(node)">
+                </button>
+            </nav>
+        </header>
+
+    <div class="left-sidebar slide-menu">
+            <div class="left-inner modal" ng-model='left' ng-class="{'slide-out':leftChangeClass}"
+                 ng-mouseleave="action({sub: 'left'})">
+                <div class="left-include" ng-include="partial"></div>
+            </div>
+        </div>
+
+    <div class="motion-detector" ng-mouseover="action({sub: 'left'})"></div>
+
+        <div class="main">
+            <div class="content" contenteditable></div>
+        </div>
+    </body>
+</html>

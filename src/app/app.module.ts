@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule, ionicBootstrap } from 'ionic-angular';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //TODO: Ionic 2 Beta 12, then Angular 2 RC 5 with NgModule, then I can add this.
@@ -7,12 +7,14 @@ import { MyApp } from './app.component';
 
 import {Notebook} from '../pages/notebook/notebook';
 import {ListPage} from '../pages/list/list';
+import { ItemDetailsPage } from '../pages/item-details/item-details';
 
 
 @NgModule({
   declarations: [
     MyApp,
     Notebook,
+    ItemDetailsPage,
     ListPage
   ],
   imports: [
@@ -22,6 +24,7 @@ import {ListPage} from '../pages/list/list';
   entryComponents: [
     MyApp,
     Notebook,
+    ItemDetailsPage,
     ListPage
   ],
   providers: []

@@ -1,0 +1,45 @@
+<h1>NanoWrimo</h1>
+<div class="notice">
+    <p>Nanowrimo mode is only 90% complete.</p>
+</div>
+<div class="nanowrimo">
+    <div ng-controller="nanowrimoController">
+        <div class="list">
+            <div ng-repeat="chapter in chapters | object2Array | orderBy:'sort_order'">
+                <span class="icon"
+                      ng-click="toggleChapter(chapter)"
+                      ng-class="isChapterShown(chapter) ? 'minus' : 'plus'">
+                </span>
+                <h2 class="item-stable"
+                          ng-dblclick="startEditing(chapter.name)"
+                          ng-click="setChapter(chapter.name)">
+                    <span ng-hide="chapter.editing">{{chapter.name}}</span>
+                    <form ng-submit="doneEditing(chapter.old_name, chapter.name)" ng-show="chapter.editing">
+                        <input ng-model="chapter.name" ng-blur="doneEditing(chapter.old_name, chapter.name)" ng-focus="chapter.name == editedChapter">
+                    </form>
+                </h2>
+                <div class="item-accordion"
+                          ng-repeat="item in chapter.items"
+                          ng-show="isChapterShown(chapter)">
+                    {{item}}
+                </div>
+            </div>
+            <div class="button" ng-click="createChapter()">
+                New Chapter
+            </div>
+
+        </div>
+
+        <div id="stats">
+            <div id="word_count">Current Word Count: {{ left.word_count }}</div>
+        </div>
+
+        <div id="books" class="collapsible">
+            <div ng-repeat="node in buttons"
+                 class="button {{node.class}}"
+                 ng-click="action(node)">
+                {{ node.title }}
+            </div>
+        </div>
+    </div>
+</div>

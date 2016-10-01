@@ -1,0 +1,16 @@
+<h1>Zen-Notebook Account</h1>
+<div ng-controller="accountController">
+    <form class="login-form" ng-show="!account.loggedIn">
+        <div class="button" ng-click="login(account.login)">Login</div>
+        <div class="fields">
+            E-mail: <input type="text" ng-model="account.login.email"/><br>
+            Password: <input type="password" ng-model="account.login.password"/>
+        </div>
+    </form>
+    <div class="user-account" ng-show="account.loggedIn">
+        Notebooks: <select ng-change="getNotebook(notebook.id)"
+                           ng-model="account.notebooks"
+                           ng-options="notebook.id as notebook.name for notebook in account.notebooks"></select>
+    </div>
+    <div class="notice">{{account.message}}</div>
+</div>
