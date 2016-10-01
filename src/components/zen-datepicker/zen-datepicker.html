@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12" style="z-index:1000">
+        <div class="zen-calendar">
+            <div class="years clearfix" style="padding-top:10px">
+                <div class="unit prev" style="text-align:right" (click)="prevMonth()"><em></em></div>
+                <div class="monyear"><b>{{visibleMonth.monthTxt}} {{visibleMonth.year}}</b></div>
+                <div class="unit next" style="text-align:left" (click)="nextMonth()"><em></em></div>
+                <div class="clearfix WeekDays" style="margin-top:50px">
+                    <div class="unit" *ngFor="let days of weekDays"><b>{{days}}</b></div>
+                </div>
+            </div>
+            <div class="days">
+                <div class="clearfix">
+                    <div *ngFor="let w of dates">
+                        <div *ngFor="let d of w" (click)="cellClicked(d)">
+                            <div [ngClass]="{'unit older': d.cmo===PREV_MONTH || d.cmo===NEXT_MONTH, 'unit': d.cmo===CURR_MONTH || d.cmo!==CURR_MONTH}">
+                              <b>{{d.day}}</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

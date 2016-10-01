@@ -1,120 +1,120 @@
 {
-    "name": "Zen_Notebook",
-    "author": "Stephan Miller <stephanmil@gmail.com>",
-    "manifestUrl": "https://raw.githubusercontent.com/eristoddle/zen-notebook/master/package.json",
-    "packages": {
-        "mac": {
-            "url": "https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip",
-            "execPath": "osx/Zen Notebook.app"
-        },
-        "win": {
-            "url": "https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip",
-            "execPath": "win/Zen Notebook.exe"
-        },
-        "linux32": {
-            "url": "https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip",
-            "execPath": "linux32/Zen Notebook"
-        },
-        "linux64": {
-            "url": "https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip",
-            "execPath": "linux64/Zen Notebook"
-        }
+  "name": "ZenNotebook",
+  "author": "Stephan Miller <stephanmil@gmail.com>",
+  "manifestUrl": "https://raw.githubusercontent.com/eristoddle/zen-notebook/master/package.json",
+  "packages": {
+    "mac": {
+      "url": "https://www.dropbox.com/s/vjauq3bvhx6ffo9/mac.zip",
+      "execPath": "osx/Zen Notebook.app"
     },
-    "nodejs": true,
-    "description": "A distraction free writing journal",
-    "single-instance": true,
-    "keywords": [],
-    "main": "electron.js",
-    "node-main": "",
-    "window": {
-        "fullscreen": false,
-        "resizable": true,
-        "title": "Zen Notebook",
-        "always-on-top": false,
-        "frame": true,
-        "height": 600,
-        "min_height": 480,
-        "visible": true,
-        "as_desktop": false,
-        "min_width": 640,
-        "position": "center",
-        "show_in_taskbar": true,
-        "width": 900,
-        "toolbar": true,
-        "kiosk": false,
-        "icon": "icon.png"
+    "win": {
+      "url": "https://www.dropbox.com/s/1ubg2mv830yq7vw/windows.zip",
+      "execPath": "win/Zen Notebook.exe"
     },
-    "version": "1.0.0",
-    "scripts": {
-        "dev": "electron . --enable-logging",
-        "electron": "electron .",
-        "electron dist": "electron . dist",
-        "clean": "rimraf ./dist --maxBusyTries=5",
-        "clean:osx": "rimraf ./dist/osx --maxBusyTries=5",
-        "clean:win": "rimraf ./dist/win --maxBusyTries=5",
-        "clean:nix": "rimraf ./dist/linux --maxBusyTries=5",
-        "pack": "npm run clean && npm run pack:osx && npm run pack:win && npm run pack:nix",
-        "pack:osx": "npm run clean:osx && electron-packager ./www/ \"Zen Notebook\" --asar --out=dist/osx --platform=darwin --arch=x64 --icon=assets/osx/logo.icns --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
-        "pack:win": "npm run clean:win && electron-packager ./www/ \"Zen Notebook\" --asar --out=dist/win --platform=win32 --arch=ia32 --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
-        "pack:nix": "npm run clean:nix && electron-packager ./www/ \"Zen Notebook\" --platform=linux --arch=ia32,x64 --asar --out=dist/linux --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
-        "electron:build": "npm run build:osx && npm run build:win && build nix",
-        "build:osx": "npm run pack:osx && electron-builder \"dist/osx/Zen Notebook.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
-        "build:win": "npm run pack:win && electron-builder \"dist/win/Zen Notebook-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json",
-        "build:nix": "npm run pack:nix && electron-builder \"dist/linux/Zen Notebook-nix\" --platform=linux --out=\"dist/linux\" --config=builder.json",
-        "build": "ionic-app-scripts build",
-        "watch": "ionic-app-scripts watch",
-        "serve:before": "watch",
-        "emulate:before": "build",
-        "deploy:before": "build",
-        "build:before": "build",
-        "run:before": "build"
+    "linux32": {
+      "url": "https://www.dropbox.com/s/a3jxe3qchhm9547/linux-x32.zip",
+      "execPath": "linux32/Zen Notebook"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/eristoddle/zen-notebook"
-    },
-    "cordovaPlugins": [
-        "cordova-plugin-device",
-        "cordova-plugin-console",
-        "cordova-plugin-whitelist",
-        "cordova-plugin-splashscreen",
-        "cordova-plugin-statusbar",
-        "ionic-plugin-keyboard"
-    ],
-    "cordovaPlatforms": [
-        "android",
-        "ios",
-        "windows"
-    ],
-    "devDependencies": {
-        "canonical-path": "0.0.2",
-        "del": "2.2.0",
-        "dgeni": "^0.4.1",
-        "electron": "^1.3.5",
-        "electron-builder": "^6.6.1",
-        "electron-packager": "^7.3.0",
-        "electron-prebuilt": "^1.3.5",
-        "gulp": "3.9.1",
-        "gulp-electron": "^0.1.3",
-        "gulp-release": "^1.1.0",
-        "gulp-run": "^1.7.1",
-        "gulp-watch": "4.3.5",
-        "lodash-node": "~2.4.1",
-        "rimraf": "^2.5.4",
-        "run-sequence": "1.1.5",
-        "@ionic/app-scripts": "^0.0.23",
-        "typescript": "^2.0.3"
-    },
-    "dependencies": {
-        "angular2-calendar": "^0.2.5",
-        "buzz": "^1.2.0",
-        "dropbox": "^2.2.1",
-        "electron-json-storage": "^2.0.0",
-        "ionic-angular": "2.0.0-rc.0",
-        "@ionic/storage": "^1.0.3",
-        "ionic-native": "^2.0.3",
-        "ionicons": "3.0.0",
-        "lodash": "^4.16.1",
-        "lowdb": "^0.13.1"
+    "linux64": {
+      "url": "https://www.dropbox.com/s/acmielhprw1c6t2/linux-x64.zip",
+      "execPath": "linux64/Zen Notebook"
     }
+  },
+  "nodejs": true,
+  "description": "A distraction free writing journal",
+  "single-instance": true,
+  "keywords": [],
+  "main": "electron.js",
+  "node-main": "",
+  "window": {
+    "fullscreen": false,
+    "resizable": true,
+    "title": "Zen Notebook",
+    "always-on-top": false,
+    "frame": true,
+    "height": 600,
+    "min_height": 480,
+    "visible": true,
+    "as_desktop": false,
+    "min_width": 640,
+    "position": "center",
+    "show_in_taskbar": true,
+    "width": 900,
+    "toolbar": true,
+    "kiosk": false,
+    "icon": "icon.png"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "electron . --enable-logging",
+    "electron": "electron .",
+    "electron dist": "electron . dist",
+    "clean": "rimraf ./dist --maxBusyTries=5",
+    "clean:osx": "rimraf ./dist/osx --maxBusyTries=5",
+    "clean:win": "rimraf ./dist/win --maxBusyTries=5",
+    "clean:nix": "rimraf ./dist/linux --maxBusyTries=5",
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win && npm run pack:nix",
+    "pack:osx": "npm run clean:osx && electron-packager ./www/ \"Zen Notebook\" --asar --out=dist/osx --platform=darwin --arch=x64 --icon=assets/osx/logo.icns --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    "pack:win": "npm run clean:win && electron-packager ./www/ \"Zen Notebook\" --asar --out=dist/win --platform=win32 --arch=ia32 --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    "pack:nix": "npm run clean:nix && electron-packager ./www/ \"Zen Notebook\" --platform=linux --arch=ia32,x64 --asar --out=dist/linux --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    "electron:build": "npm run build:osx && npm run build:win && build nix",
+    "build:osx": "npm run pack:osx && electron-builder \"dist/osx/Zen Notebook.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
+    "build:win": "npm run pack:win && electron-builder \"dist/win/Zen Notebook-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json",
+    "build:nix": "npm run pack:nix && electron-builder \"dist/linux/Zen Notebook-nix\" --platform=linux --out=\"dist/linux\" --config=builder.json",
+    "build": "ionic-app-scripts build",
+    "watch": "ionic-app-scripts watch",
+    "serve:before": "watch",
+    "emulate:before": "build",
+    "deploy:before": "build",
+    "build:before": "build",
+    "run:before": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eristoddle/zen-notebook"
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "android",
+    "ios",
+    "windows",
+    "browser"
+  ],
+  "devDependencies": {
+    "canonical-path": "0.0.2",
+    "del": "2.2.0",
+    "dgeni": "^0.4.1",
+    "electron": "^1.3.5",
+    "electron-builder": "^6.6.1",
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.3.5",
+    "gulp": "3.9.1",
+    "gulp-electron": "^0.1.3",
+    "gulp-release": "^1.1.0",
+    "gulp-run": "^1.7.1",
+    "gulp-watch": "4.3.5",
+    "lodash-node": "~2.4.1",
+    "rimraf": "^2.5.4",
+    "run-sequence": "1.1.5",
+    "@ionic/app-scripts": "^0.0.23",
+    "typescript": "^2.0.3"
+  },
+  "dependencies": {
+    "@ionic/storage": "^1.0.3",
+    "buzz": "^1.2.0",
+    "dropbox": "^2.2.1",
+    "electron-json-storage": "^2.0.0",
+    "ionic-angular": "2.0.0-rc.0",
+    "ionic-native": "^2.0.3",
+    "ionicons": "3.0.0",
+    "lodash": "^4.16.1",
+    "lowdb": "^0.13.1"
+  }
 }
