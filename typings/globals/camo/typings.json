@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/19f385d75d893f79f773e88403e17b9b0b6e79b9/camo/camo.d.ts",
+    "raw": "registry:dt/camo#0.11.4+20160215100927",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/19f385d75d893f79f773e88403e17b9b0b6e79b9/camo/camo.d.ts"
+  }
+}

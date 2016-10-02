@@ -77,7 +77,7 @@ export class ZenDatePicker implements OnInit, OnChanges {
     }
 
     loadMonthData() {
-    	//TODO: Notebook Service Here
+        //TODO: Notebook Service Here
     }
 
     openBtnClicked(): void {
@@ -135,24 +135,21 @@ export class ZenDatePicker implements OnInit, OnChanges {
         if (cell.cmo === this.PREV_MONTH) {
             // Previous month of day
             this.prevMonth();
-        }
-        else if (cell.cmo === this.CURR_MONTH) {
+        } else if (cell.cmo === this.CURR_MONTH) {
             // Current month of day
             this.selectDate(cell);
-        }
-        else if (cell.cmo === this.NEXT_MONTH) {
+        } else if (cell.cmo === this.NEXT_MONTH) {
             // Next month of day
             this.nextMonth();
         }
     }
 
     selectDate(date: any): void {
+        //TODO: Here is where I highlight the cell and load the days content
+        console.log('day cell clicked', date);
         this.selectedDate = { day: date.day, month: date.month, year: date.year };
         this.selectionDayTxt = this.formatDate(date);
-
-        // Custom Editing Pardeep
         this.showSelector = true;
-        // Custom Editing Pardeep
 
         let epoc = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).getTime() / 1000.0;
     }

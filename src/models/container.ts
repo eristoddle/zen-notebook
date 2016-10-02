@@ -1,10 +1,7 @@
-/// <reference path="./base.ts"/>
-import {Base} from "./base";
+/// <reference path="./entity.ts"/>
+import { Entity } from "./entity";
 
-export class Container extends Base{
-
-    //TODO: Need to find a way to specify any class that inherits from base
-    children: any[];
+export class Container extends Entity{
 
     constructor(){
         super();

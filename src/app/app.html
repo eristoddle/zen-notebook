@@ -1,16 +1,19 @@
 <ion-menu [content]="content">
 
     <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>Zen Notebook</ion-title>
     </ion-toolbar>
 
     <ion-content>
+        
         <zen-date-picker></zen-date-picker>
+
         <ion-list>
             <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+                {{p.title}}
+            </button>
         </ion-list>
+
     </ion-content>
 
 </ion-menu>

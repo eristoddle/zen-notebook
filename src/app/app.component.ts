@@ -24,7 +24,7 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Notebook', component: Notebook },
+      { title: 'Editor', component: Notebook },
       { title: 'My First List', component: ListPage }
     ];
   }

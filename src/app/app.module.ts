@@ -1,11 +1,11 @@
 //Framework
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { BrowserModule } from '@angular/platform-browser';
 
 //Third Party
 
 //Custom
+//TODO: Try to move as many as I can to components
 import { MyApp } from './app.component';
 import { Notebook } from '../pages/notebook/notebook';
 import { ListPage } from '../pages/list/list';
@@ -28,7 +28,6 @@ import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  //TODO: Check that I am doing the right thing here
   entryComponents: [
     MyApp,
     Notebook,
