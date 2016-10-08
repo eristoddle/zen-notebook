@@ -18,9 +18,18 @@ export class Base implements Entity{
     model: string;
     type: string;
 
-    constructor(options:{alias: string, type: string}){
+    /**
+     * @param  {object}  options     Object containing the following keys:
+     * @param  {string}  type        Final type(class) of Entity
+     * @param  {string}  title       Title of Entity
+     * @param  {string}} description Description of Entity
+     * @return {void}
+     */
+    constructor(options:{alias: string, type: string, title: string, description: string}){
         this.alias = options.alias;
         this.type = options.type;
+        this.title = options.title;
+        this.description = options.description;
         this.dateCreated = new Date();
         this.dateModified = this.dateCreated;
         this.uuid = UUID.UUID();

@@ -4,7 +4,7 @@ export class Notebook extends Binder{
 
     constructor(options, schema) {
         options.alias = 'Notebook';
-        options.type = 'notebook';
+        options.type = 'Notebook';
         super(options, schema);;
     }
 

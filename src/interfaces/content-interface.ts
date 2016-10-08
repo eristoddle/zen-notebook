@@ -1,5 +1,8 @@
 import { Entity } from "../interfaces/entity-interface";
 
+/**
+ * Base interface for all content types
+ */
 export interface Content{
 
     content: string;
@@ -7,5 +10,5 @@ export interface Content{
     extension: string;
     characterEncoding: string;
     embeds: Entity[]
-    
+
 }

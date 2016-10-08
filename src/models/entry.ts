@@ -9,7 +9,7 @@ export class Entry extends Base implements Content{
     extension: string;
     characterEncoding: string;
     embeds: Entity[];
-    children: any[] = null;
+    children: any[];
 
     constructor(options){
         super(options);

@@ -13,7 +13,9 @@ import loki from 'lokijs';
 export class StorageService {
 
     public data: any;
+    public tempData: string;
     public database: any;
+    public collections: string[];
 
     constructor(public http: Http) {
         this.database = new loki('zen-notebook.json', {
@@ -24,16 +26,21 @@ export class StorageService {
             persistenceMethod: 'localStorage'
         });
 
-        let items = this.database.addCollection('items');
+        // let items = this.database.addCollection('items');
+        //
+        // items.insert({ name: 'mjolnir', owner: 'thor', maker: 'dwarves' });
+        // items.insert({ name: 'gungnir', owner: 'odin', maker: 'elves' });
+        // items.insert({ name: 'tyrfing', owner: 'Svafrlami', maker: 'dwarves' });
+        // items.insert({ name: 'draupnir', owner: 'odin', maker: 'elves' });
+        //
+        // let tyrfing = items.findOne({ 'name': 'tyrfing' });
+        // tyrfing.owner = 'arngrim';
+        // items.update(tyrfing);
+    }
 
-        items.insert({ name: 'mjolnir', owner: 'thor', maker: 'dwarves' });
-        items.insert({ name: 'gungnir', owner: 'odin', maker: 'elves' });
-        items.insert({ name: 'tyrfing', owner: 'Svafrlami', maker: 'dwarves' });
-        items.insert({ name: 'draupnir', owner: 'odin', maker: 'elves' });
-
-        let tyrfing = items.findOne({ 'name': 'tyrfing' });
-        tyrfing.owner = 'arngrim';
-        items.update(tyrfing);
+    addCollection(name: string){
+        this.collections.push(name);
+        this.database.addCollection(name);
     }
 
     load() {
