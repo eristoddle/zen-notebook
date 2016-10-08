@@ -9,12 +9,14 @@ import { Entity } from "../interfaces/entity-interface";
  */
 export class Binder extends Container{
 
+    type: string;
+
     constructor(){
         super();
-        this.parent = null;
+        this.parentUuid = null;
     }
 
-    init(options){
-
+    generateSchema(){
+        
     }
 }
