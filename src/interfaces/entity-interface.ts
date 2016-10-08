@@ -5,8 +5,8 @@ export interface Entity {
     description: string;
     dateCreated: Date;
     dateModified: Date;
-    //TODO: Need to find a way to specify any class that inherits from entity or an enum type
     children: any[];
     parentUuid: string;
-    meta: any;
+    //NOTE: would rather call this meta, but lokijs uses that
+    metaData: any;
 }

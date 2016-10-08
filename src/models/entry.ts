@@ -1,13 +1,14 @@
-/// <reference path="./entity.ts"/>
-import { Entity } from "./entity";
+import { Entity } from "../interfaces/entity-interface";
+import { Content } from "../interfaces/content-interface";
+import { Base } from "./base";
 
-export class Entry extends Entity{
+export class Entry extends Base implements Content{
 
     content: string;
     mimeType: MimeType;
     extension: string;
     characterEncoding: string;
-    embeds: string[];
+    embeds: Entity[];
 
     constructor(){
         super();
