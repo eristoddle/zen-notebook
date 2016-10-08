@@ -14,6 +14,6 @@ export class Container implements Entity{
     meta: any;
 
     constructor(){
-
+        this.dateCreated = new Date();
     }
 }

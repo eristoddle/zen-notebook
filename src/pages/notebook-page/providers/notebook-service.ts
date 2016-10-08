@@ -6,7 +6,6 @@ import { StorageService } from '../../../providers/storage-service';
 @Injectable()
 export class NotebookService extends StorageService {
 
-    data: any;
     notebook: Notebook;
 
     constructor() {

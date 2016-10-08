@@ -5,6 +5,7 @@ export class Notebook extends Binder{
 
     constructor() {
         super();
+        this.alias = 'Notebook';
     }
 
 }
