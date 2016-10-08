@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
 
 import { SettingsDetailsPage } from '../settings-details/settings-details';
+import { SettingsService } from '../../providers/settings-service';
 
 
 @Component({

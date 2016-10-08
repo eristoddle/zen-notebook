@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { SecureStorage } from 'ionic-native';
+
+import loki from 'lokijs';
+
+/*
+  Generated class for the StorageService provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class StorageService {
+
+    public database: any;
+
+    constructor(public http: Http) {
+        this.database = new loki('loki.json', {
+            autoload: true,
+            //autoloadCallback: loadHandler,
+            autosave: true,
+            autosaveInterval: 10000,
+            persistenceMethod: 'localStorage'
+        });
+
+        let items = this.database.addCollection('items');
+
+        items.insert({ name: 'mjolnir', owner: 'thor', maker: 'dwarves' });
+        items.insert({ name: 'gungnir', owner: 'odin', maker: 'elves' });
+        items.insert({ name: 'tyrfing', owner: 'Svafrlami', maker: 'dwarves' });
+        items.insert({ name: 'draupnir', owner: 'odin', maker: 'elves' });
+
+        let tyrfing = items.findOne({ 'name': 'tyrfing' });
+        tyrfing.owner = 'arngrim';
+        items.update(tyrfing);
+
+        console.log(this.database);
+    }
+
+}

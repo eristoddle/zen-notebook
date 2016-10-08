@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
+import { StatusBar } from 'ionic-native';
 
-import {NotebookPage} from '../pages/notebook-page/notebook-page';
-import {Settings} from '../pages/settings/settings';
+import { NotebookPage } from '../pages/notebook-page/notebook-page';
+import { Settings } from '../pages/settings/settings';
+import { About } from '../pages/about/about';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Editor', component: NotebookPage },
-      { title: 'Settings', component: Settings }
+      { title: 'Settings', component: Settings },
+      { title: 'About', component: About }
     ];
   }
 

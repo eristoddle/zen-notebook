@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { contentEditableDirective } from '../../components/contenteditable/contenteditable';
 import { ZenHeader } from '../../components/zen-header/zen-header';
-import { NotebookService } from './providers/notebookService';
+import { NotebookService } from './providers/notebook-service';
 
 @Component({
     selector: 'notebook',
