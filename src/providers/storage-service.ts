@@ -3,14 +3,13 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SecureStorage } from 'ionic-native';
 
+//https://github.com/techfort/LokiJS/wiki/LokiJS-persistence-and-adapters
+//TODO: Watch this issue I am having: https://forum.ionicframework.com/t/lokijs-in-rc0/65233/3
+//NOTE: This is a vary specific import style
+//import LokiCordovaFSAdapter from "cordova-file-system-adapter";
+//import * as LokiNativescriptAdapter from 'loki-indexed-adapter';
 import loki from 'lokijs';
 
-/*
-  Generated class for the StorageService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class StorageService {
 

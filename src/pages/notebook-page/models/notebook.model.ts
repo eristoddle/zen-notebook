@@ -1,9 +1,4 @@
-//https://github.com/techfort/LokiJS/wiki/LokiJS-persistence-and-adapters
-//TODO: Watch this issue I am having: https://forum.ionicframework.com/t/lokijs-in-rc0/65233/3
-//NOTE: This is a vary specific import style
 import loki from 'lokijs';
-//import LokiCordovaFSAdapter from "cordova-file-system-adapter";
-//import * as LokiNativescriptAdapter from 'loki-indexed-adapter';
 import { Binder } from './../../../models/binder';
 
 export class Notebook {

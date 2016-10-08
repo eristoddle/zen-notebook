@@ -1,4 +1,3 @@
-//TODO: This should be extended from a core service
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { SecureStorage } from 'ionic-native';
