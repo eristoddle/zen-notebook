@@ -114,6 +114,7 @@
     "ionic-angular": "2.0.0-rc.0",
     "ionic-native": "^2.0.3",
     "ionicons": "3.0.0",
+    "loki-cordova-fs-adapter": "^1.0.2",
     "lokijs": "^1.4.1"
   }
 }

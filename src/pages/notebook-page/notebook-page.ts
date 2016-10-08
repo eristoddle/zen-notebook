@@ -5,10 +5,10 @@ import { NotebookService } from './providers/notebookService';
 
 @Component({
     selector: 'notebook',
-    templateUrl: 'notebook.html',
+    templateUrl: 'notebook-page.html',
     providers: [NotebookService]
 })
-export class Notebook {
+export class NotebookPage {
     public editorContent: string;
 
     constructor(private notebookService: NotebookService) {

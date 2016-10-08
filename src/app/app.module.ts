@@ -7,9 +7,9 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 //Custom
 //TODO: Try to move as many as I can to components
 import { MyApp } from './app.component';
-import { Notebook } from '../pages/notebook/notebook';
-import { ListPage } from '../pages/list/list';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
+import { NotebookPage } from '../pages/notebook-page/notebook-page';
+import { Settings } from '../pages/settings/settings';
+import { SettingsDetailsPage } from '../pages/settings-details/settings-details';
 import { ZenHeader } from '../components/zen-header/zen-header';
 import { contentEditableDirective } from '../components/contenteditable/contenteditable';;
 import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
@@ -17,9 +17,9 @@ import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
 @NgModule({
   declarations: [
     MyApp,
-    Notebook,
-    ItemDetailsPage,
-    ListPage,
+    NotebookPage,
+    SettingsDetailsPage,
+    Settings,
     ZenHeader,
     contentEditableDirective,
     ZenDatePicker
@@ -30,9 +30,9 @@ import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Notebook,
-    ItemDetailsPage,
-    ListPage,
+    NotebookPage,
+    SettingsDetailsPage,
+    Settings,
     ZenHeader
   ],
   providers: [
