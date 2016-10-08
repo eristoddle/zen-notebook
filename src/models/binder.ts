@@ -9,14 +9,16 @@ import { Entity } from "../interfaces/entity-interface";
  */
 export class Binder extends Container{
 
-    type: string;
+    parentUuid: string = null;
+    level: number = 0;
+    model: string = 'Binder';
+    sortOrder: number = 0;
+    schema: any;
+    template: boolean;
 
-    constructor(){
-        super();
-        this.parentUuid = null;
+    constructor(options, schema){
+        super(options);
+        this.schema = schema;
     }
 
-    generateSchema(){
-        
-    }
 }

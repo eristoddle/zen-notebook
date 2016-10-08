@@ -12,19 +12,25 @@ export class Base implements Entity{
     dateModified: Date;
     children: Entity[];
     parentUuid: string;
-    metaData: any;
+    customMeta: any;
+    sortOrder: number;
+    level: number;
+    model: string;
+    type: string;
 
-    constructor(){
+    constructor(options:{alias: string, type: string}){
+        this.alias = options.alias;
+        this.type = options.type;
         this.dateCreated = new Date();
         this.dateModified = this.dateCreated;
         this.uuid = UUID.UUID();
     }
 
-    init(options){
-        //title, description and meta
+    save(){
+        this.dateModified = new Date();
     }
 
-    update(){
-        this.dateModified = new Date();
+    delete(){
+
     }
 }

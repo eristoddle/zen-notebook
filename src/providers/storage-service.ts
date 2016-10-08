@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { SecureStorage } from 'ionic-native';
 
 //https://github.com/techfort/LokiJS/wiki/LokiJS-persistence-and-adapters
 //TODO: Watch this issue I am having: https://forum.ionicframework.com/t/lokijs-in-rc0/65233/3
@@ -16,8 +15,8 @@ export class StorageService {
     public data: any;
     public database: any;
 
-    constructor(private http: Http) {
-        this.database = new loki('loki.json', {
+    constructor(public http: Http) {
+        this.database = new loki('zen-notebook.json', {
             autoload: true,
             //autoloadCallback: loadHandler,
             autosave: true,
