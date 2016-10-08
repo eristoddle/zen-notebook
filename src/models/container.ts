@@ -7,6 +7,7 @@ export class Container extends Base{
         super();
     }
 
+    //NOTE: This may have to be a uuid reference due to browser memory?
     addChild(child: Entity){
         this.dateModified = new Date();
         child.parentUuid = this.uuid;

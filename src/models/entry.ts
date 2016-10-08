@@ -12,5 +12,13 @@ export class Entry extends Base implements Content{
 
     constructor(){
         super();
+        this.children = null;
+    }
+
+    //NOTE: This may have to be a uuid reference due to browser memory?
+    embed(embed: Entity){
+        this.dateModified = new Date();
+        embed.parentUuid = this.uuid;
+        this.embeds.push(embed);
     }
 }
