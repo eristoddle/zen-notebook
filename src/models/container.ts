@@ -1,9 +1,19 @@
-/// <reference path="./entity.ts"/>
-import { Entity } from "./entity";
+import { Entity } from "../interfaces/entity-interface";
 
-export class Container extends Entity{
+export class Container implements Entity{
+
+    uuid: string;
+    alias: string;
+    title: string;
+    description: string;
+    dateCreated: Date;
+    dateModified: Date;
+    //TODO: Need to find a way to specify any class that inherits from enitty or enums
+    children: any[];
+    parent: any;
+    meta: any;
 
     constructor(){
-        super();
+
     }
 }

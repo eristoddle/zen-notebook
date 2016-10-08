@@ -1,16 +1,10 @@
-/// <reference path="./entity.ts"/>
-import { Entity } from "./entity";
+import { Container } from "./container";
+import { Entity } from "../interfaces/entity-interface";
 
 /**
  * The notebook, book, project or file
  */
-export class Binder extends Entity{
-    //TODO: Make this load available type into an enum
-    type: string;
-    //TODO: This should also be a enum
-    storage: any;
-    //Rules for the binder type
-    schema: any;
+export class Binder extends Container{
 
     constructor(){
         super();

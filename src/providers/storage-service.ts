@@ -13,9 +13,10 @@ import loki from 'lokijs';
 @Injectable()
 export class StorageService {
 
+    public data: any;
     public database: any;
 
-    constructor(public http: Http) {
+    constructor(private http: Http) {
         this.database = new loki('loki.json', {
             autoload: true,
             //autoloadCallback: loadHandler,
@@ -34,8 +35,21 @@ export class StorageService {
         let tyrfing = items.findOne({ 'name': 'tyrfing' });
         tyrfing.owner = 'arngrim';
         items.update(tyrfing);
+    }
 
-        console.log(this.database);
+    load() {
+        if (this.data) {
+            return Promise.resolve(this.data);
+        }
+
+        return new Promise(resolve => {
+            this.http.get('path/to/data.json')
+                .map(res => res.json())
+                .subscribe(data => {
+                    this.data = data;
+                    resolve(this.data);
+                });
+        });
     }
 
 }

@@ -88,6 +88,7 @@
     "browser"
   ],
   "devDependencies": {
+    "@ionic/app-scripts": "^0.0.23",
     "canonical-path": "0.0.2",
     "del": "2.2.0",
     "dgeni": "^0.4.1",
@@ -103,7 +104,8 @@
     "lodash-node": "~2.4.1",
     "rimraf": "^2.5.4",
     "run-sequence": "1.1.5",
-    "@ionic/app-scripts": "^0.0.23",
+    "source-map-loader": "^0.1.5",
+    "strip-sourcemap-loader": "0.0.1",
     "typescript": "^2.0.3"
   },
   "dependencies": {
