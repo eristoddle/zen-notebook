@@ -57,23 +57,23 @@ export class NotebookService extends StorageService {
 
         let entry = new Entry(entryOptions);
 
-        this.getYear(this.currentYear);
-        this.getEntry(entry);
+        let year = this.getYear(this.currentYear);
+        let month = this.getMonth(year, this.currentMonth);
+        this.getEntry(month, entry);
     }
 
-    getEntry(entry: Entry) {
-        let [month, day, year] = entry.title.split('-');
-        this.collection.addTransform('yearExists', [
-            {
-                type: 'find',
-                value: {
-                    'children': { '$contains': { 'title' : year } }
-                }
-            }
-        ]);
+    getEntry(month:Month, entry: Entry) {
+        let [mon, day, year] = entry.title.split('-');
 
-        let results = this.collection.chain('yearExists').data();
-        console.log(results);
+        let dayOptions = {
+            title: day.toString(),
+            description: '',
+            parentUuid: month.uuid,
+            customMeta: {}
+        }
+        let dayEntity = new Day(dayOptions);
+        //month.addChild(dayEntity);
+        return dayEntity;
     }
 
     getYear(year:number){
@@ -84,7 +84,8 @@ export class NotebookService extends StorageService {
             customMeta: {}
         }
         let yearEntity = new Year(yearOptions);
-        this.notebook.addChild(yearEntity);
+        console.log('in year', this.notebook);
+        //this.notebook.addChild(yearEntity);
         return yearEntity;
     }
 
@@ -96,8 +97,7 @@ export class NotebookService extends StorageService {
             customMeta: {}
         }
         let monthEntity = new Month(monthOptions);
-        year.addChild(monthEntity);
+        //year.addChild(monthEntity);
         return monthEntity;
     }
-
 }
