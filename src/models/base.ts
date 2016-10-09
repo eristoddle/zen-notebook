@@ -1,6 +1,7 @@
 import { UUID } from 'angular2-uuid';
 
 import { Entity } from "../interfaces/entity-interface";
+import { Options } from "../interfaces/options-interface";
 
 export class Base implements Entity{
 
@@ -25,11 +26,8 @@ export class Base implements Entity{
      * @param  {string}} description Description of Entity
      * @return {void}
      */
-    constructor(options:{alias: string, type: string, title: string, description: string}){
-        this.alias = options.alias;
-        this.type = options.type;
-        this.title = options.title;
-        this.description = options.description;
+    constructor(options:Options){
+        Object.assign(this, options);
         this.dateCreated = new Date();
         this.dateModified = this.dateCreated;
         this.uuid = UUID.UUID();
@@ -40,6 +38,10 @@ export class Base implements Entity{
     }
 
     delete(){
+
+    }
+
+    export(){
 
     }
 }

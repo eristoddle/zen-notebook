@@ -22,4 +22,8 @@ export class Entry extends Base implements Content{
         embed.level = this.level + 1;
         this.embeds.push(embed);
     }
+
+    countWords(){
+        this.wordCount = 0;
+    }
 }

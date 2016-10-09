@@ -24,6 +24,7 @@ export class StorageService {
     constructor(public http: Http) {
         this.database = new loki('zen-notebook.json', {
             autoload: true,
+            //TODO: This is how I would load from a file or remote connection if it exists instead of from localStorage
             //autoloadCallback: loadHandler,
             autosave: true,
             autosaveInterval: 10000,
