@@ -8,11 +8,9 @@ import { Entity } from "../interfaces/entity-interface";
  */
 export class Binder extends Container{
 
-    parentUuid: string;
     level: number = 0;
     model: string = 'Binder';
     sortOrder: number = 0;
-    schema: any;
     /**
      * Is this a template for other binders?
      * @type {boolean}
@@ -20,15 +18,12 @@ export class Binder extends Container{
     template: boolean;
 
     /**
-     *
-     *
      * @param  {[type]} options [description]
      * @param  {[type]} schema  [description]
      * @return {[type]}         [description]
      */
-    constructor(options, schema){
+    constructor(options){
         super(options);
-        this.schema = schema;
     }
 
 }

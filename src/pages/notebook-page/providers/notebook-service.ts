@@ -7,6 +7,11 @@ import { StorageService } from '../../../providers/storage-service';
 export class NotebookService extends StorageService {
 
     notebook: Notebook;
+    collection: any;
+    currentDate: Date;
+    currentYear: number;
+    currentMonth: number;
+    currentDay: number;
 
     constructor() {
         //TODO: Fix this constructor
@@ -18,7 +23,6 @@ export class NotebookService extends StorageService {
         //And should options and schema come from a json config file?
         //Maybe options should have an interface like binderOptions
         //To prevent hunting down the base class to see what you need every time
-        //
         let options = {
             title: 'Writing Practice',
             description: 'From "Writing Down the Bones" by Natalie Goldberg',
@@ -27,10 +31,16 @@ export class NotebookService extends StorageService {
             }
         }
 
-        let schema = {
+        this.currentDate = new Date();
+        this.currentYear = this.currentDate.getFullYear();
+        this.currentMonth = this.currentDate.getMonth();
+        this.currentDay = this.currentDate.getDay();
+        this.notebook = new Notebook(options);
+        //TODO: Don't hardcode this, put it in a more logical location
+        this.collection = this.addCollection('binder');
+    }
 
-        }
+    addEntry(){
 
-        this.notebook = new Notebook(options, schema);
     }
 }

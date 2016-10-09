@@ -9,7 +9,7 @@ export class Entry extends Base implements Content{
     extension: string;
     characterEncoding: string;
     embeds: Entity[];
-    children: any[];
+    wordCount: number;
 
     constructor(options){
         super(options);
@@ -21,9 +21,5 @@ export class Entry extends Base implements Content{
         embed.parentUuid = this.uuid;
         embed.level = this.level + 1;
         this.embeds.push(embed);
-    }
-
-    get wordCount(): number{
-        return 0;
     }
 }

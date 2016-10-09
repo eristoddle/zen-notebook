@@ -110,6 +110,7 @@
   },
   "dependencies": {
     "@ionic/storage": "^1.0.3",
+    "@types/lokijs": "^1.2.30",
     "angular2-uuid": "^1.1.0",
     "buzz": "^1.2.0",
     "dropbox": "^2.2.1",

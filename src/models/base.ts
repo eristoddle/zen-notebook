@@ -10,8 +10,8 @@ export class Base implements Entity{
     description: string;
     dateCreated: Date;
     dateModified: Date;
-    children: Entity[];
-    parentUuid: string;
+    children?: Entity[];
+    parentUuid?: string;
     customMeta: any;
     sortOrder: number;
     level: number;

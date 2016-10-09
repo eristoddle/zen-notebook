@@ -12,10 +12,14 @@ import loki from 'lokijs';
 @Injectable()
 export class StorageService {
 
-    public data: any;
-    public tempData: string;
+    private data: any;
+    /**
+     * Data not yet saved to database
+     * TODO: This have to be an object or hold possibly more than one value
+     * @type {string}
+     */
+    private _tempData: string;
     public database: any;
-    public collections: string[];
 
     constructor(public http: Http) {
         this.database = new loki('zen-notebook.json', {
@@ -38,12 +42,21 @@ export class StorageService {
         // items.update(tyrfing);
     }
 
-    addCollection(name: string){
-        this.collections.push(name);
-        this.database.addCollection(name);
+    public addCollection(name: string){
+        return this.database.addCollection(name);
     }
 
-    load() {
+    public get tempData():string{
+        //TODO: Retrieve from localStorage
+        return this._tempData;
+    }
+
+    public set tempData(value:string){
+        //TODO: Store in localStorage
+        this._tempData = value;
+    }
+
+    public load() {
         if (this.data) {
             return Promise.resolve(this.data);
         }

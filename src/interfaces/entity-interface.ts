@@ -21,8 +21,8 @@ export interface Entity {
     description: string;
     dateCreated: Date;
     dateModified: Date;
-    children: any[];
-    parentUuid: string;
+    children?: any;
+    parentUuid?: string;
     /**
      * Any custom keys for the final class live here
      * @type {any}
