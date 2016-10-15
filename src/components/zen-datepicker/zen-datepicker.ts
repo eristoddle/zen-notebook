@@ -1,12 +1,12 @@
 import {Component, Input, Output, OnInit, OnChanges, SimpleChange, ElementRef} from '@angular/core';
 import {NgIf, NgFor, NgClass, NgStyle} from '@angular/common';
 import {ZenDate, ZenMonth} from './zen-datepicker-interface';
+import {CalendarService} from './calendar-service';
 
 @Component({
     selector: 'zen-date-picker',
     templateUrl: 'zen-datepicker.html',
-    providers: [
-    ]
+    providers: [CalendarService]
 })
 export class ZenDatePicker implements OnInit, OnChanges {
     showSelector: boolean = false;
@@ -34,8 +34,9 @@ export class ZenDatePicker implements OnInit, OnChanges {
     CalWidth: string = '600px';
     background = "#699DE7";
     border;
+    subscription: any;
 
-    constructor(public elem: ElementRef) {
+    constructor(public elem: ElementRef, private calendarService: CalendarService) {
         this.today = new Date();
     }
 
@@ -59,6 +60,8 @@ export class ZenDatePicker implements OnInit, OnChanges {
                 idx = days[idx] === 'sa' ? 0 : idx + 1;
             }
         }
+
+
     }
 
     ngOnChanges(changes: { [propName: string]: SimpleChange }) {
@@ -145,7 +148,7 @@ export class ZenDatePicker implements OnInit, OnChanges {
         this.selectedDate = { day: date.day, month: date.month, year: date.year };
         this.selectionDayTxt = this.formatDate(date);
         this.showSelector = true;
-        //this.messageEvent.fire({'date:changed': this.selectedDate});
+        this.calendarService.changeDate(this.selectedDate);
         let epoc = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).getTime() / 1000.0;
     }
 
