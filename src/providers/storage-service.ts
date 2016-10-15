@@ -10,15 +10,14 @@ import LZString from 'lz-string';
 export class StorageService {
 
     private data: any;
-    public database: any;
 
-    constructor(public http: Http, private storage:LocalStorageService) {
+    constructor(public http: Http, private storage: LocalStorageService) {
 
     }
 
     setItem(key, value) {
         value = LZString.compress(value);
-        return this.storage.store(key, value);
+        this.storage.store(key, value);
     }
 
     getItem(key) {
@@ -30,7 +29,7 @@ export class StorageService {
     setObject(key, object) {
         var value = JSON.stringify(object);
         value = LZString.compress(value);
-        return this.storage.store(key, value);
+        this.storage.store(key, value);
     }
 
     getObject(key) {
@@ -41,7 +40,7 @@ export class StorageService {
     }
 
     removeItem(key) {
-        return this.storage.clear(key);
+        this.storage.clear(key);
     }
 
     public load() {

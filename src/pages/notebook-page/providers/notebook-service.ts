@@ -5,12 +5,12 @@ import { Year } from './../models/year.model'
 import { Month } from './../models/month.model'
 import { Day } from './../models/day.model'
 import { Entry } from './../../../models/entry';
-import { Options } from "../interfaces/options-interface";
+import { Options } from "../../../interfaces/options-interface";
 import { StorageService } from '../../../providers/storage-service';
 
 //TODO: Move functionality up the class chain and add functions to interfaces
 @Injectable()
-export class NotebookService extends StorageService {
+export class NotebookService {
 
     notebook: Notebook;
     currentDate: Date;
@@ -18,9 +18,7 @@ export class NotebookService extends StorageService {
     currentMonth: number;
     currentDay: number;
 
-    constructor() {
-        //TODO: Fix this constructor
-        super();
+    constructor(private storage: StorageService) {
         //TODO: Think about this, the base service only deals with data agnostically
         //Where should notebook be instansiated
         //Maybe this should be a place for npm mixin to combine two base classes: Notebook and StorageService
@@ -56,7 +54,8 @@ export class NotebookService extends StorageService {
             contents: `Lorizzle ipsizzle dolor mah nizzle amizzle, consectetuer adipiscing elit. Nullam sapizzle velit, sizzle bling bling, suscipizzle quis, gravida vizzle, ass. Pellentesque eget yo mamma. Sizzle erizzle. Black izzle dolizzle funky fresh turpis tempizzle own yo'. Mauris pellentesque its fo rizzle izzle turpizzle. Vestibulum izzle crazy. Shiznit away rhoncizzle nisi. In hac hizzle platea dictumst. Break it down dapibizzle. Phat gangster urna, pretizzle crazy, mattizzle dawg, eleifend pizzle, nunc. The bizzle suscipit. Integizzle semper velizzle da bomb purus.`
         }
 
-        this.addEntry(day, entryOptions)
+        this.addEntry(day, entryOptions);
+        storage.setObject('zen-notebook', this.notebook);
     }
 
     addEntry(day:Day, entryOptions: Options){
