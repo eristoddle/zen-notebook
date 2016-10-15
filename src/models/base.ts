@@ -1,5 +1,5 @@
 import { UUID } from 'angular2-uuid';
-import * as _ from "lodash";
+import  _ from "lodash";
 
 import { Entity } from "../interfaces/entity-interface";
 import { Options } from "../interfaces/options-interface";
@@ -33,17 +33,7 @@ export class Base implements Entity{
         this.dateCreated = new Date();
         this.dateModified = this.dateCreated;
         this.uuid = UUID.UUID();
+        this.customMeta = {};
     }
 
-    save(){
-        this.dateModified = new Date();
-    }
-
-    delete(){
-
-    }
-
-    export(){
-
-    }
 }
