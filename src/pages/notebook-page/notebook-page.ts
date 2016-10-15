@@ -17,6 +17,7 @@ export class NotebookPage {
 
     constructor(private notebookService: NotebookService) {
         this.editorContent = '';
+
         console.log('notebook-page component', notebookService);
     }
 }

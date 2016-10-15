@@ -1,12 +1,13 @@
-import {Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChange, ElementRef} from '@angular/core';
+import {Component, Input, Output, OnInit, OnChanges, SimpleChange, ElementRef} from '@angular/core';
 import {NgIf, NgFor, NgClass, NgStyle} from '@angular/common';
 import {ZenDate, ZenMonth} from './zen-datepicker-interface';
 
 @Component({
     selector: 'zen-date-picker',
-    templateUrl: 'zen-datepicker.html'
+    templateUrl: 'zen-datepicker.html',
+    providers: [
+    ]
 })
-
 export class ZenDatePicker implements OnInit, OnChanges {
     showSelector: boolean = false;
     visibleMonth: ZenMonth = { monthTxt: '', monthNbr: 0, year: 0 };
@@ -33,7 +34,6 @@ export class ZenDatePicker implements OnInit, OnChanges {
     CalWidth: string = '600px';
     background = "#699DE7";
     border;
-
 
     constructor(public elem: ElementRef) {
         this.today = new Date();
@@ -76,10 +76,6 @@ export class ZenDatePicker implements OnInit, OnChanges {
         }
     }
 
-    loadMonthData() {
-        //TODO: Notebook Service Here
-    }
-
     openBtnClicked(): void {
         this.showSelector = !this.showSelector;
         if (this.showSelector) {
@@ -112,7 +108,6 @@ export class ZenDatePicker implements OnInit, OnChanges {
         }
         this.visibleMonth = { monthTxt: this.monthText(m), monthNbr: m, year: y };
         this.createMonth(m, y);
-        this.loadMonthData();
     }
 
     nextMonth(): void {
@@ -127,7 +122,7 @@ export class ZenDatePicker implements OnInit, OnChanges {
         }
         this.visibleMonth = { monthTxt: this.monthText(m), monthNbr: m, year: y };
         this.createMonth(m, y);
-        this.loadMonthData();
+        //this.loadMonthData();
     }
 
     cellClicked(cell: any): void {
@@ -150,7 +145,7 @@ export class ZenDatePicker implements OnInit, OnChanges {
         this.selectedDate = { day: date.day, month: date.month, year: date.year };
         this.selectionDayTxt = this.formatDate(date);
         this.showSelector = true;
-
+        //this.messageEvent.fire({'date:changed': this.selectedDate});
         let epoc = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).getTime() / 1000.0;
     }
 
