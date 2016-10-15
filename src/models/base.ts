@@ -1,4 +1,5 @@
 import { UUID } from 'angular2-uuid';
+import * as _ from "lodash";
 
 import { Entity } from "../interfaces/entity-interface";
 import { Options } from "../interfaces/options-interface";
@@ -18,6 +19,7 @@ export class Base implements Entity{
     level: number;
     model: string;
     type: string;
+    _: any = _;
 
     /**
      * @param  {object}  options     Object containing the following keys:
