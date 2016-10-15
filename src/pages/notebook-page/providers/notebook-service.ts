@@ -57,6 +57,7 @@ export class NotebookService {
         storage.setObject('zen-notebook', this.notebook);
     }
 
+    //TODO: Don't send a new object to each method
     addEntry(fullDate: string, entryOptions: Options){
         let [month, day, year] = fullDate.split('-');
         let yearObject = this.notebook.getChildByTitle(
