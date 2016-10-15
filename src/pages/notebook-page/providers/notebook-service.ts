@@ -12,7 +12,6 @@ import { StorageService } from '../../../providers/storage-service';
 export class NotebookService extends StorageService {
 
     notebook: Notebook;
-    collection: any;
     currentDate: Date;
     currentYear: number;
     currentMonth: number;
@@ -41,9 +40,6 @@ export class NotebookService extends StorageService {
         this.currentMonth = this.currentDate.getMonth();
         this.currentDay = this.currentDate.getDay();
         this.notebook = new Notebook(binderOptions);
-        //TODO: Don't hardcode this, put it in a more logical location
-        this.collection = this.addCollection('binder');
-        this.collection.insert(this.notebook);
 
         //TODO: Most of these options should be defaults
         let entryOptions = {
@@ -72,7 +68,7 @@ export class NotebookService extends StorageService {
             customMeta: {}
         }
         let dayEntity = new Day(dayOptions);
-        //month.addChild(dayEntity);
+        month.addChild(dayEntity);
         return dayEntity;
     }
 
@@ -84,8 +80,7 @@ export class NotebookService extends StorageService {
             customMeta: {}
         }
         let yearEntity = new Year(yearOptions);
-        console.log('in year', this.notebook);
-        //this.notebook.addChild(yearEntity);
+        this.notebook.addChild(yearEntity);
         return yearEntity;
     }
 
@@ -97,7 +92,7 @@ export class NotebookService extends StorageService {
             customMeta: {}
         }
         let monthEntity = new Month(monthOptions);
-        //year.addChild(monthEntity);
+        year.addChild(monthEntity);
         return monthEntity;
     }
 }

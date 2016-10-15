@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 
 //Third Party
+import { Ng2Webstorage } from 'ng2-webstorage';
 
 //Application
 import { MyApp } from './app.component';
@@ -21,29 +22,30 @@ import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
 import { NotebookPage } from '../pages/notebook-page/notebook-page';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    About,
-    NotebookPage,
-    SettingsDetailsPage,
-    Settings,
-    ZenHeader,
-    contentEditableDirective,
-    ZenDatePicker
-  ],
-  imports: [
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    About,
-    NotebookPage,
-    SettingsDetailsPage,
-    Settings,
-    ZenHeader
-  ],
-  providers: [
-  ]
+    declarations: [
+        MyApp,
+        About,
+        NotebookPage,
+        SettingsDetailsPage,
+        Settings,
+        ZenHeader,
+        contentEditableDirective,
+        ZenDatePicker
+    ],
+    imports: [
+        Ng2Webstorage,
+        IonicModule.forRoot(MyApp)
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        About,
+        NotebookPage,
+        SettingsDetailsPage,
+        Settings,
+        ZenHeader
+    ],
+    providers: [
+    ]
 })
-export class AppModule {}
+export class AppModule { }

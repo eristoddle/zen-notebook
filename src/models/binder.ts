@@ -1,6 +1,13 @@
 import { Container } from "./container";
 import { Entity } from "../interfaces/entity-interface";
 
+export enum schemaStructure {
+    hierarchal,
+    collection,
+    flat,
+    filebased
+}
+
 /**
  * The highest class in the heirarchy
  * The notebook, book, project or file
@@ -16,6 +23,7 @@ export class Binder extends Container{
      * @type {boolean}
      */
     template: boolean;
+    structure: schemaStructure = schemaStructure.hierarchal;
 
     /**
      * @param  {[type]} options [description]

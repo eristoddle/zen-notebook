@@ -5,6 +5,7 @@ export class Container extends Base{
 
     constructor(options){
         super(options);
+        this.children = [];
     }
 
     //NOTE: This may have to be a uuid reference due to browser memory?
