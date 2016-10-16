@@ -23,11 +23,14 @@ export class Container extends Base{
     getChildByTitle(newChild: any, title: string){
         let child = this._.find(this.children, ['title', title]);
         if (child){
-            // delete newChild;
             return child;
         }
         this.addChild(newChild);
         return newChild;
+    }
+
+    getChildren(){
+        return this.children;
     }
 
 }

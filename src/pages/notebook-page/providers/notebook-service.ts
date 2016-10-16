@@ -36,8 +36,9 @@ export class NotebookService {
 
         this.currentDate = new Date();
         this.currentYear = this.currentDate.getFullYear();
-        this.currentMonth = this.currentDate.getMonth();
-        this.currentDay = this.currentDate.getDay();
+        //TODO: Deal with JS month BS
+        this.currentMonth = this.currentDate.getMonth() + 1;
+        this.currentDay = this.currentDate.getDate();
         this.notebook = new Notebook(binderOptions);
 
         //TODO: Most of these options should be defaults
@@ -55,6 +56,10 @@ export class NotebookService {
             entryOptions
         );
         storage.setObject('zen-notebook', this.notebook);
+    }
+
+    openEntries(fullDate: string){
+        return this.notebook.getEntriesByPath(fullDate, '-');
     }
 
     //TODO: Don't send a new object to each method

@@ -21,9 +21,12 @@ export class NotebookPage implements OnDestroy, OnInit {
         console.log('notebook-page component', notebookService);
     }
 
+    //TODO: Handle multiple entries per day
     ngOnInit() {
         this.calendarService.selectedDate.subscribe(data => {
-            console.log('date change subscribe', data);
+            let entries = this.notebookService.openEntries(data);
+            console.log('entries', entries);
+            this.editorContent = entries[0].contents;
         });
     }
 

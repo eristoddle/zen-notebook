@@ -3,7 +3,11 @@ import { Subject, BehaviorSubject }    from 'rxjs';
 
 @Injectable()
 export class CalendarService {
-    selectedDate: Subject<string> = new BehaviorSubject<string>(new Date().toString());
+    private currentDate: Date = new Date();
+
+    selectedDate: Subject<string> = new BehaviorSubject<string>(
+        `${this.currentDate.getFullYear()}-${this.currentDate.getMonth() + 1}-${this.currentDate.getDate()}`
+    );
 
     public changeDate(date: string): void {
         this.selectedDate.next(date);

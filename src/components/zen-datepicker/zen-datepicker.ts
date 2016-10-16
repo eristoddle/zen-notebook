@@ -147,7 +147,7 @@ export class ZenDatePicker implements OnInit, OnChanges {
         this.selectedDate = { day: date.day, month: date.month, year: date.year };
         this.selectionDayTxt = this.formatDate(date);
         this.showSelector = true;
-        this.calendarService.changeDate(`${date.month}-${date.day}-${date.year}`);
+        this.calendarService.changeDate(`${date.year}-${date.month}-${date.day}`);
         let epoc = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).getTime() / 1000.0;
     }
 
