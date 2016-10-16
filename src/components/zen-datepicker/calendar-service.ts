@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
+import { Subject, BehaviorSubject }    from 'rxjs';
 
 @Injectable()
 export class CalendarService {
-    private selectedDate = new BehaviorSubject<string>(new Date().toString());
+    selectedDate: Subject<string> = new BehaviorSubject<string>(new Date().toString());
 
-    dateChanged$ = this.selectedDate.asObservable();
-
-    changeDate(date: string): void {
-        console.log('calendar-service changeDate', date);
+    public changeDate(date: string): void {
         this.selectedDate.next(date);
     }
 }

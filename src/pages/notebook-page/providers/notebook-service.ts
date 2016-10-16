@@ -58,7 +58,7 @@ export class NotebookService {
     }
 
     //TODO: Don't send a new object to each method
-    addEntry(fullDate: string, entryOptions: Options){
+    addEntry(fullDate: string, entryOptions: any){
         let [month, day, year] = fullDate.split('-');
         let yearObject = this.notebook.getChildByTitle(
             new Year({ title: year}),

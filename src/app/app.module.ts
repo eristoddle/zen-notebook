@@ -14,9 +14,12 @@ import { Settings } from '../pages/settings/settings';
 import { SettingsDetailsPage } from '../pages/settings-details/settings-details';
 import { ZenHeader } from '../components/zen-header/zen-header';
 import { contentEditableDirective } from '../components/contenteditable/contenteditable';
+import { CalendarService } from '../components/zen-datepicker/calendar-service';
+import { StorageService } from '../providers/storage-service'
 
 //TODO: Load these components dynamically from mode
 import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
+import { NotebookService } from '../pages/notebook-page/providers/notebook-service';
 
 //Mode Components
 import { NotebookPage } from '../pages/notebook-page/notebook-page';
@@ -36,7 +39,9 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
         Ng2Webstorage,
         IonicModule.forRoot(MyApp)
     ],
-    bootstrap: [IonicApp],
+    bootstrap: [
+        IonicApp
+    ],
     entryComponents: [
         MyApp,
         About,
@@ -46,6 +51,9 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
         ZenHeader
     ],
     providers: [
+        CalendarService,
+        NotebookService,
+        StorageService
     ]
 })
 export class AppModule { }

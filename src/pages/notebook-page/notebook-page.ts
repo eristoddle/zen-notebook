@@ -10,11 +10,7 @@ import { CalendarService } from '../../components/zen-datepicker/calendar-servic
 @Component({
     selector: 'notebook',
     templateUrl: 'notebook-page.html',
-    providers: [
-        StorageService,
-        NotebookService,
-        CalendarService
-    ]
+    providers: []
 })
 export class NotebookPage implements OnDestroy, OnInit {
     editorContent: string;
@@ -25,8 +21,8 @@ export class NotebookPage implements OnDestroy, OnInit {
         console.log('notebook-page component', notebookService);
     }
 
-    ngOnInit(){
-        this.calendarService.dateChanged$.subscribe(data => {
+    ngOnInit() {
+        this.calendarService.selectedDate.subscribe(data => {
             console.log('date change subscribe', data);
         });
     }

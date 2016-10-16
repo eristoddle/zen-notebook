@@ -6,7 +6,7 @@ import {CalendarService} from './calendar-service';
 @Component({
     selector: 'zen-date-picker',
     templateUrl: 'zen-datepicker.html',
-    providers: [CalendarService]
+    providers: []
 })
 export class ZenDatePicker implements OnInit, OnChanges {
     showSelector: boolean = false;
@@ -144,11 +144,10 @@ export class ZenDatePicker implements OnInit, OnChanges {
 
     selectDate(date: any): void {
         //TODO: Here is where I highlight the cell and load the days content
-        console.log('day cell clicked', date);
         this.selectedDate = { day: date.day, month: date.month, year: date.year };
         this.selectionDayTxt = this.formatDate(date);
         this.showSelector = true;
-        this.calendarService.changeDate(this.selectedDate);
+        this.calendarService.changeDate(`${date.month}-${date.day}-${date.year}`);
         let epoc = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0).getTime() / 1000.0;
     }
 
