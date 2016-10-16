@@ -47,15 +47,15 @@ export class Binder extends Container{
         let entries;
 
         console.log('getEntriesByPath', parts);
-        //TODO: Try Catch needed to capture first missing level
         parts.forEach((part, index) => {
             if(currentObject){
                 currentObject = currentObject.findChildByTitle(part);
-                entries = currentObject.getChildren();
-                //console.log('running entries', entries);
-            } else if (!firstMissingLevel){
-                firstMissingTitle = part;
-                firstMissingLevel = index + 1;
+                if(currentObject){
+                    entries = currentObject.getChildren();
+                } else {
+                    firstMissingTitle = part;
+                    firstMissingLevel = index + 1;
+                }
             }
         });
 

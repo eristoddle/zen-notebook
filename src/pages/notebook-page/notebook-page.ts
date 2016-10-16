@@ -26,7 +26,13 @@ export class NotebookPage implements OnDestroy, OnInit {
         this.calendarService.selectedDate.subscribe(data => {
             let entries = this.notebookService.openEntries(data);
             console.log('entries', entries);
-            this.editorContent = entries[0].contents;
+            if(isNaN(entries[0])){
+                this.editorContent = entries[0].contents;
+            } else {
+                console.log('null content');
+                //TODO: This is not nulling content
+                this.editorContent = null;
+            }
         });
     }
 
