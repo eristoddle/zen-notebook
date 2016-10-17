@@ -20,9 +20,11 @@ export class contentEditableDirective implements OnInit {
         this.currentContent = this.el.nativeElement.innerText;
         this.myPropertyChange.emit(this.currentContent);
     }
+    
     ngOnInit() {
         this.el.nativeElement.innerText = this.myProperty;
         this.currentContent = this.myProperty;
+
         this.contentService.liveContent.subscribe(data => {
             console.info('loading date content', data);
             this.currentContent = data;

@@ -13,7 +13,7 @@ export enum schemaStructure {
  * The notebook, book, project or file
  * Has no parent
  */
-export class Binder extends Container{
+export class Binder extends Container {
 
     level: number = 0;
     model: string = 'Binder';
@@ -30,7 +30,7 @@ export class Binder extends Container{
      * @param  {[type]} schema  [description]
      * @return {[type]}         [description]
      */
-    constructor(options){
+    constructor(options) {
         super(options);
     }
 
@@ -48,9 +48,9 @@ export class Binder extends Container{
 
         console.log('getEntriesByPath', parts);
         parts.forEach((part, index) => {
-            if(currentObject){
+            if (currentObject) {
                 currentObject = currentObject.findChildByTitle(part);
-                if(currentObject){
+                if (currentObject) {
                     entries = currentObject.getChildren();
                 } else {
                     firstMissingTitle = part;
@@ -59,11 +59,29 @@ export class Binder extends Container{
             }
         });
 
-        if (!firstMissingLevel){
+        if (!firstMissingLevel) {
             return entries;
         } else {
             return [firstMissingLevel, firstMissingTitle];
         }
     }
 
+    /**
+     * [createEntryByPath Does not check for existence.
+     * Use getEntriesByPath to find first missing level]
+     *
+     * @param  {string} path      [description]
+     * @param  {string} delimiter [description]
+     * @return {[type]}           [description]
+     */
+    createEntryByPath(entryOptions: any, path: string, delimiter: string) {
+        let parts = path.split(delimiter);
+        let parentContainer = this;
+
+        parts.forEach(part => {
+            parentContainer = parentContainer.findChildByTitle(part);
+        });
+
+        parentContainer.addChild(entryOptions);
+    }
 }

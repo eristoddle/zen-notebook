@@ -14,9 +14,11 @@ import { ContentService } from '../../providers/content-service';
 })
 export class NotebookPage implements OnDestroy, OnInit {
     editorContent: string;
+    currentPath: string;
     subscription: Subscription;
 
     constructor(private notebookService: NotebookService, private calendarService: CalendarService, private contentService: ContentService) {
+        this.contentService.delimiter = '-';
         this.editorContent = '';
         console.log('notebook-page component', notebookService);
     }
@@ -25,20 +27,28 @@ export class NotebookPage implements OnDestroy, OnInit {
     //TODO: More logical way of handling first missing level
     ngOnInit() {
         this.calendarService.selectedDate.subscribe(data => {
-            let entries = this.notebookService.openEntries(data);
-            console.log('entries', entries);
-            if(isNaN(entries[0])){
-                this.editorContent = entries[0].contents;
-                this.contentService.changeContent(this.editorContent);
-            } else {
-                this.editorContent = '';
-                this.contentService.changeContent(this.editorContent);
-            }
+            this.saveContent();
+            this.loadContent(data);
         });
+    }
 
-        // this.contentService.liveContent.subscribe(data => {
-        //     console.log('liveContent', data);
-        // });
+    saveContent(): void {
+        this.notebookService.addEntry(this.currentPath, this.editorContent);
+    }
+
+    loadContent(data: string): void {
+        let entries = this.notebookService.openEntries(data);
+
+        this.currentPath = data;
+        this.contentService.changePath(data);
+
+        console.info('retrieved entries', entries, this.currentPath);
+        if (isNaN(entries[0])) {
+            this.editorContent = entries[0].contents;
+        } else {
+            this.editorContent = '';
+        }
+        this.contentService.changeContent(this.editorContent);
     }
 
     ngOnDestroy() {

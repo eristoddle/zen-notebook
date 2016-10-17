@@ -63,6 +63,7 @@ export class NotebookService {
     }
 
     //TODO: Don't send a new object to each method
+    //TODO use getEntriesByPath & createEntryByPath
     addEntry(fullDate: string, entryOptions: any){
         let [month, day, year] = fullDate.split('-');
         let yearObject = this.notebook.getChildByTitle(
