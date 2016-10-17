@@ -15,6 +15,7 @@ import { ContentService } from '../../providers/content-service';
 export class NotebookPage implements OnDestroy, OnInit {
     editorContent: string;
     currentPath: string;
+    currentEntryOptions: string;
     subscription: Subscription;
 
     constructor(private notebookService: NotebookService, private calendarService: CalendarService, private contentService: ContentService) {
@@ -23,8 +24,6 @@ export class NotebookPage implements OnDestroy, OnInit {
         console.log('notebook-page component', notebookService);
     }
 
-    //TODO: Handle multiple entries per day
-    //TODO: More logical way of handling first missing level
     ngOnInit() {
         this.calendarService.selectedDate.subscribe(data => {
             this.saveContent();
@@ -33,9 +32,18 @@ export class NotebookPage implements OnDestroy, OnInit {
     }
 
     saveContent(): void {
-        this.notebookService.addEntry(this.currentPath, this.editorContent);
+        if (this.currentPath && this.editorContent.length) {
+            if(this.currentEntryOptions){
+                Object.assign(this.currentEntryOptions, { contents: this.editorContent })
+                this.notebookService.editEntry(this.currentPath, this.currentEntryOptions);
+            } else {
+                this.notebookService.addEntry(this.currentPath, { contents: this.editorContent });
+            }
+        }
     }
 
+    //TODO: Handle multiple entries per day
+    //TODO: More logical way of handling first missing level
     loadContent(data: string): void {
         let entries = this.notebookService.openEntries(data);
 
@@ -45,9 +53,12 @@ export class NotebookPage implements OnDestroy, OnInit {
         console.info('retrieved entries', entries, this.currentPath);
         if (isNaN(entries[0])) {
             this.editorContent = entries[0].contents;
+            this.currentEntryOptions = entries[0];
         } else {
             this.editorContent = '';
+            this.currentEntryOptions = '';
         }
+
         this.contentService.changeContent(this.editorContent);
     }
 

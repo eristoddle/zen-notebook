@@ -84,4 +84,19 @@ export class Binder extends Container {
 
         parentContainer.addChild(entryOptions);
     }
+
+    editEntry(entryOptions: any, path: string, delimiter: string) {
+        let uuid = entryOptions.uuid;
+        let parts = path.split(delimiter);
+        let parentContainer = this;
+
+        parts.forEach(part => {
+            parentContainer = parentContainer.findChildByTitle(part);
+        });
+        console.log('parent', parentContainer);
+        let entry = parentContainer.findChildByUuid(uuid);
+        console.log('entry', entry);
+        entry.dateModified = new Date();
+        entry.contents = entryOptions.contents;
+    }
 }

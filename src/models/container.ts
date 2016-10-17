@@ -20,6 +20,10 @@ export class Container extends Base{
         return this._.find(this.children, ['title', title]);
     }
 
+    findChildByUuid(uuid: string){
+        return this._.find(this.children, ['uuid', uuid]);
+    }
+
     getChildByTitle(newChild: any, title: string){
         let child = this._.find(this.children, ['title', title]);
         if (child){
