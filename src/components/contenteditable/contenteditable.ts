@@ -1,5 +1,6 @@
-//http://plnkr.co/edit/RvcCyZnRLc1lGh496WlK?p=preview
-import {Input, Output, Directive, ElementRef, Renderer, EventEmitter, OnInit} from '@angular/core'
+import {Input, Output, Directive, ElementRef, Renderer, EventEmitter, OnInit} from '@angular/core';
+
+import { ContentService } from '../../providers/content-service';
 
 @Directive({
     selector: '[contenteditable]',
@@ -8,14 +9,24 @@ import {Input, Output, Directive, ElementRef, Renderer, EventEmitter, OnInit} fr
     }
 })
 export class contentEditableDirective implements OnInit {
+    private currentContent: string;
+
     @Input() myProperty;
     @Output() myPropertyChange: EventEmitter<any> = new EventEmitter();
-    constructor(private el: ElementRef, private renderer: Renderer) { }
+
+    constructor(private el: ElementRef, private renderer: Renderer, private contentService: ContentService) { }
 
     update(event) {
-        this.myPropertyChange.emit(this.el.nativeElement.innerText);
+        this.currentContent = this.el.nativeElement.innerText;
+        this.myPropertyChange.emit(this.currentContent);
     }
     ngOnInit() {
         this.el.nativeElement.innerText = this.myProperty;
+        this.currentContent = this.myProperty;
+        this.contentService.liveContent.subscribe(data => {
+            console.info('loading date content', data);
+            this.currentContent = data;
+            this.el.nativeElement.innerText = data;
+        });
     }
 }

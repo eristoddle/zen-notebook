@@ -15,7 +15,8 @@ import { SettingsDetailsPage } from '../pages/settings-details/settings-details'
 import { ZenHeader } from '../components/zen-header/zen-header';
 import { contentEditableDirective } from '../components/contenteditable/contenteditable';
 import { CalendarService } from '../components/zen-datepicker/calendar-service';
-import { StorageService } from '../providers/storage-service'
+import { StorageService } from '../providers/storage-service';
+import { ContentService } from '../providers/content-service';
 
 //TODO: Load these components dynamically from mode
 import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
@@ -53,7 +54,8 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
     providers: [
         CalendarService,
         NotebookService,
-        StorageService
+        StorageService,
+        ContentService
     ]
 })
 export class AppModule { }
