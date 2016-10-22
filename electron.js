@@ -2,13 +2,9 @@
 'use strict';
 const electron = require('electron');
 // Module to control application life.
-const {
-    app
-} = electron;
+const { app } = electron;
 // Module to create native browser window.
-const {
-    BrowserWindow
-} = electron;
+const { BrowserWindow } = electron;
 
 let win;
 
@@ -19,19 +15,22 @@ function createWindow() {
         height: 600
     });
 
-    var url = 'http://localhost:8100';
-    var Args = process.argv.slice(2);
-    Args.forEach(function (val) {
-        if (val === "dist") {
-            url = 'file://' + __dirname + '/www/index.html'
-        }
-    });
+    // var url = 'http://localhost:8100';
+    // var Args = process.argv.slice(2);
+    // Args.forEach(function (val) {
+    //     if (val === "dist") {
+    //         url = 'file://' + __dirname + '/www/index.html'
+    //     }
+    // });
 
     // and load the index.html of the app.
-    win.loadURL(url);
+    //win.loadURL(url);
+
+    // and load the index.html of the app.
+    win.loadURL(`file://${__dirname}/www/index.html`)
 
     // Open the DevTools.
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Emitted when the window is closed.
     win.on('closed', () => {

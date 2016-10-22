@@ -17,6 +17,7 @@ import { contentEditableDirective } from '../components/contenteditable/contente
 import { CalendarService } from '../components/zen-datepicker/calendar-service';
 import { StorageService } from '../providers/storage-service';
 import { ContentService } from '../providers/content-service';
+import { SettingsService } from '../providers/settings-service';
 
 //TODO: Load these components dynamically from mode
 import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
@@ -55,7 +56,8 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
         CalendarService,
         NotebookService,
         StorageService,
-        ContentService
+        ContentService,
+        SettingsService
     ]
 })
 export class AppModule { }
