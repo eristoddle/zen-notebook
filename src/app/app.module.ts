@@ -8,6 +8,10 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 //Application
 import { MyApp } from './app.component';
 
+//Electron
+/// <reference path="../../typings/globals/electron" />
+import { remote, ipcRenderer } from 'electron';
+
 //Core Components
 import { About } from '../pages/about/about';
 import { Settings } from '../pages/settings/settings';

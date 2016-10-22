@@ -2,6 +2,7 @@
   "dependencies": {},
   "devDependencies": {},
   "globalDependencies": {
+    "electron": "registry:env/electron#0.37.6+20160909065630",
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "lokijs": "registry:dt/lokijs#0.0.0+20160316155526"
   }

@@ -87,13 +87,16 @@
     "windows",
     "browser"
   ],
+  "config": {
+    "ionic_rollup": "./config/rollup.config.js"
+  },
   "devDependencies": {
     "@ionic/app-scripts": "^0.0.23",
     "canonical-path": "0.0.2",
     "del": "2.2.0",
     "dgeni": "^0.4.1",
-    "electron-builder": "^6.6.1",
     "electron": "^1.4.3",
+    "electron-builder": "^6.6.1",
     "electron-devtools-installer": "^2.0.1",
     "electron-packager": "^8.1.0",
     "electron-rebuild": "^1.2.1",
@@ -104,6 +107,8 @@
     "gulp-watch": "4.3.5",
     "lodash-node": "~2.4.1",
     "rimraf": "^2.5.4",
+    "rollup-plugin-json": "^2.0.2",
+    "rollup-plugin-node-builtins": "^2.0.0",
     "run-sequence": "1.1.5",
     "source-map-loader": "^0.1.5",
     "strip-sourcemap-loader": "0.0.1",
@@ -116,6 +121,7 @@
     "angular2-uuid": "^1.1.0",
     "buzz": "^1.2.0",
     "dropbox": "^2.2.1",
+    "electron": "^1.4.4",
     "electron-config": "^0.2.1",
     "electron-json-storage": "^2.0.0",
     "ionic-angular": "2.0.0-rc.0",
