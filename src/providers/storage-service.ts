@@ -44,7 +44,7 @@ export class StorageService {
         this.storage.clear(key);
     }
 
-    public load() {
+    load() {
         if (this.data) {
             return Promise.resolve(this.data);
         }
@@ -56,6 +56,19 @@ export class StorageService {
                     this.data = data;
                     resolve(this.data);
                 });
+        });
+    }
+
+    readFile(inputValue: any): Promise<string> {
+        return new Promise((resolve, reject) => {
+            let file: File = inputValue.files[0];
+            let fileReader = new FileReader();
+
+            fileReader.onloadend = (e) => {
+                resolve(fileReader.result);
+            }
+
+            fileReader.readAsText(file);
         });
     }
 

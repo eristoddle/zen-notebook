@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { StorageService } from './storage-service';
+
 @Injectable()
 export class SettingsService {
 
     filePath: any;
 
-    constructor(public http: Http) {
+    constructor(public http: Http, private storageService: StorageService) {
         this.filePath = {
             icon: 'folder',
             title: 'File Path',
