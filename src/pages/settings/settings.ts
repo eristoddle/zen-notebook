@@ -15,7 +15,8 @@ export class Settings {
         note: string,
         icon: string,
         value: any,
-        fileDialog: boolean
+        fileDialog: boolean,
+        tempData: any
     }>;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private settingsService: SettingsService) {
@@ -24,13 +25,7 @@ export class Settings {
         this.items = [];
         for (const key in this.settingsService) {
             let obj = this.settingsService[key];
-            this.items.push({
-                title: obj.title,
-                note: obj.description,
-                icon: obj.icon,
-                value: obj.value,
-                fileDialog: obj.fileDialog
-            });
+            this.items.push(obj);
         }
     }
 

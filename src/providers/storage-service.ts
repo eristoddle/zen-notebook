@@ -62,10 +62,14 @@ export class StorageService {
     readFile(inputValue: any): Promise<string> {
         return new Promise((resolve, reject) => {
             let file: File = inputValue.files[0];
+            let path: string = inputValue.value;
             let fileReader = new FileReader();
 
             fileReader.onloadend = (e) => {
-                resolve(fileReader.result);
+                resolve({
+                    path: path,
+                    result: fileReader.result
+                });
             }
 
             fileReader.readAsText(file);

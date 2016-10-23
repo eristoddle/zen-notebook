@@ -9,13 +9,14 @@ export class SettingsService {
 
     filePath: any;
 
-    constructor(public http: Http, private storageService: StorageService) {
+    constructor(private http: Http, private storageService: StorageService) {
         this.filePath = {
             icon: 'folder',
             title: 'File Path',
             description: 'Location to store journal json file',
             value: '/Users/stemiller/Dropbox/Writing/ZenNotebook/newVersion.json',
-            fileDialog: true
+            fileDialog: true,
+            tempData: null
         };
     }
 
