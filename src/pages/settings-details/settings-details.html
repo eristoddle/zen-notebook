@@ -16,6 +16,6 @@
             <b>{{selectedItem.description}}</b>
             <b>{{selectedItem.value}}</b>
         </div>
-        <input type="file" ngFileSelect [options]="options" (onUpload)="handleUpload($event)">
+        <input type="file" (change)="handleUpload($event)">
     </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 import { SettingsService } from '../../providers/settings-service';
@@ -9,24 +9,27 @@ import { SettingsService } from '../../providers/settings-service';
 export class SettingsDetailsPage {
 
     selectedItem: any;
-    uploadFile: any;
     showFileDialog: boolean;
-    options: Object = {
-        url: 'http://localhost:10050/upload'
-    };
+    fileReader: FileReader = new FileReader();
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private settingsService: SettingsService) {
-        // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
+        console.log('selectedItem', this.selectedItem);
         this.showFileDialog = this.selectedItem.fileDialog
     }
 
-    handleUpload(data): void {
-        console.log('handleUpload', data);
-        if (data && data.response) {
-            data = JSON.parse(data.response);
-            this.uploadFile = data;
-        }
+    handleUpload($event): void {
+        this.readFile($event.target);
     }
-    
+
+    readFile(inputValue: any): void {
+        let file: File = inputValue.files[0];
+
+        this.fileReader.onloadend = (e) => {
+            console.log(this.fileReader.result);
+        }
+
+        this.fileReader.readAsText(file);
+    }
+
 }
