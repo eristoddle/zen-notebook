@@ -2,5 +2,9 @@
   "name": "zen-notebook",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "watchPatterns": [
+    "www/js/*",
+    "!www/css/**/*"
+  ]
 }

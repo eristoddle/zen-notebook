@@ -1,18 +1,21 @@
 <ion-header>
-  <ion-navbar>
-    <button menuToggle *ngIf="!selectedItem">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Settings: {{selectedItem.title}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button menuToggle *ngIf="!selectedItem">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Settings:
+            {{selectedItem.title}}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
- <div *ngIf="selectedItem" class="selection">
-    <b>{{selectedItem.title}}</b>
-    <ion-icon name="{{selectedItem.icon}}"></ion-icon>
-    <div>
-      You navigated here from <b>{{selectedItem.title}}</b>
+    <div *ngIf="selectedItem" class="selection">
+        <b>{{selectedItem.title}}</b>
+        <ion-icon name="{{selectedItem.icon}}"></ion-icon>
+        <div>
+            <b>{{selectedItem.description}}</b>
+            <b>{{selectedItem.value}}</b>
+        </div>
+        <!-- <input *ngIf="showFileDialog" type="file" ngFileSelect [options]="options" (onUpload)="handleUpload($event)"> -->
     </div>
-  </div>
 </ion-content>

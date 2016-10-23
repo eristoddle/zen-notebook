@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 //TODO: Maybe look at ForeRunner db in the future
 import {LocalStorageService} from 'ng2-webstorage';
-import LZString from 'lz-string';
+//import LZString from 'lz-string';
 
 @Injectable()
 export class StorageService {
@@ -16,25 +16,25 @@ export class StorageService {
     }
 
     setItem(key, value) {
-        value = LZString.compress(value);
+        //value = LZString.compress(value);
         this.storage.store(key, value);
     }
 
     getItem(key) {
         var value = this.storage.retrieve(key);
-        value = LZString.decompress(value);
+        //value = LZString.decompress(value);
         return value;
     }
 
     setObject(key, object) {
         var value = JSON.stringify(object);
-        value = LZString.compress(value);
+        //value = LZString.compress(value);
         this.storage.store(key, value);
     }
 
     getObject(key) {
         var value = this.storage.retrieve(key);
-        value = LZString.decompress(value);
+        //value = LZString.decompress(value);
         value = JSON.parse(value)
         return value;
     }

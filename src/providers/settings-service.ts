@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-//import { ElectronConfig } from 'electron-config';
 import 'rxjs/add/operator/map';
-
-// import * as Config from 'electron-config';
 
 @Injectable()
 export class SettingsService {
 
-  constructor(public http: Http) {
-    console.log('Hello SettingsService Provider');
-  }
+    filePath: any;
+
+    constructor(public http: Http) {
+        this.filePath = {
+            icon: 'folder',
+            title: 'File Path',
+            description: 'Location to store journal json file',
+            value: '/Users/stemiller/Dropbox/Writing/ZenNotebook/newVersion.json',
+            fileDialog: true
+        };
+    }
 
 }
