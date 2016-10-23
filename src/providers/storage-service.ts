@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 //TODO: Maybe look at ForeRunner db in the future
 import {LocalStorageService} from 'ng2-webstorage';
+//TODO: Find a replacement or upgrade lz-string
 //import LZString from 'lz-string';
 
 @Injectable()

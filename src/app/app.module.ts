@@ -4,14 +4,10 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 
 //Third Party
 import { Ng2Webstorage } from 'ng2-webstorage';
-//import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 
 //Application
 import { MyApp } from './app.component';
-
-//Electron
-// /// <reference path="../../typings/globals/electron" />
-// import { remote, ipcRenderer } from 'electron';
 
 //Core Components
 import { About } from '../pages/about/about';
@@ -33,7 +29,7 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
 
 @NgModule({
     declarations: [
-        //UPLOAD_DIRECTIVES,
+        UPLOAD_DIRECTIVES,
         MyApp,
         About,
         NotebookPage,
