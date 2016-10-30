@@ -114,13 +114,17 @@ export class NotebookService {
         //TODO: Definitely not efficient
         Object.keys(data.years).forEach(function(key) {
             let year = data.years[key];
+            let yearString = key;
             Object.keys(year).forEach(function(key) {
                 let month = year[key];
+                let monthString = key;
                 Object.keys(month).forEach(function(key) {
                     let day = month[key];
+                    let dayString = key;
                     if(day.content){
+                        console.log('real old day', day);
                         //TODO: Refactor when path is array
-                        let fullDate = `${year}-${month}-${day}`
+                        let fullDate = `${yearString}-${monthString}-${dayString}`
                         let entryOptions = {
                             content: day.content,
                             customMeta: {
