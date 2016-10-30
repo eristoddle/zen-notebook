@@ -59,7 +59,7 @@ export class StorageService {
         });
     }
 
-    readFile(inputValue: any): Promise<string> {
+    readFile(inputValue: any): Promise<Object> {
         return new Promise((resolve, reject) => {
             let file: File = inputValue.files[0];
             let path: string = inputValue.value;

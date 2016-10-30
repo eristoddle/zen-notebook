@@ -21,12 +21,7 @@ export class Settings {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private settingsService: SettingsService) {
         this.selectedItem = navParams.get('item');
-
-        this.items = [];
-        for (const key in this.settingsService) {
-            let obj = this.settingsService[key];
-            this.items.push(obj);
-        }
+        this.items = this.settingsService.getSettings();
     }
 
     itemTapped(event, item) {

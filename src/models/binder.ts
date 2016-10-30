@@ -1,5 +1,6 @@
 import { Container } from "./container";
 import { Entity } from "../interfaces/entity-interface";
+import { StorageService } from '../providers/storage-service';
 
 export enum schemaStructure {
     hierarchal,
@@ -24,6 +25,7 @@ export class Binder extends Container {
      */
     template: boolean;
     structure: schemaStructure = schemaStructure.hierarchal;
+    filePath: string;
 
     /**
      * @param  {[type]} options [description]
@@ -32,6 +34,9 @@ export class Binder extends Container {
      */
     constructor(options) {
         super(options);
+        if (options.filePath) {
+            this.filePath = options.filePath;
+        }
     }
 
     /**
@@ -39,6 +44,7 @@ export class Binder extends Container {
      * @param  {string} path [description]
      * @return {[type]}      [description]
      */
+    //TODO: remove delimiter parameter by making path an array
     getEntriesByPath(path: string, delimiter: string): any[] {
         let parts = path.split(delimiter);
         let firstMissingLevel;

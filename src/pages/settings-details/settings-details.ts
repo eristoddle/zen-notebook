@@ -19,14 +19,15 @@ export class SettingsDetailsPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private settingsService: SettingsService, private storageService: StorageService) {
         this.selectedItem = navParams.get('item');
-        //console.log('selectedItem', this.selectedItem);
         this.showFileDialog = this.selectedItem.fileDialog
     }
 
     handleUpload($event): void {
         this.storageService.readFile($event.target)
             .then(results => {
-                console.log('upload results', results);
+                //TODO: Refactor to be reusable
+                this.settingsService.changeValue('filePath', $event.target.value);
+                this.settingsService.setRawData(results);
             });
     }
 

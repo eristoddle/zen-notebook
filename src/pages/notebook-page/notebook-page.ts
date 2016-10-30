@@ -7,6 +7,7 @@ import { NotebookService } from './providers/notebook-service';
 import { StorageService } from '../../providers/storage-service';
 import { CalendarService } from '../../components/zen-datepicker/calendar-service';
 import { ContentService } from '../../providers/content-service';
+import { SettingsService } from '../../providers/settings-service';
 
 @Component({
     selector: 'notebook',
@@ -18,16 +19,18 @@ export class NotebookPage implements OnDestroy, OnInit {
     currentEntryOptions: string;
     subscription: Subscription;
 
-    constructor(private notebookService: NotebookService, private calendarService: CalendarService, private contentService: ContentService) {
+    constructor(private notebookService: NotebookService, private calendarService: CalendarService, private contentService: ContentService, private settingsService: SettingsService) {
         this.contentService.delimiter = '-';
         this.editorContent = '';
-        console.log('notebook-page component', notebookService);
     }
 
     ngOnInit() {
         this.calendarService.selectedDate.subscribe(data => {
             this.saveContent();
             this.loadContent(data);
+        });
+        this.settingsService.rawData.subscribe(data => {
+            this.notebookService.loadData(data);
         });
     }
 
@@ -62,8 +65,8 @@ export class NotebookPage implements OnDestroy, OnInit {
         this.contentService.changeContent(this.editorContent);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(){
+        //TODO: Only good at creating console errors?
         //this.subscription.unsubscribe();
-        //
     }
 }
