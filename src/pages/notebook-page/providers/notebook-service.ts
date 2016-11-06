@@ -51,7 +51,7 @@ export class NotebookService {
     loadData(data: any) {
         if (data.result) {
             let obj = JSON.parse(data.result);
-            let file = obj.file;
+            let file = data.path;
 
             this.settingsService.changeValue('filePath', file);
 

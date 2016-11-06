@@ -1,7 +1,7 @@
-declare var window: any;
 import { Component } from '@angular/core';
 import { StorageService } from '../../providers/storage-service';
 import { SettingsService } from '../../providers/settings-service';
+import { ElectronService } from '../../providers/electron-service';
 
 @Component({
     selector: 'zen-header',
@@ -9,30 +9,19 @@ import { SettingsService } from '../../providers/settings-service';
 })
 export class ZenHeader {
 
-    public window: any;
-    public fs: any;
-
-    constructor(private storageService: StorageService, private settingsService: SettingsService) {
-        this.window = window;
-        try {
-            this.fs = window.require('fs');
-        }
-        catch (e) {
-            // statements to handle any exceptions
-            console.log('fs require error', e); // pass exception object to error handler
-        }
+    constructor(private storageService: StorageService, private settingsService: SettingsService, private electronService: ElectronService) {
     }
 
     minimize() {
-        this.window.minimize();
+        this.electronService.window.minimize();
     }
 
     contract() {
-        this.window.unmaximize();
+        this.electronService.window.unmaximize();
     }
 
     expand() {
-        this.window.maximize();
+        this.electronService.window.maximize();
     }
 
     power() {
@@ -40,14 +29,6 @@ export class ZenHeader {
         let content = JSON.stringify(object);
         let filepath = this.settingsService.filePath.value;
         console.log('writing', filepath, content);
-        this.fs.writeFile(filepath, content, function(err) {
-            if (err) {
-                console.log("An error ocurred updating the file", err);
-                return;
-            }
-
-            console.log("The file has been succesfully saved");
-            //this.window.close();
-        });
+        //this.storageService.saveBinder(content, filepath);
     }
 }

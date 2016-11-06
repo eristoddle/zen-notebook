@@ -21,6 +21,7 @@ import { CalendarService } from '../components/zen-datepicker/calendar-service';
 import { StorageService } from '../providers/storage-service';
 import { ContentService } from '../providers/content-service';
 import { SettingsService } from '../providers/settings-service';
+import { ElectronService } from '../providers/electron-service';
 
 //TODO: Load these components dynamically from mode
 import { ZenDatePicker } from '../components/zen-datepicker/zen-datepicker';
@@ -61,7 +62,8 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
         NotebookService,
         StorageService,
         ContentService,
-        SettingsService
+        SettingsService,
+        ElectronService
     ]
 })
 export class AppModule { }

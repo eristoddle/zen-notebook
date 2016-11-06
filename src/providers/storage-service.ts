@@ -7,13 +7,17 @@ import {LocalStorageService} from 'ng2-webstorage';
 //TODO: Find a replacement or upgrade lz-string
 //import LZString from 'lz-string';
 
+import { ElectronService } from './electron-service'
+
 @Injectable()
 export class StorageService {
 
     private data: any;
+    private persistant: any;
 
-    constructor(public http: Http, private storage: LocalStorageService) {
-
+    constructor(public http: Http, private storage: LocalStorageService, private electronService: ElectronService) {
+        //TODO: Switch based on active service
+        this.persistant = electronService;
     }
 
     setItem(key, value) {
@@ -62,7 +66,7 @@ export class StorageService {
     readFile(inputValue: any): Promise<Object> {
         return new Promise((resolve, reject) => {
             let file: File = inputValue.files[0];
-            let path: string = inputValue.value;
+            let path: string = inputValue.baseURI.replace('file:///', '');
             let fileReader = new FileReader();
 
             fileReader.onloadend = (e) => {
@@ -74,6 +78,10 @@ export class StorageService {
 
             fileReader.readAsText(file);
         });
+    }
+
+    saveBinder(data: any, path: string) {
+        //this.persistant.saveBinder(data, path);
     }
 
 }

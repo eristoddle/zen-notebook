@@ -23,6 +23,7 @@ export class SettingsDetailsPage {
     }
 
     handleUpload($event): void {
+        console.log('upload', $event);
         this.storageService.readFile($event.target)
             .then(results => {
                 this.settingsService.setRawData(results);
