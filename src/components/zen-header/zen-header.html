@@ -5,16 +5,16 @@
         </button>
 
         <ion-buttons start>
-            <button ion-button>
+            <button ion-button (click)="minimize()">
                 __
             </button>
-            <button ion-button>
+            <button ion-button (click)="contract()">
                 <ion-icon icon-only name="contract"></ion-icon>
             </button>
-            <button ion-button>
+            <button ion-button (click)="expand()">
                 <ion-icon icon-only name="expand"></ion-icon>
             </button>
-            <button ion-button>
+            <button ion-button (click)="power()">
                 <ion-icon icon-only name="power"></ion-icon>
             </button>
         </ion-buttons>

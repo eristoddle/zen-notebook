@@ -13,7 +13,10 @@ import { About } from '../pages/about/about';
 import { Settings } from '../pages/settings/settings';
 import { SettingsDetailsPage } from '../pages/settings-details/settings-details';
 import { ZenHeader } from '../components/zen-header/zen-header';
+
 import { contentEditableDirective } from '../components/contenteditable/contenteditable';
+import { ZenSearch } from '../components/zen-search/zen-search';
+
 import { CalendarService } from '../components/zen-datepicker/calendar-service';
 import { StorageService } from '../providers/storage-service';
 import { ContentService } from '../providers/content-service';
@@ -35,7 +38,8 @@ import { NotebookPage } from '../pages/notebook-page/notebook-page';
         Settings,
         ZenHeader,
         contentEditableDirective,
-        ZenDatePicker
+        ZenDatePicker,
+        ZenSearch
     ],
     imports: [
         Ng2Webstorage,

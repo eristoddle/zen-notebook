@@ -2,7 +2,7 @@
 
 
 // Global CSS
-// -------------------------------------------------- 
+// --------------------------------------------------
 // Put CSS rules here that you want to apply globally.
 //
 // To declare rules for a specific mode, create a child rule
@@ -10,3 +10,12 @@
 // automatically applied to the <body> element in the app.
 //
 // App Shared Sass variables belong in app.variables.scss.
+
+/*
+Sidebar
+ */
+ion-menu{
+    .menu-inner > ion-content{
+        position: relative;
+    }
+}

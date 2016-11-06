@@ -35,12 +35,12 @@ export class NotebookPage implements OnDestroy, OnInit {
     }
 
     saveContent(): void {
-        if (this.currentPath && this.editorContent.length) {
+        if (this.currentPath && this.editorContent && this.editorContent.length) {
             if(this.currentEntryOptions){
-                Object.assign(this.currentEntryOptions, { contents: this.editorContent })
+                Object.assign(this.currentEntryOptions, { content: this.editorContent })
                 this.notebookService.editEntry(this.currentPath, this.currentEntryOptions);
             } else {
-                this.notebookService.addEntry(this.currentPath, { contents: this.editorContent });
+                this.notebookService.addEntry(this.currentPath, { content: this.editorContent });
             }
         }
     }
@@ -53,9 +53,8 @@ export class NotebookPage implements OnDestroy, OnInit {
         this.currentPath = data;
         this.contentService.changePath(data);
 
-        console.info('retrieved entries', entries, this.currentPath);
         if (isNaN(entries[0])) {
-            this.editorContent = entries[0].contents;
+            this.editorContent = entries[0].content;
             this.currentEntryOptions = entries[0];
         } else {
             this.editorContent = '';

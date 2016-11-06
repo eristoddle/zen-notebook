@@ -20,7 +20,7 @@ export class SettingsService {
             icon: 'folder',
             title: 'File Path',
             description: 'Location to store journal json file',
-            value: '/Users/stemiller/Dropbox/Writing/ZenNotebook/newVersion.json',
+            value: null,
             fileDialog: true,
             tempData: null
         };

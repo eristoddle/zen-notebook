@@ -25,8 +25,6 @@ export class SettingsDetailsPage {
     handleUpload($event): void {
         this.storageService.readFile($event.target)
             .then(results => {
-                //TODO: Refactor to be reusable
-                this.settingsService.changeValue('filePath', $event.target.value);
                 this.settingsService.setRawData(results);
             });
     }

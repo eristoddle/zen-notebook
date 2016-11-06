@@ -52,7 +52,6 @@ export class Binder extends Container {
         let currentObject = this;
         let entries;
 
-        console.log('getEntriesByPath', parts);
         parts.forEach((part, index) => {
             if (currentObject) {
                 currentObject = currentObject.findChildByTitle(part);
@@ -99,9 +98,8 @@ export class Binder extends Container {
         parts.forEach(part => {
             parentContainer = parentContainer.findChildByTitle(part);
         });
-        console.log('parent', parentContainer);
+        
         let entry = parentContainer.findChildByUuid(uuid);
-        console.log('entry', entry);
         entry.dateModified = new Date();
         entry.contents = entryOptions.contents;
     }
