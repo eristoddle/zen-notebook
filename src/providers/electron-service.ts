@@ -1,40 +1,50 @@
-declare var window: any;
+declare var _window: any;
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ElectronService {
 
     public active: boolean = false;
-    public window: any;
+    public _window: any;
     public fs: any;
     public electron: any;
     public dialog: any;
     public remote: any;
 
     constructor() {
-        this.window = window;
-        this.active = window.require ? true : false;
-        console.log('electron active =', this.active);
+        this._window = window;
+        this.active = this._window.require ? true : false;
         if (this.active) {
-            this.fs = window.require('fs');
-            this.electron = window.require('electron');
+            this.fs = this._window.require('fs');
+            this.electron = this._window.require('electron');
             this.remote = this.electron.remote;
             this.dialog = this.remote.dialog;
-            console.log('electron', this.remote, this.dialog);
         }
     }
 
     close() {
-        this.window.close();
+        this._window.close();
     }
 
-    showOpenFile() {
-        this.dialog.showOpenDialog((fileNames) => {
+    minimize() {
+        this._window.minimize();
+    }
+
+    contract() {
+        this._window.unmaximize();
+    }
+
+    expand() {
+        this._window.maximize();
+    }
+
+    openBinder() {
+        return this.dialog.showOpenDialog((fileNames) => {
             // fileNames is an array that contains all the selected
             if (fileNames === undefined) {
                 console.log("No file selected");
             } else {
-                this.openBinder(fileNames[0]);
+                return this.processBinder(fileNames[0]);
             }
         });
     }
@@ -54,25 +64,29 @@ export class ElectronService {
         });
     }
 
-    openBinder(filepath: string) {
-        this.fs.readFile(filepath, 'utf-8', (err, data) => {
-            if (err) {
-                alert("An error ocurred reading the file :" + err.message);
-                return;
-            }
-            // Change how to handle the file content
-            console.log("The file content is : " + data);
+    processBinder(filepath: string) {
+        return new Promise((resolve, reject) => {
+            this.fs.readFile(filepath, 'utf-8', (err, data) => {
+                if (err) {
+                    alert("An error ocurred reading the file :" + err.message);
+                    reject(err);
+                }
+                console.log("The file content is : " + data);
+                resolve(data);
+            });
         });
     }
 
     saveBinder(data: any, path: string) {
-        this.fs.writeFile(path, data, function(err) {
-            if (err) {
-                console.log("An error ocurred updating the file", err);
-                return;
-            }
-
-            console.log("The file has been succesfully saved");
+        return new Promise((resolve, reject) => {
+            this.fs.writeFile(path, data, function(err) {
+                if (err) {
+                    console.log("An error ocurred updating the file", err);
+                    reject(err);
+                }
+                console.log("The file has been succesfully saved");
+                resolve();
+            });
         });
     }
 }

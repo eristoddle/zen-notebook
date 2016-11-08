@@ -16,6 +16,9 @@
             <b>{{selectedItem.description}}</b>
             <b>{{selectedItem.value}}</b>
         </div>
-        <input *ngIf="showFileDialog" type="file" (change)="handleUpload($event)">
+        <div *ngIf="showFileDialog">
+            <input *ngIf="activePlatform === 'api'" type="file" (change)="handleUpload($event)">
+            <button *ngIf="activePlatform === 'electron'" (click)="handleUpload()">Choose File</button>
+        </div>
     </div>
 </ion-content>

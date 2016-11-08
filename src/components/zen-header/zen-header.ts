@@ -13,15 +13,15 @@ export class ZenHeader {
     }
 
     minimize() {
-        this.electronService.window.minimize();
+        this.electronService.minimize();
     }
 
     contract() {
-        this.electronService.window.unmaximize();
+        this.electronService.contract();
     }
 
     expand() {
-        this.electronService.window.maximize();
+        this.electronService.expand();
     }
 
     power() {

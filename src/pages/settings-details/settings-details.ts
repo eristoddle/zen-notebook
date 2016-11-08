@@ -16,10 +16,12 @@ export class SettingsDetailsPage {
 
     selectedItem: any;
     showFileDialog: boolean;
+    public activePlatform: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private settingsService: SettingsService, private storageService: StorageService) {
         this.selectedItem = navParams.get('item');
-        this.showFileDialog = this.selectedItem.fileDialog
+        this.showFileDialog = this.selectedItem.fileDialog;
+        this.activePlatform = storageService.activePlatform;
     }
 
     handleUpload($event): void {
