@@ -8,9 +8,10 @@ import validate from 'webpack-validator';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import merge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import BabiliPlugin from 'babili-webpack-plugin';
 import baseConfig from './webpack.config.base';
 
-const config = validate(merge(baseConfig, {
+export default validate(merge(baseConfig, {
   devtool: 'cheap-module-source-map',
 
   entry: [
@@ -43,11 +44,18 @@ const config = validate(merge(baseConfig, {
         )
       },
 
+      // Fonts
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+
+      // Images
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
+        loader: 'url-loader'
+      }
     ]
   },
 
@@ -61,14 +69,10 @@ const config = validate(merge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
 
-    // Minify without warning messages and IE8 support
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false
-      }
-    }),
+    new BabiliPlugin(),
+
     new ExtractTextPlugin('style.css', { allChunks: true }),
+
     new HtmlWebpackPlugin({
       filename: '../app.html',
       template: 'app/app.html',
@@ -79,5 +83,3 @@ const config = validate(merge(baseConfig, {
   // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
   target: 'electron-renderer'
 }));
-
-export default config;
