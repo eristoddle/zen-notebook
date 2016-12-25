@@ -18,7 +18,9 @@
     "target": "es5"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings",
+    "node_modules/@types/core-js"
   ],
   "compileOnSave": false,
   "atom": {
