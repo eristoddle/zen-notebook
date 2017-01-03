@@ -1,5 +1,7 @@
 // @flow
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import ZenAppBar from '../components/ZenAppBar/ZenAppBar.js';
 
 export default class App extends Component {
   props: {
@@ -8,9 +10,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
-      </div>
+        <MuiThemeProvider>
+            <div>
+                <ZenAppBar />
+                {this.props.children}
+            </div>
+        </MuiThemeProvider>
     );
   }
 }

@@ -35,12 +35,21 @@ export default validate(merge(baseConfig, {
     //     exclude: /node_modules/
     //   }
     // ],
-    loaders: [
-      {
+    loaders: [{
         test: /\.global\.css$/,
         loaders: [
           'style-loader',
           'css-loader?sourceMap'
+        ]
+      },
+
+      {
+        test: /\.scss$/,
+        //loader: "style-loader!css-loader!sass-loader"
+        loaders: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ]
       },
 
@@ -52,11 +61,22 @@ export default validate(merge(baseConfig, {
         ]
       },
 
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      }, {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file'
+      }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      },
     ]
   },
 
