@@ -1,14 +1,16 @@
-.container {
-  position: absolute;
-  top: 30%;
-  left: 10px;
-  text-align: center;
+.editor {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    width: 65.95745%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 17.02128%;
+    clear: none;
+    min-height: 400px;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
-.container h2 {
-  font-size: 5rem;
-}
-
-.container a {
-  font-size: 1.4rem;
+.editor:focus {
+    outline: 0 solid transparent;
 }
