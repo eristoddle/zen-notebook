@@ -2,12 +2,23 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import DatePicker from 'material-ui/DatePicker';
+
+// import 'react-infinite-calendar/styles.css';
+// import InfiniteCalendar from 'react-infinite-calendar';
 
 export default class ZenAppBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {
+        open: false,
+        selectedDate: new Date()
+    };
+  }
+
+  onChange = (dateString, { dateMoment, timestamp }) => {
+      console.log(dateString)
   }
 
   render() {
@@ -21,6 +32,9 @@ export default class ZenAppBar extends React.Component {
                 open={this.state.open}
                 onRequestChange={(open) => this.setState({open})}
                 docked={false}>
+
+                <DatePicker hintText="Portrait Inline Dialog" container="inline" />
+
                 <MenuItem>
                     Menu Item
                 </MenuItem>
