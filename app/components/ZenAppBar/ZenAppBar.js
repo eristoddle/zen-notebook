@@ -3,6 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
+import { Link } from 'react-router';
 
 // import 'react-infinite-calendar/styles.css';
 // import InfiniteCalendar from 'react-infinite-calendar';
@@ -33,13 +34,21 @@ export default class ZenAppBar extends React.Component {
                 onRequestChange={(open) => this.setState({open})}
                 docked={false}>
 
-                <DatePicker hintText="Portrait Inline Dialog" container="inline" />
+                <DatePicker
+                    hintText="Portrait Inline Dialog"
+                    container="inline"
+                    defaultDate={this.state.selectedDate}
+                />
 
-                <MenuItem>
-                    Menu Item
+            <MenuItem onTouchTap={() => this.setState({open: !this.state.open})}>
+                    <Link to="/">
+                        Home
+                    </Link>
                 </MenuItem>
-                <MenuItem>
-                    Menu Item 2
+                <MenuItem onTouchTap={() => this.setState({open: !this.state.open})}>
+                    <Link to="/counter">
+                        Counter
+                    </Link>
                 </MenuItem>
             </Drawer>
         </div>

@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import styles from './Home.css';
 import ContentEditable from 'react-contenteditable'
 
@@ -26,9 +25,6 @@ export default class Home extends Component {
                         onChange={this.handleChange}
                         className={styles.editor}
                         />
-                    <Link to="/counter">
-                        to Counter
-                    </Link>
                 </div>
             </div>
         );
