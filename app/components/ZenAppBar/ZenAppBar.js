@@ -10,16 +10,17 @@ export default class ZenAppBar extends React.Component {
     this.state = {open: false};
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
-
   render() {
     return (
         <div>
             <AppBar
                 title="Zen Notebook"
-                onLeftIconButtonTouchTap={this.handleToggle}
+                onLeftIconButtonTouchTap={() => this.setState({open: !this.state.open})}
                 />
-            <Drawer open={this.state.open}>
+            <Drawer
+                open={this.state.open}
+                onRequestChange={(open) => this.setState({open})}
+                docked={false}>
                 <MenuItem>
                     Menu Item
                 </MenuItem>
