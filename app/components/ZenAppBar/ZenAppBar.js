@@ -1,16 +1,22 @@
+// TODO  add flow
 import React from 'react';
+import {Link} from 'react-router';
+
+//UI
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
-import {Link} from 'react-router';
+
+
+// TODO: Put menu items in redux
 
 // import 'react-infinite-calendar/styles.css';
 // import InfiniteCalendar from 'react-infinite-calendar';
 
 export default class ZenAppBar extends React.Component {
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       open: false,
@@ -49,9 +55,6 @@ export default class ZenAppBar extends React.Component {
           <MenuItem onTouchTap={() => this.setState({
             open: !this.state.open
           })}>
-            <Link to="/counter">
-              Counter
-            </Link>
           </MenuItem>
         </Drawer>
       </div>
