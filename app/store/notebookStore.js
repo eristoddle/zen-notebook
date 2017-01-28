@@ -1,3 +1,4 @@
+// TODO: Add flow
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
@@ -8,7 +9,7 @@ import rootReducer from '../reducers';
 import * as notebookActions from '../actions/notebook';
 
 const actionCreators = {
-  ...counterActions,
+  ...notebookActions,
   push,
 };
 

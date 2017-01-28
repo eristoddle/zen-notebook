@@ -1,4 +1,10 @@
 // @flow
+// TODO: Should this be here?
+// Electron
+const remote = require('electron').remote;
+const dialog = remote.require('electron').dialog;
+const fs = require('fs');
+
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
@@ -33,3 +39,24 @@ export function incrementAsync(delay: number = 1000) {
     }, delay);
   };
 }
+
+export function chooseNotebookFile() {
+    return dialog.showOpenDialog({
+      filters: [
+        {
+          name: 'Text',
+          extensions: ['json']
+        }
+      ],
+      properties: ['openFile', 'openDirectory']
+    }, (fileNames) => {
+      if (fileNames === undefined)
+        return;
+      let fileName = fileNames[0];
+
+      fs.readFile(fileName, (err, data) => {
+          let notebook = JSON.parse(data);
+          console.log('file', notebook);
+      });
+    })
+  }
