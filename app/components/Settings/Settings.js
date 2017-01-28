@@ -33,8 +33,9 @@ export default class Settings extends Component {
         return;
       let fileName = fileNames[0];
 
-      fs.readFile(fileName, (err, stats) => {
-        console.log(stats);
+      fs.readFile(fileName, (err, data) => {
+          let notebook = JSON.parse(data);
+          console.log('notebook', notebook, this.props);
       });
     })
   }

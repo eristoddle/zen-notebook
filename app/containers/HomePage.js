@@ -5,9 +5,13 @@ import React, {
 import Home from '../components/Home/Home';
 
 export default class HomePage extends Component {
-  render() {
-    return (
-        <Home / >
-    );
-  }
+    constructor(props: any) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Home / >
+        );
+    }
 }
