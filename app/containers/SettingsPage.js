@@ -1,16 +1,17 @@
 // @flow
-import React, {Component} from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Settings from '../components/Settings/Settings';
+import * as NotebookActions from '../actions/notebook';
 
-export default class SettingsPage extends Component {
-
-  constructor(props : any) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Settings />
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    counter: state.counter
+  };
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(NotebookActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

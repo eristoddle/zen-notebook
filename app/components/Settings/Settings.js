@@ -1,17 +1,20 @@
 // @flow
 import React, {Component} from 'react';
-import styles from './Settings.css';
+
+// UI
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
-//import Toggle from 'material-ui/Toggle';
 import Paper from 'material-ui/Paper';
 
-//Electron
+// Electron
 const remote = require('electron').remote;
 const dialog = remote.require('electron').dialog;
 const fs = require('fs');
+
+// App
+import styles from './Settings.css';
 
 export default class Settings extends Component {
 
@@ -35,7 +38,7 @@ export default class Settings extends Component {
 
       fs.readFile(fileName, (err, data) => {
           let notebook = JSON.parse(data);
-          console.log('notebook', notebook, this.props);
+          console.log('file', notebook);
       });
     })
   }
