@@ -22,12 +22,13 @@ export default class Settings extends Component {
         chooseNotebookFile: () => void
     };
 
-  constructor(props : any) {
-    super(props);
-  }
+    constructor(props : any) {
+        super(props);
+    }
 
-  render() {
+    render() {
         const { increment, incrementIfOdd, incrementAsync, decrement, counter, chooseNotebookFile } = this.props;
+        
         return (
             <div className={styles.root}>
                 <Paper zDepth={4}>
