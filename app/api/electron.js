@@ -40,9 +40,11 @@ export default store => next => action => {
         return next(action);
     }
 
+    let request = action[LOAD_NOTEBOOK];
+    let { failureType, successType, sendingType } = request;
     let { dispatch } = store;
 
-    //dispatch()
+    dispatch({ type: sendingType });
 
     dialog.showOpenDialog({
         filters: [
@@ -55,7 +57,7 @@ export default store => next => action => {
     }, (fileNames) => {
         if (fileNames === undefined) {
             dispatch({
-              //type: failureType,
+              type: failureType,
               response: 'Choose a File'
             });
         }
@@ -65,7 +67,7 @@ export default store => next => action => {
         fs.readFile(fileName, (err, data) => {
             if (err) {
                 dispatch({
-                    //type: failureType,
+                    type: failureType,
                     response: err
                 });
             }
@@ -73,7 +75,7 @@ export default store => next => action => {
             let notebook = JSON.parse(data);
             console.log('file', notebook);
             dispatch({
-                  //type: successType,
+                  type: successType,
                   response: notebook
             });
         });
