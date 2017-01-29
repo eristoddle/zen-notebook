@@ -19,6 +19,7 @@ export default class Settings extends Component {
         incrementAsync: () => void,
         decrement: () => void,
         counter: number,
+        notebook: any,
         chooseNotebookFile: () => void
     };
 
@@ -27,8 +28,8 @@ export default class Settings extends Component {
     }
 
     render() {
-        const { increment, incrementIfOdd, incrementAsync, decrement, counter, chooseNotebookFile } = this.props;
-        
+        const { increment, incrementIfOdd, incrementAsync, decrement, counter, notebook, chooseNotebookFile } = this.props;
+
         return (
             <div className={styles.root}>
                 <Paper zDepth={4}>

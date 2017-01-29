@@ -6,7 +6,8 @@ import * as NotebookActions from '../actions/notebook';
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter,
+    notebook: state.notebook
   };
 }
 

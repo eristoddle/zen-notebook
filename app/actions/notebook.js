@@ -7,7 +7,8 @@ const dialog = remote.require('electron').dialog;
 const fs = require('fs');
 
 // App
-import { LOAD_NOTEBOOK } from '../api/electron';
+// TODO: USE API middleware
+// import { LOAD_NOTEBOOK } from '../api/electron';
 
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
@@ -22,10 +23,6 @@ export function increment() {
 
 export function decrement() {
     return {type: DECREMENT_COUNTER};
-}
-
-export function loadnotebook() {
-    return {type: LOAD_NOTEBOOK};
 }
 
 export function incrementIfOdd() {
@@ -48,39 +45,36 @@ export function incrementAsync(delay : number = 1000) {
     };
 }
 
-export function chooseNotebookFile() {
-    return (dispatch : Function) => {
-        dispatch({
-            [LOAD_NOTEBOOK]: {
-                // method: 'get',
-                // path: '/questions',
-                sendingType: LOADING_NOTEBOOK,
-                successType: LOAD_NOTEBOOK_SUCCESS,
-                failureType: LOAD_NOTEBOOK_FAILED
-                // actionType: LOAD_NOTEBOOK
-            }
-        });
-        // dispatch(loadnotebook());
-    }
-}
-
 // export function chooseNotebookFile() {
-//     return dialog.showOpenDialog({
-//       filters: [
-//         {
-//           name: 'Text',
-//           extensions: ['json']
-//         }
-//       ],
-//       properties: ['openFile', 'openDirectory']
-//     }, (fileNames) => {
-//       if (fileNames === undefined)
-//         return;
-//       let fileName = fileNames[0];
-//
-//       fs.readFile(fileName, (err, data) => {
-//           let notebook = JSON.parse(data);
-//           console.log('file', notebook);
-//       });
-//     })
+//     return {
+//         type: LOAD_NOTEBOOK
+//     };
 // }
+
+// export function handleNotebookFile(){
+//     return {
+//         type: LOAD_NOTEBOOK_SUCCESS,
+//         notebook:
+//     }
+// }
+
+export function chooseNotebookFile() {
+    return dialog.showOpenDialog({
+      filters: [
+        {
+          name: 'Text',
+          extensions: ['json']
+        }
+      ],
+      properties: ['openFile', 'openDirectory']
+    }, (fileNames) => {
+      if (fileNames === undefined)
+        return;
+      let fileName = fileNames[0];
+
+      fs.readFile(fileName, (err, data) => {
+          let notebook = JSON.parse(data);
+          console.log('file', notebook);
+      });
+    })
+}

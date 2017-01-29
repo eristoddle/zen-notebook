@@ -6,6 +6,7 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 import * as notebookActions from '../actions/notebook';
+import type { notebookStateType } from '../reducers/notebook';
 
 const actionCreators = {
   ...notebookActions,

@@ -5,13 +5,6 @@ import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
 
-import * as notebookActions from '../actions/notebook';
-
-const actionCreators = {
-  ...notebookActions,
-  push,
-};
-
 const router = routerMiddleware(hashHistory);
 
 const enhancer = applyMiddleware(thunk, router);
