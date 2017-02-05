@@ -43,10 +43,10 @@ export function loadNotebook() {
 
 export function loadNotebookSuccess(notebook : Object) {
     console.log('success', notebook);
-    return {type: LOAD_NOTEBOOK_SUCCESS, payload: notebook};
+    return {type: LOAD_NOTEBOOK_SUCCESS, data: notebook};
 }
 
 export function loadNotebookFailure(data : Object) {
     console.log('failure', data);
-    return {type: LOAD_NOTEBOOK_FAILURE, payload: data};
+    return {type: LOAD_NOTEBOOK_FAILURE, data: data};
 }
