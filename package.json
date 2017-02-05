@@ -159,14 +159,15 @@
     "webpack-validator": "^2.3.0"
   },
   "dependencies": {
+    "draft-js": "^0.10.0",
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
     "material-ui": "^0.16.6",
-    "react": "^15.4.1",
+    "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-contenteditable": "^2.0.2",
-    "react-dom": "^15.4.1",
+    "react-dom": "^15.4.2",
     "react-infinite-calendar": "^1.2.2",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",

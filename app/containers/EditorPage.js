@@ -1,5 +1,5 @@
 // @flow
-import Editor from '../components/Editor/Editor';
+import ZenEditor from '../components/ZenEditor/ZenEditor';
 import {connect} from 'react-redux';
 import {loadNotebookSuccess} from '../actions/notebook';
 
@@ -17,4 +17,4 @@ function mapDispatchToProps(dispatch) {
     // }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Editor);
+export default connect(mapStateToProps, mapDispatchToProps)(ZenEditor);
