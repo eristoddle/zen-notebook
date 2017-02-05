@@ -14,11 +14,7 @@ function mapDispatchToProps(dispatch) {
     // return bindActionCreators(NotebookActions, dispatch);
     return {
         loadNotebook: () => {
-            dispatch(loadNotebook()).then((response) => {
-                !response.error
-                    ? dispatch(loadNotebookSuccess(response.payload.data))
-                    : dispatch(loadNotebookFailure(response.payload.data));
-            });
+            dispatch(loadNotebook());
         }
     }
 }
