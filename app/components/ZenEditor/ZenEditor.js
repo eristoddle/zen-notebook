@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import styles from './ZenEditor.css';
 import ContentEditable from 'react-contenteditable'
-// TODO: Try this maybe https://github.com/facebook/draft-js
+// TODO: Try this maybe instead https://github.com/facebook/draft-js
 // import {Editor, EditorState} from 'draft-js';
 
 export default class ZenEditor extends Component {
@@ -21,7 +21,7 @@ export default class ZenEditor extends Component {
         this.onChange = (evt : any) => {
             this.state.activeContent = evt.target.value;
             // TODO: This doesn't seem right
-            this.props.notebook.activeContent = this.state.activeContent;
+            this.props.notebook.activeEntry.content = this.state.activeContent;
             console.log('value', evt.target.value);
             // Loaded notebook here in this.props.notebook.notebook
             console.log('props', this.props);

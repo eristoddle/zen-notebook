@@ -4,14 +4,13 @@ import {LOAD_NOTEBOOK_SUCCESS, LOAD_NOTEBOOK_FAILURE} from '../actions/notebook'
 
 const INITIAL_STATE = {
     notebook: {},
-    activeEntry: {},
-    activeContent: ''
+    activeEntry: {}
 };
 
 export default function(state : Object = INITIAL_STATE, action : Object) {
 
     switch (action.type) {
-        
+
         case LOAD_NOTEBOOK_SUCCESS:
             console.log('reducer success', state, action);
             return Object.assign({}, state, {notebook: action.data});
