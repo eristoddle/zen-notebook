@@ -52,9 +52,11 @@ export function loadNotebookFailure(data : Object) {
 }
 
 export function updateActiveContent(content: String){
+    console.log('action update contet', content);
     return {type: UPDATE_ACTIVE_CONTENT, data: content};
 }
 
 export function updateActiveEntry(entry: Object){
+    console.log('action update entry', entry);
     return {type: UPDATE_ACTIVE_ENTRY, data: entry};
 }

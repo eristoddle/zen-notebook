@@ -3,7 +3,7 @@
 //import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Settings from '../components/Settings/Settings';
-import {loadNotebook, loadNotebookSuccess, loadNotebookFailure} from '../actions/notebook';
+import {loadNotebook} from '../actions/notebook';
 
 function mapStateToProps(state) {
     return {notebook: state.notebook};
