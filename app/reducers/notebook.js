@@ -9,8 +9,9 @@ const INITIAL_STATE = {
 };
 
 export default function(state : Object = INITIAL_STATE, action : Object) {
-    let error;
+
     switch (action.type) {
+        
         case LOAD_NOTEBOOK_SUCCESS:
             console.log('reducer success', state, action);
             return Object.assign({}, state, {notebook: action.data});

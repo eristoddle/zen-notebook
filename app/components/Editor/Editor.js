@@ -10,13 +10,13 @@ export default class Editor extends Component {
     };
 
     state : {
-        text: string
+        currentContent: string
     }
 
     constructor(props : any) {
         super(props);
         this.state = {
-            text: "This is just text"
+            currentContent: "This is just text"
         };
     }
 
@@ -30,7 +30,13 @@ export default class Editor extends Component {
         return (
             <div>
                 <div>
-                    <ContentEditable html={this.state.text} disabled={false} onChange={this.handleChange} className={styles.editor}/>
+                    <ContentEditable
+                        html={this.state.currentContent}
+                        disabled={false}
+                        onChange={this.handleChange}
+                        className={styles.editor}
+                        autoFocus={true}
+                    />
                 </div>
             </div>
         );
