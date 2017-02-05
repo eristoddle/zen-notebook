@@ -1,6 +1,6 @@
 // @flow
 // https://github.com/rajaraodv/react-redux-blog/blob/master/public/src/containers/PostsListContainer.js
-import {bindActionCreators} from 'redux';
+//import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Settings from '../components/Settings/Settings';
 import {loadNotebook, loadNotebookSuccess, loadNotebookFailure} from '../actions/notebook';

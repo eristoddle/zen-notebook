@@ -42,7 +42,7 @@ export default class ZenAppBar extends React.Component {
             open: !this.state.open
           })}>
             <Link to="/">
-              Home
+              Editor
             </Link>
           </MenuItem>
           <MenuItem onTouchTap={() => this.setState({
