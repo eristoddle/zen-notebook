@@ -13,6 +13,7 @@ export default class ZenEditor extends Component {
 
     constructor(props : any) {
         super(props);
+        console.log('props loaded in editor', props);
 
         this.state = {
             activeContent: "This is just text"
@@ -20,12 +21,11 @@ export default class ZenEditor extends Component {
 
         this.onChange = (evt : any) => {
             this.state.activeContent = evt.target.value;
-            // TODO: This doesn't seem right
+            // TODO: This doesn't seem right but works nonetheless
             this.props.notebook.activeEntry.content = this.state.activeContent;
-            console.log('value', evt.target.value);
             // Loaded notebook here in this.props.notebook.notebook
-            console.log('props', this.props);
-            console.log('state', this.state);
+            console.log('props on change', this.props);
+            console.log('state on change', this.state);
         };
     }
 

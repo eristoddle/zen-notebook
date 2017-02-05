@@ -7,6 +7,7 @@ function mapStateToProps(state) {
     return {notebook: state.notebook};
 }
 
+// TODO: This does nothing right now except throw errors
 function mapDispatchToProps(dispatch) {
     // TODO: Figure out this
     // return bindActionCreators(NotebookActions, dispatch);

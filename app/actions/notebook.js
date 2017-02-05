@@ -12,6 +12,8 @@ const fs = require('fs');
 export const LOAD_NOTEBOOK = 'LOAD_NOTEBOOK';
 export const LOAD_NOTEBOOK_SUCCESS = 'LOAD_NOTEBOOK_SUCCESS';
 export const LOAD_NOTEBOOK_FAILURE = 'LOAD_NOTEBOOK_FAILURE';
+export const UPDATE_ACTIVE_CONTENT = 'UPDATE_ACTIVE_CONTENT';
+export const UPDATE_ACTIVE_ENTRY = 'UPDATE_ACTIVE_ENTRY';
 
 export function loadNotebook() {
     return (dispatch: any) => {
@@ -47,4 +49,12 @@ export function loadNotebookSuccess(notebook : Object) {
 
 export function loadNotebookFailure(data : Object) {
     return {type: LOAD_NOTEBOOK_FAILURE, data: data};
+}
+
+export function updateActiveContent(content: String){
+    return {type: UPDATE_ACTIVE_CONTENT, data: content};
+}
+
+export function updateActiveEntry(entry: Object){
+    return {type: UPDATE_ACTIVE_ENTRY, data: entry};
 }
