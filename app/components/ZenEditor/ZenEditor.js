@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import styles from './ZenEditor.css';
 import ContentEditable from 'react-contenteditable'
+// TODO: Try this maybe https://github.com/facebook/draft-js
 // import {Editor, EditorState} from 'draft-js';
 
 export default class ZenEditor extends Component {
@@ -12,19 +13,15 @@ export default class ZenEditor extends Component {
 
     constructor(props : any) {
         super(props);
+
         this.state = {
-            currentContent: "This is just text"
+            activeContent: "This is just text"
         };
-        // this.state = {
-        //     editorState: EditorState.createEmpty()
-        // };
-        // this.onChange = (editorState) => {
-        //     console.log('editorState', editorState.getCurrentContent());
-        //     this.setState({editorState})
-        // };
+
         this.onChange = (evt : any) => {
-            // this.setState({currentContent: evt.target.value});
-            this.state.currentContent = evt.target.value;
+            this.state.activeContent = evt.target.value;
+            // TODO: This doesn't seem right
+            this.props.notebook.activeContent = this.state.activeContent;
             console.log('value', evt.target.value);
             // Loaded notebook here in this.props.notebook.notebook
             console.log('props', this.props);
@@ -32,17 +29,13 @@ export default class ZenEditor extends Component {
         };
     }
 
-    // render() {
-    //     return (<Editor editorState={this.state.editorState} onChange={this.onChange}/>);
-    // }
-
     render() {
         const { notebook } = this.props;
         return (
             <div>
                 <div>
                     <ContentEditable
-                        html={this.state.currentContent}
+                        html={this.state.activeContent}
                         disabled={false}
                         onChange={this.onChange}
                         className={styles.editor}
