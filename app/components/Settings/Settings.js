@@ -14,13 +14,8 @@ import styles from './Settings.css';
 export default class Settings extends Component {
 
     props:{
-        increment: () => void,
-        incrementIfOdd: () => void,
-        incrementAsync: () => void,
-        decrement: () => void,
-        counter: number,
         notebook: any,
-        chooseNotebookFile: () => void
+        loadNotebook: () => void
     };
 
     constructor(props : any) {
@@ -28,7 +23,7 @@ export default class Settings extends Component {
     }
 
     render() {
-        const { increment, incrementIfOdd, incrementAsync, decrement, counter, notebook, chooseNotebookFile } = this.props;
+        const { notebook, loadNotebook } = this.props;
 
         return (
             <div className={styles.root}>
@@ -38,7 +33,7 @@ export default class Settings extends Component {
                         <ListItem
                             primaryText="Notebook file"
                             secondaryText="Change your notebook"
-                            onClick={chooseNotebookFile}/>
+                            onClick={loadNotebook}/>
                         <ListItem
                             primaryText="Show your status"
                             secondaryText="Your status is visible to everyone you use with"/>

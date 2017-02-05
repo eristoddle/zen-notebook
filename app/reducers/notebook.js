@@ -1,51 +1,37 @@
 // @flow
-import {INCREMENT_COUNTER, DECREMENT_COUNTER, LOAD_NOTEBOOK_SUCCESS} from '../actions/notebook';
+// https://github.com/rajaraodv/react-redux-blog/blob/master/public/src/reducers/reducer_posts.js
+import {LOAD_NOTEBOOK, LOAD_NOTEBOOK_SUCCESS, LOAD_NOTEBOOK_FAILURE} from '../actions/notebook';
 
-export type notebookStateType = {
-    notebook: Object
+const INITIAL_STATE = {
+    notebook: {}
 };
 
-// type actionType = {
-//   type: string,
-//   data: Object
-// };
-
-export function counter(state : number = 0, action : Object) {
+export default function(state : Object = INITIAL_STATE, action : Object) {
+    let error;
     switch (action.type) {
-        case INCREMENT_COUNTER:
-            return state + 1;
-        case DECREMENT_COUNTER:
-            return state - 1;
-        default:
-            return state;
-    }
-}
-
-// export function notebook(state: any = {}, action: Object) {
-//     switch (action.type) {
-//         case LOAD_NOTEBOOK_SUCCESS:
-//             return state;
-//         default:
-//             return state;
-//     }
-// }
-
-export default function notebook(state : any = {}, action : Object) {
-    switch (action.type) {
-            // case 'ADD_TODO':
-            //     return [
-            //         ...state,
-            //         todo(undefined, Object.assign(action, {id: state.length}))
-            //     ]
-            // case 'TOGGLE_TODO':
-            //     return state.map(t => todo(t, action))
-        case 'LOAD_NOTEBOOK_SUCCESS':
-            console.log('reducer load', state, action);
-            // return action.data
-            return Object.assign({}, state, {
+        case LOAD_NOTEBOOK_SUCCESS:
+        console.log('reducer success', state, action);
+            return {
+                ...state,
                 notebook: action.data
-            })
+            };
+
+        case LOAD_NOTEBOOK_FAILURE:
+        console.log('reducer failure', state, action);
+            return {
+                ...state,
+                notebook: action.data
+            };
+
+        case LOAD_NOTEBOOK:
+            console.log('notebook in reducer', action.data);
+            return {
+                ...state,
+                notebook: action.data
+            };
+
         default:
-            return state
+            console.log('reducer', state, action);
+            return state;
     }
 }
