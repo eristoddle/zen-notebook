@@ -1,0 +1,8 @@
+title: Zen-notebook
+description: A Distraction Free Journal/Notebook/Diary for Writing Practice
+google_analytics: UA-78810123-2
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
