@@ -1,0 +1,68 @@
+{
+    "name": "zen-notebook",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "electron-is-dev": "^1.1.0",
+        "fsevents": "^2.0.7",
+        "react": "^16.10.1",
+        "react-dom": "^16.10.1",
+        "react-scripts": "3.1.2",
+        "typescript": "^3.6.3"
+    },
+    "main": "public/electron.js",
+    "homepage": "./",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+        "postinstall": "# electron-builder install-app-deps",
+        "preelectron-pack": "npm run build",
+        "electron-dir": "electron-builder --dir",
+        "electron-dist": "electron-builder -mwl"
+    },
+    "author": {
+        "name": "Stephan Miller",
+        "email": "stephanmil@gmail.com",
+        "url": "https://stephanmiller.com"
+    },
+    "build": {
+        "appId": "com.stephanmiller.zen-notebook",
+        "productName": "Zen Notebook",
+        "copyright": "Copyright © 2019 ${author}",
+        "mac": {
+            "category": "public.app-category.productivity"
+        },
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "concurrently": "^4.1.2",
+        "electron": "^6.0.10",
+        "electron-builder": "^21.2.0",
+        "node": "^8.16.1",
+        "wait-on": "^3.3.0"
+    }
+}
