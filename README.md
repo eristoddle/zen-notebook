@@ -1,178 +1,189 @@
-<img src="internals/img/erb-banner.png" width="100%" />
+[![Stories in Ready](https://badge.waffle.io/eristoddle/zen-notebook.png?label=ready&title=Ready)](https://waffle.io/eristoddle/zen-notebook)
 
-<br>
+# Zen Notebook
 
-<p>
-  Electron React Boilerplate uses <a href="http://electron.atom.io/">Electron</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="https://github.com/reactjs/redux">Redux</a>, <a href="https://github.com/reactjs/react-router">React Router</a>, <a href="http://webpack.github.io/docs/">Webpack</a> and <a href="https://github.com/gaearon/react-hot-loader">React Hot Loader</a> for rapid application development (HMR).
-</p>
+[![Join the chat at https://gitter.im/eristoddle/zen-notebook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eristoddle/zen-notebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-<br>
+## Update - 9/10/2016
 
-<div align="center">
-  <a href="https://facebook.github.io/react/"><img src="./internals/img/react-padded-90.png" /></a>
-  <a href="https://webpack.github.io/"><img src="./internals/img/webpack-padded-90.png" /></a>
-  <a href="http://redux.js.org/"><img src="./internals/img/redux-padded-90.png" /></a>
-  <a href="https://github.com/ReactTraining/react-router"><img src="./internals/img/react-router-padded-90.png" /></a>
-  <a href="https://flowtype.org/"><img src="./internals/img/flow-padded-90.png" /></a>
-  <a href="http://eslint.org/"><img src="./internals/img/eslint-padded-90.png" /></a>
-  <a href="https://facebook.github.io/jest/"><img src="./internals/img/jest-padded-90.png" /></a>
-  <a href="https://yarnpkg.com/"><img src="./internals/img/yarn-padded-90.png" /></a>
-</div>
+Well, I got busy after a while away. I am upgrading the code so I can create phone apps also. And then on to bug fixes and features. So currently on this branch, running the gulp commands will only run or build the example app until I get the Zen Notebook code updated for the new stack.
 
-<hr />
-<br />
+The old version of the app using Angular 1 and Node Webkit will always be available on the `legacy-angular1-nodewebkit` branch. And last time I checked everything built correctly, but I will not be supporting that version.
 
-<div align="center">
+The new version will be able to open the data files of the old version. I am just changing the code stack.
 
-[![Build Status][travis-image]][travis-url]
-[![Appveyor Build Status][appveyor-image]][appveyor-url]
-[![Dependency Status][david-image]][david-url]
-[![DevDependency Status][david-dev-image]][david-dev-url]
-[![Github Tag][github-tag-image]][github-tag-url]
+## A Distraction Free Journal/Notebook/Diary for Writing Practice
 
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/electron-react-blpt)
-[![OpenCollective](https://opencollective.com/electron-react-boilerplate/backers/badge.svg)](#backers)
-[![OpenCollective](https://opencollective.com/electron-react-boilerplate/sponsors/badge.svg)](#sponsors)
-[![Good first issues open][good-first-issue-image]][good-first-issue-url]
-[![StackOverflow](http://img.shields.io/badge/stackoverflow-electron_react_boilerplate-blue.svg)]( http://stackoverflow.com/questions/tagged/electron-react-boilerplate )
+When I was 14, I bought Writing Down the Bones by Natalie Goldberg. I have kept up with writing practice off and on for over two decades now. Many times in the last few years, I have searched for something in an electronic version that I could use easily from a laptop, when I wanted to. Something I could just click on and start writing with. If I got caught up in the setup and configuration of the damn tool, the moment could be gone fast, because at the same time I like to write, I am also a nerd at heart and can tweak out on this type of stuff. So the only solution is to get to the writing quickly and not have to worry about anything getting in the way of that.
 
+I found [Red Notebook](http://rednotebook.sourceforge.net) and [ZenPen](http://github.com/tholman/zenpen) in the same week and an idea just came together.
 
-</div>
+And of course, being the nerd again, thought of all the other writing tools I would want distraction free and simplified. So the feature wish list keeps growing.
 
-<div align="center">
+## Screenshot
 
-![Electron Boilerplate Demo](https://cloud.githubusercontent.com/assets/3382565/10557547/b1f07a4e-74e3-11e5-8d27-79ab6947d429.gif)
+![](http://stephanmiller.com/sites/default/files/styles/large/public/screenshot_0.png)
 
-</div>
+## Screencast
 
-## Install
+[YouTube Screencast of Zen Notebook](https://www.youtube.com/watch?v=XuOEtBkhGsc)
 
-- **If you have installation or compilation issues with this project, please see [our debugging guide](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/400)**
+## Features Currently in Executable Version
 
-First, clone the repo via git:
+The application is still in alpha. The most recently version will be in the source code and in the Mac build because I am currently working on a Mac. I will keep the executables updated on a regular basis when I have added important features or fix major bugs. But I can tell I didn't start creating executables until I had a version I trusted to use on a daily basis as a replacement for Red Notebook. And most of the beta version punch list items come from bugs I found and ideas I had while using it every day.
 
-```bash
-git clone --depth 1 --single-branch --branch master https://github.com/electron-react-boilerplate/electron-react-boilerplate.git your-project-name
-```
+- Distraction free writing environment: All menus and configuration options are hidden until needed. A small barely visible nav bar at the top left of the GUI becomes 100% visible when hovered with the mouse. The buttons activate various menus. The application can be made full screen.
+- Emulates a daily journal/diary/notebook in an electronic application: Written content is saved to dates and the date can be changed used an interactive calendar
+- Cross platform: Executables for Windows, Mac and Linux
+- 7 themes: Clicking the yin-yang nav button will change the theme
+- Custom typewriter theme: uses the MyUnderwood Font and has typewriter sound effects
+- Custom relax theme: beta, still a little rough, has a background that changes color and a rainfall background sound
+- Journal saved to simple JSON format
 
-And then install the dependencies with yarn.
+## Download Zen Notebook Executables
 
-```bash
-$ cd your-project-name
-$ yarn
-```
+These are in zip format. They are not installers. I do plan on working on installation package eventually, but for now, you can unzip the correct file for your operating system and run the executable for in the resulting folder. For the Mac version, just unzip the file and in it you will find a Zen Notebook app you can drag to your Application Folder
 
-## Starting Development
+### Mac
 
-Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a webpack dev server that sends hot updates to the renderer process:
+[Download](https://www.dropbox.com/s/4y4whcn7imlo6cy/mac.zip?dl=1)
 
-```bash
-$ yarn dev
-```
+### Windows
 
-## Packaging for Production
+Note: Sounds are currently deactivated in the Windows version. I have tracked the issues down to sounds. I am not sure if this is because the sounds get loaded from files or using the sounds themselves in the Windows version.
 
-To package apps for the local platform:
+[Download](https://www.dropbox.com/s/us6ywvkld54t1mi/windows.zip?dl=1)
 
-```bash
-$ yarn package
-```
+### Linux 32 bit
 
-## Docs
+[Download](https://www.dropbox.com/s/i835wrbqmx5598h/linux-x32.zip?dl=1)
 
-See our [docs and guides here](https://electron-react-boilerplate.js.org/docs/installation)
+### Linux 64 bit
 
-## Maintainers
+[Download](https://www.dropbox.com/s/9tk3zr6dtkmgv2g/linux-x64.zip?dl=1)
 
-- [Vikram Rangaraj](https://github.com/vikr01)
-- [Amila Welihinda](https://github.com/amilajack)
-- [C. T. Lin](https://github.com/chentsulin)
-- [Jhen-Jie Hong](https://github.com/jhen0409)
+## Beta Version Punch List
 
-## Backers
+- [ ] Remove all legacy cruft from master branch
+      - [ ] get current example app building correctly for all platforms
+      - [ ] package.json clean up
+      - [ ] convert grunt tasks to gulp tasks
+      - [ ] find a new one shot release workflow using electron-packager and gulp
+      - [ ] bower to npm ?
+      - [ ] search and destroy all remaining files and folders from old application
+      - [ ] Convert AngularJS code to Angular2
+      - [ ] Merge Angular2 branch into master
+- [ ] Add Tags
+- [ ] Add Search
+- [ ] Add Stats
+- [ ] Fix bug when content footer pops up from bottom when mouse is hovered
+- [ ] Fix info links to open in system browser, alternately in iframe
+- [ ] Add accordian/collapsible divs to left bar
+- [ ] Optimize code
+- [ ] Make it also a simple writing tool where files can be opened and exported to PDF or html from markdown or rtf
+- [ ] Smooth and mellow relax colors
+- [ ] Manage sound levels
+- [ ] Allow for custom theme: font, background, text color
+- [ ] Possibly make typewriter theme scroll paper from bottom
+- [ ] Typewriter combine carriage return sounds into one? or play them right after the other
+- [ ] Fix sound effects on typewriter for cylinder clicking sound
+- [ ] Add more sounds to relax theme
+- [ ] Figure out to minimize file size using background sounds, api? cached download on demand? stream from my own server?
+- [ ] Fix margin bottom on content when taller than window. No text sitting on the bottom
+- [ ] Add more typewriter styling
+- [ ] Fix month forward arrow on calendar
+- [ ] Double check that all functionality works from scratch without existing journal
+- [ ] Add configuration loading
+- [ ] Create configuration menu
+- [ ] Fix today button
+- [ ] Warn to save content on close is no file exists
+- [ ] Make persistent storage agnostic
+- [ ] Create services of sound
+- [ ] Dates with content don't highlight until after a click on the calendar
+- [ ] Clicks on calendar don't change word counts
+- [ ] Intercept copy and paste to remove any html markup
+- [ ] Add Markua support
+- [ ] Create Leanpub component
+- [ ] Possible json/folder mode switch which will save work in one json file or separate text files with meta data files
+- [ ] Add self updating
+- [ ] Create application service that can map key codes events to functions in application and component
+- [ ] Add testing
+- [ ] Add jsdoc
+- [ ] Slideshow/presentation functionality
+- [ ] Add tooltip type hover editor for markdown, like Evernote or Typora, that can be switched off and on.
+- [ ] Add line by line markdown preview instead of dual pane preview
 
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/electron-react-boilerplate#backer)]
+## Future Roadmap and Wish List
 
-<a href="https://opencollective.com/electron-react-boilerplate/backer/0/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/0/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/1/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/1/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/2/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/2/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/3/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/3/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/4/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/4/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/5/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/5/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/6/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/6/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/7/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/7/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/8/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/8/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/9/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/9/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/10/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/10/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/11/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/11/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/12/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/12/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/13/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/13/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/14/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/14/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/15/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/15/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/16/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/16/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/17/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/17/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/18/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/18/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/19/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/19/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/20/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/20/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/21/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/21/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/22/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/22/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/23/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/23/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/24/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/24/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/25/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/25/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/26/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/26/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/27/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/27/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/28/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/28/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/backer/29/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/backer/29/avatar.svg"></a>
+This is my wish and idea list
 
-## Sponsors
+- [ ] Sync content to cloud services instead of just the file system
+- [ ] Work on integrating Cordova or PhoneGap to and build first Andriod and iOS versions
+- [ ] Flesh out website. Write writing prompts integration and consider users, writing groups, online version and journal post permissions.
+- [ ] Write first full featured plugin which will have a folder/document structure similar to Scrivener. This will require a more advanced theming system to change up element display (masonry block, outline, editing).
+- [ ] Integrate PanDoc and consider a web service
+- [ ] Create a plugin system similar to Atom's
+- [ ] Add Pomodoro
+- [ ] Add timed writing exercises
+- [ ] Add simple project mode for a folder of markdown files
 
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/electron-react-boilerplate-594#sponsor)]
+## Development
 
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/0/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/1/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/2/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/3/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/4/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/5/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/6/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/7/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/8/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/9/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/9/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/10/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/10/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/11/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/11/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/12/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/12/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/13/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/13/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/14/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/14/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/15/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/15/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/16/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/16/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/17/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/17/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/18/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/18/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/19/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/19/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/20/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/20/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/21/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/21/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/22/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/22/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/23/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/23/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/24/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/24/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/25/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/25/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/26/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/26/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/27/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/27/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/28/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/28/avatar.svg"></a>
-<a href="https://opencollective.com/electron-react-boilerplate/sponsor/29/website" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/29/avatar.svg"></a>
+1. Pull down the repo
+2. Run `npm install gulp ionic cordova electron -g` unless you already have those installed globally
+3. Run `npm install`
+4. `ionic serve` will run the local Ionic Server.
+5. `ionic build` will build the web, Android and IOS apps.
+6. `gulp electron:all` will build the Windows, OSX, and Linux binary applications.
+7. `gulp electron:build` will build installation applications for Windows, OSX, and Linux
 
-## License
+_Note that electron-builder used to create the installers has it's only requirements based on which platform you are building on listed [here](https://www.npmjs.com/package/electron-builder)_
 
-MIT © [Electron React Boilerplate](https://github.com/electron-react-boilerplate)
+_Note that currently I am still converting the old app into the new Ionic app and until that is done, the process able will only run an example boilerplate application._
 
-[npm-image]: https://img.shields.io/npm/v/electron-react-boilerplate.svg?style=flat-square
-[github-tag-image]: https://img.shields.io/github/tag/electron-react-boilerplate/electron-react-boilerplate.svg?label=version
-[github-tag-url]: https://github.com/electron-react-boilerplate/electron-react-boilerplate/releases/latest
-[travis-image]: https://travis-ci.com/electron-react-boilerplate/electron-react-boilerplate.svg?branch=master
-[travis-url]: https://travis-ci.com/electron-react-boilerplate/electron-react-boilerplate
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/4m972s6e4nf52hx6/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/electron-react-boilerplate/electron-react-boilerplate/branch/master
-[david-image]: https://img.shields.io/david/electron-react-boilerplate/electron-react-boilerplate.svg
-[david-url]: https://david-dm.org/electron-react-boilerplate/electron-react-boilerplate
-[david-dev-image]: https://img.shields.io/david/dev/electron-react-boilerplate/electron-react-boilerplate.svg?label=devDependencies
-[david-dev-url]: https://david-dm.org/electron-react-boilerplate/electron-react-boilerplate?type=dev
-[good-first-issue-image]: https://img.shields.io/github/issues/electron-react-boilerplate/electron-react-boilerplate/good%20first%20issue.svg?label=good%20first%20issues
-[good-first-issue-url]: https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues?q=is%3Aopen+is%3Aissue+label%3A"good+first+issue"
+I am following the conventions of Ionic and Electron for the most part, so for further info, please see their respective documentation.
+
+Don't worry about the Laravel backend for now. It has never been production ready and I started work on it for the future: phone app project syncing, PanDoc compiling on the server, collaboration, etc. But currently all functionality is through local files. Also, as it stands now, the server part of the application was last updated two years ago and I have plenty of work migrating the code and fixing all the bugs before I even get to that again.
+
+That being said, until I have a server or Dropbox syncing in place, I am not sure how useful the phone apps that result will be. I currently sync the files my desktop apps use by saving the notebook.json file to a Dropbox folder and I just point the app to that file on whichever computer I am on. It has worked for 2 years now and I have moved through all three platforms. And currently I jump back and forth from Windows to Linux almost daily.
+
+## Technologies Used
+
+- Electron : <http://electron.atom.io/docs/>
+- Electron Builder: <https://www.npmjs.com/package/electron-builder>
+- Ionic2 (+ Angular2) : <http://ionicframework.com/docs/v2/getting-started/installation/>
+- Gulp
+- Laravel
+- Buzz : <http://buzz.jaysalvat.com/>
+- Markua : Not yet but will be adding
+
+## Random Windows Issues
+
+Okay, I kept running into read-only issues and EPERM errors on Windows.
+
+I found a lot of the time it had to do with having an electron app running I couldn't see that owned the dist folder. Check the task manager.
+
+To build the OSX on Windows, you need to be running cmd as Admin.
+
+- <https://support.microsoft.com/en-us/kb/326549>
+- <https://www.dropbox.com/help/72>
+- <https://github.com/electron-userland/electron-packager/issues/402>
+- <http://stackoverflow.com/questions/29483772/remove-windows-file-readonly-attribute-in-gulp-file>
+- <https://github.com/gulpjs/gulp/issues/660>
+
+## Software Features I May Emulate
+
+- WriteMonkey - <http://writemonkey.com/>
+- Ulysses - <http://www.ulyssesapp.com/>
+- Scrivener - <http://www.literatureandlatte.com/scrivener.php>
+- Q10 - <http://www.baara.com/q10/>
+- Scapple - <https://www.literatureandlatte.com/scapple.php>
+- Typora = <http://www.typora.io/>
+
+## Component Ideas
+
+- Notebook: Default mode, a diary
+- Nanowrimo: Simple novel structure with word count and progress
+- Leanpub: Work from a Leanpub dropbox project folder
+- Jekyll: Work from a Jekyll blog git repo
+- Markdown Project: Folder of markdown files
