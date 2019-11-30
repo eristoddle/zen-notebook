@@ -1,25 +1,19 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
+# @generated: @expo/electron-adapter@0.0.0-alpha.8
+/.expo/*
+# Expo Web
+/web-build/*
+# electron-webpack
 /dist
+# @end @expo/electron-adapter
