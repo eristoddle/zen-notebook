@@ -20,6 +20,7 @@
         "expo-constants": "^7.0.0",
         "expo-font": "^7.0.0",
         "expo-web-browser": "^7.0.0",
+        "material-bread": "^0.2.4",
         "react": "16.8.3",
         "react-dom": "16.8.3",
         "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
@@ -29,8 +30,8 @@
     },
     "devDependencies": {
         "@expo/electron-adapter": "^0.0.0-alpha.8",
-        "babel-preset-expo": "^7.0.0",
         "@expo/webpack-config": "^0.10.4",
+        "babel-preset-expo": "^7.0.0",
         "jest-expo": "^35.0.0"
     },
     "private": true,
