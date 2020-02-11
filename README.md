@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/eristoddle/zen-notebook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eristoddle/zen-notebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Update - 9/10/2016
+## Update - 1/10/2020
 
 Well, I got busy after a while away. I am upgrading the code so I can create phone apps also. And then on to bug fixes and features. So currently on this branch, running the gulp commands will only run or build the example app until I get the Zen Notebook code updated for the new stack.
 
@@ -44,21 +44,15 @@ These are in zip format. They are not installers. I do plan on working on instal
 
 ### Mac
 
-[Download](https://www.dropbox.com/s/4y4whcn7imlo6cy/mac.zip?dl=1)
+[Download](https://www.dropbox.com/s/pg17593gb8b0whw/ZenNotebookOSX.zip?dl=0)
 
 ### Windows
 
-Note: Sounds are currently deactivated in the Windows version. I have tracked the issues down to sounds. I am not sure if this is because the sounds get loaded from files or using the sounds themselves in the Windows version.
+Currently updating codebase. No build available.
 
-[Download](https://www.dropbox.com/s/us6ywvkld54t1mi/windows.zip?dl=1)
+### Linux
 
-### Linux 32 bit
-
-[Download](https://www.dropbox.com/s/i835wrbqmx5598h/linux-x32.zip?dl=1)
-
-### Linux 64 bit
-
-[Download](https://www.dropbox.com/s/9tk3zr6dtkmgv2g/linux-x64.zip?dl=1)
+Currently updating codebase. No build available.
 
 ## Beta Version Punch List
 
