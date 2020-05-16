@@ -12,18 +12,14 @@ export default function HomeScreen(props) {
     return (
         <View style={styles.container}>
             <AppBar {...props} />
-            <ScrollView
-            style={styles.container}
-            contentContainerStyle={styles.contentContainer}>
-                <View style={styles.editorContainer}>
-                    <ContentEditable
-                    innerRef={contentEditable}
-                    html={html}
-                    disabled={false}
-                    styles={styles.editor}
-                    onChange={onChange}/>
-                </View>
-          </ScrollView>
+            <View style={styles.editorContainer}>
+                <ContentEditable
+                innerRef={contentEditable}
+                html={html}
+                disabled={false}
+                style={{outline: 'none'}}
+                onChange={onChange}/>
+            </View>
         </View>
     );
 }
@@ -37,16 +33,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  contentContainer: {
+  editorContainer: {
       flex: 1,
       paddingLeft: '50px',
       paddingRight: '50px',
   },
-  editorContainer: {
-  },
-  editor: {
-    width: '100%',
-    height: '100%',
-    outline: 'none',
-  }
 });
