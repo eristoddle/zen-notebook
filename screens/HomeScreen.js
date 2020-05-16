@@ -1,8 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import ContentEditable from 'react-contenteditable'
+import { AppBar } from "../components/AppBar"
 
-import { AppBar } from "../components/AppBar";
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  editorContainer: {
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    height: '100%',
+  }
+});
 
 export default function HomeScreen(props) {
     const [html, setHtml] = useState("type here")
@@ -17,25 +28,16 @@ export default function HomeScreen(props) {
                 innerRef={contentEditable}
                 html={html}
                 disabled={false}
-                style={{outline: 'none'}}
+                style={{
+                  outline: 'none',
+                  height: '100%'
+                }}
                 onChange={onChange}/>
             </View>
         </View>
-    );
+    )
 }
 
 HomeScreen.navigationOptions = {
   header: null
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  editorContainer: {
-      flex: 1,
-      paddingLeft: '50px',
-      paddingRight: '50px',
-  },
-});
