@@ -25,14 +25,14 @@ export default function HomeScreen(props) {
             <AppBar {...props} />
             <View style={styles.editorContainer}>
                 <ContentEditable
-                innerRef={contentEditable}
-                html={html}
-                disabled={false}
-                style={{
-                  outline: 'none',
-                  height: '100%'
-                }}
-                onChange={onChange}/>
+                  innerRef={contentEditable}
+                  html={html}
+                  disabled={false}
+                  style={{
+                    outline: 'none',
+                    height: '100%'
+                  }}
+                  onChange={onChange}/>
             </View>
         </View>
     )

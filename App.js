@@ -4,9 +4,13 @@ import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { BreadProvider } from "material-bread";
+import { BreadProvider, Colors } from 'material-bread';
 import "./global.css";
 import AppNavigator from './navigation/AppNavigator';
+
+const theme = {
+
+}
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -21,7 +25,7 @@ export default function App(props) {
     );
   } else {
     return (
-        <BreadProvider>
+        <BreadProvider value={theme}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
