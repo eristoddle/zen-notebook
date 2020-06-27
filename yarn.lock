@@ -8808,10 +8808,10 @@ matcher@^3.0.0:
   dependencies:
     escape-string-regexp "^4.0.0"
 
-material-bread@^0.2.4:
-  version "0.2.7"
-  resolved "https://nexus.cicd.ryanrts.com/repository/npm-group/material-bread/-/material-bread-0.2.7.tgz#93facbcd9a6ccb43f2e2ad3ea1a2616a9707e840"
-  integrity sha512-tIZ07wXFOonfcz99F9LAEUzOeRJWx65BoDatHn3/RoURt5lcm+rUI3vzAQ1YaaMcVJT/Hb/4/mcCmNjjTYSV3A==
+material-bread@^0.2.9:
+  version "0.2.9"
+  resolved "https://nexus.cicd.ryanrts.com/repository/npm-group/material-bread/-/material-bread-0.2.9.tgz#7216fc6e7db74b73d4e2d2ab6413cd554ab9c945"
+  integrity sha512-lpCAps+MnAldupGVlM0TF3Qu6/ZccAnvbFr0g/o1vphOMP+9yywv8CoRnObIpG5dsLpBPymcO+8gUPumkD9rgQ==
   dependencies:
     "@babel/runtime" "^7.5.5"
     color "^3.1.0"
