@@ -1,5 +1,5 @@
 import React from 'react';
-import { Appbar, IconButton } from "material-bread";
+import { Appbar, IconButton } from 'material-bread';
 import { Platform } from 'react-native';
 
 const style = {
