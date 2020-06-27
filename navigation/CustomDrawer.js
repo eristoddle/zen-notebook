@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Platform } from 'react-native';
 import { DrawerItems } from 'react-navigation-drawer';
+import { Calendar } from 'react-native-calendars';
+
+const style = {
+  flex: 1,
+  marginTop: Platform.OS === 'ios' || Platform.OS === 'android' ? 25 : 0,
+};
 
 export function CustomDrawer(props) {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={style}>
       <ScrollView>
+        <Calendar/>
         <DrawerItems {...props} />
       </ScrollView>
     </View>

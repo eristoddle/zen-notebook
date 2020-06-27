@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, Dimensions, ScrollView, Platform } from 'react-native'
 import { AppBar } from '../components/AppBar'
 
-const fullHeight = Dimensions.get('window').height - 50;
+const fullHeight = Dimensions.get('window').height - 56;
 
 const styles = StyleSheet.create({
   container: {
