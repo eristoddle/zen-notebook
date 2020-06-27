@@ -1,17 +1,40 @@
 import React from 'react';
-import { Appbar } from "material-bread";
+import { Appbar, IconButton } from "material-bread";
+import { Platform } from 'react-native';
+
+const style = {
+  icon: {
+
+  },
+  appbar: {
+    marginTop: Platform.OS === 'ios' || Platform.OS === 'android' ? 25 : 0,
+  },
+};
+
+function Navigation(props) {
+  return (
+    <IconButton
+      name={'menu'}
+      size={24}
+      color={'black'}
+      style={style.icon}
+      onPress={props.navigation.openDrawer}
+      style={{
+        alignSelf: 'center',
+      }}
+    />
+  );
+}
 
 export function AppBar(props) {
   return (
     <Appbar
       barType={'normal'}
-      navigation={'menu'}
-      color={'#00BCD4'}
-      style={{ marginBottom: 20 }}
+      navigation={Navigation(props)}
+      color={'#fff'}
+      elevation={0}
+      style={style.appbar}
       onNavigation={props.navigation.openDrawer}
-      actionItems={[
-        { name: 'more-vert', onPress: props.navigation.openDrawer },
-      ]}
     />
   );
 }

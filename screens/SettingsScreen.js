@@ -11,4 +11,5 @@ export default function SettingsScreen() {
 
 SettingsScreen.navigationOptions = {
   title: 'Settings',
+  headerShown: false,
 };

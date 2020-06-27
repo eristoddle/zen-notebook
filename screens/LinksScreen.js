@@ -1,22 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-
-export default function LinksScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
-    </ScrollView>
-  );
-}
-
-LinksScreen.navigationOptions = {
-  title: 'Links',
-};
+import { AppBar } from '../components/AppBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +10,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+export default function LinksScreen(props) {
+  return (
+    <View>
+    <AppBar {...props} />
+    <ScrollView style={styles.container}>
+      {/**
+       * Go ahead and delete ExpoLinksView and replace it with your content;
+       * we just wanted to provide you with some helpful links.
+       */}
+      <ExpoLinksView />
+    </ScrollView>
+    </View>
+  );
+}
+
+LinksScreen.navigationOptions = {
+  title: 'Links',
+  headerShown: false,
+};

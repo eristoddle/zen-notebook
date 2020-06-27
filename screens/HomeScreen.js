@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import ContentEditable from 'react-contenteditable'
-import { AppBar } from "../components/AppBar"
+import React, { useState } from 'react'
+import { StyleSheet, View, TextInput, Dimensions, ScrollView, Platform } from 'react-native'
+import { AppBar } from '../components/AppBar'
+
+const fullHeight = Dimensions.get('window').height - 50;
 
 const styles = StyleSheet.create({
   container: {
@@ -9,35 +10,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   editorContainer: {
-    paddingLeft: '50px',
-    paddingRight: '50px',
-    height: '100%',
-  }
+    paddingLeft: 50,
+    paddingRight: 50,
+    height: fullHeight,
+  },
+  textInput: {
+    height: fullHeight,
+    textAlignVertical: 'top',
+    ...(Platform.OS !== 'ios' && Platform.OS !== 'android' && { outlineWidth: 0 }),
+  },
 });
 
 export default function HomeScreen(props) {
-    const [html, setHtml] = useState("type here")
-    const contentEditable = useRef(false)
-    const onChange = (e) => setHtml(e.target.value)
+    const [text, setText] = useState("type here now")
 
     return (
-        <View style={styles.container}>
-            <AppBar {...props} />
-            <View style={styles.editorContainer}>
-                <ContentEditable
-                  innerRef={contentEditable}
-                  html={html}
-                  disabled={false}
-                  style={{
-                    outline: 'none',
-                    height: '100%'
-                  }}
-                  onChange={onChange}/>
-            </View>
-        </View>
-    )
+      <View style={styles.container}>
+        <AppBar {...props} />
+        <ScrollView style={styles.editorContainer}>
+          <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => setText(text)}
+            value={text}
+            multiline
+          />
+        </ScrollView>
+      </View>
+    );
 }
 
 HomeScreen.navigationOptions = {
-  header: null
+  headerShown: false
 };
