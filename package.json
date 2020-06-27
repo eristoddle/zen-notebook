@@ -38,7 +38,7 @@
         "react-navigation-stack": "^2.5.1"
     },
     "devDependencies": {
-        "@babel/preset-react": "^7.7.4",
+        "@babel/preset-react": "^7.10.1",
         "@expo/electron-adapter": "^0.0.4",
         "@expo/webpack-config": "^0.12.16",
         "babel-preset-expo": "^8.2.3",
