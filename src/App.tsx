@@ -1,24 +1,17 @@
 import React, { FC } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import AppStore from './state/index';
 import AppStackNavigator from './navigation/AppStackNavigator';
 
 const App: FC = () => {
   return (
-    <NavigationContainer>
-      <AppStackNavigator />
-    </NavigationContainer>
+    <Provider store={AppStore}>
+      <NavigationContainer>
+        <AppStackNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-});
 
 export default App;
