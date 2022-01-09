@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import AppStore from './state/index';
 import AppStackNavigator from './navigation/AppStackNavigator';
 import ErrorBoundary from './components/ErrorBoundary';
+import { navigationRef } from './navigation/RootNavigation';
 
 const App: FC = () => {
   return (
@@ -13,7 +14,7 @@ const App: FC = () => {
           console.log('resetState');
         }}
       >
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <AppStackNavigator />
         </NavigationContainer>
       </ErrorBoundary>
