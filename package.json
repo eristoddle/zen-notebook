@@ -14,6 +14,8 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "babel-loader": "^8.2.3",
     "babel-plugin-polyfill-corejs2": "^0.3.0",
     "babel-plugin-polyfill-corejs3": "^0.4.0",

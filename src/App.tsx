@@ -1,11 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import AppStackNavigator from './navigation/AppStackNavigator';
 
 const App: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Blank Slate.</Text>
-    </View>
+    <NavigationContainer>
+      <AppStackNavigator />
+    </NavigationContainer>
   );
 };
 
