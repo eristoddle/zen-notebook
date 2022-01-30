@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 interface Props {
   resetState: () => void;
@@ -16,7 +10,7 @@ interface State {
 }
 
 class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props | Readonly<Props>) {
     super(props);
     this.state = { hasError: false };
   }
@@ -44,9 +38,7 @@ class ErrorBoundary extends React.Component<Props, State> {
         <TouchableOpacity onPress={this.onPress}>
           <View style={styles.container}>
             <Text style={styles.primaryText}>Oops, something went wrong!</Text>
-            <Text style={styles.secondaryText}>
-              Tap to refresh and try again
-            </Text>
+            <Text style={styles.secondaryText}>Tap to refresh and try again</Text>
           </View>
         </TouchableOpacity>
       </SafeAreaView>

@@ -1,5 +1,5 @@
 export interface AppState {
   sessionStart: Date;
-  sessionEnd: Date;
+  sessionEnd?: Date;
   test: any;
 }

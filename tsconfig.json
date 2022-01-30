@@ -1,4 +1,22 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "pretty": true,
+    "newLine": "LF",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "jsx": "react-native",
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+  ],
+  "extends": "./node_modules/electron-webpack/tsconfig-base.json",
 }

@@ -9,6 +9,10 @@
     "npx:android": "npx react-native run-android",
     "npx:ios": "npx react-native run-ios",
     "electron": "yarn expo-electron start",
+    "electron:compile": "yarn electron-webpack",
+    "electron:pack": "yarn electron-builder --dir",
+    "electron:dist": "yarn electron-webpack && yarn electron-builder",
+    "electron:postinstall": "electron-builder install-app-deps",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "postinstall": "patch-package"
@@ -22,7 +26,6 @@
     "babel-plugin-polyfill-corejs2": "^0.3.0",
     "babel-plugin-polyfill-corejs3": "^0.4.0",
     "babel-plugin-polyfill-regenerator": "^0.3.0",
-    "electron": "^6.0.12",
     "expo": "~41.0.1",
     "expo-splash-screen": "~0.10.2",
     "expo-status-bar": "~1.0.4",
@@ -52,6 +55,8 @@
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "electron": "^6.0.12",
+    "electron-builder": "^22.14.5",
     "electron-webpack": "^2.7.4",
     "electron-webpack-ts": "^4.0.1",
     "eslint": "^8.3.0",
@@ -65,6 +70,12 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "patch-package": "^6.4.7",
     "prettier": "2.4.1"
+  },
+  "build": {
+    "appId": "your.id",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   },
   "resolutions": {
     "js-yaml": "^3.13.1",

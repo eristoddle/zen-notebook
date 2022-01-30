@@ -13,7 +13,7 @@ const App: FC = () => {
       <SafeAreaProvider>
         <ErrorBoundary
           resetState={() => {
-            console.log('resetState');
+            return undefined;
           }}
         >
           <NavigationContainer ref={navigationRef}>

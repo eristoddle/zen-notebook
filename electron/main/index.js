@@ -1,5 +1,4 @@
-'use strict';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
@@ -9,8 +8,21 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow;
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function createMainWindow() {
-  const browserWindow = new BrowserWindow({ webPreferences: { nodeIntegration: true } });
+  let browserWindow;
+
+  if (isDevelopment) {
+    browserWindow = new BrowserWindow({ webPreferences: { nodeIntegration: true } });
+  } else {
+    browserWindow = new BrowserWindow({
+      webPreferences: {
+        nodeIntegration: true,
+        devTools: false,
+        // preload: require('path').resolve(require.resolve('react-native-electron/preload')),
+      },
+    });
+  }
 
   if (isDevelopment) {
     browserWindow.webContents.openDevTools();
@@ -24,7 +36,7 @@ function createMainWindow() {
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file',
         slashes: true,
-      })
+      }),
     );
   }
 

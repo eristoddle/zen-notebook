@@ -1,14 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { AppState } from '../types/AppState';
 
-export const getTest = createAsyncThunk(
-  'app/getTest',
-  async (_params, _thunkApi) => {
-    return {
-      test: 'test',
-    };
-  },
-);
+export const getTest = createAsyncThunk('app/getTest', async (_params, _thunkApi) => {
+  return {
+    test: 'test',
+  };
+});
 
 export const initialState: AppState = {
   sessionStart: new Date(),
