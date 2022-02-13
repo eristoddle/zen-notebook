@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
+import applicationMenu from './applicationMenu.js';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -18,7 +19,7 @@ function createMainWindow() {
     browserWindow = new BrowserWindow({
       webPreferences: {
         nodeIntegration: true,
-        devTools: false,
+        // devTools: false,
         // preload: require('path').resolve(require.resolve('react-native-electron/preload')),
       },
     });
@@ -71,5 +72,6 @@ app.on('activate', () => {
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
+  Menu.setApplicationMenu(applicationMenu);
   mainWindow = createMainWindow();
 });
